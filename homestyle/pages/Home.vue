@@ -2,7 +2,7 @@
     <div id="home">
         <HeroSection class="hero-section" :title="hero.title" :subtitle="hero.subtitle" :button-text="hero.buttonText" :link="hero.link" :image-src="hero.imageSrc" :image-width="hero.imageWidth" :image-height="hero.imageHeight" :nuxt-img-config="hero.imageConfig" image-tag="nuxt-img"/>
        <LoadWhenVisible>
-            <NewProducts class="products" :button-text="$t('View Alll ->')" :title="$t('Best sellers')" link="/kitchenware.html"/>
+            <NewProducts class="products" :button-text="$t('View All ->')" :title="$t('Best sellers')" link="/kitchenware.html"/>
         </LoadWhenVisible>
         <LazyHydrate when-visible>
             <SfBannerGrid :banner-grid="1" class="banner-grid">
