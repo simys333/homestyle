@@ -11,6 +11,49 @@
                 </template>
             </SfBannerGrid>
         </LazyHydrate>
+        <!-- New section with four boxes -->
+<div class="icon-text-grid">
+    <div class="icon-text-box">
+        <div class="icon">
+            <!-- Replace 'icon1.png' with your actual icon image path -->
+            <img src="/path/to/your/icon1.png" alt="Icon Description">
+        </div>
+        <div class="text">
+            <h2>Box 1 Title</h2>
+            <p>Box 1 description text here.</p>
+        </div>
+    </div>
+    <div class="icon-text-box">
+        <div class="icon">
+            <!-- Replace 'icon2.png' with your actual icon image path -->
+            <img src="/path/to/your/icon2.png" alt="Icon Description">
+        </div>
+        <div class="text">
+            <h2>Box 2 Title</h2>
+            <p>Box 2 description text here.</p>
+        </div>
+    </div>
+    <div class="icon-text-box">
+        <div class="icon">
+            <!-- Replace 'icon3.png' with your actual icon image path -->
+            <img src="/path/to/your/icon3.png" alt="Icon Description">
+        </div>
+        <div class="text">
+            <h2>Box 3 Title</h2>
+            <p>Box 3 description text here.</p>
+        </div>
+    </div>
+    <div class="icon-text-box">
+        <div class="icon">
+            <!-- Replace 'icon4.png' with your actual icon image path -->
+            <img src="/path/to/your/icon4.png" alt="Icon Description">
+        </div>
+        <div class="text">
+            <h2>Box 4 Title</h2>
+            <p>Box 4 description text here.</p>
+        </div>
+    </div>
+</div>
        
         <LoadWhenVisible>
             <NewProducts class="products" :button-text="$t('View All ->')" :title="$t('Fresh Arrivals That Capture Our Hearts')" link="/dinnerware.html"/>
