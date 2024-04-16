@@ -1,7 +1,51 @@
 <template>
     <div id="home">
         <HeroSection class="hero-section" :title="hero.title" :subtitle="hero.subtitle" :button-text="hero.buttonText" :link="hero.link" :image-src="hero.imageSrc" :image-width="hero.imageWidth" :image-height="hero.imageHeight" :nuxt-img-config="hero.imageConfig" image-tag="nuxt-img"/>
-       <LoadWhenVisible>
+        <!-- New section with four boxes -->
+<div class="icon-text-grid">
+    <div class="icon-text-box">
+        <div class="icon">
+            <!-- Replace 'icon1.png' with your actual icon image path -->
+            <img src="delivery-truck 1.png" alt="Icon Description">
+        </div>
+        <div class="text">
+            <h2>Free Shipping</h2>
+            <p>Free shipping on all your order</p>
+        </div>
+    </div>
+    <div class="icon-text-box">
+        <div class="icon">
+            
+            <img src="headphones 1.png" alt="Icon Description">
+        </div>
+        <div class="text">
+            <h2>Customer Support 24/7</h2>
+            <p>Instant access to Support</p>
+        </div>
+    </div>
+    <div class="icon-text-box">
+        <div class="icon">
+            <!-- Replace 'icon3.png' with your actual icon image path -->
+            <img src="shopping-bag.png" alt="Icon Description">
+        </div>
+        <div class="text">
+            <h2>100% Secure Payment</h2>
+            <p>We ensure your money is save</p>
+        </div>
+    </div>
+    <div class="icon-text-box">
+        <div class="icon">
+            
+            <img src="package.png" alt="Icon Description">
+        </div>
+        <div class="text">
+            <h2>Money-Back Guarantee</h2>
+            <p>30 Days Money-Back Guarantee</p>
+        </div>
+    </div>
+</div>
+       
+        <LoadWhenVisible>
             <NewProducts class="products" :button-text="$t('View All ->')" :title="$t('Best sellers')" link="/kitchenware.html"/>
         </LoadWhenVisible>
         <LazyHydrate when-visible>
@@ -11,50 +55,7 @@
                 </template>
             </SfBannerGrid>
         </LazyHydrate>
-        <!-- New section with four boxes -->
-<div class="icon-text-grid">
-    <div class="icon-text-box">
-        <div class="icon">
-            <!-- Replace 'icon1.png' with your actual icon image path -->
-            <img src="/path/to/your/icon1.png" alt="Icon Description">
-        </div>
-        <div class="text">
-            <h2>Box 1 Title</h2>
-            <p>Box 1 description text here.</p>
-        </div>
-    </div>
-    <div class="icon-text-box">
-        <div class="icon">
-            <!-- Replace 'icon2.png' with your actual icon image path -->
-            <img src="/path/to/your/icon2.png" alt="Icon Description">
-        </div>
-        <div class="text">
-            <h2>Box 2 Title</h2>
-            <p>Box 2 description text here.</p>
-        </div>
-    </div>
-    <div class="icon-text-box">
-        <div class="icon">
-            <!-- Replace 'icon3.png' with your actual icon image path -->
-            <img src="/path/to/your/icon3.png" alt="Icon Description">
-        </div>
-        <div class="text">
-            <h2>Box 3 Title</h2>
-            <p>Box 3 description text here.</p>
-        </div>
-    </div>
-    <div class="icon-text-box">
-        <div class="icon">
-            <!-- Replace 'icon4.png' with your actual icon image path -->
-            <img src="/path/to/your/icon4.png" alt="Icon Description">
-        </div>
-        <div class="text">
-            <h2>Box 4 Title</h2>
-            <p>Box 4 description text here.</p>
-        </div>
-    </div>
-</div>
-       
+      
         <LoadWhenVisible>
             <NewProducts class="products" :button-text="$t('View All ->')" :title="$t('Fresh Arrivals That Capture Our Hearts')" link="/dinnerware.html"/>
         </LoadWhenVisible>
@@ -353,5 +354,63 @@ position: relative;
 section.sf-banner.sf-banner--slim {
     background-size: contain;
     min-height: 14rem;
+}
+
+.icon-text-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacer-md);
+    margin: var(--spacer-lg) 0;
+
+    @include for-desktop {
+        margin: var(--spacer-2xl) 0;
+    }
+}
+
+.icon-text-box {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    .icon {
+        margin-right: var(--spacer-md);
+
+        img {
+            width: 50px; /* Adjust the size as needed */
+            height: auto;
+        }
+    }
+
+    .text {
+        h2 {
+            font-size: 20px;
+            margin-bottom: var(--spacer-sm);
+        }
+
+        p {
+            font-size: 14px;
+            color: #666;
+        }
+    }
+
+    @include for-desktop {
+        .icon {
+            margin-right: var(--spacer-lg);
+
+            img {
+                width: 60px; 
+            }
+        }
+
+        .text {
+            h2 {
+                font-size: 24px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+        }
+    }
 }
 </style>
