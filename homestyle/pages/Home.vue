@@ -6,40 +6,40 @@
     <div class="icon-text-box">
         <div class="icon">
             <!-- Replace 'icon1.png' with your actual icon image path -->
-            <img src="delivery-truck 1.png" alt="Icon Description">
+            <img src="/homepage/delivery-truck 1.png" alt="Icon Description">
         </div>
         <div class="text">
-            <h2>Free Shipping</h2>
+            <h6>Free Shipping</h6>
             <p>Free shipping on all your order</p>
         </div>
     </div>
     <div class="icon-text-box">
         <div class="icon">
             
-            <img src="headphones 1.png" alt="Icon Description">
+            <img src="/homepage/headphones 1.png" alt="Icon Description">
         </div>
         <div class="text">
-            <h2>Customer Support 24/7</h2>
+            <h6>Customer Support 24/7</h6>
             <p>Instant access to Support</p>
         </div>
     </div>
     <div class="icon-text-box">
         <div class="icon">
             <!-- Replace 'icon3.png' with your actual icon image path -->
-            <img src="shopping-bag.png" alt="Icon Description">
+            <img src="/homepage/shopping-bag.png" alt="Icon Description">
         </div>
         <div class="text">
-            <h2>100% Secure Payment</h2>
+            <h6>100% Secure Payment</h6>
             <p>We ensure your money is save</p>
         </div>
     </div>
     <div class="icon-text-box">
         <div class="icon">
             
-            <img src="package.png" alt="Icon Description">
+            <img src="/homepage/package.png" alt="Icon Description">
         </div>
         <div class="text">
-            <h2>Money-Back Guarantee</h2>
+            <h6>Money-Back Guarantee</h6>
             <p>30 Days Money-Back Guarantee</p>
         </div>
     </div>
