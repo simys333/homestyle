@@ -6,20 +6,20 @@
     <div class="icon-text-box">
         <div class="icon">
             <!-- Replace 'icon1.png' with your actual icon image path -->
-            <img src="/homepage/delivery-truck 1.png" alt="Icon Description">
+            <img else-if src="/homepage/delivery-truck 1.png" alt="Icon Description">
         </div>
         <div class="text">
-            <h6>Free Shipping</h6>
+            <h5>Free Shipping</h5>
             <p>Free shipping on all your order</p>
         </div>
     </div>
     <div class="icon-text-box">
         <div class="icon">
             
-            <img src="/homepage/headphones 1.png" alt="Icon Description">
+            <img else-if  src="/homepage/headphones 1.png" alt="Icon Description">
         </div>
         <div class="text">
-            <h6>Customer Support 24/7</h6>
+            <h5>Customer Support 24/7</h5>
             <p>Instant access to Support</p>
         </div>
     </div>
@@ -29,7 +29,7 @@
             <img src="/homepage/shopping-bag.png" alt="Icon Description">
         </div>
         <div class="text">
-            <h6>100% Secure Payment</h6>
+            <h5>100% Secure Payment</h5>
             <p>We ensure your money is save</p>
         </div>
     </div>
@@ -39,7 +39,7 @@
             <img src="/homepage/package.png" alt="Icon Description">
         </div>
         <div class="text">
-            <h6>Money-Back Guarantee</h6>
+            <h5>Money-Back Guarantee</h5>
             <p>30 Days Money-Back Guarantee</p>
         </div>
     </div>
@@ -356,21 +356,29 @@ section.sf-banner.sf-banner--slim {
     min-height: 14rem;
 }
 
+
+
 .icon-text-row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     gap: var(--spacer-md);
     margin: var(--spacer-lg) 0;
 
     @include for-desktop {
+        justify-content: flex-start;
         margin: var(--spacer-2xl) 0;
     }
 }
 
 .icon-text-box {
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    padding: var(--spacer-md);
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
 
     .icon {
         margin-right: var(--spacer-md);
@@ -398,7 +406,7 @@ section.sf-banner.sf-banner--slim {
             margin-right: var(--spacer-lg);
 
             img {
-                width: 60px; 
+                width: 60px; /* Adjust the size as needed for desktop */
             }
         }
 
