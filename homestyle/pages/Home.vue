@@ -72,9 +72,9 @@
             <InstagramFeed/>
         </LoadWhenVisible>-->
         <img else-if src="/homepage/mail.png" />
-
-        <div>
-          <h3>We Design & Curate the Best.</h3>
+<p>&nbsp;</p>
+        <div >
+          <h3 style="color:F8470A;">We Design & Curate the Best.</h3>
           <p>At Homstyle, we prioritize excellence in every piece. Our commitment to superior craftsmanship ensures that each item is meticulously designed and crafted with the highest quality materials, guaranteeing durability and timeless appeal.</p>
           <div class="icon-text-row">
     <div class="icon-text-box">
@@ -428,7 +428,7 @@ section.sf-banner.sf-banner--slim {
         margin-right: var(--spacer-md);
 
         img {
-            width: 50px; /* Adjust the size as needed */
+            width: 40px; 
             height: auto;
         }
     }
@@ -448,6 +448,7 @@ section.sf-banner.sf-banner--slim {
             h6 {
                 font-size: 16px;
                 font-weight:600;
+                margin:0;
             }
 
             p {
