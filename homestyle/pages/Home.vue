@@ -9,7 +9,7 @@
             <img else-if src="/homepage/delivery-truck 1.png" alt="Icon Description">
         </div>
         <div class="text">
-            <h4>Free Shipping</h4>
+            <h6>Free Shipping</h6>
             <p>Free shipping on all your order</p>
         </div>
     </div>
@@ -19,7 +19,7 @@
             <img else-if  src="/homepage/headphones 1.png" alt="Icon Description">
         </div>
         <div class="text">
-            <h4>Customer Support 24/7</h4>
+            <h6>Customer Support 24/7</h6>
             <p>Instant access to Support</p>
         </div>
     </div>
@@ -29,7 +29,7 @@
             <img src="/homepage/shopping-bag.png" alt="Icon Description">
         </div>
         <div class="text">
-            <h4>100% Secure Payment</h4>
+            <h6>100% Secure Payment</h6>
             <p>We ensure your money is save</p>
         </div>
     </div>
@@ -39,7 +39,7 @@
             <img src="/homepage/package.png" alt="Icon Description">
         </div>
         <div class="text">
-            <h4>Money-Back Guarantee</h4>
+            <h6>Money-Back Guarantee</h6>
             <p>30 Days Money-Back Guarantee</p>
         </div>
     </div>
@@ -445,12 +445,13 @@ section.sf-banner.sf-banner--slim {
         }
 
         .text {
-            h2 {
-                font-size: 24px;
+            h6 {
+                font-size: 16px;
+                font-weight:600;
             }
 
             p {
-                font-size: 12px;
+                font-size: 14px;
             }
         }
     }
