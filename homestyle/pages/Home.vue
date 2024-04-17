@@ -376,8 +376,8 @@ section.sf-banner.sf-banner--slim {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    padding: var(--spacer-md);
-    border: 1px solid #e0e0e0;
+    padding:0 15px;
+    
     border-radius: 4px;
 
     .icon {
@@ -389,17 +389,7 @@ section.sf-banner.sf-banner--slim {
         }
     }
 
-    .text {
-        h2 {
-            font-size: 20px;
-            margin-bottom: var(--spacer-sm);
-        }
-
-        p {
-            font-size: 14px;
-            color: #666;
-        }
-    }
+   
 
     @include for-desktop {
         .icon {
