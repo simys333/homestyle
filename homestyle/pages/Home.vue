@@ -2,7 +2,7 @@
     <div id="home">
         <HeroSection class="hero-section" :title="hero.title" :subtitle="hero.subtitle" :button-text="hero.buttonText" :link="hero.link" :image-src="hero.imageSrc" :image-width="hero.imageWidth" :image-height="hero.imageHeight" :nuxt-img-config="hero.imageConfig" image-tag="nuxt-img"/>
         <!-- New section with four boxes -->
-<div class="icon-text-grid">
+<div class="icon-text-row">
     <div class="icon-text-box">
         <div class="icon">
             <!-- Replace 'icon1.png' with your actual icon image path -->
