@@ -9,7 +9,7 @@
             <img else-if src="/homepage/delivery-truck 1.png" alt="Icon Description">
         </div>
         <div class="text">
-            <h5>Free Shipping</h5>
+            <h4>Free Shipping</h4>
             <p>Free shipping on all your order</p>
         </div>
     </div>
@@ -19,7 +19,7 @@
             <img else-if  src="/homepage/headphones 1.png" alt="Icon Description">
         </div>
         <div class="text">
-            <h5>Customer Support 24/7</h5>
+            <h4>Customer Support 24/7</h4>
             <p>Instant access to Support</p>
         </div>
     </div>
@@ -29,7 +29,7 @@
             <img src="/homepage/shopping-bag.png" alt="Icon Description">
         </div>
         <div class="text">
-            <h5>100% Secure Payment</h5>
+            <h4>100% Secure Payment</h4>
             <p>We ensure your money is save</p>
         </div>
     </div>
@@ -39,7 +39,7 @@
             <img src="/homepage/package.png" alt="Icon Description">
         </div>
         <div class="text">
-            <h5>Money-Back Guarantee</h5>
+            <h4>Money-Back Guarantee</h4>
             <p>30 Days Money-Back Guarantee</p>
         </div>
     </div>
@@ -72,6 +72,50 @@
             <InstagramFeed/>
         </LoadWhenVisible>-->
         <img else-if src="/homepage/mail.png" />
+
+        <div>
+          <h3>We Design & Curate the Best.</h3>
+          <p>At Homstyle, we prioritize excellence in every piece. Our commitment to superior craftsmanship ensures that each item is meticulously designed and crafted with the highest quality materials, guaranteeing durability and timeless appeal.</p>
+          <div class="icon-text-row">
+    <div class="icon-text-box">
+        <div class="icon">
+            <!-- Replace 'icon1.png' with your actual icon image path -->
+            <img else-if src="/homepage/diamond (2) 2.png" alt="Icon Description">
+        </div>
+        <div class="text"> 
+            <p>Crafted for a Lifetime.</p>
+        </div>
+    </div>
+    <div class="icon-text-box">
+        <div class="icon">
+            
+            <img else-if  src="/homepage/romantic-dinner 4.png" alt="Icon Description">
+        </div>
+        <div class="text">
+            <p>Everyday Essentials, Extraordinary Style.</p>
+        </div>
+    </div>
+    <div class="icon-text-box">
+        <div class="icon">
+            <!-- Replace 'icon3.png' with your actual icon image path -->
+            <img src="/homepage/romantic-dinner 3.png" alt="Icon Description">
+        </div>
+        <div class="text">
+            <p>Beauty in Every Detail.</p>
+        </div>
+    </div>
+    <div class="icon-text-box">
+        <div class="icon">
+            
+            <img src="/homepage/cheers 3.png" alt="Icon Description">
+        </div>
+        <div class="text">
+            <p>Crafting Memories, Where Moments Matter.</p>
+        </div>
+    </div>
+</div>
+       
+        </div>
         <LoadWhenVisible>
             <MobileStoreBanner/>
         </LoadWhenVisible>
@@ -406,7 +450,7 @@ section.sf-banner.sf-banner--slim {
             }
 
             p {
-                font-size: 16px;
+                font-size: 12px;
             }
         }
     }
