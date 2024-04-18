@@ -116,9 +116,7 @@
 </div>
        
         </div>
-        <LoadWhenVisible>
-            <MobileStoreBanner/>
-        </LoadWhenVisible>
+        
     </div>
 </template>
 <script lang="ts" type="module">
