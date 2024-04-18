@@ -74,7 +74,7 @@
         <img else-if src="/homepage/mail.png" />
 <p>&nbsp;</p>
         <div >
-          <h3 style="color:F8470A;">We Design & Curate the Best.</h3>
+          <h3 style="color:#F8470A;">We Design & Curate the Best.</h3>
           <p>At Homstyle, we prioritize excellence in every piece. Our commitment to superior craftsmanship ensures that each item is meticulously designed and crafted with the highest quality materials, guaranteeing durability and timeless appeal.</p>
           <div class="icon-text-row">
     <div class="icon-text-box">
@@ -83,7 +83,7 @@
             <img else-if src="/homepage/diamond (2) 2.png" alt="Icon Description">
         </div>
         <div class="text"> 
-            <p>Crafted for a Lifetime.</p>
+            <p>Crafted for a <br/>Lifetime.</p>
         </div>
     </div>
     <div class="icon-text-box">
@@ -92,7 +92,7 @@
             <img else-if  src="/homepage/romantic-dinner 4.png" alt="Icon Description">
         </div>
         <div class="text">
-            <p>Everyday Essentials, Extraordinary Style.</p>
+            <p>Everyday Essentials,<br/> Extraordinary Style.</p>
         </div>
     </div>
     <div class="icon-text-box">
@@ -101,7 +101,7 @@
             <img src="/homepage/romantic-dinner 3.png" alt="Icon Description">
         </div>
         <div class="text">
-            <p>Beauty in Every Detail.</p>
+            <p>Beauty in <br/>Every Detail.</p>
         </div>
     </div>
     <div class="icon-text-box">
@@ -110,7 +110,7 @@
             <img src="/homepage/cheers 3.png" alt="Icon Description">
         </div>
         <div class="text">
-            <p>Crafting Memories, Where Moments Matter.</p>
+            <p>Crafting Memories, <br/>Where Moments Matter.</p>
         </div>
     </div>
 </div>
