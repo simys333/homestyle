@@ -71,7 +71,7 @@
         <!--<LoadWhenVisible>
             <InstagramFeed/>
         </LoadWhenVisible>-->
-        <img else-if src="/homepage/mail.png" />
+        
 <p>&nbsp;</p>
         <div >
           <h3 style="color:#F8470A;">We Design & Curate the Best.</h3>
@@ -116,7 +116,7 @@
 </div>
        
         </div>
-        
+        <img else-if src="/homepage/mail.png" />
     </div>
 </template>
 <script lang="ts" type="module">
