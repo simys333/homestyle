@@ -51,21 +51,21 @@
     <div class="swiper-wrapper">
       <div class="swiper-slide">
         <!-- Box 1 -->
-        <div class="icon-text-box">
+        <div class="icon-text-box1">
           <img src="/homepage/Dinner Ware.png" alt="">
           <p>Dinner Ware</p>
         </div>
       </div>
       <div class="swiper-slide">
         <!-- Box 2 -->
-        <div class="icon-text-box">
+        <div class="icon-text-box1">
           <img src="/homepage/Mugs.png" alt="">
           <p>Mugs</p>
         </div>
       </div>
       <div class="swiper-slide">
         <!-- Box 3 -->
-        <div class="icon-text-box">
+        <div class="icon-text-box1">
           <img src="/homepage/Cutlery.png" alt="">
           <p>Cutlery</p>
         </div>
@@ -79,14 +79,14 @@
       </div>
       <div class="swiper-slide">
         <!-- Box 4 -->
-        <div class="icon-text-box">
+        <div class="icon-text-box1">
           <img src="/homepage/Bowls.png" alt="">
           <p>Bowls</p>
         </div>
       </div>
       <div class="swiper-slide">
         <!-- Box 4 -->
-        <div class="icon-text-box">
+        <div class="icon-text-box1">
           <img src="/homepage/Casserole.png" alt="">
           <p>Casserole</p>
         </div>
@@ -449,7 +449,18 @@ section.sf-banner.sf-banner--slim {
     min-height: 14rem;
 }
 
+/* Swiper Styles */
+.swiper-container {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
 
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  
+}
 
 .icon-text-row {
     display: flex;
