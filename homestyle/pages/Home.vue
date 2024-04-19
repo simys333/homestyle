@@ -168,6 +168,7 @@
         </div>
         <img else-if src="/homepage/mail.png" />
     </div>
+    </div>
 </template>
 <script lang="ts" type="module">
 import {
