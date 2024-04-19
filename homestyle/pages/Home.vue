@@ -457,11 +457,14 @@ section.sf-banner.sf-banner--slim {
   padding-top: 50px;
   padding-bottom: 50px;
 }
+.swiper-wrapper{
+  display: flex;
+}
 
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  
+  margin: 0 20px;
 }
 
 .icon-text-row {
