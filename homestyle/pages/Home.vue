@@ -44,6 +44,56 @@
         </div>
     </div>
 </div>
+
+  <!-- Swiper Carousel for four boxes -->
+  <h4>Shop By Cateogry</h4>
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <!-- Box 1 -->
+        <div class="icon-text-box">
+          <img src="/homepage/Dinner Ware.png" alt="">
+          <p>Dinner Ware</p>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <!-- Box 2 -->
+        <div class="icon-text-box">
+          <img src="/homepage/Mugs.png" alt="">
+          <p>Mugs</p>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <!-- Box 3 -->
+        <div class="icon-text-box">
+          <img src="/homepage/Cutlery.png" alt="">
+          <p>Cutlery</p>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <!-- Box 4 -->
+        <div class="icon-text-box">
+          <img src="/homepage/Bottles.png" alt="">
+          <p>Bottles</p>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <!-- Box 4 -->
+        <div class="icon-text-box">
+          <img src="/homepage/Bowls.png" alt="">
+          <p>Bowls</p>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <!-- Box 4 -->
+        <div class="icon-text-box">
+          <img src="/homepage/Casserole.png" alt="">
+          <p>Casserole</p>
+        </div>
+      </div>
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
        
         <LoadWhenVisible>
             <NewProducts class="products" :button-text="$t('View All ->')" :title="$t('Best sellers')" link="/kitchenware.html"/>
