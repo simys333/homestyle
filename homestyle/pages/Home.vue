@@ -323,25 +323,6 @@ export default defineComponent({
 
 
 </script>
-<script>
-import SwiperCore, { Pagination } from 'swiper/core';
-import { Swiper, SwiperSlide } from 'swiper/vue';
-
-// Import Swiper styles
-import 'swiper/swiper-bundle.min.css';
-
-// Install Swiper components
-SwiperCore.use([Pagination]);
-
-export default {
-  // ... existing code ...
-  components: {
-    Swiper,
-    SwiperSlide,
-  },
-};
-
-</script>
 <style lang="scss" scoped>.article-meta h4 a {
   color: #111111;
   font-weight: 600;
