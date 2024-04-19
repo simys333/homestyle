@@ -72,7 +72,7 @@
       </div>
       <div class="swiper-slide">
         <!-- Box 4 -->
-        <div class="icon-text-box">
+        <div class="icon-text-box1">
           <img src="/homepage/Bottles.png" alt="">
           <p>Bottles</p>
         </div>
@@ -320,6 +320,27 @@ export default defineComponent({
     return getMetaInfo(this.page);
   },
 });
+
+
+</script>
+<script>
+import SwiperCore, { Pagination } from 'swiper/core';
+import { Swiper, SwiperSlide } from 'swiper/vue';
+
+// Import Swiper styles
+import 'swiper/swiper-bundle.min.css';
+
+// Install Swiper components
+SwiperCore.use([Pagination]);
+
+export default {
+  // ... existing code ...
+  components: {
+    Swiper,
+    SwiperSlide,
+  },
+};
+
 </script>
 <style lang="scss" scoped>.article-meta h4 a {
   color: #111111;
