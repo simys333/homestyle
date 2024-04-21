@@ -2,78 +2,60 @@
   <SfFooter
     :column="4"
     multiple
-    class="footer"
-  >
-    <SfFooterColumn :title="$t('About us')">
+    class="footer">    
+    <div class="footer-left">
+      <SfImage src="/logo.png" alt="homstyle" />
+      <p class="footer-text">
+        When you choose Homstyle, you're choosing homeware that not only adds
+        functionality to your daily life but also brings a touch of enduring
+        elegance to your home.
+      </p>
+      <h4>Contact Us</h4>
+      <span>info@homstyle.com</span>
+      <span>+91 944 679 4741</span>
+    </div>
+    <SfFooterColumn :title="$t('Categories')">
       <SfList>
-        <SfListItem
-          v-for="item in aboutUs"
-          :key="item"
-        >
-          <SfMenuItem
-            :label="$t(item)"
-          />
+        <SfListItem v-for="item in aboutUs" :key="item">
+          <SfMenuItem :label="$t(item)" />
         </SfListItem>
       </SfList>
     </SfFooterColumn>
-    <SfFooterColumn :title="$t('Departments')">
+    <SfFooterColumn :title="$t('About us')">
       <SfList>
-        <SfListItem
-          v-for="item in departments"
-          :key="item"
-        >
-          <SfMenuItem
-            :label="$t(item)"
-          />
+        <SfListItem v-for="item in aboutUs" :key="item">
+          <SfMenuItem :label="$t(item)" />
+        </SfListItem>
+      </SfList>
+    </SfFooterColumn>
+    <SfFooterColumn :title="$t('Quick Links')">
+      <SfList>
+        <SfListItem v-for="item in departments" :key="item">
+          <SfMenuItem :label="$t(item)" />
         </SfListItem>
       </SfList>
     </SfFooterColumn>
     <SfFooterColumn :title="$t('Help')">
       <SfList>
-        <SfListItem
-          v-for="item in help"
-          :key="item"
-        >
-          <SfMenuItem
-            :label="$t(item)"
-          />
+        <SfListItem v-for="item in help" :key="item">
+          <SfMenuItem :label="$t(item)" />
         </SfListItem>
       </SfList>
     </SfFooterColumn>
-    <SfFooterColumn :title="$t('Payment & Delivery')">
+    <SfFooterColumn :title="$t('Useful Links')">
       <SfList>
-        <SfListItem
-          v-for="item in paymentsDelivery"
-          :key="item"
-        >
-          <SfMenuItem
-            :label="$t(item)"
-          />
+        <SfListItem v-for="item in paymentsDelivery" :key="item">
+          <SfMenuItem :label="$t(item)" />
         </SfListItem>
       </SfList>
     </SfFooterColumn>
-    <SfFooterColumn title="Social">
-      <div class="footer__socials">
-        <SfImage
-          v-for="item in social"
-          :key="item"
-          class="footer__social-image"
-          :src="addBasePath('/icons/'+item+'.svg')"
-          :alt="item"
-          width="32"
-          height="32"
-        />
-      </div>
-    </SfFooterColumn>
-  </SfFooter>
+     </SfFooter>   
 </template>
 
 <script lang="ts">
-import {
-  SfFooter, SfList, SfImage, SfMenuItem,
-} from '@storefront-ui/vue';
-import { defineComponent } from '@nuxtjs/composition-api';
-import { addBasePath } from '~/helpers/addBasePath';
+import { SfFooter, SfList, SfImage, SfMenuItem } from "@storefront-ui/vue";
+import { defineComponent } from "@nuxtjs/composition-api";
+import { addBasePath } from "~/helpers/addBasePath";
 
 export default defineComponent({
   components: {
@@ -89,11 +71,11 @@ export default defineComponent({
   },
   data() {
     return {
-      aboutUs: ['Who we are', 'Quality in the details', 'Customer Reviews'],
-      departments: ['Women fashion', 'Men fashion', 'Kidswear', 'Home'],
-      help: ['Customer service', 'Size guide', 'Contact us'],
-      paymentsDelivery: ['Purchase terms', 'Guarantee'],
-      social: ['facebook', 'pinterest', 'google', 'twitter', 'youtube'],
+      aboutUs: ["Who we are", "Quality in the details", "Customer Reviews"],
+      departments: ["Women fashion", "Men fashion", "Kidswear", "Home"],
+      help: ["Customer service", "Size guide", "Contact us"],
+      paymentsDelivery: ["Purchase terms", "Guarantee"],
+      social: ["facebook", "pinterest", "google", "twitter", "youtube"],
       isMobile: false,
       desktopMin: 1024,
     };
@@ -102,7 +84,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-
 .footer {
   margin-bottom: 3.75rem;
   @include for-desktop {
@@ -126,8 +107,9 @@ export default defineComponent({
   }
 }
 .sf-footer {
+  background-color: #190701;
+  display:flex;
   @include for-desktop {
-    border-top: var(--spacer-xs) solid var(--c-primary);
     padding-bottom: 0;
     margin-top: var(--spacer-2xl);
   }
@@ -136,6 +118,33 @@ export default defineComponent({
     @include for-desktop {
       max-width: 69rem;
       margin: 0 auto;
+    }
+  }
+  .sf-footer-column,
+  .sf-footer-column__title {
+    background-color: transparent;
+  }
+  .sf-menu-item:hover {
+    --menu-item-label-color: #f8470a;
+  }
+  .footer-left {
+    display: flex;
+    flex-direction:column;
+    color: #ffffff;
+    font-family: "IBM Plex Sans";
+    min-width:300px;
+    margin: var(--spacer-base);
+    margin-left:0;
+    h4 {
+      font-size: 18px;
+      font-family: "Recoleta";
+    }
+    span {
+      font-size: 14px;
+      line-height:1.6;
+    }
+    .footer-text {
+      font-size: 15px;
     }
   }
 }

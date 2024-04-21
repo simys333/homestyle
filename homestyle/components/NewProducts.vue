@@ -1,19 +1,160 @@
 <template>
-  <SfSection class="new-products">
-    <template #heading>
+  <div class="new-products">    
       <div class="heading">
-        <h2 class="sf-heading__title title">
+        <h4 class="sf-heading__title title">
           {{ title }}
-        </h2>
-        <SfButton :link="localePath(link)">
+        </h4>
+        <SfLink :link="localePath(link)" target="_blank">
           {{ buttonText }}
-        </SfButton>
+        </SfLink>
       </div>
-    </template>
-    <SfLoader
-      :class="{ loading }"
-      :loading="loading"
-    >
+      <SfCarousel class="carousel" :settings="{focusAt:0, rewind: false}">
+        <SfCarouselItem class="carousel__item">
+          <SfProductCard
+            image="https://magento.homstyle.in/media/catalog/product/cache/fb1be9b35736f95f9b8328c138c4d7ab/i/m/img_2__2.png"
+            :imageWidth="312"
+            :imageHeight="360"
+            badgeLabel="20%"
+            badgeColor=""
+            title="Creme Gold Dinner Plate White new"
+            linkTag=""
+            regularPrice="₹1600"
+            specialPrice="₹1280"
+            wishlistIcon="heart"
+            isInWishlistIcon="heart_fill"
+            :isInWishlist="false"
+            showAddToCartButton
+            :isAddedToCart="false"
+            :addToCartDisabled="false"
+        /></SfCarouselItem>
+        <SfCarouselItem class="carousel__item">
+          <SfProductCard
+            image="https://magento.homstyle.in/media/catalog/product/cache/fb1be9b35736f95f9b8328c138c4d7ab/i/m/img_3_.png"
+            :imageWidth="312"
+            :imageHeight="360"
+            badgeLabel=""
+            badgeColor=""
+            title="Creme Gold Dinner bowl Black"
+            linkTag=""
+            regularPrice="1600"
+            specialPrice="1280"
+            wishlistIcon="heart"
+            isInWishlistIcon="heart_fill"
+            :isInWishlist="false"
+            showAddToCartButton
+            :isAddedToCart="false"
+            :addToCartDisabled="false"
+        /></SfCarouselItem>
+        <SfCarouselItem class="carousel__item">
+          <SfProductCard
+            image="https://magento.homstyle.in/media/catalog/product/cache/fb1be9b35736f95f9b8328c138c4d7ab/i/m/img_1_.png"
+            :imageWidth="312"
+            :imageHeight="360"
+            badgeLabel=""
+            badgeColor=""
+            title="Creme Gold Dinner Plate White new"
+            linkTag=""
+            regularPrice="1600"
+            specialPrice="1280"
+            wishlistIcon="heart"
+            isInWishlistIcon="heart_fill"
+            :isInWishlist="false"
+            showAddToCartButton
+            :isAddedToCart="false"
+            :addToCartDisabled="false"
+        /></SfCarouselItem>
+        <SfCarouselItem class="carousel__item">
+          <SfProductCard
+            image="https://magento.homstyle.in/media/catalog/product/cache/fb1be9b35736f95f9b8328c138c4d7ab/i/m/img_1.png"
+            :imageWidth="312"
+            :imageHeight="360"
+            badgeLabel=""
+            badgeColor=""
+            title="Creme Gold Dinner Plate White new"
+            linkTag=""
+            regularPrice="1600"
+            specialPrice="1280"
+            wishlistIcon="heart"
+            isInWishlistIcon="heart_fill"
+            :isInWishlist="false"
+            showAddToCartButton
+            :isAddedToCart="false"
+            :addToCartDisabled="false"
+        /></SfCarouselItem>
+         <SfCarouselItem class="carousel__item">
+          <SfProductCard
+            image="https://magento.homstyle.in/media/catalog/product/cache/fb1be9b35736f95f9b8328c138c4d7ab/i/m/img_2__2.png"
+            :imageWidth="312"
+            :imageHeight="360"
+            badgeLabel=""
+            badgeColor=""
+            title="Creme Gold Dinner Plate White new"
+            linkTag=""
+            regularPrice="1600"
+            specialPrice="1280"
+            wishlistIcon="heart"
+            isInWishlistIcon="heart_fill"
+            :isInWishlist="false"
+            showAddToCartButton
+            :isAddedToCart="false"
+            :addToCartDisabled="false"
+        /></SfCarouselItem>
+        <SfCarouselItem class="carousel__item">
+          <SfProductCard
+            image="https://magento.homstyle.in/media/catalog/product/cache/fb1be9b35736f95f9b8328c138c4d7ab/i/m/img_3_.png"
+            :imageWidth="312"
+            :imageHeight="360"
+            badgeLabel=""
+            badgeColor=""
+            title="Creme Gold Dinner bowl Black"
+            linkTag=""
+            regularPrice="1600"
+            specialPrice="1280"
+            wishlistIcon="heart"
+            isInWishlistIcon="heart_fill"
+            :isInWishlist="false"
+            showAddToCartButton
+            :isAddedToCart="false"
+            :addToCartDisabled="false"
+        /></SfCarouselItem>
+        <SfCarouselItem class="carousel__item">
+          <SfProductCard
+            image="https://magento.homstyle.in/media/catalog/product/cache/fb1be9b35736f95f9b8328c138c4d7ab/i/m/img_1_.png"
+            :imageWidth="312"
+            :imageHeight="360"
+            badgeLabel=""
+            badgeColor=""
+            title="Creme Gold Dinner Plate White new"
+            linkTag=""
+            regularPrice="1600"
+            specialPrice="1280"
+            wishlistIcon="heart"
+            isInWishlistIcon="heart_fill"
+            :isInWishlist="false"
+            showAddToCartButton
+            :isAddedToCart="false"
+            :addToCartDisabled="false"
+        /></SfCarouselItem>
+        <SfCarouselItem class="carousel__item">
+          <SfProductCard
+            image="https://magento.homstyle.in/media/catalog/product/cache/fb1be9b35736f95f9b8328c138c4d7ab/i/m/img_1.png"
+            :imageWidth="312"
+            :imageHeight="360"
+            badgeLabel=""
+            badgeColor=""
+            title="Creme Gold Dinner Plate White new"
+            linkTag=""
+            regularPrice="1600"
+            specialPrice="1280"
+            wishlistIcon="heart"
+            isInWishlistIcon="heart_fill"
+            :isInWishlist="false"
+            showAddToCartButton
+            :isAddedToCart="false"
+            :addToCartDisabled="false"
+        /></SfCarouselItem>
+      </SfCarousel>
+    <SfLoader :class="{ loading }" :loading="loading">
       <div class="products">
         <SfProductCard
           v-for="(product, i) in mappedProducts"
@@ -32,7 +173,7 @@
           :regular-price="$fc(productGetters.getPrice(product).regular)"
           :special-price="
             productGetters.getPrice(product).special &&
-              $fc(productGetters.getPrice(product).special)
+            $fc(productGetters.getPrice(product).special)
           "
           :link="localePath(getProductPath(product))"
           :max-rating="5"
@@ -47,64 +188,67 @@
         />
       </div>
     </SfLoader>
-  </SfSection>
+  </div>
 </template>
 
 <script lang="ts">
 import {
-  SfButton, SfLoader, SfProductCard, SfSection,
-} from '@storefront-ui/vue';
+  SfLink,
+  SfLoader,
+  SfProductCard,
+  SfSection,
+  SfCarousel,
+} from "@storefront-ui/vue";
 
 import {
-  computed, defineComponent, onMounted, ref,
-} from '@nuxtjs/composition-api';
-import {
-  useImage,
-  useProduct,
-} from '~/composables';
-import useWishlist from '~/modules/wishlist/composables/useWishlist';
-import productGetters from '~/modules/catalog/product/getters/productGetters';
-import { useUser } from '~/modules/customer/composables/useUser';
-import { useAddToCart } from '~/helpers/cart/addToCart';
-import { SortEnum } from '~/modules/GraphQL/types';
+  computed,
+  defineComponent,
+  onMounted,
+  ref,
+} from "@nuxtjs/composition-api";
+import { useImage, useProduct } from "~/composables";
+import useWishlist from "~/modules/wishlist/composables/useWishlist";
+import productGetters from "~/modules/catalog/product/getters/productGetters";
+import { useUser } from "~/modules/customer/composables/useUser";
+import { useAddToCart } from "~/helpers/cart/addToCart";
+import { SortEnum } from "~/modules/GraphQL/types";
 
 export default defineComponent({
-  name: 'NewProducts',
+  name: "NewProducts",
   components: {
     SfProductCard,
     SfSection,
     SfLoader,
-    SfButton,
+    SfLink,
+    SfCarousel,
   },
   props: {
     buttonText: {
       type: String,
-      default: '',
+      default: "",
     },
     link: {
       type: String,
-      default: '',
+      default: "",
     },
     title: {
       type: String,
-      default: '',
+      default: "",
     },
   },
   setup() {
     const { isAuthenticated } = useUser();
-    const {
-      getProductList,
-      loading,
-      getProductPath,
-    } = useProduct();
+    const { getProductList, loading, getProductPath } = useProduct();
     const { isInWishlist, addOrRemoveItem } = useWishlist();
     const { addItemToCart, isInCart } = useAddToCart();
     const products = ref([]);
 
-    const mappedProducts = computed(() => products.value.map((product) => ({
-      ...product,
-      isInWishlist: isInWishlist({ product }),
-    })));
+    const mappedProducts = computed(() =>
+      products.value.map((product) => ({
+        ...product,
+        isInWishlist: isInWishlist({ product }),
+      }))
+    );
 
     const addItemToWishlist = async (product) => {
       await addOrRemoveItem({ product });
@@ -113,7 +257,7 @@ export default defineComponent({
     const { getMagentoImage, imageSizes } = useImage();
 
     onMounted(async () => {
-      const newestProducts = await getProductList({
+      /*const newestProducts = await getProductList({
         pageSize: 4,
         currentPage: 1,
         sort: {
@@ -123,7 +267,7 @@ export default defineComponent({
 
       if (newestProducts?.items?.length) {
         products.value = newestProducts.items;
-      }
+      }*/
     });
 
     return {
@@ -151,9 +295,57 @@ export default defineComponent({
     justify-content: space-between;
   }
 
+  .sf-section__content {
+    margin: 0;
+  }
+
+  ::v-deep .sf-product-card__badge{
+    bottom: -115px;
+    top: inherit;
+    background-color: transparent;
+    color: #F8470A;
+    padding-left: 0;
+    font-size: 20px;
+    font-family: "IBM Plex Sans";
+    font-weight: normal;
+  }
+
+  
+
   .title {
+    font-family: "Recoleta";
+    font-size: 24px;
     font-weight: var(--font-weight--semibold);
   }
+
+  .sf-link {
+    text-decoration: none;
+    font-size: 16px;
+    font-family: "IBM Plex Sans";
+  }
+
+  .carousel {
+    margin: 0 calc(-1 * var(--spacer-sm)) 0 0;
+    @include for-desktop {
+      margin: 0;
+    }
+    &__item {
+      margin: 1.9375rem 0 2.4375rem 0;
+    }    
+    ::v-deep  .sf-carousel__slides {
+      max-height:430px;
+    }
+    ::v-deep .sf-product-card__title{
+      font-size: 18px;
+      font-family: "IBM Plex Sans";
+    }
+    ::v-deep .sf-price__special,::v-deep .sf-price__old{
+      font-size: 20px;
+      font-family: "IBM Plex Sans";
+      font-weight: var(--font-weight--semibold);
+    }
+  }
+  
 
   .products {
     display: flex;

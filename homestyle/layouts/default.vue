@@ -69,6 +69,10 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+:root {
+    --c-primary: #f8470a;
+    --_c-green-primary: #f8470a;
+}
 @import "~@storefront-ui/vue/styles";
 @import url("https://fonts.googleapis.com/css?family=IBM+Plex+Sans");
 

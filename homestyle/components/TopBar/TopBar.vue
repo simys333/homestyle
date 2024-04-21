@@ -1,31 +1,33 @@
 <template>
-    <SfTopBar class="topbar">
-        <template #left>
-            <SfButton class="sf-button--text">
-                {{ $t('Help & FAQs') }}
-</SfButton>
-        </template>
-        <template #center>
-            <p class="font-white">{{ $t('Free All India Delivery & Free 30-day Returns') }}</p>
-            <!--  <SfButton class="topbar__button sf-button--text">
+  <SfTopBar class="topbar">
+    <template #left>
+      <SfButton class="sf-button--text">
+        {{ $t("Help & FAQs") }}
+      </SfButton>
+    </template>
+    <template #center>
+      <p class="font-white">
+        {{ $t("Free All India Delivery & Free 30-day Returns") }}
+      </p>
+      <!--  <SfButton class="topbar__button sf-button--text">
                 {{ $t('Free All India Delivery & Free 30-day Returns') }}
 </SfButton>-->
-        </template>
-        <template #right>
-            <CurrencySelector v-if="hasCurrencyToSelect"/>
-            <StoreSwitcher v-if="hasStoresToSelect"/>
-        </template>
-    </SfTopBar>
+    </template>
+    <template #right>
+      <CurrencySelector v-if="hasCurrencyToSelect" />
+      <StoreSwitcher v-if="hasStoresToSelect" />
+    </template>
+  </SfTopBar>
 </template>
 <script lang="ts">
-import { defineComponent } from '@nuxtjs/composition-api';
-import { SfButton, SfTopBar } from '@storefront-ui/vue';
-import { useTopBar } from './useTopBar';
+import { defineComponent } from "@nuxtjs/composition-api";
+import { SfButton, SfTopBar } from "@storefront-ui/vue";
+import { useTopBar } from "./useTopBar";
 
 export default defineComponent({
   components: {
-    CurrencySelector: () => import('../CurrencySelector.vue'),
-    StoreSwitcher: () => import('../StoreSwitcher.vue'),
+    CurrencySelector: () => import("../CurrencySelector.vue"),
+    StoreSwitcher: () => import("../StoreSwitcher.vue"),
     SfTopBar,
     SfButton,
   },
@@ -38,19 +40,18 @@ export default defineComponent({
     };
   },
 });
-
 </script>
 <style lang="scss" scoped>
 .topbar {
   position: relative;
   z-index: 2;
-  background:#320E02;
+  background: #320e02;
   &__button {
     margin: 0 0 0 var(--spacer-xs);
   }
 }
-.font-white{
-color:#ffffff;
+.font-white {
+  color: #ffffff;
 }
 
 ::v-deep {
