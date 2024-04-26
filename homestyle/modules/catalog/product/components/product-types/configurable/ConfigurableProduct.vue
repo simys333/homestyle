@@ -112,7 +112,7 @@
         >
           <template #add-to-cart-btn>
             <SfButton
-              class="sf-add-to-cart__button"
+              class="sf-add-cart__button"
               :disabled="
                 isCartLoading || !canAddToCart(product, qty) || isFetching
               "
