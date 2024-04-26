@@ -8,12 +8,33 @@
         {{ buttonText }}
       </SfLink>
     </div>
-    <SfCarousel class="carousel" :settings="{ perView: 5, breakpoints: { 1023: { peek: 0, perView: 6 } } }">    
+    <SfCarousel
+      class="carousel"
+      :settings="{ perView: 5, breakpoints: { 1023: { peek: 0, perView: 6 } } }"
+    >
+      <template #prev="prevArrow">
+        <SfButton
+          aria-label="previous"
+          class="sf-arrow"
+          @click="prevArrow.go('prev')"
+        >
+          <SvgImage icon="chevron_left" width="20" height="20" />
+        </SfButton>
+      </template>
+      <template #next="nextArrow">
+        <SfButton
+          aria-label="next"
+          class="sf-arrow"
+          @click="nextArrow.go('next')"
+        >
+          <SvgImage icon="chevron_right" width="20" height="20" />
+        </SfButton>
+      </template>
       <SfCarouselItem class="carousel__item">
-      <div class="icon-text-box">
-        <img src="/homepage/Dinner Ware.png" alt="" />
-        <p>Dinner Ware</p>
-      </div>
+        <div class="icon-text-box">
+          <img src="/homepage/Dinner Ware.png" alt="" />
+          <p>Dinner Ware</p>
+        </div>
       </SfCarouselItem>
       <SfCarouselItem class="carousel__item">
         <div class="icon-text-box">
@@ -68,6 +89,8 @@ import {
   SfProductCard,
   SfSection,
   SfCarousel,
+  SfButton,
+  SfIcon,
 } from "@storefront-ui/vue";
 
 import {
@@ -82,6 +105,7 @@ import productGetters from "~/modules/catalog/product/getters/productGetters";
 import { useUser } from "~/modules/customer/composables/useUser";
 import { useAddToCart } from "~/helpers/cart/addToCart";
 import { SortEnum } from "~/modules/GraphQL/types";
+import SvgImage from "~/components/General/SvgImage.vue";
 
 export default defineComponent({
   name: "Brands",
@@ -91,6 +115,9 @@ export default defineComponent({
     SfLoader,
     SfLink,
     SfCarousel,
+    SfButton,
+    SfIcon,
+    SvgImage,
   },
   props: {
     buttonText: {
@@ -192,6 +219,14 @@ export default defineComponent({
 
     ::v-deep .icon-text-box {
       text-align: center;
+    }
+    .sf-carousel__controls {
+      button {
+        background-color: transparent;
+      }
+      span {
+        color: #190701;
+      }
     }
   }
 

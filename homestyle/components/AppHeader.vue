@@ -232,4 +232,9 @@ export default defineComponent({
   bottom: 40%;
   left: 40%;
 }
+.header-navigation {
+  @include for-mobile {
+    display: none;
+  }
+}
 </style>

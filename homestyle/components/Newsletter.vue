@@ -51,7 +51,6 @@ export default {
   box-sizing: border-box;
   @include for-desktop {
     max-width: 1272px;
-    padding: 0 var(--spacer-sm);
     margin: 0 auto;
   }  
 
@@ -65,7 +64,7 @@ export default {
 .section {
   display: flex;
   margin: 0 auto;
-  padding:10px 40px;
+  padding:10px 30px;
   @include for-desktop {
     flex-direction: row;
     background: var(--c-light);
