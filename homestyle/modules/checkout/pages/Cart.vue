@@ -186,6 +186,9 @@
           </SfNotification>
         </div>
       </transition>
+      <LoadWhenVisible>
+        <RelatedProducts />
+      </LoadWhenVisible>
     </div>
   </div>
 </template>
@@ -233,6 +236,8 @@ export default defineComponent({
     SvgImage,
     SfImage,
     SfIcon,
+    RelatedProducts: () =>
+      import("~/modules/catalog/product/components/RelatedProducts.vue"),
   },
   setup() {
     const cartView = useCartView();
@@ -296,10 +301,18 @@ export default defineComponent({
     width: 100%;
     margin-top: 3.5rem;
   }
+  a .sf-button {
+    text-transform: capitalize;
+    font-family: "IBM Plex Sans";
+  }
   .sidebar-summary {
     background-color: #f2f1f1;
     padding: var(--spacer-base);
     margin-bottom: var(--spacer-xl);
+
+    .sf-heading {
+      margin-bottom: var(--spacer-sm);
+    }
 
     .sf-heading__title.h4 {
       font-family: "IBM Plex Sans";
@@ -308,15 +321,18 @@ export default defineComponent({
   }
   .sf-property--small {
     border-bottom: 1px solid #bab5b3;
-    margin: var(--spacer-sm) 0;
     .sf-property__name,
     .sf-price__regular {
       font-family: "IBM Plex Sans";
-      padding: 1rem 0;
+      padding: 5px 0;
+      color: #190701;
     }
     .sf-property__name::after {
       content: none;
     }
+  }
+  .my-cart__total-price {
+    margin-top: var(--spacer-sm);
   }
 }
 
@@ -448,7 +464,7 @@ export default defineComponent({
       content: "\20B9";
     }
   }
-  ::v-deep .sf-property {
+  ::v-deep .sf-property span {
     font-family: var(--font-family--primary);
   }
 
