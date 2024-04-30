@@ -1,25 +1,25 @@
 <template>
   <div id="e-mail">
-   <div class="section">
-  <SfHeading
-          title="Sign Up For Our Email List And Receive 10% Off On Your First Order"
-          class="heading sf-heading--left"
-          :level="4"
+    <div class="section">
+      <SfHeading
+        title="Sign Up For Our Email List And Receive 10% Off On Your First Order"
+        class="heading sf-heading--left"
+        :level="4"
+      />
+      <div class="input-wrapper">
+        <SfInput
+          class="sf-input--filled"
+          label=""
+          name="email"
+          type="text"
+          valid
+          errorMessage="Error message value of form input. It appears if `valid` is `false`."
+          :required="false"
+          placeholder="Your Email Address"
         />
-    <div class="input-wrapper">
-          <SfInput
-            class="sf-input--filled"
-            label=""
-            name="email"
-            type="text"
-            valid
-            errorMessage="Error message value of form input. It appears if `valid` is `false`."
-            :required="false"
-            placeholder="Your Email Address"
-          />
-          <SfButton>Submit</SfButton>
-        </div>
-  </div>    
+        <SfButton>Submit</SfButton>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -52,60 +52,72 @@ export default {
   @include for-desktop {
     max-width: 1272px;
     margin: 0 auto;
-  }  
-
-.heading {
-  --heading-padding: var(--spacer-base) 0;  
-  @include for-desktop {
-    --heading-padding: var(--spacer-sm) 0 var(--spacer-xs) 0;
   }
-}
 
-.section {
-  display: flex;
-  margin: 0 auto;
-  padding:10px 30px;
-  @include for-desktop {
-    flex-direction: row;
+  .heading {
+    @include for-desktop {
+      --heading-padding: var(--spacer-sm) 0 var(--spacer-xs) 0;
+    }
+  }
+
+  .section {
+    display: flex;
+    margin: 0 auto;
+    padding: 1rem;
     background: var(--c-light);
+    @include for-desktop {
+      flex-direction: row;
+      padding: 1.5rem;
+    }
+    @include for-mobile {
+      flex-direction: column;
+      h4 {
+        font-size: 15px;
+      }
+    }
   }
-}
 
-.sf-heading {
-  width: 45%;
-}
+  .sf-heading {
+    @include for-desktop {
+      width: 45%;
+    }
+  }
 
-.sf-heading__title.h4{
-  font-family: "Recoleta";
-  font-size: 30px;
-  padding-left: 15px;
-  line-height: 1.2;
-}
+  .sf-heading__title.h4 {
+    font-family: "Recoleta";
+    padding-left: 15px;
+    line-height: 1.2;
+    @include for-desktop {
+      font-size: 30px;
+    }
+  }
 
-  .input-wrapper{
-    width: 55%;
+  .input-wrapper {
+    @include for-desktop {
+      width: 55%;
+    }
     display: flex;
     align-items: center;
   }
 
   .sf-input--filled {
-  --input-background: #fff;
-  display: flex;
-  align-items: center;  
-}
+    --input-background: #fff;
+    display: flex;
+    align-items: center;
+  }
 
   ::v-deep .sf-input__wrapper {
     height: 40px;
     margin: 0 10px;
   }
 
-  .sf-input{
-    width:100%
+  .sf-input {
+    width: 100%;
   }
 
-  .sf-button{
-    padding:10px 20px;
-     background-color: #f8470a;
+  .sf-button {
+    padding: 10px 20px;
+    background-color: #f8470a;
   }
 }
 </style>

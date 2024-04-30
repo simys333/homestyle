@@ -3,10 +3,7 @@
     <IconSprite />
     <CartSidebar v-if="isCartSidebarOpen" />
     <WishlistSidebar v-if="isWishlistSidebarOpen" />
-    <LoginModal
-      v-if="isLoginModalOpen"
-      @close="toggleLoginModal"
-    />
+    <LoginModal v-if="isLoginModalOpen" @close="toggleLoginModal" />
     <LazyHydrate when-visible>
       <Notification />
     </LazyHydrate>
@@ -22,17 +19,17 @@
   </div>
 </template>
 <script lang="ts">
-import LazyHydrate from 'vue-lazy-hydration';
-import { useRoute, defineComponent } from '@nuxtjs/composition-api';
-import { useUiState } from '~/composables';
-import AppHeader from '~/components/AppHeader.vue';
-import BottomNavigation from '~/components/BottomNavigation.vue';
-import IconSprite from '~/components/General/IconSprite.vue';
-import LoadWhenVisible from '~/components/utils/LoadWhenVisible.vue';
-import TopBar from '~/components/TopBar/TopBar.vue';
+import LazyHydrate from "vue-lazy-hydration";
+import { useRoute, defineComponent } from "@nuxtjs/composition-api";
+import { useUiState } from "~/composables";
+import AppHeader from "~/components/AppHeader.vue";
+import BottomNavigation from "~/components/BottomNavigation.vue";
+import IconSprite from "~/components/General/IconSprite.vue";
+import LoadWhenVisible from "~/components/utils/LoadWhenVisible.vue";
+import TopBar from "~/components/TopBar/TopBar.vue";
 
 export default defineComponent({
-  name: 'DefaultLayout',
+  name: "DefaultLayout",
 
   components: {
     LoadWhenVisible,
@@ -41,17 +38,31 @@ export default defineComponent({
     BottomNavigation,
     IconSprite,
     TopBar,
-    AppFooter: () => import(/* webpackPrefetch: true */ '~/components/AppFooter.vue'),
-    CartSidebar: () => import(/* webpackPrefetch: true */ '~/modules/checkout/components/CartSidebar.vue'),
-    WishlistSidebar: () => import(/* webpackPrefetch: true */ '~/modules/wishlist/components/WishlistSidebar.vue'),
-    LoginModal: () => import(/* webpackPrefetch: true */ '~/modules/customer/components/LoginModal/LoginModal.vue'),
-    Notification: () => import(/* webpackPrefetch: true */ '~/components/Notification.vue'),
+    AppFooter: () =>
+      import(/* webpackPrefetch: true */ "~/components/AppFooter.vue"),
+    CartSidebar: () =>
+      import(
+        /* webpackPrefetch: true */ "~/modules/checkout/components/CartSidebar.vue"
+      ),
+    WishlistSidebar: () =>
+      import(
+        /* webpackPrefetch: true */ "~/modules/wishlist/components/WishlistSidebar.vue"
+      ),
+    LoginModal: () =>
+      import(
+        /* webpackPrefetch: true */ "~/modules/customer/components/LoginModal/LoginModal.vue"
+      ),
+    Notification: () =>
+      import(/* webpackPrefetch: true */ "~/components/Notification.vue"),
   },
 
   setup() {
     const route = useRoute();
     const {
-      isCartSidebarOpen, isWishlistSidebarOpen, isLoginModalOpen, toggleLoginModal,
+      isCartSidebarOpen,
+      isWishlistSidebarOpen,
+      isLoginModalOpen,
+      toggleLoginModal,
     } = useUiState();
 
     return {
@@ -63,18 +74,20 @@ export default defineComponent({
     };
   },
   head: {
-    link: [{ rel: 'stylesheet', href: '/_nuxt/fonts.css' }],
+    link: [{ rel: "stylesheet", href: "/_nuxt/fonts.css" }],
   },
 });
 </script>
 
 <style lang="scss">
+@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Sans");
 :root {
-    --c-primary: #f8470a;
-    --_c-green-primary: #f8470a;
+  --c-primary: #f8470a;
+  --_c-green-primary: #f8470a;
+  --font-family--primary: "IBM Plex Sans";
+  --font-family--secondary: "Recoleta";
 }
 @import "~@storefront-ui/vue/styles";
-@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Sans");
 
 #layout {
   box-sizing: border-box;
@@ -143,16 +156,16 @@ h4 {
   margin: 0;
 }
 .sf-input.sf-search-bar .sf-input__wrapper {
-    max-width: 480px;
-    min-width: 150px;
-    width: 70%;
-    background-color: #E8E6E6;
-    border: none;
-    border-bottom-width: 0px;
-    padding: 9px;    
+  max-width: 480px;
+  min-width: 150px;
+  width: 70%;
+  background-color: #e8e6e6;
+  border: none;
+  border-bottom-width: 0px;
+  padding: 9px;
 }
 .sf-input.sf-search-bar .sf-input__wrapper input {
   font-family: "IBM Plex Sans";
-  font-size:16px;
+  font-size: 16px;
 }
 </style>

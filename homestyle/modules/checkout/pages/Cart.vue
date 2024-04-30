@@ -1,115 +1,70 @@
 <template>
   <div id="cart">
     <div class="container">
-      <SfBreadcrumbs
-        :breadcrumbs="breadcrumbs"
-        class="breadcrumbs"
-        data-testid="breadcrumbs"
-      />
-      <div
-        key="my-cart"
-        class="my-cart"
-      >
+      <div key="my-cart" class="my-cart">
         <div class="content">
+          <SfHeading
+            title="In your bag(2)"
+            :level="4"
+            class="sf-heading--no-underline sf-heading--left"
+          />
           <SfLoader :loading="loading">
-            <transition
-              name="sf-fade"
-              mode="out-in"
-            >
-              <div v-if="totalItems">
-                <div class="collected-product-list">
-                  <transition-group
-                    name="sf-fade"
-                    tag="div"
+            <transition name="sf-fade" mode="out-in">
+              <div class="collected-product-list">
+                <transition-group name="sf-fade" tag="div">
+                  <SfCollectedProduct
+                    key="1"
+                    :has-more-actions="false"
+                    data-testid="cart-sidebar-collected-product"
+                    image="https://magento.homstyle.in/media/catalog/product/cache/fb1be9b35736f95f9b8328c138c4d7ab/i/m/img_3__1.png"
+                    title="Creme Gold Dinner Plate White new"
+                    :regular-price="1600"
+                    :special-price="1200"
+                    class="collected-product"
                   >
-                    <SfCollectedProduct
-                      v-for="(product, productIndex) in products"
-                      :key="product.product.original_sku + productIndex"
-                      :has-more-actions="false"
-                      data-testid="cart-sidebar-collected-product"
-                      :image="cartGetters.getItemImage(product)"
-                      :title="cartGetters.getItemName(product)"
-                      :regular-price="
-                        $fc(cartGetters.getItemPrice(product).regular)
-                      "
-                      :special-price="
-                        cartGetters.productHasSpecialPrice(product)
-                          ? cartGetters.getItemPrice(product).special &&
-                            $fc(cartGetters.getItemPrice(product).special)
-                          : ''
-                      "
-                      :link="localePath(getProductPath(product.product))"
-                      class="collected-product"
-                      @input="delayedUpdateItemQty({ product, quantity: $event })"
-                      @click:remove="showRemoveItemModal({ product })"
-                    >
-                      <template #image>
-                        <SfImage
-                          image-tag="nuxt-img"
-                          :src="getMagentoImage(cartGetters.getItemImage(product))"
-                          :alt="cartGetters.getItemName(product)"
-                          :width="imageSizes.cart.imageWidth"
-                          :height="imageSizes.cart.imageHeight"
-                          class="sf-collected-product__image"
-                          :nuxt-img-config="{
-                            fit: 'cover',
-                          }"
+                    <template #image>
+                      <SfImage
+                        image-tag="nuxt-img"
+                        src="https://magento.homstyle.in/media/catalog/product/cache/fb1be9b35736f95f9b8328c138c4d7ab/i/m/img_3__1.png"
+                        alt="Creme Gold Dinner Plate White new"
+                        class="sf-collected-product__image"
+                        :nuxt-img-config="{
+                          fit: 'cover',
+                        }"
+                      />
+                    </template>
+                    <template #input>
+                      <div class="sf-collected-product__quantity-wrapper">
+                        <SfQuantitySelector
+                          :disabled="loading"
+                          qty="1"
+                          class="sf-collected-product__quantity-selector"
                         />
-                      </template>
-                      <template #input>
-                        <div
-                          v-if="isInStock(product)"
-                          class="sf-collected-product__quantity-wrapper"
+                      </div>
+                      <SfBadge class="color-danger sf-badge__absolute">
+                        <template #default>
+                          <span>{{ $t("Out of stock") }}</span>
+                        </template>
+                      </SfBadge>
+                    </template>
+                    <template #configuration>
+                      <div data-testid="cart-sidebar-attribute-container">
+                        <SfProperty name="Color" value="Black" />
+                      </div>
+                    </template>
+                    <template #actions>
+                      <div class="desktop-only collected-product__actions">
+                        <SfButton
+                          class="sf-button--text collected-product__fav"
                         >
-                          <SfQuantitySelector
-                            :disabled="loading"
-                            :qty="cartGetters.getItemQty(product)"
-                            class="sf-collected-product__quantity-selector"
-                            @input="delayedUpdateItemQty({ product, quantity: $event })"
-                          />
-                        </div>
-                        <SfBadge
-                          v-else
-                          class="color-danger sf-badge__absolute"
-                        >
-                          <template #default>
-                            <span>{{ $t('Out of stock') }}</span>
-                          </template>
-                        </SfBadge>
-                      </template>
-                      <template #configuration>
-                        <div
-                          v-if="getAttributes(product).length > 0"
-                          data-testid="cart-sidebar-attribute-container"
-                        >
-                          <SfProperty
-                            v-for="(attr, index) in getAttributes(product)"
-                            :key="index"
-                            :name="attr.option_label"
-                            :value="attr.value_label"
-                          />
-                        </div>
-                        <div
-                          v-if="getBundles(product).length > 0"
-                          data-testid="cart-sidebar-bundle-container"
-                        >
-                          <SfProperty
-                            v-for="(bundle, i) in getBundles(product)"
-                            :key="i"
-                            :name="`${bundle.quantity}x`"
-                            :value="bundle.label"
-                          />
-                        </div>
-                      </template>
-                    </SfCollectedProduct>
-                  </transition-group>
-                </div>
+                          Add to favorites
+                        </SfButton>
+                      </div>
+                    </template>
+                  </SfCollectedProduct>
+                </transition-group>
               </div>
-              <div
-                v-else
-                key="empty-cart"
-                class="empty-cart"
-              >
+              <div key="empty-cart" class="empty-cart">
                 <div class="empty-cart__banner">
                   <SvgImage
                     icon="empty_cart_image"
@@ -133,86 +88,82 @@
                     data-testid="cart-sidebar-back"
                     @click="handleHomeClick"
                   >
-                    {{ $t('Go back shopping') }}
+                    {{ $t("Go back shopping") }}
                   </SfButton>
                 </div>
               </div>
             </transition>
           </SfLoader>
         </div>
-        <div
-          v-if="totalItems"
-          class="sidebar"
-        >
-          <SfProperty
-            v-if="totalItems"
-            class="sf-property--large cart-summary desktop-only"
-            data-testid="cart-summary"
-            :name="$t('Total items')"
-            :value="totalItems"
-          />
-          <transition name="sf-fade">
-            <div>
-              <SfProperty
-                v-if="totals.subtotal !== totals.total"
-                :name="$t('Subtotal')"
-                class="sf-property--full-width sf-property--small"
-              >
-                <template #value>
-                  <SfPrice
-                    :regular="$fc(totals.subtotal)"
-                    class="my-cart__subtotal-price"
-                  />
-                </template>
-              </SfProperty>
-              <SfProperty
-                v-if="discount"
-                :name="$t('Discount')"
-                class="sf-property--full-width sf-property--small"
-              >
-                <template #value>
-                  <SfPrice
-                    :regular="$fc(discount)"
-                    class="my-cart__discount"
-                  />
-                </template>
-              </SfProperty>
-              <hr class="sf-divider">
-              <SfProperty
-                :name="$t('Order Total')"
-                class="sf-property--full-width sf-property--large my-cart__total-price"
-              >
-                <template #value>
-                  <SfPrice
-                    data-testid="cart-sidebar-total"
-                    :regular="$fc(totals.total)"
-                  />
-                </template>
-              </SfProperty>
-              <CouponCode />
-              <a @click="goToCheckout">
-                <SfButton
-                  v-e2e="'go-to-checkout-btn'"
-                  data-testid="category-sidebar-go-to-checkout"
-                  class="sf-button--full-width color-secondary"
+        <div class="sidebar">
+          <div class="sidebar-summary">
+            <SfHeading
+              title="Order Summary"
+              :level="4"
+              class="sf-heading--no-underline sf-heading--left"
+            />
+            <transition name="sf-fade">
+              <div>
+                <SfProperty
+                  name="Item Subtotal"
+                  class="sf-property--full-width sf-property--small"
                 >
-                  {{ $t('Go to checkout') }}
-                </SfButton>
-              </a>
-            </div>
-          </transition>
+                  <template #value>
+                    <SfPrice regular="2560" class="my-cart__subtotal-price" />
+                  </template>
+                </SfProperty>
+                <SfProperty
+                  :name="$t('Discount')"
+                  class="sf-property--full-width sf-property--small"
+                >
+                  <template #value>
+                    <SfPrice
+                      :regular="$fc(discount)"
+                      class="my-cart__discount"
+                    />
+                  </template>
+                </SfProperty>
+                <SfProperty
+                  name="Shipping"
+                  class="sf-property--full-width sf-property--small"
+                >
+                  <template #value>
+                    <SfPrice regular="2560" class="my-cart__subtotal-price" />
+                  </template>
+                </SfProperty>
+                <SfProperty
+                  name="Total"
+                  class="sf-property--full-width sf-property--large my-cart__total-price"
+                >
+                  <template #value>
+                    <SfPrice data-testid="cart-sidebar-total" regular="2048" />
+                  </template>
+                </SfProperty>
+              </div>
+            </transition>
+          </div>
+          <a @click="goToCheckout">
+            <SfButton
+              v-e2e="'go-to-checkout-btn'"
+              data-testid="category-sidebar-go-to-checkout"
+              class="sf-button--full-width"
+            >
+              {{ $t("Checkout") }}
+            </SfButton>
+          </a>
         </div>
       </div>
-      <transition
-        name="sf-collapse-top"
-        mode="out-in"
-      >
+      <transition name="sf-collapse-top" mode="out-in">
         <div class="notifications">
           <SfNotification
             v-if="!loading"
             :visible="isRemoveModalVisible"
             :title="$t('Are you sure?')"
-            :message="$t('Are you sure you would like to remove this item from the shopping cart?')"
+            :message="
+              $t(
+                'Are you sure you would like to remove this item from the shopping cart?'
+              )
+            "
             type="secondary"
           >
             <template #action>
@@ -222,10 +173,10 @@
                   data-testid="cart-sidebar-remove-item-yes"
                   @click="removeItemAndSendNotification(itemToRemove)"
                 >
-                  {{ $t('Yes') }}
+                  {{ $t("Yes") }}
                 </SfButton>
                 <SfButton @click="isRemoveModalVisible = false">
-                  {{ $t('Cancel') }}
+                  {{ $t("Cancel") }}
                 </SfButton>
               </div>
             </template>
@@ -252,20 +203,21 @@ import {
   SfPrice,
   SfProperty,
   SfQuantitySelector,
-} from '@storefront-ui/vue';
+  SfIcon,
+} from "@storefront-ui/vue";
 import {
   defineComponent,
   ref,
   useRouter,
   useContext,
-} from '@nuxtjs/composition-api';
-import SvgImage from '~/components/General/SvgImage.vue';
-import { Breadcrumb } from '~/modules/catalog/types';
-import { useCartView } from '~/modules/checkout/composables/useCartView';
-import CouponCode from '../../../components/CouponCode.vue';
+} from "@nuxtjs/composition-api";
+import SvgImage from "~/components/General/SvgImage.vue";
+import { Breadcrumb } from "~/modules/catalog/types";
+import { useCartView } from "~/modules/checkout/composables/useCartView";
+import CouponCode from "../../../components/CouponCode.vue";
 
 export default defineComponent({
-  name: 'CartPage',
+  name: "CartPage",
   components: {
     SfBreadcrumbs,
     SfLoader,
@@ -280,25 +232,29 @@ export default defineComponent({
     CouponCode,
     SvgImage,
     SfImage,
+    SfIcon,
   },
   setup() {
     const cartView = useCartView();
-    const { localePath, app: { i18n } } = useContext();
+    const {
+      localePath,
+      app: { i18n },
+    } = useContext();
     const router = useRouter();
 
     const breadcrumbs = ref<Breadcrumb[]>([
       {
-        text: i18n.t('Home') as string,
-        link: localePath('/'),
+        text: i18n.t("Home") as string,
+        link: localePath("/"),
       },
       {
-        text: i18n.t('My Cart') as string,
-        link: localePath('/cart'),
+        text: i18n.t("My Cart") as string,
+        link: localePath("/cart"),
       },
     ]);
 
     const handleHomeClick = async () => {
-      await router.push(localePath('/'));
+      await router.push(localePath("/"));
     };
 
     return {
@@ -326,6 +282,11 @@ export default defineComponent({
   @include for-desktop {
     padding-right: var(--spacer-sm);
   }
+
+  .sf-heading__title.h4 {
+    font-size: 24px;
+    font-weight: 600;
+  }
 }
 
 .sidebar {
@@ -333,12 +294,35 @@ export default defineComponent({
     padding-left: var(--spacer-sm);
     max-width: 25rem;
     width: 100%;
+    margin-top: 3.5rem;
+  }
+  .sidebar-summary {
+    background-color: #f2f1f1;
+    padding: var(--spacer-base);
+    margin-bottom: var(--spacer-xl);
+
+    .sf-heading__title.h4 {
+      font-family: "IBM Plex Sans";
+      font-weight: 600;
+    }
+  }
+  .sf-property--small {
+    border-bottom: 1px solid #bab5b3;
+    margin: var(--spacer-sm) 0;
+    .sf-property__name,
+    .sf-price__regular {
+      font-family: "IBM Plex Sans";
+      padding: 1rem 0;
+    }
+    .sf-property__name::after {
+      content: none;
+    }
   }
 }
 
 .breadcrumbs {
   @include for-mobile {
-    margin-top: var(--spacer-lg)
+    margin-top: var(--spacer-lg);
   }
 }
 
@@ -386,14 +370,21 @@ export default defineComponent({
     margin: 0;
   }
 
-  &__subtotal, &__discount {
+  &__subtotal,
+  &__discount {
     --price-font-weight: var(--font-weight--light);
   }
 
   &__total-price {
-    --price-font-size: var(--font-size--lg);
-    --price-font-weight: var(--font-weight--medium);
-    margin: var(--spacer-base) 0 var(--spacer-base) 0;
+    .sf-property__name,
+    .sf-price__regular {
+      font-family: "IBM Plex Sans";
+      font-size: 18px;
+      font-weight: 600;
+    }
+    .sf-property__name::after {
+      content: none;
+    }
   }
 }
 
@@ -436,7 +427,30 @@ export default defineComponent({
 }
 
 .collected-product {
-  margin: 0 0 var(--spacer-sm) 0;
+  margin: var(--spacer-lg) 0 var(--spacer-sm) 0;
+  border-bottom: 1px solid #bab5b3;
+  padding: 1.5rem 0;
+
+  ::v-deep .sf-collected-product__title {
+    font-family: var(--font-family--primary);
+    font-weight: var(--font-weight--bold);
+  }
+  ::v-deep .sf-price {
+    .sf-price__old,
+    .sf-price__special {
+      font-family: var(--font-family--primary);
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .sf-price__old::before,
+    .sf-price__special::before {
+      content: "\20B9";
+    }
+  }
+  ::v-deep .sf-property {
+    font-family: var(--font-family--primary);
+  }
 
   &__properties {
     margin: var(--spacer-xs) 0 0 0;
@@ -451,8 +465,9 @@ export default defineComponent({
     }
   }
 
-  ::v-deep .sf-collected-product__actions {
-    display: none;
+  .sf-collected-product__actions .collected-product__fav {
+    font-family: var(--font-family--primary);
+    color: #f8470a;
   }
 
   &:hover {
@@ -464,10 +479,24 @@ export default defineComponent({
       }
     }
   }
-
+  .sf-collected-product__quantity-wrapper {
+    left: 0;
+    margin-left: 1rem;
+    padding: 0;
+    .sf-collected-product__quantity-selector {
+      background-color: white;
+      border: 1px solid #756a67;
+      .sf-quantity-selector__input {
+        border-width: 0 1px 0px 1px;
+        border-color: #756a67;
+        border-style: solid;
+      }
+    }
+  }
   .sf-badge__absolute {
     position: absolute;
     left: 0;
+    padding: 1rem;
   }
 }
 </style>

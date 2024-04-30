@@ -1,75 +1,87 @@
 <template>
   <div class="new-products">
-      <div class="heading">
-        <h4 class="sf-heading__title title">
-          {{ title }}
-        </h4>
-        <SfLink :link="localePath(link)" target="_blank">
-          {{ buttonText }}
-        </SfLink>
-      </div>
-      <SfCarousel class="carousel" :settings="{ perView: 6, breakpoints: { 1023: { peek: 0, perView: 6 } } }">
-        <SfCarouselItem class="carousel__item">
+    <div class="heading">
+      <h4 class="sf-heading__title title">
+        {{ title }}
+      </h4>
+      <SfLink :link="localePath(link)" target="_blank">
+        {{ buttonText }}
+      </SfLink>
+    </div>
+    <SfCarousel
+      class="carousel"
+      :settings="{
+        perView: 6,
+        breakpoints: { 1023: { peek: 0, perView: 2 } },
+      }"
+    >
+      <template #prev="prevArrow">
+        <CarouselLeftArrow @click="prevArrow.go('prev')" />
+      </template>
+      <template #next="nextArrow">
+        <CarouselRightArrow @click="nextArrow.go('next')" />
+      </template>
+      <SfCarouselItem class="carousel__item">
         <div>
-          <img height="100" src="/homepage/cello.png" alt="" />
+          <img src="/homepage/cello.png" alt="" />
         </div>
-        </SfCarouselItem>
-        <SfCarouselItem class="carousel__item">
+      </SfCarouselItem>
+      <SfCarouselItem class="carousel__item">
         <div>
-          <img height="100" src="/homepage/cello.png" alt="" />
-         </div> 
-        </SfCarouselItem>
-        <SfCarouselItem class="carousel__item">
-        <div>
-          <img height="100" src="/homepage/cello.png" alt="" />
+          <img src="/homepage/cello.png" alt="" />
         </div>
-        </SfCarouselItem>
-        <SfCarouselItem class="carousel__item">
+      </SfCarouselItem>
+      <SfCarouselItem class="carousel__item">
         <div>
-          <img height="100" src="/homepage/cello.png" alt="" />
-         </div> 
-        </SfCarouselItem>
-        <SfCarouselItem class="carousel__item">
-        <div>
-          <img height="100" src="/homepage/cello.png" alt="" />
+          <img src="/homepage/cello.png" alt="" />
         </div>
-        </SfCarouselItem>
-        <SfCarouselItem class="carousel__item">
+      </SfCarouselItem>
+      <SfCarouselItem class="carousel__item">
         <div>
-          <img height="100" src="/homepage/cello.png" alt="" />
-         </div> 
-        </SfCarouselItem>
-        <SfCarouselItem class="carousel__item">
-        <div>
-          <img height="100" src="/homepage/cello.png" alt="" />
+          <img src="/homepage/cello.png" alt="" />
         </div>
-        </SfCarouselItem>
-        <SfCarouselItem class="carousel__item">
+      </SfCarouselItem>
+      <SfCarouselItem class="carousel__item">
         <div>
-          <img height="100" src="/homepage/cello.png" alt="" />
-         </div> 
-        </SfCarouselItem>
-        <SfCarouselItem class="carousel__item">
-        <div>
-          <img height="100" src="/homepage/cello.png" alt="" />
+          <img src="/homepage/cello.png" alt="" />
         </div>
-        </SfCarouselItem>
-        <SfCarouselItem class="carousel__item">
+      </SfCarouselItem>
+      <SfCarouselItem class="carousel__item">
         <div>
-          <img height="100" src="/homepage/cello.png" alt="" />
-         </div> 
-        </SfCarouselItem>
-        <SfCarouselItem class="carousel__item">
-        <div>
-          <img height="100" src="/homepage/cello.png" alt="" />
+          <img src="/homepage/cello.png" alt="" />
         </div>
-        </SfCarouselItem>
-        <SfCarouselItem class="carousel__item">
+      </SfCarouselItem>
+      <SfCarouselItem class="carousel__item">
         <div>
-          <img height="100" src="/homepage/cello.png" alt="" />
-         </div> 
-        </SfCarouselItem>
-      </SfCarousel>
+          <img src="/homepage/cello.png" alt="" />
+        </div>
+      </SfCarouselItem>
+      <SfCarouselItem class="carousel__item">
+        <div>
+          <img src="/homepage/cello.png" alt="" />
+        </div>
+      </SfCarouselItem>
+      <SfCarouselItem class="carousel__item">
+        <div>
+          <img src="/homepage/cello.png" alt="" />
+        </div>
+      </SfCarouselItem>
+      <SfCarouselItem class="carousel__item">
+        <div>
+          <img src="/homepage/cello.png" alt="" />
+        </div>
+      </SfCarouselItem>
+      <SfCarouselItem class="carousel__item">
+        <div>
+          <img src="/homepage/cello.png" alt="" />
+        </div>
+      </SfCarouselItem>
+      <SfCarouselItem class="carousel__item">
+        <div>
+          <img src="/homepage/cello.png" alt="" />
+        </div>
+      </SfCarouselItem>
+    </SfCarousel>
   </div>
 </template>
 
@@ -94,6 +106,8 @@ import productGetters from "~/modules/catalog/product/getters/productGetters";
 import { useUser } from "~/modules/customer/composables/useUser";
 import { useAddToCart } from "~/helpers/cart/addToCart";
 import { SortEnum } from "~/modules/GraphQL/types";
+import CarouselLeftArrow from "./CarouselLeftArrow.vue";
+import CarouselRightArrow from "./CarouselRightArrow.vue";
 
 export default defineComponent({
   name: "Brands",
@@ -103,6 +117,8 @@ export default defineComponent({
     SfLoader,
     SfLink,
     SfCarousel,
+    CarouselLeftArrow,
+    CarouselRightArrow,
   },
   props: {
     buttonText: {
@@ -199,7 +215,16 @@ export default defineComponent({
       margin: 0;
     }
     &__item {
-      margin: 1.9375rem 0 2.4375rem 0;
+      margin: 2rem 0 2rem 0;
+      img {
+        width: 120px;
+        height: auto;
+      }
+    }
+    @include for-desktop {
+      ::v-deep .sf-carousel__wrapper {
+        max-width: calc(100% - 8rem);
+      }
     }
   }
 

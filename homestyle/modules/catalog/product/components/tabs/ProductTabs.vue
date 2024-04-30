@@ -141,10 +141,11 @@ export default defineComponent({
 
     const activeTab = computed(() => changeTab(props.openTab));
 
-    const productDescription = computed(
+    const productDescription =
+      "Here's the CARA collection of luxe tableware with a fusion of materials and unique designs to elevate the table decor. The square round edged white and gold lining dinner plate with gold specs is a spin on theround shape for dinner parties. The white ceramic dinner plate is ideal for serving main course dishes like noodles, fried rice, roasted chicken and more.";
+    /*computed(
       () => props.product?.description?.html || ""
-    );
-    //"Here's the CARA collection of luxe tableware with a fusion of materials and unique designs to elevate the table decor. The square round edged white and gold lining dinner plate with gold specs is a spin on theround shape for dinner parties. The white ceramic dinner plate is ideal for serving main course dishes like noodles, fried rice, roasted chicken and more.";
+    );*/
 
     const successAddReview = async (reviewData: UseReviewAddReviewParams) => {
       await addReview(reviewData);

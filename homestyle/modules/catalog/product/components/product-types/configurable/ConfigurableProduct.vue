@@ -22,7 +22,7 @@
     <div class="product__info">
       <div class="product__header">
         <SfHeading
-          :title="getProductName(product)"
+          title="Creme Gold Dinner Plate White new"
           description="Cello"
           :level="3"
           class="sf-heading--no-underline sf-heading--left"

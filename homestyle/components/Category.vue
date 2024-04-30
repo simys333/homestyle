@@ -10,72 +10,65 @@
     </div>
     <SfCarousel
       class="carousel"
-      :settings="{ perView: 5, breakpoints: { 1023: { peek: 0, perView: 6 } } }"
+      :settings="{
+        perView: 6,
+        gap: 20,
+        peek: 16,
+        breakpoints: { 1023: { peek: 0, perView: 2 } },
+      }"
     >
       <template #prev="prevArrow">
-        <SfButton
-          aria-label="previous"
-          class="sf-arrow"
-          @click="prevArrow.go('prev')"
-        >
-          <SvgImage icon="chevron_left" width="20" height="20" />
-        </SfButton>
+        <CarouselLeftArrow @click="prevArrow.go('prev')" />
       </template>
       <template #next="nextArrow">
-        <SfButton
-          aria-label="next"
-          class="sf-arrow"
-          @click="nextArrow.go('next')"
-        >
-          <SvgImage icon="chevron_right" width="20" height="20" />
-        </SfButton>
+        <CarouselRightArrow @click="nextArrow.go('next')" />
       </template>
       <SfCarouselItem class="carousel__item">
         <div class="icon-text-box">
           <img src="/homepage/Dinner Ware.png" alt="" />
-          <p>Dinner Ware</p>
+          <span>Dinner Ware</span>
         </div>
       </SfCarouselItem>
       <SfCarouselItem class="carousel__item">
         <div class="icon-text-box">
           <img src="/homepage/Mugs.png" alt="" />
-          <p>Mugs</p>
+          <span>Mugs</span>
         </div>
       </SfCarouselItem>
       <SfCarouselItem class="carousel__item">
         <div class="icon-text-box">
           <img src="/homepage/Cutlery.png" alt="" />
-          <p>Cutlery</p>
+          <span>Cutlery</span>
         </div>
       </SfCarouselItem>
       <SfCarouselItem class="carousel__item">
         <div class="icon-text-box">
           <img src="/homepage/Bottles.png" alt="" />
-          <p>Bottles</p>
+          <span>Bottles</span>
         </div>
       </SfCarouselItem>
       <SfCarouselItem class="carousel__item">
         <div class="icon-text-box">
           <img src="/homepage/Dinner Ware.png" alt="" />
-          <p>Dinner Ware</p>
+          <span>Dinner Ware</span>
         </div>
       </SfCarouselItem>
       <SfCarouselItem class="carousel__item">
         <div class="icon-text-box">
           <img src="/homepage/Bowls.png" alt="" />
-          <p>Bowls</p>
+          <span>Bowls</span>
         </div>
       </SfCarouselItem>
       <SfCarouselItem class="carousel__item">
         <div class="icon-text-box">
           <img src="/homepage/Casserole.png" alt="" />
-          <p>Casserole</p>
+          <span>Casserole</span>
         </div>
       </SfCarouselItem>
       <SfCarouselItem class="carousel__item">
         <div class="icon-text-box">
           <img src="/homepage/Dinner Ware.png" alt="" />
-          <p>Dinner Ware</p>
+          <span>Dinner Ware</span>
         </div>
       </SfCarouselItem>
     </SfCarousel>
@@ -89,8 +82,6 @@ import {
   SfProductCard,
   SfSection,
   SfCarousel,
-  SfButton,
-  SfIcon,
 } from "@storefront-ui/vue";
 
 import {
@@ -105,7 +96,8 @@ import productGetters from "~/modules/catalog/product/getters/productGetters";
 import { useUser } from "~/modules/customer/composables/useUser";
 import { useAddToCart } from "~/helpers/cart/addToCart";
 import { SortEnum } from "~/modules/GraphQL/types";
-import SvgImage from "~/components/General/SvgImage.vue";
+import CarouselLeftArrow from "./CarouselLeftArrow.vue";
+import CarouselRightArrow from "./CarouselRightArrow.vue";
 
 export default defineComponent({
   name: "Brands",
@@ -115,9 +107,8 @@ export default defineComponent({
     SfLoader,
     SfLink,
     SfCarousel,
-    SfButton,
-    SfIcon,
-    SvgImage,
+    CarouselLeftArrow,
+    CarouselRightArrow,
   },
   props: {
     buttonText: {
@@ -217,8 +208,20 @@ export default defineComponent({
       margin: 1.9375rem 0 2.4375rem 0;
     }
 
+    @include for-desktop {
+      ::v-deep .sf-carousel__wrapper {
+        max-width: calc(100% - 8rem);
+      }
+    }
+
     ::v-deep .icon-text-box {
-      text-align: center;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+
+      span {
+        font-size: 18px;
+      }
     }
     .sf-carousel__controls {
       button {

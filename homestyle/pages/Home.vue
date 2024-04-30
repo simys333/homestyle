@@ -4,6 +4,7 @@
       class="hero-section"
       :title="hero.title"
       :subtitle="hero.subtitle"
+      :description="hero.description"
       :button-text="hero.buttonText"
       :link="hero.link"
       :image-src="hero.imageSrc"
@@ -17,28 +18,20 @@
       <div class="icon-text-box">
         <div class="icon">
           <!-- Replace 'icon1.png' with your actual icon image path -->
-          <img
-            else-if
-            src="/homepage/delivery-truck 1.png"
-            alt="Icon Description"
-          />
+          <img src="/homepage/delivery-truck 1.png" alt="Icon Description" />
         </div>
         <div class="text">
           <h6>Free Shipping</h6>
-          <p>Free shipping on all your order</p>
+          <span>Free shipping on all your order</span>
         </div>
       </div>
       <div class="icon-text-box">
         <div class="icon">
-          <img
-            else-if
-            src="/homepage/headphones 1.png"
-            alt="Icon Description"
-          />
+          <img src="/homepage/headphones 1.png" alt="Icon Description" />
         </div>
         <div class="text">
           <h6>Customer Support 24/7</h6>
-          <p>Instant access to Support</p>
+          <span>Instant access to Support</span>
         </div>
       </div>
       <div class="icon-text-box">
@@ -48,7 +41,7 @@
         </div>
         <div class="text">
           <h6>100% Secure Payment</h6>
-          <p>We ensure your money is save</p>
+          <span>We ensure your money is save</span>
         </div>
       </div>
       <div class="icon-text-box">
@@ -57,13 +50,13 @@
         </div>
         <div class="text">
           <h6>Money-Back Guarantee</h6>
-          <p>30 Days Money-Back Guarantee</p>
+          <span>30 Days Money-Back Guarantee</span>
         </div>
       </div>
     </div>
     <LoadWhenVisible>
       <Category
-        :button-text="$t('View All ->')"
+        :button-text="$t('View All ➡')"
         :title="$t('Shop By Category')"
         link="/kitchenware.html"
       />
@@ -71,7 +64,7 @@
     <LoadWhenVisible>
       <NewProducts
         class="products"
-        :button-text="$t('View All ->')"
+        :button-text="$t('View All ➡')"
         :title="$t('Best Sellers')"
         link="/kitchenware.html"
       />
@@ -95,7 +88,7 @@
     </LazyHydrate>
     <LoadWhenVisible>
       <Brands
-        :button-text="$t('View All ->')"
+        :button-text="$t('View All ➡')"
         :title="$t('Shop By Brands')"
         link="/kitchenware.html"
       />
@@ -104,16 +97,29 @@
     <LoadWhenVisible>
       <NewProducts
         class="products"
-        :button-text="$t('View All ->')"
+        :button-text="$t('View All ➡')"
         :title="$t('Fresh Arrivals That Capture Our Hearts')"
         link="/dinnerware.html"
       />
     </LoadWhenVisible>
-    <img else-if src="/homepage/banner-glass.png" />
+    <LoadWhenVisible>
+      <SaleSection
+        :title="sale.title"
+        :subtitle="sale.subtitle"
+        :description="sale.description"
+        :button-text="sale.buttonText"
+        :link="sale.link"
+        :image-src="sale.imageSrc"
+        :image-width="sale.imageWidth"
+        :image-height="sale.imageHeight"
+        :nuxt-img-config="sale.imageConfig"
+        image-tag="nuxt-img"
+      />
+    </LoadWhenVisible>
     <LoadWhenVisible>
       <NewProducts
         class="products"
-        :button-text="$t('View All ->')"
+        :button-text="$t('View All ➡')"
         :title="$t('Thoughtful Gifts for Every Kitchen Enthusiast !')"
         link="/what-is-new.html"
       />
@@ -127,7 +133,15 @@
         class="call-to-action"
       />
     </LoadWhenVisible>
-    <img else-if src="/homepage/luxury.png" />
+    <SfBanner
+      class="luxury-banner"
+      title="Fine Dining, Finer Choices"
+      subtitle=""
+      description="Explore Our Exclusive Luxury Dinnerware!"
+      buttonText="Shop Now →"
+      background=""
+      image="/homepage/luxury.png"
+    />
 
     <div>
       <h3 style="color: #f8470a">We Design & Curate the Best.</h3>
@@ -201,6 +215,7 @@ import { useCache, CacheTagPrefix } from "@vue-storefront/cache";
 import { SfBanner, SfBannerGrid,SfCallToAction } from "@storefront-ui/vue";
 import { CmsPage } from "~/modules/GraphQL/types";
 import HeroSection from "~/components/HeroSection.vue";
+import SaleSection from "~/components/SaleSection.vue";
 import { getMetaInfo } from "~/helpers/getMetaInfo";
 import { useContent } from "~/composables";
 import LoadWhenVisible from "~/components/utils/LoadWhenVisible.vue";
@@ -209,6 +224,7 @@ export default defineComponent({
   name: "HomePage",
   components: {
     HeroSection,
+    SaleSection,
     LazyHydrate,
     LoadWhenVisible,
     SfBanner,
@@ -235,14 +251,29 @@ export default defineComponent({
 
     const page = ref <CmsPage|null>;
     const hero = ref({
-      title: app.i18n.t("Colorful summer dresses are already in store"),
-      subtitle: app.i18n.t("SUMMER COLLECTION {year}", { year }),
-      buttonText: app.i18n.t("Learn more"),
+      title: app.i18n.t("30-80% OFF"),
+      subtitle: app.i18n.t("Sale is Live"),
+      description: app.i18n.t("+ EXTRA 5% OFF"),
+      buttonText: app.i18n.t("SHOP NOW →"),
       imageSrc: "/homepage/banner.png",
       imageWidth: isDesktop ? 1600 : 328,
       imageHeight: isDesktop ? 578 : 224,
       imageConfig: {
-        fit: "cover",
+        fit: "contain",
+        format: "webp",
+      },
+      link: "/women.html",
+    });
+    const sale = ref({
+      title: app.i18n.t("30-80% OFF"),
+      subtitle: app.i18n.t("Clearance Sale"),
+      description: app.i18n.t("On Premium Collection of Glassware"),
+      buttonText: app.i18n.t("SHOP NOW →"),
+      imageSrc: "/homepage/sale.png",
+      imageWidth: isDesktop ? 1600 : 328,
+      imageHeight: isDesktop ? 578 : 224,
+      imageConfig: {
+        fit: "contain",
         format: "webp",
       },
       link: "/women.html",
@@ -313,7 +344,7 @@ export default defineComponent({
     const callToAction = ref({
       title: app.i18n.t('Stuck on what to choose for that special occasion ? Weve got you covered !  Explore our tailored suggestions guaranteed to delight your loved ones !'),
       description: '',
-      buttonText: app.i18n.t('SHOP NOW'),
+      buttonText: app.i18n.t('SHOP NOW →'),
       background:'#F96C3B'
     });
 
@@ -330,6 +361,7 @@ export default defineComponent({
       banners,
       callToAction,
       hero,
+      sale,
       page,
     };
   },
@@ -389,14 +421,13 @@ export default defineComponent({
 }
 .banner-grid {
   --banner-container-width: 50%;
-  margin: var(--spacer-xl) 0;
+  margin-bottom: var(--spacer-xl);
 
   ::v-deep .sf-link:hover {
     color: var(--c-white);
   }
 
   @include for-desktop {
-    margin: var(--spacer-2xl) 0;
     ::v-deep .sf-link {
       --button-width: auto;
     }
@@ -438,10 +469,18 @@ export default defineComponent({
   ::v-deep .sf-call-to-action__title {
     font-family: "Recoleta";
     font-size: 32px;
+    @include for-mobile {
+      font-size: 12px;
+    }
   }
   ::v-deep .sf-call-to-action__button {
     color: #f8470a;
     background-color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    @include for-mobile {
+      font-size: 11px;
+    }
   }
 }
 
@@ -471,55 +510,81 @@ section.sf-banner.sf-banner--slim {
   min-height: 14rem;
 }
 
+.sale-section {
+  margin: var(--spacer-2xl) 0 var(--spacer-2xl) 0;
+}
+
+.luxury-banner {
+  margin: var(--spacer-lg) 0 var(--spacer-lg) 0;
+  @include for-desktop {
+    margin: var(--spacer-2xl) 0 var(--spacer-2xl) 0;
+  }
+  ::v-deep .sf-banner__wrapper.sf-button {
+    display: none;
+  }
+  ::v-deep .sf-banner__wrapper-desktop {
+    display: block;
+  }
+
+  ::v-deep .sf-banner__title {
+    color: #fca385;
+    max-width: 18rem;
+    text-transform: capitalize;
+    @include for-desktop {
+      font-size: 48px;
+    }
+  }
+  ::v-deep .sf-banner__description {
+    display: block;
+    color: #fca385;
+    text-transform: capitalize;
+    @include for-desktop {
+      font-size: 24px;
+    }
+  }
+  ::v-deep .sf-banner__call-to-action {
+    display: block;
+    color: #ffffff;
+    background-color: var(--c-primary);
+  }
+}
+
 .icon-text-row {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: var(--spacer-md);
   margin: var(--spacer-lg) 0;
 
   @include for-desktop {
-    justify-content: flex-start;
     margin: var(--spacer-lg) 0;
   }
 }
 
 .icon-text-box {
-  flex: 1;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: 0 15px;
-
-  border-radius: 4px;
 
   .icon {
-    margin-right: var(--spacer-md);
-
-    img {
-      width: 40px;
-      height: auto;
-    }
+    margin-right: var(--spacer-sm);
   }
 
   @include for-desktop {
     .icon {
-      margin-right: var(--spacer-lg);
-
-      img {
-        width: 60px; /* Adjust the size as needed for desktop */
-      }
+      margin-right: var(--spacer-sm);
     }
 
     .text {
       h6 {
+        font-family: var(--font-family--secondary);
         font-size: 16px;
         font-weight: 600;
         margin: 0;
       }
 
-      p {
+      span {
         font-size: 14px;
+        color: #756a67;
       }
     }
   }

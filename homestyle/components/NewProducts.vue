@@ -8,7 +8,13 @@
         {{ buttonText }}
       </SfLink>
     </div>
-    <SfCarousel class="carousel" :settings="{ focusAt: 0, rewind: false }">
+    <SfCarousel class="carousel" :settings="{ gap: 30, rewind: false }">
+      <template #prev="prevArrow">
+        <CarouselLeftArrow @click="prevArrow.go('prev')" />
+      </template>
+      <template #next="nextArrow">
+        <CarouselRightArrow @click="nextArrow.go('next')" />
+      </template>
       <SfCarouselItem class="carousel__item">
         <SfProductCard
           image="https://magento.homstyle.in/media/catalog/product/cache/fb1be9b35736f95f9b8328c138c4d7ab/i/m/img_2__2.png"
@@ -216,6 +222,8 @@ import productGetters from "~/modules/catalog/product/getters/productGetters";
 import { useUser } from "~/modules/customer/composables/useUser";
 import { useAddToCart } from "~/helpers/cart/addToCart";
 import { SortEnum } from "~/modules/GraphQL/types";
+import CarouselLeftArrow from "./CarouselLeftArrow.vue";
+import CarouselRightArrow from "./CarouselRightArrow.vue";
 
 export default defineComponent({
   name: "NewProducts",
@@ -225,6 +233,8 @@ export default defineComponent({
     SfLoader,
     SfLink,
     SfCarousel,
+    CarouselLeftArrow,
+    CarouselRightArrow,
   },
   props: {
     buttonText: {
@@ -304,14 +314,8 @@ export default defineComponent({
   }
 
   ::v-deep .sf-product-card__badge {
-    bottom: -115px;
-    top: inherit;
-    background-color: transparent;
-    color: #f8470a;
-    padding-left: 0;
-    font-size: 20px;
     font-family: "IBM Plex Sans";
-    font-weight: normal;
+    top: 0;
   }
 
   .title {
@@ -333,6 +337,14 @@ export default defineComponent({
     }
     &__item {
       margin: 1.9375rem 0 2.4375rem 0;
+    }
+    ::v-deep .sf-image--placeholder {
+      display: none;
+    }
+    @include for-desktop {
+      ::v-deep .sf-carousel__wrapper {
+        max-width: calc(100% - 8rem);
+      }
     }
     ::v-deep .sf-carousel__slides {
       max-height: 430px;
