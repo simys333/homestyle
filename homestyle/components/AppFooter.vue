@@ -129,8 +129,8 @@ export default defineComponent({
     margin-top: var(--spacer-2xl);
   }
   &__container {
-    margin: var(--spacer-sm);
     @include for-desktop {
+      margin: var(--spacer-sm);
       max-width: 69rem;
       margin: 0 auto;
     }
@@ -138,6 +138,21 @@ export default defineComponent({
   .sf-footer-column,
   .sf-footer-column__title {
     background-color: transparent;
+    h5{
+      text-transform: capitalize;
+      font-size: 18px;
+    }
+  }
+
+  @include for-mobile {
+  .sf-footer-column,
+  .sf-footer-column__content .sf-list
+  {
+    margin-left: 1rem;
+  }
+}
+  .sf-menu-item span {
+    font-size: 14px;
   }
   .sf-menu-item:hover {
     --menu-item-label-color: #f8470a;

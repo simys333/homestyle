@@ -3,7 +3,7 @@
     class="sf-header-navigation-item__link"
     :link="link"
   >  
-   <SaleIcon v-if="label === 'Sale'" />   
+   <SaleIcon class="sale-icon" v-if="label === 'Sale'" />   
     {{ label }}
     <SfIcon
       v-if="hasChildren"
@@ -49,6 +49,14 @@ export default defineComponent({
   .sf-icon {
     display: inline-flex;
     margin: 0 var(--spacer-xs);
+  }
+  .sale-icon svg {
+    fill:var(--c-primary);
+  }  
+}
+.sf-header-navigation-item__link:hover {
+  .sale-icon svg {
+    fill:#FFF;
   }
 }
 </style>

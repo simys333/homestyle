@@ -3,6 +3,10 @@
   ::v-deep &__title {
     --heading-title-font-size: var(--font-size--xl);
     margin: var(--spacer-xl) 0 var(--spacer-base) 0;
+    .sf-heading__title.h4 {
+      font-family: var(--font-family--primary);
+      font-size: 16px;
+    }
 
     &:first-child {
       margin: var(--spacer-base) 0 var(--spacer-xs) 0;
@@ -55,6 +59,10 @@
       position: sticky;
       bottom: 0;
     }
+    button {
+      text-transform: capitalize;
+      font-family: var(--font-family--primary);
+    }
   }
 
   &__button-clear {
@@ -67,6 +75,8 @@
   border: 1px solid var(--c-light);
   border-width: 1px 0 0 0;
   padding: var(--spacer-xs) 0;
-  font-weight: normal;
+  font-family: var(--font-family--primary);
+  font-weight: 600;
+  font-size: 18px;
   margin-bottom: var(--spacer-sm);
 }

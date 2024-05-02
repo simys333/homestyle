@@ -39,14 +39,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, toRefs } from '@nuxtjs/composition-api';
-import { SfProductCard } from '@storefront-ui/vue';
-import { useImage } from '~/composables';
-import type { Product } from '~/modules/catalog/product/types';
+import { defineComponent, PropType, toRefs } from "@nuxtjs/composition-api";
+import { SfProductCard } from "@storefront-ui/vue";
+import { useImage } from "~/composables";
+import type { Product } from "~/modules/catalog/product/types";
 
-import SkeletonLoader from '~/components/SkeletonLoader/index.vue';
-import CategoryProductPrice from '~/modules/catalog/category/components/views/CategoryProductPrice.vue';
-import { useProductsWithCommonProductCardProps } from './useProductsWithCommonCardProps';
+import SkeletonLoader from "~/components/SkeletonLoader/index.vue";
+import CategoryProductPrice from "~/modules/catalog/category/components/views/CategoryProductPrice.vue";
+import { useProductsWithCommonProductCardProps } from "./useProductsWithCommonCardProps";
 
 export default defineComponent({
   components: {
@@ -62,11 +62,14 @@ export default defineComponent({
     pricesLoaded: Boolean,
     loading: Boolean,
   },
-  emits: ['click:wishlist', 'click:add-to-cart'],
+  emits: ["click:wishlist", "click:add-to-cart"],
   setup(props) {
-    const { imageSizes: { productCard: imageSize } } = useImage();
+    const {
+      imageSizes: { productCard: imageSize },
+    } = useImage();
     const { products } = toRefs(props);
-    const { productsWithCommonProductCardProps } = useProductsWithCommonProductCardProps(products);
+    const { productsWithCommonProductCardProps } =
+      useProductsWithCommonProductCardProps(products);
 
     return {
       imageSize,
@@ -95,7 +98,7 @@ export default defineComponent({
   flex: 1 1 100%;
 
   @include for-desktop {
-    --product-card-max-width: 25%;
+    --product-card-max-width: 30%;
     --product-card-title-font-weight: var(--font-weight--normal);
     --product-card-title-margin: var(--spacer-sm) 0 0 0;
     --product-card-add-button-bottom: var(--spacer-base);
@@ -106,9 +109,24 @@ export default defineComponent({
   .card {
     will-change: transform, opacity;
   }
+  .sf-product-card__title {
+    font-size: 18px;
+    font-family: var(--font-family--primary);
+  }
+  .product-price {
+    .sf-price__old,
+    .sf-price__special {
+      font-size: 18px;
+      font-family: var(--font-family--primary);
+    }
+  }
+  .sf-product-card__badge {
+    font-family: var(--font-family--primary);
+    top: 0;
+  }
 
   &__image-wrapper {
-    height: 257px;
+    height: 280px;
   }
 
   &__add-button {

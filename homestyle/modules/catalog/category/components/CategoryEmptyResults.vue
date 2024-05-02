@@ -2,8 +2,8 @@
   <div class="empty-result">
     <slot>
       <SvgImage
-        icon="logo"
-        :label="$t('Vue Storefront Next')"
+        icon="search"
+        :label="$t('No Data Found')"
         width="50"
         height="50"
       />
@@ -12,8 +12,8 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from '@nuxtjs/composition-api';
-import SvgImage from '~/components/General/SvgImage.vue';
+import { defineComponent } from "@nuxtjs/composition-api";
+import SvgImage from "~/components/General/SvgImage.vue";
 
 export default defineComponent({
   components: {
@@ -31,7 +31,7 @@ export default defineComponent({
   margin: 10px 0;
 
   @include for-mobile {
-    min-height: 10vh
+    min-height: 10vh;
   }
 }
 </style>

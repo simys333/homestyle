@@ -20,10 +20,7 @@
         </SfSteps>
         <nuxt-child v-else />
       </div>
-      <div
-        v-if="!isThankYou"
-        class="checkout__aside desktop-only"
-      >
+      <div v-if="!isThankYou" class="checkout__aside desktop-only">
         <transition name="fade">
           <CartPreview key="order-summary" />
         </transition>
@@ -32,7 +29,7 @@
   </div>
 </template>
 <script lang="ts">
-import { SfSteps } from '@storefront-ui/vue';
+import { SfSteps } from "@storefront-ui/vue";
 import {
   computed,
   defineComponent,
@@ -41,13 +38,13 @@ import {
   useRouter,
   useContext,
   onMounted,
-} from '@nuxtjs/composition-api';
-import cartGetters from '~/modules/checkout/getters/cartGetters';
-import useCart from '~/modules/checkout/composables/useCart';
-import CartPreview from '~/modules/checkout/components/CartPreview.vue';
+} from "@nuxtjs/composition-api";
+import cartGetters from "~/modules/checkout/getters/cartGetters";
+import useCart from "~/modules/checkout/composables/useCart";
+import CartPreview from "~/modules/checkout/components/CartPreview.vue";
 
 export default defineComponent({
-  name: 'CheckoutPage',
+  name: "CheckoutPage",
   components: {
     SfSteps,
     CartPreview,
@@ -59,29 +56,31 @@ export default defineComponent({
     const router = useRouter();
     const { cart, load } = useCart();
     const products = computed(() => cartGetters.getItems(cart.value));
-    const currentStep = computed(() => path.split('/').pop());
+    const currentStep = computed(() => path.split("/").pop());
 
     const STEPS = ref([
       {
-        title: 'User Account',
-        url: 'user-account',
+        title: "User Account",
+        url: "user-account",
       },
       {
-        title: 'Shipping',
-        url: 'shipping',
+        title: "Shipping",
+        url: "shipping",
       },
       {
-        title: 'Billing',
-        url: 'billing',
+        title: "Billing",
+        url: "billing",
       },
       {
-        title: 'Payment',
-        url: 'payment',
+        title: "Payment",
+        url: "payment",
       },
     ]);
 
-    const currentStepIndex = computed(() => STEPS.value.findIndex((step) => step.url === currentStep.value));
-    const isThankYou = computed(() => currentStep.value === 'thank-you');
+    const currentStepIndex = computed(() =>
+      STEPS.value.findIndex((step) => step.url === currentStep.value)
+    );
+    const isThankYou = computed(() => currentStep.value === "thank-you");
 
     const handleStepClick = async (stepIndex: number) => {
       if (stepIndex <= currentStepIndex.value) {
@@ -91,10 +90,10 @@ export default defineComponent({
     };
 
     onMounted(async () => {
-      await load();
+      /*await load();
       if (products.value.length === 0 && currentStep.value !== 'thank-you') {
         await router.push(app.localePath('/'));
-      }
+      }*/
     });
 
     return {
@@ -109,12 +108,20 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+::v-deep * {
+  font-family: var(--font-family--primary);
+  --input-label-font-size: 1rem;
+  --input-label-color: rgb(95, 99, 104);
+}
 #checkout {
   box-sizing: border-box;
   @include for-desktop {
     max-width: 1240px;
     margin: 0 auto;
     padding: 0 1.5rem;
+  }
+  ::v-deep .sf-button {
+    text-transform: capitalize;
   }
 }
 
@@ -133,7 +140,7 @@ export default defineComponent({
   &__aside {
     @include for-desktop {
       flex: 0 0 25.5rem;
-      margin: 0 0 0 4.25rem;
+      margin: 4.25rem 0 0 4.25rem;
     }
   }
 
@@ -145,6 +152,34 @@ export default defineComponent({
 
     &-auth::v-deep .sf-steps__step:first-child {
       --steps-step-color: #e8e4e4;
+    }
+  }
+  ::v-deep .sf-heading__title {
+    font-size: var(--h4-font-size);
+    font-weight: normal;
+    color: #5f6368;
+  }
+  ::v-deep .sf-input__wrapper input {
+    border: 1px solid #989898;
+  }
+  ::v-deep .sf-input__label {
+    padding: 0 0 5px 6px;
+  }
+  ::v-deep .sf-select {
+    padding-top: 0;
+    select {
+      border: 1px solid #989898;
+      min-height: var(
+        --input-height,
+        calc(
+          var(--spacer-base) + var(--spacer-2xs) +
+            var(--input-label-font-size, var(--font-size--lg))
+        )
+      );
+    }
+    .sf-select__label {
+      display: flex;
+      align-items: center;
     }
   }
 }
