@@ -8,7 +8,13 @@
         {{ buttonText }}
       </SfLink>
     </div>
-    <SfCarousel class="carousel" :settings="{ gap: 30, rewind: false }">
+    <SfCarousel
+      class="carousel"
+      :settings="{
+        perView: 6,
+        breakpoints: { 1023: { peek: 0, perView: 2 } },
+      }"
+    >
       <template #prev="prevArrow">
         <CarouselLeftArrow @click="prevArrow.go('prev')" />
       </template>
@@ -16,79 +22,66 @@
         <CarouselRightArrow @click="nextArrow.go('next')" />
       </template>
       <SfCarouselItem class="carousel__item">
-       
-        
-      <div class="products">
-        <SfProductCard
-          v-for="(product, i) in mappedProducts"
-          :key="i"
-          class="product"
-          image-tag="nuxt-img"
-          :title="productGetters.getName(product)"
-          :image-width="imageSizes.productCard.width"
-          :image-height="imageSizes.productCard.height"
-          :image="
-            getMagentoImage(productGetters.getProductThumbnailImage(product))
-          "
-          :nuxt-img-config="{
-            fit: 'cover',
-          }"
-          :regular-price="$fc(productGetters.getPrice(product).regular)"
-          :special-price="
-            productGetters.getPrice(product).special &&
-              $fc(productGetters.getPrice(product).special)
-          "
-          :link="localePath(getProductPath(product))"
-          :max-rating="5"
-          :score-rating="productGetters.getAverageRating(product)"
-          :reviews-count="productGetters.getTotalReviews(product)"
-          :is-in-wishlist="isInWishlist({ product })"
-          :is-added-to-cart="isInCart(product)"
-          :wishlist-icon="isAuthenticated ? 'heart' : ''"
-          :is-in-wishlist-icon="isAuthenticated ? 'heart_fill' : ''"
-          @click:wishlist="addItemToWishlist(product)"
-          @click:add-to-cart="addItemToCart({ product, quantity: 1 })"
-        /></div></SfCarouselItem>
-     
-    
- 
-      
-      
+        <div>
+          <img src="/homepage/cello.png" alt="" />
+        </div>
+      </SfCarouselItem>
+      <SfCarouselItem class="carousel__item">
+        <div>
+          <img src="/homepage/cello.png" alt="" />
+        </div>
+      </SfCarouselItem>
+      <SfCarouselItem class="carousel__item">
+        <div>
+          <img src="/homepage/cello.png" alt="" />
+        </div>
+      </SfCarouselItem>
+      <SfCarouselItem class="carousel__item">
+        <div>
+          <img src="/homepage/cello.png" alt="" />
+        </div>
+      </SfCarouselItem>
+      <SfCarouselItem class="carousel__item">
+        <div>
+          <img src="/homepage/cello.png" alt="" />
+        </div>
+      </SfCarouselItem>
+      <SfCarouselItem class="carousel__item">
+        <div>
+          <img src="/homepage/cello.png" alt="" />
+        </div>
+      </SfCarouselItem>
+      <SfCarouselItem class="carousel__item">
+        <div>
+          <img src="/homepage/cello.png" alt="" />
+        </div>
+      </SfCarouselItem>
+      <SfCarouselItem class="carousel__item">
+        <div>
+          <img src="/homepage/cello.png" alt="" />
+        </div>
+      </SfCarouselItem>
+      <SfCarouselItem class="carousel__item">
+        <div>
+          <img src="/homepage/cello.png" alt="" />
+        </div>
+      </SfCarouselItem>
+      <SfCarouselItem class="carousel__item">
+        <div>
+          <img src="/homepage/cello.png" alt="" />
+        </div>
+      </SfCarouselItem>
+      <SfCarouselItem class="carousel__item">
+        <div>
+          <img src="/homepage/cello.png" alt="" />
+        </div>
+      </SfCarouselItem>
+      <SfCarouselItem class="carousel__item">
+        <div>
+          <img src="/homepage/cello.png" alt="" />
+        </div>
+      </SfCarouselItem>
     </SfCarousel>
-    <!--<SfLoader :class="{ loading }" :loading="loading">
-      <div class="products">
-        <SfProductCard
-          v-for="(product, i) in mappedProducts"
-          :key="i"
-          class="product"
-          image-tag="nuxt-img"
-          :title="productGetters.getName(product)"
-          :image-width="imageSizes.productCard.width"
-          :image-height="imageSizes.productCard.height"
-          :image="
-            getMagentoImage(productGetters.getProductThumbnailImage(product))
-          "
-          :nuxt-img-config="{
-            fit: 'cover',
-          }"
-          :regular-price="$fc(productGetters.getPrice(product).regular)"
-          :special-price="
-            productGetters.getPrice(product).special &&
-            $fc(productGetters.getPrice(product).special)
-          "
-          :link="localePath(getProductPath(product))"
-          :max-rating="5"
-          :score-rating="productGetters.getAverageRating(product)"
-          :reviews-count="productGetters.getTotalReviews(product)"
-          :is-in-wishlist="isInWishlist({ product })"
-          :is-added-to-cart="isInCart(product)"
-          :wishlist-icon="isAuthenticated ? 'heart' : ''"
-          :is-in-wishlist-icon="isAuthenticated ? 'heart_fill' : ''"
-          @click:wishlist="addItemToWishlist(product)"
-          @click:add-to-cart="addItemToCart({ product, quantity: 1 })"
-        />
-      </div>
-    </SfLoader>-->
   </div>
 </template>
 
@@ -117,7 +110,7 @@ import CarouselLeftArrow from "./CarouselLeftArrow.vue";
 import CarouselRightArrow from "./CarouselRightArrow.vue";
 
 export default defineComponent({
-  name: "NewProducts",
+  name: "Brands",
   components: {
     SfProductCard,
     SfSection,
@@ -162,7 +155,7 @@ export default defineComponent({
     const { getMagentoImage, imageSizes } = useImage();
 
     onMounted(async () => {
-      const newestProducts = await getProductList({
+      /*const newestProducts = await getProductList({
         pageSize: 4,
         currentPage: 1,
         sort: {
@@ -172,7 +165,7 @@ export default defineComponent({
 
       if (newestProducts?.items?.length) {
         products.value = newestProducts.items;
-      }
+      }*/
     });
 
     return {
@@ -204,11 +197,6 @@ export default defineComponent({
     margin: 0;
   }
 
-  ::v-deep .sf-product-card__badge {
-    font-family: "IBM Plex Sans";
-    top: 0;
-  }
-
   .title {
     font-family: "Recoleta";
     font-size: 24px;
@@ -227,28 +215,16 @@ export default defineComponent({
       margin: 0;
     }
     &__item {
-      margin: 1.9375rem 0 2.4375rem 0;
-    }
-    ::v-deep .sf-image--placeholder {
-      display: none;
+      margin: 2rem 0 2rem 0;
+      img {
+        width: 120px;
+        height: auto;
+      }
     }
     @include for-desktop {
       ::v-deep .sf-carousel__wrapper {
         max-width: calc(100% - 8rem);
       }
-    }
-    ::v-deep .sf-carousel__slides {
-      max-height: 430px;
-    }
-    ::v-deep .sf-product-card__title {
-      font-size: 18px;
-      font-family: "IBM Plex Sans";
-    }
-    ::v-deep .sf-price__special,
-    ::v-deep .sf-price__old {
-      font-size: 20px;
-      font-family: "IBM Plex Sans";
-      font-weight: var(--font-weight--semibold);
     }
   }
 

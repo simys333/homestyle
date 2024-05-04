@@ -1,5 +1,5 @@
 <template>
-  <div class="hero">
+  <div class="sale">
     <SfImage
       :image-tag="imageTag"
       :src="imageSrc"
@@ -8,17 +8,17 @@
       :height="imageHeight"
       :nuxt-img-config="nuxtImgConfig"
       placeholder
-      class="hero__image"
+      class="sale__image"
     />
-    <div class="hero__wrapper">
+    <div class="sale__wrapper">
       <slot name="subtitle" v-bind="{ subtitle }"
-        ><span v-show="subtitle" class="hero__subtitle"> {{ subtitle }} </span>
+        ><span v-show="subtitle" class="sale__subtitle"> {{ subtitle }} </span>
       </slot>
       <slot name="title" v-bind="{ title }"
-        ><span v-show="title" class="hero__title"> {{ title }} </span>
+        ><span v-show="title" class="sale__title"> {{ title }} </span>
       </slot>
       <slot name="description" v-bind="{ description }"
-        ><span v-show="description" class="hero__description">
+        ><span v-show="description" class="sale__description">
           {{ description }}
         </span>
       </slot>
@@ -26,7 +26,7 @@
         <SfButton
           v-if="buttonText && link"
           :link="localePath(link)"
-          class="hero__button"
+          class="sale__button"
         >
           {{ buttonText }}
         </SfButton>
@@ -40,7 +40,7 @@ import { ImageModifiers } from "@nuxt/image";
 import { SfButton, SfImage } from "@storefront-ui/vue";
 
 export default defineComponent({
-  name: "HeroSection",
+  name: "SaleSection",
   components: {
     SfButton,
     SfImage,
@@ -90,7 +90,7 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
-.hero {
+.sale {
   display: flex;
   justify-content: flex-start;
   position: relative;
@@ -98,6 +98,7 @@ export default defineComponent({
   width: 100%;
   min-height: 577px;
   color: var(--c-text);
+  margin-bottom: var(--spacer-xl);
 
   &__image {
     position: absolute;
@@ -120,24 +121,26 @@ export default defineComponent({
     justify-content: center;
     position: absolute;
     width: 100%;
+    padding: var(--spacer-base);
     text-decoration: none;
-    background-color: #ffffff;
-    border: 1px solid #000000;
+    background-color: rgba(255, 255, 255, 0.6);
     max-width: 20rem;
     top: 20%;
-    left: 10%;
-    box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.85),
-      0 0 0 30px rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.3);
+    @include for-desktop {
+      right: 10%;
+    }
   }
-  &__wrapper::before {
+
+  &__wrapper::after {
     content: "";
     display: block;
     position: absolute;
     width: 100%;
     height: 100%;
-    left: -10%;
+    right: -3%;
     border: 1px solid white;
-    padding: 30px;
+    padding: 9px;
   }
 
   &__title {
@@ -159,13 +162,8 @@ export default defineComponent({
     width: 60%;
     color: var(--c-text);
     margin-bottom: var(--spacer-base);
-    @include font(
-      --hero-title-font,
-      var(--font-weight--normal),
-      1.5rem,
-      1.2,
-      var(--font-family--primary)
-    );
+    font-family: var(--font-family--primary);
+    font-size: 1.5rem;
   }
 
   &__subtitle {
@@ -182,7 +180,6 @@ export default defineComponent({
   }
 
   &__button {
-    display: none;
     font-size: 0.875rem;
   }
 
@@ -196,6 +193,10 @@ export default defineComponent({
     }
 
     &__subtitle {
+      width: 100%;
+    }
+
+    &__description {
       width: 100%;
     }
 
