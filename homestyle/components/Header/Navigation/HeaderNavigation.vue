@@ -1,9 +1,8 @@
 <template>
-  <div
-    class="header-navigation"
-    @mouseleave="setCurrentCategory(null)"
-  >
-    <div class="sf-header-navigation-item__item sf-header-navigation-item__item--desktop">
+  <div class="header-navigation" @mouseleave="setCurrentCategory(null)">
+    <div
+      class="sf-header-navigation-item__item sf-header-navigation-item__item--desktop"
+    >
       <HeaderNavigationItem
         v-for="(category, index) in categoryTree"
         :key="index"
@@ -33,19 +32,20 @@
   </div>
 </template>
 <script lang="ts">
-import {
-  defineComponent, PropType, ref,
-} from '@nuxtjs/composition-api';
+import { defineComponent, PropType, ref } from "@nuxtjs/composition-api";
 
-import { CategoryTree } from '~/modules/GraphQL/types';
-import { useUiHelpers } from '~/composables';
-import type { ComponentTemplateRef } from '~/types/componentTemplateRef';
-import HeaderNavigationItem from './HeaderNavigationItem.vue';
+import { CategoryTree } from "~/modules/GraphQL/types";
+import { useUiHelpers } from "~/composables";
+import type { ComponentTemplateRef } from "~/types/componentTemplateRef";
+import HeaderNavigationItem from "./HeaderNavigationItem.vue";
 
 export default defineComponent({
-  name: 'HeaderNavigation',
+  name: "HeaderNavigation",
   components: {
-    HeaderNavigationSubcategories: () => import('~/components/Header/Navigation/HeaderNavigationSubcategories.vue'),
+    HeaderNavigationSubcategories: () =>
+      import(
+        "~/components/Header/Navigation/HeaderNavigationSubcategories.vue"
+      ),
     HeaderNavigationItem,
   },
   props: {
@@ -61,13 +61,14 @@ export default defineComponent({
     const lvl0CatRefs = ref<ComponentTemplateRef[]>();
     const hasFocus = ref(false);
     let lvl0CatFocusIdx = 0;
-    let focusedElement : HTMLElement | null = null;
+    let focusedElement: HTMLElement | null = null;
 
     const setCurrentCategory = (category: CategoryTree | null) => {
       currentCategory.value = category;
     };
 
-    const hasChildren = (category: CategoryTree) => Boolean(category?.children?.length);
+    const hasChildren = (category: CategoryTree) =>
+      Boolean(category?.children?.length);
 
     const setFocus = (event: MouseEvent & { target: HTMLElement }) => {
       focusedElement = event.target;
@@ -124,7 +125,7 @@ export default defineComponent({
 </script>
 <style lang="scss" scoped>
 .header-navigation {
-  border-top:1px solid #cccc;
+  border-top: 1px solid #cccc;
   &__main {
     display: flex;
   }
@@ -132,8 +133,14 @@ export default defineComponent({
 .nav-item {
   font-family: "IBM Plex Sans";
   --header-navigation-item-margin: 0 var(--spacer-sm);
-  text-transform:none;
-  padding:16px 6px;
+  text-transform: none;
+  padding: 16px 6px;
+
+  &:hover,
+  &:focus {
+    background-color: #f8470a;
+    color: #fff;
+  }
 
   .sf-header-navigation-item__item--mobile {
     display: none;

@@ -1,8 +1,9 @@
-<template>
+<template> 
   <SfLink
     class="sf-header-navigation-item__link"
     :link="link"
-  >
+  >  
+   <SaleIcon v-if="label === 'Sale'" />   
     {{ label }}
     <SfIcon
       v-if="hasChildren"
@@ -17,12 +18,14 @@
 <script lang="ts">
 import { SfLink, SfIcon } from '@storefront-ui/vue';
 import { defineComponent } from '@nuxtjs/composition-api';
+import SaleIcon from '~/components/Icons/SaleIcon.vue';
 
 export default defineComponent({
   name: 'HeaderNavigationItem',
   components: {
     SfLink,
     SfIcon,
+    SaleIcon
   },
   props: {
     label: {

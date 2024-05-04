@@ -5,6 +5,15 @@
     class="header-navigation__subcategories"
   >
     <div class="header-navigation__subcategories-inner">
+      <div>
+        <SfImage
+          src="/homepage/category.png"
+          :srcsets="[]"
+          alt="Vila stripe maxi shirt dress"
+          :width="216"
+          :height="326"
+        />
+      </div>
       <div
         v-for="(catLvl1, idxLvl1) in currentCategory.children"
         :key="idxLvl1"
@@ -23,7 +32,9 @@
           @keydown.down.native.prevent="navDown()"
           @keydown.up.native.prevent="navUp()"
         >
-          <h2 class="sf-heading sf-heading--left sf-heading sf-heading--left h5">
+          <h2
+            class="sf-heading sf-heading--left sf-heading sf-heading--left h5"
+          >
             {{ catLvl1.name }}
           </h2>
         </SfLink>
@@ -52,20 +63,19 @@
   </div>
 </template>
 <script lang="ts">
-import {
-  SfLink, SfList,
-} from '@storefront-ui/vue';
-import { defineComponent, ref, onMounted } from '@nuxtjs/composition-api';
-import type { PropType } from '@nuxtjs/composition-api';
-import type { CategoryTree } from '~/modules/GraphQL/types';
-import { useUiHelpers } from '~/composables';
-import type { ComponentTemplateRef } from '~/types/componentTemplateRef';
+import { SfLink, SfList, SfImage } from "@storefront-ui/vue";
+import { defineComponent, ref, onMounted } from "@nuxtjs/composition-api";
+import type { PropType } from "@nuxtjs/composition-api";
+import type { CategoryTree } from "~/modules/GraphQL/types";
+import { useUiHelpers } from "~/composables";
+import type { ComponentTemplateRef } from "~/types/componentTemplateRef";
 
 export default defineComponent({
-  name: 'HeaderNavigationSubcategories',
+  name: "HeaderNavigationSubcategories",
   components: {
     SfLink,
     SfList,
+    SfImage,
   },
   props: {
     currentCategory: {
@@ -83,11 +93,12 @@ export default defineComponent({
     const lvl2CatRefs = ref<ComponentTemplateRef[]>();
     const lvl2GroupedCatRefs = ref<ComponentTemplateRef[][]>();
 
-    const hasChildren = (category: CategoryTree) => Boolean(category?.children.length > 0);
+    const hasChildren = (category: CategoryTree) =>
+      Boolean(category?.children.length > 0);
 
-    const getGroupedLvl2CatRefs = () : ComponentTemplateRef[][] => {
+    const getGroupedLvl2CatRefs = (): ComponentTemplateRef[][] => {
       let current = 0;
-      const result : ComponentTemplateRef[][] = [];
+      const result: ComponentTemplateRef[][] = [];
       lvl1CatRefs.value.forEach((lvl1CatRef) => {
         const groupCount = Number(lvl1CatRef.$el.dataset.children);
         const group = lvl2CatRefs.value.slice(current, current + groupCount);
@@ -125,7 +136,10 @@ export default defineComponent({
 
     const navDown = () => {
       lvl2CatFocusIdx++;
-      if (lvl2CatFocusIdx !== -1 && !lvl2GroupedCatRefs.value[lvl1CatFocusIdx][lvl2CatFocusIdx]) {
+      if (
+        lvl2CatFocusIdx !== -1 &&
+        !lvl2GroupedCatRefs.value[lvl1CatFocusIdx][lvl2CatFocusIdx]
+      ) {
         lvl2CatFocusIdx--;
         return;
       }
@@ -147,7 +161,7 @@ export default defineComponent({
       }
 
       if (lvl2CatFocusIdx === -1) {
-        emit('hideSubcategories');
+        emit("hideSubcategories");
       }
     };
 
@@ -181,18 +195,19 @@ export default defineComponent({
 .header-navigation {
   &__subcategories {
     position: absolute;
-    z-index: 1;
-    background-color: #fff;
-    box-shadow: 0 3px var(--c-primary);
+    z-index: 1;    
     left: 0;
     padding: 30px;
     right: 0;
-    top: 170px;
+    padding-top:0;
     flex-wrap: wrap;
     justify-content: center;
     display: flex;
 
     &-inner {
+      background-color: #fff;
+      border-top: 1px solid var(--c-primary);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
       display: flex;
       justify-content: flex-start;
       width: var(--header-width, 77.5rem);
@@ -200,7 +215,12 @@ export default defineComponent({
   }
 
   &__subcategory {
-    flex: 0 0 25%;
+    flex: 0 0 20%;
+    padding: 30px 10px;
+  }
+
+  .sf-list__item{
+    line-height:28px
   }
 
   .sf-heading {
@@ -209,7 +229,8 @@ export default defineComponent({
       font-weight: bold;
     }
     &.h5 {
-      font-size: var(--h5-font-size)
+      font-size: var(--h5-font-size);
+      color:var(--c-primary)
     }
   }
 
@@ -220,10 +241,13 @@ export default defineComponent({
     }
   }
 
+  .sf-image--wrapper{
+    padding:10px;
+  }
+
   &__link2 {
     &:hover {
       color: var(--c-primary);
-
     }
   }
 }
