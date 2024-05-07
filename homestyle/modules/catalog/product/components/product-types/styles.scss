@@ -1,10 +1,12 @@
 .product {
   @include for-desktop {
     display: flex;
+    margin: var(--spacer-lg) auto;
   }
 
   &__info {
     margin: var(--spacer-sm) auto;
+
     @include for-desktop {
       margin: 0;
       max-width: 32.625rem;
@@ -15,14 +17,25 @@
 
   &__header {
     --heading-title-color: var(--c-link);
-    --heading-title-font-weight: var(--font-weight--bold);
     --heading-padding: 0;
     margin: 0 var(--spacer-sm);
     display: flex;
     justify-content: space-between;
+
     @include for-desktop {
-      --heading-title-font-weight: var(--font-weight--semibold);
       margin: 0 auto;
+    }
+
+    .sf-heading__title.h3 {
+      font-size: 32px;
+      font-family: "Recoleta";
+      font-weight: var(--font-weight--normal);
+    }
+
+    .sf-heading__description {
+      font-family: "IBM Plex Sans";
+      font-size: 20px;
+      margin: 0;
     }
   }
 
@@ -34,11 +47,39 @@
   &__price-and-rating {
     margin: 0 var(--spacer-sm) var(--spacer-base);
     align-items: center;
+
     @include for-desktop {
       display: flex;
       justify-content: space-between;
       margin: var(--spacer-sm) 0 var(--spacer-lg) 0;
     }
+  }
+
+  .sf-price {
+
+    del,
+    ins,
+    span {
+      font-size: 24px;
+      font-family: "IBM Plex Sans";
+    }
+
+    del::before,
+    ins::before {
+      content: "\20B9"
+    }
+
+    .sf-price__old {
+      color: #756A67;
+    }
+
+    .sf-price__special {
+      color: #190701;
+    }
+  }
+
+  .discount-percentage span {
+    color: #F8470A
   }
 
   &__rating {
@@ -49,33 +90,26 @@
   }
 
   &__count {
-    @include font(
-        --count-font,
-        var(--font-weight--normal),
-        var(--font-size--sm),
-        1.4,
-        var(--font-family--secondary)
-    );
+    @include font(--count-font,
+      var(--font-weight--normal),
+      var(--font-size--sm),
+      1.4,
+      var(--font-family--secondary));
     color: var(--c-text);
     text-decoration: none;
     margin: 0 0 0 var(--spacer-xs);
   }
 
   &__description {
-    @include font(
-        --product-description-font,
-        var(--font-weight--light),
-        var(--font-size--base),
-        1.6,
-        var(--font-family--primary)
-    );
+    @include font(--product-description-font,
+      var(--font-weight--light),
+      var(--font-size--base),
+      1.6,
+      var(--font-family--primary));
   }
 
   &__add-to-cart {
     margin: var(--spacer-base) var(--spacer-sm) 0;
-    @include for-desktop {
-      margin-top: var(--spacer-2xl);
-    }
   }
 
   ::v-deep &__add-to-cart-error {
@@ -97,6 +131,7 @@
     --tabs-title-z-index: 0;
     margin: var(--spacer-lg) auto var(--spacer-2xl);
     --tabs-title-font-size: var(--font-size--lg);
+
     @include for-desktop {
       margin-top: var(--spacer-2xl);
     }
@@ -118,13 +153,11 @@
 
   &__additional-info {
     color: var(--c-link);
-    @include font(
-        --additional-info-font,
-        var(--font-weight--light),
-        var(--font-size--sm),
-        1.6,
-        var(--font-family--primary)
-    );
+    @include font(--additional-info-font,
+      var(--font-weight--light),
+      var(--font-size--sm),
+      1.6,
+      var(--font-family--primary));
 
     &__title {
       font-weight: var(--font-weight--normal);
@@ -145,38 +178,119 @@
     display: flex;
     justify-content: flex-start;
     margin: 0 var(--spacer-sm);
+
     @include for-desktop {
       margin: 0;
     }
   }
 
   &__gallery {
-    flex: 1;
+    flex-direction: column;
+    --gallery-thumbs-order: 0;
+    padding: var(--spacer-3xl) auto;
+    height: 700px;
+
+    @include for-desktop {
+      padding-bottom: 3.75rem;
+    }
   }
+
 }
 
 .sf-gallery {
-  ::v-deep .glide__slide {
-    flex: none;
+  ::v-deep .sf-image {
+    outline: none;
   }
 }
 
 ::v-deep .sf-gallery__thumbs {
   .sf-image {
     position: relative;
+    outline: none;
   }
+
   .sf-image-loaded {
     display: block;
   }
+}
+
+::v-deep .shipping-info {
+  display: flex;
+  align-items: center;
+  margin: var(--spacer-base) 0 var(--spacer-base);
+
+  .shipping-text {
+    color: #756A67;
+    font-family: "IBM Plex Sans";
+    font-size: 16px;
+    margin-left: 10px;
+  }
+}
+
+.add-to-cart-wrapper {
+  margin: var(--spacer-base) 0 0;
+}
+
+.sf-add-to-cart__select-quantity {
+  background-color: transparent;
+  border: 1px solid #756A67;
+
+  .sf-quantity-selector__input {
+    border-right: 1px solid #756A67;
+    border-left: 1px solid #756A67;
+  }
+}
+
+::v-deep .sf-quantity-selector__input input,
+::v-deep .sf-quantity-selector__button {
+  color: #756A67;
+}
+
+.want-to-buy {
+  font-family: "IBM Plex Sans";
+  font-size: 16px;
+  margin: var(--spacer-sm) 0 var(--spacer-base);
+
+  a {
+    text-decoration: underline;
+  }
+}
+
+.cart-button-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+
+  button {
+    width: 100%;
+    text-transform: capitalize;
+    font-family: "IBM Plex Sans";
+    font-size: 16px;
+    font-weight: var(--font-weight--normal);
+  }
+}
+
+.sf-add-cart__button {
+  background-color: transparent;
+  color: var(--c-primary);
+  border: 1px solid var(--c-primary);
+}
+
+::v-deep .sf-accordion-item__header,
+::v-deep .sf-accordion-item__content {
+  font-family: "IBM Plex Sans";
+  font-size: 16px;
 }
 
 @keyframes moveicon {
   0% {
     transform: translate3d(0, 0, 0) rotate(90deg) scale(1, -1);
   }
+
   50% {
     transform: translate3d(10%, 0, 0) rotate(90deg) scale(1, -1);
   }
+
   100% {
     transform: translate3d(0, 0, 0) rotate(90deg) scale(1, -1);
   }
@@ -185,17 +299,8 @@
 .loading {
   &--product {
     padding: var(--spacer-3xl) auto;
-    @include for-desktop {
-      padding-top: 3.75rem;
-      padding-bottom: 3.75rem;
-    }
-  }
 
-  &--product-gallery {
-    padding: var(--spacer-3xl) auto;
-    height: 700px;
     @include for-desktop {
-      padding-top: 3.75rem;
       padding-bottom: 3.75rem;
     }
   }
