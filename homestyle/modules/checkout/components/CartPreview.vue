@@ -38,46 +38,36 @@
       />
     </div>
     <CouponCode class="highlighted" />
-    <div class="highlighted">
-      <SfCharacteristic
-        v-for="characteristic in characteristics"
-        :key="characteristic.title"
-        :title="characteristic.title"
-        :description="characteristic.description"
-        :icon="characteristic.icon"
-        class="characteristic"
-      />
-    </div>
   </div>
 </template>
 <script lang="ts">
-import { SfHeading, SfProperty, SfCharacteristic } from '@storefront-ui/vue';
-import { computed, ref, defineComponent } from '@nuxtjs/composition-api';
-import cartGetters from '~/modules/checkout/getters/cartGetters';
-import useCart from '~/modules/checkout/composables/useCart';
-import getShippingMethodPrice from '~/helpers/checkout/getShippingMethodPrice';
-import CouponCode from '../../../components/CouponCode.vue';
+import { SfHeading, SfProperty, SfCharacteristic } from "@storefront-ui/vue";
+import { computed, ref, defineComponent } from "@nuxtjs/composition-api";
+import cartGetters from "~/modules/checkout/getters/cartGetters";
+import useCart from "~/modules/checkout/composables/useCart";
+import getShippingMethodPrice from "~/helpers/checkout/getShippingMethodPrice";
+import CouponCode from "../../../components/CouponCode.vue";
 
 const CHARACTERISTICS = [
   {
-    title: 'Safety',
-    description: 'It carefully packaged with a personal touch',
-    icon: 'safety',
+    title: "Safety",
+    description: "It carefully packaged with a personal touch",
+    icon: "safety",
   },
   {
-    title: 'Easy shipping',
-    description: 'You’ll receive dispatch confirmation and an arrival date',
-    icon: 'shipping',
+    title: "Easy shipping",
+    description: "You’ll receive dispatch confirmation and an arrival date",
+    icon: "shipping",
   },
   {
-    title: 'Changed your mind?',
-    description: 'Rest assured, we offer free returns within 30 days',
-    icon: 'return',
+    title: "Changed your mind?",
+    description: "Rest assured, we offer free returns within 30 days",
+    icon: "return",
   },
 ];
 
 export default defineComponent({
-  name: 'CartPreview',
+  name: "CartPreview",
   components: {
     SfHeading,
     SfProperty,
@@ -94,7 +84,9 @@ export default defineComponent({
     const totals = computed(() => cartGetters.getTotals(cart.value));
     const discount = computed(() => -cartGetters.getDiscountAmount(cart.value));
     const hasDiscounts = computed(() => Math.abs(discount.value) > 0);
-    const selectedShippingMethod = computed(() => cartGetters.getSelectedShippingMethod(cart.value));
+    const selectedShippingMethod = computed(() =>
+      cartGetters.getSelectedShippingMethod(cart.value)
+    );
 
     return {
       cart,
@@ -116,6 +108,9 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.sf-heading__title.h3 {
+  font-size: 20px;
+}
 .highlighted {
   box-sizing: border-box;
   width: 100%;
@@ -136,13 +131,16 @@ export default defineComponent({
 
 .property {
   margin-bottom: var(--spacer-base);
+  span {
+    font-size: var(--font-size--base);
+  }
 }
 
 .property-total {
   margin-top: var(--spacer-xl);
   padding-top: var(--spacer-lg);
   font-size: var(--font-size-xl);
-  border-top: var(--c-white) 1px solid;
+  border-top: #dddddd 1px solid;
   --property-name-font-weight: var(--font-weight--semibold);
   --property-name-color: var(--c-text);
 }

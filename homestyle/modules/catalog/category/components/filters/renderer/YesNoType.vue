@@ -22,10 +22,13 @@
 <script lang="ts">
 import {
   computed,
-  defineComponent, inject, PropType, useContext,
-} from '@nuxtjs/composition-api';
-import { SfRadio, SfHeading } from '@storefront-ui/vue';
-import type { Aggregation, AggregationOption } from '~/modules/GraphQL/types';
+  defineComponent,
+  inject,
+  PropType,
+  useContext,
+} from "@nuxtjs/composition-api";
+import { SfRadio, SfHeading } from "@storefront-ui/vue";
+import type { Aggregation, AggregationOption } from "~/modules/GraphQL/types";
 
 export default defineComponent({
   components: {
@@ -38,13 +41,7 @@ export default defineComponent({
       required: true,
     },
   },
-  setup() {
-    const { app: { i18n } } = useContext();
-    const { isFilterSelected } = inject('UseFiltersProvider');
-    const selected = computed(() => ((id: string, optVal: string) => isFilterSelected(id, optVal)));
-    const label = (option: AggregationOption) => `${(option.value === '1' ? i18n.t('Yes') : i18n.t('No'))}`;
-    return { selected, label };
-  },
+  setup() {},
 });
 </script>
 <style lang="scss">
@@ -54,5 +51,4 @@ export default defineComponent({
     padding: 0;
   }
 }
-
 </style>

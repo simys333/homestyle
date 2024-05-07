@@ -21,10 +21,13 @@
 </template>
 <script lang="ts">
 import {
-  computed, defineComponent, inject, PropType,
-} from '@nuxtjs/composition-api';
-import { SfColor, SfHeading } from '@storefront-ui/vue';
-import type { Aggregation } from '~/modules/GraphQL/types';
+  computed,
+  defineComponent,
+  inject,
+  PropType,
+} from "@nuxtjs/composition-api";
+import { SfColor, SfHeading } from "@storefront-ui/vue";
+import type { Aggregation } from "~/modules/GraphQL/types";
 
 export default defineComponent({
   components: {
@@ -37,13 +40,7 @@ export default defineComponent({
       required: true,
     },
   },
-  setup() {
-    const { isFilterSelected } = inject('UseFiltersProvider');
-    const selected = computed(() => ((id: string, optVal: string) => isFilterSelected(id, optVal)));
-    return {
-      selected,
-    };
-  },
+  setup() {},
 });
 </script>
 <style lang="scss">

@@ -1,61 +1,50 @@
 <template>
-  <SfTabs
-    id="tabs"
-    :open-tab="activeTab"
-    class="product__tabs"
-    @click:tab="changeTab"
-  >
-    <SfTab :title="$t('Description')">
+  <SfAccordion open="Description" :multiple="false" transition="" showChevron>
+    <SfAccordionItem header="Description">
       <HTMLContent
         v-if="productDescription"
         :content="productDescription"
         tag="div"
         class="product__description"
       />
-    </SfTab>
-    <SfTab :title="$t('Read reviews')">
-      <SfLoader
-        v-if="isReviewsLoading"
-        :loading="isReviewsLoading"
+    </SfAccordionItem>
+    <hr class="sf-divider" />
+    <SfAccordionItem header="Size Details">
+      <HTMLContent
+        v-if="productDescription"
+        :content="productDescription"
+        tag="div"
+        class="product__description"
       />
-      <div v-else>
-        <SfReview
-          v-for="review in reviews"
-          :key="getReviewId(review)"
-          :author="getReviewAuthor(review)"
-          :date="getReviewDate(review)"
-          :message="getReviewMessage(review)"
-          :max-rating="5"
-          :rating="getReviewRating(review)"
-          :char-limit="250"
-          read-more-text="Read more"
-          hide-full-text="Read less"
-          class="product__review"
-        />
-        <div id="addReview">
-          <ProductAddReviewForm
-            @add-review="successAddReview"
-          />
-        </div>
-      </div>
-    </SfTab>
-    <SfTab
-      :title="$t('Additional Information')"
-      class="product__additional-info"
-    >
-      <div class="product__additional-info">
-        <p class="product__additional-info__title">
-          {{ $t('Instruction1') }}
-        </p>
-        <p class="product__additional-info__paragraph">
-          {{ $t('Instruction2') }}
-        </p>
-        <p class="product__additional-info__paragraph">
-          {{ $t('Instruction3') }}
-        </p>
-      </div>
-    </SfTab>
-  </SfTabs>
+    </SfAccordionItem>
+    <hr class="sf-divider" />
+    <SfAccordionItem header="Features">
+      <HTMLContent
+        v-if="productDescription"
+        :content="productDescription"
+        tag="div"
+        class="product__description"
+      />
+    </SfAccordionItem>
+    <hr class="sf-divider" />
+    <SfAccordionItem header="Products Included">
+      <HTMLContent
+        v-if="productDescription"
+        :content="productDescription"
+        tag="div"
+        class="product__description"
+      />
+    </SfAccordionItem>
+    <hr class="sf-divider" />
+    <SfAccordionItem header="More Info">
+      <HTMLContent
+        v-if="productDescription"
+        :content="productDescription"
+        tag="div"
+        class="product__description"
+      />
+    </SfAccordionItem>
+  </SfAccordion>
 </template>
 <script lang="ts">
 import {
@@ -63,34 +52,34 @@ import {
   defineComponent,
   PropType,
   ref,
-} from '@nuxtjs/composition-api';
-import {
-  SfReview,
-  SfTabs,
-  SfLoader,
-} from '@storefront-ui/vue';
-import ProductAddReviewForm from '~/modules/catalog/product/components/ProductAddReviewForm.vue';
-import HTMLContent from '~/components/HTMLContent.vue';
+} from "@nuxtjs/composition-api";
+import { SfReview, SfTabs, SfLoader, SfAccordion } from "@storefront-ui/vue";
+import ProductAddReviewForm from "~/modules/catalog/product/components/ProductAddReviewForm.vue";
+import HTMLContent from "~/components/HTMLContent.vue";
 import reviewGetters, {
   getReviewId,
   getReviewAuthor,
   getReviewDate,
   getReviewMessage,
   getReviewRating,
-} from '~/modules/review/getters/reviewGetters';
-import { useReview, UseReviewAddReviewParams } from '~/modules/review/composables/useReview';
-import { Product } from '~/modules/catalog/product/types';
-import { TabsConfig } from '~/modules/catalog/product/composables/useProductTabs';
-import { usePageStore } from '~/stores/page';
+} from "~/modules/review/getters/reviewGetters";
+import {
+  useReview,
+  UseReviewAddReviewParams,
+} from "~/modules/review/composables/useReview";
+import { Product } from "~/modules/catalog/product/types";
+import { TabsConfig } from "~/modules/catalog/product/composables/useProductTabs";
+import { usePageStore } from "~/stores/page";
 
 export default defineComponent({
-  name: 'ProductTabs',
+  name: "ProductTabs",
   components: {
     ProductAddReviewForm,
     HTMLContent,
     SfReview,
     SfTabs,
     SfLoader,
+    SfAccordion,
   },
   props: {
     product: {
@@ -107,10 +96,7 @@ export default defineComponent({
     const reviews = ref(null);
     const isReviewsLoading = ref(true);
 
-    const {
-      search: searchReviews,
-      addReview,
-    } = useReview();
+    const { search: searchReviews, addReview } = useReview();
 
     const getSearchQuery = () => ({
       filter: {
@@ -129,15 +115,15 @@ export default defineComponent({
       reviews.value = reviewGetters.getItems(baseReviews);
     };
 
-    let lastReviewsQuery = '';
+    let lastReviewsQuery = "";
     const changeTab = (tabNumber: number) => {
       if (!process.client) return props.openTab;
-      const tabs = document.querySelector('#tabs');
+      const tabs = document.querySelector("#tabs");
 
       if (!tabs) return props.openTab;
       tabs.scrollIntoView({
-        block: 'start',
-        behavior: 'smooth',
+        block: "start",
+        behavior: "smooth",
       });
 
       if (tabNumber === TabsConfig.reviews.ID) {
@@ -149,21 +135,23 @@ export default defineComponent({
           isReviewsLoading.value = false;
         }
       }
-      emit('changeTab', tabNumber);
+      emit("changeTab", tabNumber);
       return tabNumber;
     };
 
     const activeTab = computed(() => changeTab(props.openTab));
 
-    const productDescription = computed(
-      () => props.product?.description?.html || '',
-    );
+    const productDescription =
+      "Here's the CARA collection of luxe tableware with a fusion of materials and unique designs to elevate the table decor. The square round edged white and gold lining dinner plate with gold specs is a spin on theround shape for dinner parties. The white ceramic dinner plate is ideal for serving main course dishes like noodles, fried rice, roasted chicken and more.";
+    /*computed(
+      () => props.product?.description?.html || ""
+    );*/
 
     const successAddReview = async (reviewData: UseReviewAddReviewParams) => {
       await addReview(reviewData);
-      document.querySelector('#tabs').scrollIntoView({
-        behavior: 'smooth',
-        block: 'end',
+      document.querySelector("#tabs").scrollIntoView({
+        behavior: "smooth",
+        block: "end",
       });
     };
 

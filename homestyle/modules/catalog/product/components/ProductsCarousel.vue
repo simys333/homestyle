@@ -1,12 +1,6 @@
 <template>
-  <SfSection
-    :title-heading="title"
-    class="section"
-  >
-    <SfLoader
-      :class="{ loading }"
-      :loading="loading"
-    >
+  <SfSection :title-heading="title" class="section">
+    <SfLoader :class="{ loading }" :loading="loading">
       <SfCarousel
         data-cy="related-products-carousel"
         :settings="{ peek: 16, breakpoints: { 1023: { peek: 0, perView: 2 } } }"
@@ -31,12 +25,9 @@
             :regular-price="$fc(productGetters.getPrice(product).regular)"
             :special-price="
               productGetters.getPrice(product).special &&
-                $fc(productGetters.getPrice(product).special)
+              $fc(productGetters.getPrice(product).special)
             "
             :link="localePath(getProductPath(product))"
-            :max-rating="5"
-            :score-rating="productGetters.getAverageRating(product)"
-            :reviews-count="productGetters.getTotalReviews(product)"
             :is-in-wishlist="isInWishlist({ product })"
             :is-added-to-cart="isInCart(product)"
             :wishlist-icon="isAuthenticated ? 'heart' : ''"
@@ -51,11 +42,7 @@
             class="sf-arrow"
             @click="prevArrow.go('prev')"
           >
-            <SvgImage
-              icon="arrow_left"
-              width="24"
-              height="24"
-            />
+            <SvgImage icon="arrow_left" width="24" height="24" />
           </SfButton>
         </template>
         <template #next="nextArrow">
@@ -64,11 +51,7 @@
             class="sf-arrow"
             @click="nextArrow.go('next')"
           >
-            <SvgImage
-              icon="arrow_right"
-              width="24"
-              height="24"
-            />
+            <SvgImage icon="arrow_right" width="24" height="24" />
           </SfButton>
         </template>
       </SfCarousel>
@@ -83,19 +66,19 @@ import {
   SfSection,
   SfLoader,
   SfButton,
-} from '@storefront-ui/vue';
+} from "@storefront-ui/vue";
 
-import { computed, defineComponent, PropType } from '@nuxtjs/composition-api';
-import productGetters from '~/modules/catalog/product/getters/productGetters';
-import { useAddToCart } from '~/helpers/cart/addToCart';
-import { useImage, useProduct } from '~/composables';
-import useWishlist from '~/modules/wishlist/composables/useWishlist';
-import { useUser } from '~/modules/customer/composables/useUser';
-import SvgImage from '~/components/General/SvgImage.vue';
-import type { Product } from '~/modules/catalog/product/types';
+import { computed, defineComponent, PropType } from "@nuxtjs/composition-api";
+import productGetters from "~/modules/catalog/product/getters/productGetters";
+import { useAddToCart } from "~/helpers/cart/addToCart";
+import { useImage, useProduct } from "~/composables";
+import useWishlist from "~/modules/wishlist/composables/useWishlist";
+import { useUser } from "~/modules/customer/composables/useUser";
+import SvgImage from "~/components/General/SvgImage.vue";
+import type { Product } from "~/modules/catalog/product/types";
 
 export default defineComponent({
-  name: 'ProductsCarousel',
+  name: "ProductsCarousel",
   components: {
     SfCarousel,
     SfProductCard,
@@ -108,7 +91,7 @@ export default defineComponent({
     title: {
       type: String,
       required: false,
-      default: '',
+      default: "",
     },
     products: {
       type: Array as PropType<Product[]>,
@@ -123,11 +106,13 @@ export default defineComponent({
     const { addItemToCart, isInCart } = useAddToCart();
     const { getProductPath } = useProduct();
 
-    const mappedProducts = computed(() => props.products.map((product) => ({
-      // @ts-ignore
-      ...product,
-      isInWishlist: isInWishlist({ product }),
-    })));
+    const mappedProducts = computed(() =>
+      props.products.map((product) => ({
+        // @ts-ignore
+        ...product,
+        isInWishlist: isInWishlist({ product }),
+      }))
+    );
 
     const addItemToWishlist = async (product) => {
       await addOrRemoveItem({ product });

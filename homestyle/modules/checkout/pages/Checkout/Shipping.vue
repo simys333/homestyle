@@ -23,10 +23,7 @@
         :countries="countries"
         @setCurrentAddress="handleSetCurrentAddress($event)"
       />
-      <div
-        v-if="isAddNewAddressFormVisible"
-        class="form"
-      >
+      <div v-if="isAddNewAddressFormVisible" class="form">
         <SfHeading
           v-if="hasSavedShippingAddress"
           v-e2e="'shipping-heading'"
@@ -49,7 +46,7 @@
             required
             :valid="!errors[0]"
             :error-message="$t(errors[0])"
-            @input=" changeShippingDetails('firstname', $event)"
+            @input="changeShippingDetails('firstname', $event)"
           />
         </ValidationProvider>
         <ValidationProvider
@@ -103,7 +100,7 @@
             required
             :valid="!errors[0]"
             :error-message="$t(errors[0])"
-            @input="changeShippingDetails('apartment', $event) "
+            @input="changeShippingDetails('apartment', $event)"
           />
         </ValidationProvider>
         <ValidationProvider
@@ -243,7 +240,7 @@
         type="submit"
         @click="handleAddNewAddressBtnClick"
       >
-        {{ $t('Add new address') }}
+        {{ $t("Add new address") }}
       </SfButton>
       <div class="form">
         <div class="form__action">
@@ -254,7 +251,7 @@
             class="form__action-button"
             type="submit"
           >
-            {{ $t('Select shipping method') }}
+            {{ $t("Select shipping method") }}
           </SfButton>
         </div>
       </div>
@@ -268,9 +265,7 @@
 </template>
 
 <script lang="ts">
-import {
-  SfHeading, SfInput, SfButton, SfSelect,
-} from '@storefront-ui/vue';
+import { SfHeading, SfInput, SfButton, SfSelect } from "@storefront-ui/vue";
 import {
   ref,
   computed,
@@ -278,39 +273,45 @@ import {
   defineComponent,
   useRouter,
   useContext,
-} from '@nuxtjs/composition-api';
-import { required, min, digits } from 'vee-validate/dist/rules';
-import { ValidationProvider, ValidationObserver, extend } from 'vee-validate';
-import userShippingGetters from '~/modules/customer/getters/userShippingGetters';
-import addressGetter from '~/modules/customer/getters/addressGetter';
-import { useCountrySearch } from '~/composables';
+} from "@nuxtjs/composition-api";
+import { required, min, digits } from "vee-validate/dist/rules";
+import { ValidationProvider, ValidationObserver, extend } from "vee-validate";
+import userShippingGetters from "~/modules/customer/getters/userShippingGetters";
+import addressGetter from "~/modules/customer/getters/addressGetter";
+import { useCountrySearch } from "~/composables";
 import type {
-  Country, AvailableShippingMethod, CustomerAddress, Customer,
-} from '~/modules/GraphQL/types';
-import useShipping from '~/modules/checkout/composables/useShipping';
-import useUser from '~/modules/customer/composables/useUser';
-import useUserAddress from '~/modules/customer/composables/useUserAddress';
+  Country,
+  AvailableShippingMethod,
+  CustomerAddress,
+  Customer,
+} from "~/modules/GraphQL/types";
+import useShipping from "~/modules/checkout/composables/useShipping";
+import useUser from "~/modules/customer/composables/useUser";
+import useUserAddress from "~/modules/customer/composables/useUserAddress";
 import {
-  addressFromApiToForm, CheckoutAddressForm, findUserAddressIdenticalToSavedCartAddress, getInitialCheckoutAddressForm,
-} from '~/helpers/checkout/address';
-import { mergeItem } from '~/helpers/asyncLocalStorage';
-import { isPreviousStepValid } from '~/helpers/checkout/steps';
+  addressFromApiToForm,
+  CheckoutAddressForm,
+  findUserAddressIdenticalToSavedCartAddress,
+  getInitialCheckoutAddressForm,
+} from "~/helpers/checkout/address";
+import { mergeItem } from "~/helpers/asyncLocalStorage";
+import { isPreviousStepValid } from "~/helpers/checkout/steps";
 
-extend('required', {
+extend("required", {
   ...required,
-  message: 'This field is required',
+  message: "This field is required",
 });
-extend('min', {
+extend("min", {
   ...min,
-  message: 'The field should have at least {length} characters',
+  message: "The field should have at least {length} characters",
 });
-extend('digits', {
+extend("digits", {
   ...digits,
-  message: 'Please provide a valid phone number',
+  message: "Please provide a valid phone number",
 });
 
 export default defineComponent({
-  name: 'ShippingStep',
+  name: "ShippingStep",
   components: {
     SfHeading,
     SfInput,
@@ -318,8 +319,10 @@ export default defineComponent({
     SfSelect,
     ValidationProvider,
     ValidationObserver,
-    UserShippingAddresses: () => import('~/modules/checkout/components/UserShippingAddresses.vue'),
-    VsfShippingProvider: () => import('~/modules/checkout/components/VsfShippingProvider.vue'),
+    UserShippingAddresses: () =>
+      import("~/modules/checkout/components/UserShippingAddresses.vue"),
+    VsfShippingProvider: () =>
+      import("~/modules/checkout/components/VsfShippingProvider.vue"),
   },
   setup() {
     const router = useRouter();
@@ -330,19 +333,15 @@ export default defineComponent({
       save: saveShipping,
       loading: isShippingLoading,
     } = useShipping();
-    const {
-      load: loadUserShipping,
-      setDefaultAddress,
-    } = useUserAddress();
+    const { load: loadUserShipping, setDefaultAddress } = useUserAddress();
 
-    const {
-      load: loadCountries,
-      search: searchCountry,
-    } = useCountrySearch();
+    const { load: loadCountries, search: searchCountry } = useCountrySearch();
     const countries = ref<Country[]>([]);
     const country = ref<Country | null>(null);
     const { isAuthenticated } = useUser();
-    const shippingDetails = ref<CheckoutAddressForm>(getInitialCheckoutAddressForm());
+    const shippingDetails = ref<CheckoutAddressForm>(
+      getInitialCheckoutAddressForm()
+    );
     const shippingMethods = ref<AvailableShippingMethod[]>([]);
     const currentAddressId = ref<number | null>(null);
 
@@ -351,11 +350,16 @@ export default defineComponent({
     const isAddNewAddressFormVisible = ref(true);
 
     const isShippingDetailsStepCompleted = ref(false);
-    const addresses = computed(() => userShippingGetters.getAddresses(userShipping.value));
+    const addresses = computed(() =>
+      userShippingGetters.getAddresses(userShipping.value)
+    );
 
-    const canMoveForward = computed(() => !isShippingLoading.value && shippingDetails.value && Object.keys(
-      shippingDetails.value,
-    ).length > 0);
+    const canMoveForward = computed(
+      () =>
+        !isShippingLoading.value &&
+        shippingDetails.value &&
+        Object.keys(shippingDetails.value).length > 0
+    );
 
     const hasSavedShippingAddress = computed(() => {
       if (!isAuthenticated.value || !userShipping.value) {
@@ -364,9 +368,13 @@ export default defineComponent({
       return addresses.value.length > 0;
     });
 
-    const countriesList = computed(() => addressGetter.countriesList(countries.value));
+    const countriesList = computed(() =>
+      addressGetter.countriesList(countries.value)
+    );
 
-    const regionInformation = computed(() => addressGetter.regionList(country.value));
+    const regionInformation = computed(() =>
+      addressGetter.regionList(country.value)
+    );
 
     const handleAddressSubmit = (reset: () => void) => async () => {
       const addressId = currentAddressId.value;
@@ -375,15 +383,17 @@ export default defineComponent({
         customerAddressId: addressId,
         save_in_address_book: false,
       };
-      await mergeItem('checkout', { shipping: shippingDetailsData });
+      await mergeItem("checkout", { shipping: shippingDetailsData });
 
-      const shippingInfo = await saveShipping({ shippingDetails: shippingDetailsData });
+      const shippingInfo = await saveShipping({
+        shippingDetails: shippingDetailsData,
+      });
       shippingMethods.value = shippingInfo?.available_shipping_methods ?? [];
 
       if (addressId !== null && isSetAsDefaultRequested.value) {
         const [chosenAddress] = userShippingGetters.getAddresses(
           userShipping.value,
-          { id: addressId },
+          { id: addressId }
         );
         chosenAddress.default_shipping = isSetAsDefaultRequested.value;
         if (chosenAddress) {
@@ -402,58 +412,80 @@ export default defineComponent({
       isShippingDetailsStepCompleted.value = false;
     };
 
-    const handleSetCurrentAddress = async (customerAddress: CustomerAddress) => {
+    const handleSetCurrentAddress = async (
+      customerAddress: CustomerAddress
+    ) => {
       const id = customerAddress?.id;
       currentAddressId.value = id;
       if (id) {
         isAddNewAddressFormVisible.value = false;
       }
       shippingDetails.value = addressFromApiToForm(customerAddress);
-      country.value = customerAddress.country_code ? await searchCountry({ id: customerAddress.country_code }) : null;
+      country.value = customerAddress.country_code
+        ? await searchCountry({ id: customerAddress.country_code })
+        : null;
       isShippingDetailsStepCompleted.value = false;
     };
 
-    const changeShippingDetails = (field: keyof CheckoutAddressForm, value: string) => {
+    const changeShippingDetails = (
+      field: keyof CheckoutAddressForm,
+      value: string
+    ) => {
       shippingDetails.value[field] = value;
       isShippingDetailsStepCompleted.value = false;
       currentAddressId.value = null;
     };
 
     const changeCountry = async (id: string) => {
-      changeShippingDetails('country_code', id);
+      changeShippingDetails("country_code", id);
       const newCountry = await searchCountry({ id });
-      shippingDetails.value.region = '';
+      shippingDetails.value.region = "";
       country.value = newCountry;
     };
 
-    onMounted(async () => {
+    /* onMounted(async () => {
       const validStep = await isPreviousStepValid('user-account');
       if (!validStep) {
         await router.push(app.localeRoute({ name: 'user-account' }));
       }
-      const [loadedShippingInfoBoundToCart, loadedUserShipping, loadedCountries] = await Promise.all([
+      const [
+        loadedShippingInfoBoundToCart,
+        loadedUserShipping,
+        loadedCountries,
+      ] = await Promise.all([
         loadShipping(),
         loadUserShipping(),
         loadCountries(),
       ]);
-      const [defaultAddress = null] = userShippingGetters.getAddresses(loadedUserShipping, { default_shipping: true });
-      const wasShippingAddressAlreadySetOnCart = Boolean(loadedShippingInfoBoundToCart);
+      const [defaultAddress = null] = userShippingGetters.getAddresses(
+        loadedUserShipping,
+        { default_shipping: true }
+      );
+      const wasShippingAddressAlreadySetOnCart = Boolean(
+        loadedShippingInfoBoundToCart
+      );
 
       if (wasShippingAddressAlreadySetOnCart) {
-        const userAddressIdenticalToSavedCartAddress = findUserAddressIdenticalToSavedCartAddress(
-          loadedUserShipping?.addresses,
-          loadedShippingInfoBoundToCart,
-        );
-        handleSetCurrentAddress({ ...loadedShippingInfoBoundToCart, id: userAddressIdenticalToSavedCartAddress?.id });
+        const userAddressIdenticalToSavedCartAddress =
+          findUserAddressIdenticalToSavedCartAddress(
+            loadedUserShipping?.addresses,
+            loadedShippingInfoBoundToCart
+          );
+        handleSetCurrentAddress({
+          ...loadedShippingInfoBoundToCart,
+          id: userAddressIdenticalToSavedCartAddress?.id,
+        });
       } else if (defaultAddress) {
         handleSetCurrentAddress(defaultAddress);
       }
       if (shippingDetails.value?.country_code) {
-        country.value = await searchCountry({ id: shippingDetails.value.country_code });
+        country.value = await searchCountry({
+          id: shippingDetails.value.country_code,
+        });
       }
       userShipping.value = loadedUserShipping;
       countries.value = loadedCountries;
-    });
+    });*/
 
     return {
       isAddNewAddressFormVisible,
@@ -488,10 +520,7 @@ export default defineComponent({
   --button-width: 100%;
 
   &__select {
-    display: flex;
-    align-items: center;
-    --select-option-font-size: var(--font-size--lg);
-
+    padding-top: 0;
     ::v-deep .sf-select__dropdown {
       font-size: var(--font-size--lg);
       margin: 0;
@@ -581,9 +610,9 @@ export default defineComponent({
   }
 }
 
-.title, .form-subtitle {
+.title,
+.form-subtitle {
   margin: var(--spacer-xl) 0 var(--spacer-base) 0;
-
 }
 
 .form-subtitle {

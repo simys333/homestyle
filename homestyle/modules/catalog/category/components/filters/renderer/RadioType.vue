@@ -7,7 +7,7 @@
       class="filters__title sf-heading--left"
     />
     <component
-      :is="filter.options.length > 4 ? 'SfScrollable' : 'div' "
+      :is="filter.options.length > 4 ? 'SfScrollable' : 'div'"
       max-content-height="6.875rem"
       :show-text="$t('Show more')"
       :hide-text="$t('Show less')"
@@ -38,10 +38,12 @@
 <script lang="ts">
 import {
   computed,
-  defineComponent, inject, PropType,
-} from '@nuxtjs/composition-api';
-import { SfRadio, SfScrollable, SfHeading } from '@storefront-ui/vue';
-import type { Aggregation } from '~/modules/GraphQL/types';
+  defineComponent,
+  inject,
+  PropType,
+} from "@nuxtjs/composition-api";
+import { SfRadio, SfScrollable, SfHeading } from "@storefront-ui/vue";
+import type { Aggregation } from "~/modules/GraphQL/types";
 
 export default defineComponent({
   components: {
@@ -55,24 +57,18 @@ export default defineComponent({
       required: true,
     },
   },
-  setup() {
-    const { isFilterSelected } = inject('UseFiltersProvider');
-    const selected = computed(() => ((id: string, optVal: string) => isFilterSelected(id, optVal)));
-
-    return { selected };
-  },
+  setup() {},
 });
 </script>
 <style lang="scss">
 .radio-filter {
   .sf-radio__content {
     display: flex;
-    align-items: center
+    align-items: center;
   }
   margin: 0 0 var(--spacer-2xs) 0;
   .sf-radio__container {
     padding: 0;
   }
 }
-
 </style>
