@@ -28,22 +28,22 @@
       </SfCarouselItem>
       <SfCarouselItem class="carousel__item">
         <div>
-          <img src="/homepage/cello.png" alt="" />
+          <img src="/homepage/yera.png" alt="" />
         </div>
       </SfCarouselItem>
       <SfCarouselItem class="carousel__item">
         <div>
-          <img src="/homepage/cello.png" alt="" />
+          <img src="/homepage/union.png" alt="" />
         </div>
       </SfCarouselItem>
       <SfCarouselItem class="carousel__item">
         <div>
-          <img src="/homepage/cello.png" alt="" />
+          <img src="/homepage/fackelmann.png" alt="" />
         </div>
       </SfCarouselItem>
       <SfCarouselItem class="carousel__item">
         <div>
-          <img src="/homepage/cello.png" alt="" />
+          <img src="/homepage/pearlpet.png" alt="" />
         </div>
       </SfCarouselItem>
       <SfCarouselItem class="carousel__item">
