@@ -55,11 +55,11 @@
       <div class="copyright">
         <span> Copyright © 2024. Homstyle. All Rights Reserved. </span>
         <span class="payment-right">
-          <img src="/master_icon.png" alt="" />
-          <img src="/visa_icon.png" alt="" />
-          <img src="/rupay_icon.png" alt="" />
-          <img src="/paytm_icon.png" alt="" />
-          <img src="/gpay_icon.png" alt="" />
+          <img src="/homepage/master_icon.png" alt="" />
+          <img src="/homepage/visa_icon.png" alt="" />
+          <img src="/homepage/rupay_icon.png" alt="" />
+          <img src="/homepage/paytm_icon.png" alt="" />
+          <img src="/homepage/gpay_icon.png" alt="" />
           <span>&amp; more</span>
         </span>
       </div>
