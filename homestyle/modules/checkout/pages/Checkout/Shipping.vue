@@ -443,7 +443,7 @@ export default defineComponent({
       country.value = newCountry;
     };
 
-    /* onMounted(async () => {
+     onMounted(async () => {
       const validStep = await isPreviousStepValid('user-account');
       if (!validStep) {
         await router.push(app.localeRoute({ name: 'user-account' }));
@@ -485,7 +485,7 @@ export default defineComponent({
       }
       userShipping.value = loadedUserShipping;
       countries.value = loadedCountries;
-    });*/
+    });
 
     return {
       isAddNewAddressFormVisible,
