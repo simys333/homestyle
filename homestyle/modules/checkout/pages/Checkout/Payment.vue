@@ -32,10 +32,10 @@
         </SfTableData>
         <SfTableData class="table__data table__description table__data">
           <div class="product-title">Creme Gold Dinner Plate White new</div>
-          <!-- <div class="product-sku">
+          <div class="product-sku">
             {{ cartGetters.getItemSku(product) }}
-          </div> -->
-          <!--<template v-if="getAttributes(product).length > 0">
+          </div> 
+         <template v-if="getAttributes(product).length > 0">
             <p
               v-for="attr in getAttributes(product)"
               :key="attr.option_label"
@@ -44,8 +44,8 @@
               <strong>{{ `${attr.option_label}:` }}</strong
               >{{ `${attr.value_label}` }}
             </p>
-          </template>-->
-          <!--<template v-if="getBundles(product).length > 0">
+          </template>
+          <template v-if="getBundles(product).length > 0">
             <p
               v-for="bundle in getBundles(product)"
               :key="bundle.label"
@@ -53,7 +53,7 @@
             >
               {{ `${bundle.quantity}x ${bundle.label}` }}
             </p>
-          </template>-->
+          </template>
         </SfTableData>
         <SfTableData class="table__data"> 2 </SfTableData>
         <SfTableData class="table__data price">
@@ -175,19 +175,19 @@ export default defineComponent({
     const router = useRouter();
     const isPaymentReady = ref(false);
     const terms = ref(false);
-    // const getAttributes = (product: ConfigurableCartItem) =>
-    //   product.configurable_options || [];
-    // const getBundles = (product: BundleCartItem) =>
-    //  product.bundle_options?.map((b) => b.values).flat() || [];
+     const getAttributes = (product: ConfigurableCartItem) =>
+    product.configurable_options || [];
+    const getBundles = (product: BundleCartItem) =>
+    product.bundle_options?.map((b) => b.values).flat() || [];
 
-    /*onMounted(async () => {
+    onMounted(async () => {
       const validStep = await isPreviousStepValid('billing');
       if (!validStep) {
         await router.push(app.localePath('/checkout/user-account'));
       }
 
       await load();
-    });*/
+    });
 
     const processOrder = async () => {
       order.value = await make();
@@ -224,15 +224,15 @@ export default defineComponent({
       isPaymentReady,
       loading,
       processOrder,
-      //products: computed(() => cartGetters.getItems(cart.value)),
-      //selectedShippingMethod: computed(() =>
-      // cartGetters.getSelectedShippingMethod(cart.value)
-      //),
+      products: computed(() => cartGetters.getItems(cart.value)),
+      selectedShippingMethod: computed(() =>
+      cartGetters.getSelectedShippingMethod(cart.value)
+      ),
       tableHeaders: ["Description", "Quantity", "Amount"],
       terms,
-      //totals: computed(() => cartGetters.getTotals(cart.value)),
-      //getAttributes,
-      //getBundles,
+      totals: computed(() => cartGetters.getTotals(cart.value)),
+      getAttributes,
+      getBundles,
       getMagentoImage,
       imageSizes,
       getRowTotal,

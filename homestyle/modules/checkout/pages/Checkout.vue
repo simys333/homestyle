@@ -90,10 +90,10 @@ export default defineComponent({
     };
 
     onMounted(async () => {
-      /*await load();
+      await load();
       if (products.value.length === 0 && currentStep.value !== 'thank-you') {
         await router.push(app.localePath('/'));
-      }*/
+      }
     });
 
     return {
