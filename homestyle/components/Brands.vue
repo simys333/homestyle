@@ -8,13 +8,10 @@
         {{ buttonText }}
       </SfLink>
     </div>
-    <SfCarousel
-      class="carousel"
-      :settings="{
-        perView: 6,
-        breakpoints: { 1023: { peek: 0, perView: 2 } },
-      }"
-    >
+    <SfCarousel class="carousel" :settings="{
+      perView: 6,
+      breakpoints: { 1023: { peek: 0, perView: 2 } },
+    }">
       <template #prev="prevArrow">
         <CarouselLeftArrow @click="prevArrow.go('prev')" />
       </template>
@@ -211,16 +208,25 @@ export default defineComponent({
 
   .carousel {
     margin: 0 calc(-1 * var(--spacer-sm)) 0 0;
+
     @include for-desktop {
       margin: 0;
     }
+
+    ::v-deep .sf-carousel__slides {
+      align-items: center;
+    }
+
     &__item {
       margin: 2rem 0 2rem 0;
+      text-align: center;
+
       img {
         width: 120px;
         height: auto;
       }
     }
+
     @include for-desktop {
       ::v-deep .sf-carousel__wrapper {
         max-width: calc(100% - 8rem);

@@ -1,63 +1,58 @@
 <template>
-  <div
-    v-if="hasChildren(currentCategory)"
-    data-testid="navigation-subcategories"
-    class="header-navigation__subcategories"
-  >
+  <div v-if="hasChildren(currentCategory)" data-testid="navigation-subcategories"
+    class="header-navigation__subcategories">
     <div class="header-navigation__subcategories-inner">
-      <div>
-        <SfImage
-          src="/homepage/category.png"
-          :srcsets="[]"
-          alt="Vila stripe maxi shirt dress"
-          :width="216"
-          :height="326"
-        />
-      </div>
-      <div
-        v-for="(catLvl1, idxLvl1) in currentCategory.children"
-        :key="idxLvl1"
-        class="header-navigation__subcategory"
-        aria-haspopup="true"
-      >
-        <SfLink
-          ref="lvl1CatRefs"
-          class="header-navigation__link1"
-          :link="localePath(getCatLink(catLvl1))"
-          :data-children="catLvl1.children.length"
-          @click.native="$emit('hideSubcategories')"
-          @focus.native="setupNav()"
-          @keydown.right.native.prevent="navRight()"
-          @keydown.left.native.prevent="navLeft()"
-          @keydown.down.native.prevent="navDown()"
-          @keydown.up.native.prevent="navUp()"
-        >
-          <h2
-            class="sf-heading sf-heading--left sf-heading sf-heading--left h5"
-          >
-            {{ catLvl1.name }}
-          </h2>
-        </SfLink>
-        <SfList v-if="hasChildren(catLvl1)">
-          <SfListItem
-            v-for="(catLvl2, idxLvl2) in catLvl1.children"
-            :key="idxLvl2"
-          >
-            <SfLink
-              ref="lvl2CatRefs"
-              class="header-navigation__link2"
-              :link="localePath(getCatLink(catLvl2))"
-              tabindex="-1"
-              @click.native="$emit('hideSubcategories')"
-              @keydown.down.native.prevent="navDown()"
-              @keydown.up.native.prevent="navUp()"
-              @keydown.right.native.prevent="navRight()"
-              @keydown.left.native.prevent="navLeft()"
-            >
-              {{ catLvl2.name }}
+      <div class="header-navigation__subcategory__left">
+        <SfImage src="/homepage/category.png" :srcsets="[]" alt="Vila stripe maxi shirt dress" :width="216"
+          :height="326" />
+        <SfList>
+          <SfListItem>
+            <SfLink class="header-navigation__link2 header-navigation__left" link="localePath(getCatLink(catLvl1))"
+              @click.native="$emit('hideSubcategories')" @focus.native="setupNav()"
+              @keydown.right.native.prevent="navRight()" @keydown.left.native.prevent="navLeft()"
+              @keydown.down.native.prevent="navDown()" @keydown.up.native.prevent="navUp()">
+              All {{ currentCategory.name }}
+            </SfLink>
+          </SfListItem>
+          <SfListItem>
+            <SfLink class="header-navigation__link2 header-navigation__left" link="localePath(getCatLink(catLvl1))"
+              @click.native="$emit('hideSubcategories')" @focus.native="setupNav()"
+              @keydown.right.native.prevent="navRight()" @keydown.left.native.prevent="navLeft()"
+              @keydown.down.native.prevent="navDown()" @keydown.up.native.prevent="navUp()">
+              Best sellers
+            </SfLink>
+          </SfListItem>
+          <SfListItem>
+            <SfLink class="header-navigation__link2 header-navigation__left" :link="link">
+              <SaleIcon class="sale-icon" />
+              Sale
             </SfLink>
           </SfListItem>
         </SfList>
+      </div>
+      <div class="header-navigation__subcategory__right">
+        <div v-for="(catLvl1, idxLvl1) in currentCategory.children" :key="idxLvl1"
+          class="header-navigation__subcategory" aria-haspopup="true">
+          <SfLink ref="lvl1CatRefs" class="header-navigation__link1" :link="localePath(getCatLink(catLvl1))"
+            :data-children="catLvl1.children.length" @click.native="$emit('hideSubcategories')"
+            @focus.native="setupNav()" @keydown.right.native.prevent="navRight()"
+            @keydown.left.native.prevent="navLeft()" @keydown.down.native.prevent="navDown()"
+            @keydown.up.native.prevent="navUp()">
+            <h2 class="sf-heading sf-heading--left sf-heading sf-heading--left h5">
+              {{ catLvl1.name }}
+            </h2>
+          </SfLink>
+          <SfList v-if="hasChildren(catLvl1)">
+            <SfListItem v-for="(catLvl2, idxLvl2) in catLvl1.children" :key="idxLvl2">
+              <SfLink ref="lvl2CatRefs" class="header-navigation__link2" :link="localePath(getCatLink(catLvl2))"
+                tabindex="-1" @click.native="$emit('hideSubcategories')" @keydown.down.native.prevent="navDown()"
+                @keydown.up.native.prevent="navUp()" @keydown.right.native.prevent="navRight()"
+                @keydown.left.native.prevent="navLeft()">
+                {{ catLvl2.name }}
+              </SfLink>
+            </SfListItem>
+          </SfList>
+        </div>
       </div>
     </div>
   </div>
@@ -69,6 +64,7 @@ import type { PropType } from "@nuxtjs/composition-api";
 import type { CategoryTree } from "~/modules/GraphQL/types";
 import { useUiHelpers } from "~/composables";
 import type { ComponentTemplateRef } from "~/types/componentTemplateRef";
+import SaleIcon from '~/components/Icons/SaleIcon.vue';
 
 export default defineComponent({
   name: "HeaderNavigationSubcategories",
@@ -76,6 +72,7 @@ export default defineComponent({
     SfLink,
     SfList,
     SfImage,
+    SaleIcon
   },
   props: {
     currentCategory: {
@@ -195,11 +192,11 @@ export default defineComponent({
 .header-navigation {
   &__subcategories {
     position: absolute;
-    z-index: 1;    
+    z-index: 1;
     left: 0;
     padding: 30px;
     right: 0;
-    padding-top:0;
+    padding-top: 0;
     flex-wrap: wrap;
     justify-content: center;
     display: flex;
@@ -207,7 +204,7 @@ export default defineComponent({
     &-inner {
       background-color: #fff;
       border-top: 1px solid var(--c-primary);
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       display: flex;
       justify-content: flex-start;
       width: var(--header-width, 77.5rem);
@@ -215,40 +212,79 @@ export default defineComponent({
   }
 
   &__subcategory {
-    flex: 0 0 20%;
     padding: 30px 10px;
+    flex-grow: 1;
   }
 
-  .sf-list__item{
-    line-height:28px
+  .sf-list__item {
+    line-height: 28px
+  }
+
+  &__subcategory__left {
+    display: flex;
+    border-right: 1px solid #BAB5B3;
+    margin: 10px;
+    width: 30%;
+
+    .sf-list {
+      margin-top: 1.5rem;
+      margin-left: 1rem;
+    }
+
+    .sf-list__item {
+      line-height: 35px
+    }
+  }
+
+  &__subcategory__right {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
   }
 
   .sf-heading {
     margin-bottom: var(--spacer-sm);
+
     &__title {
       font-weight: bold;
     }
+
     &.h5 {
       font-size: var(--h5-font-size);
-      color:var(--c-primary)
+      color: var(--c-primary);
+      font-family: var(--font-family--primary);
     }
   }
 
   .sf-link {
     text-decoration: none;
+    font-family: var(--font-family--primary);
+
     &:hover {
       text-decoration: underline;
     }
+
+    ::v-deep .sale-icon {
+      display: inline-flex;
+      margin-right: var(--spacer-xs);
+      vertical-align: middle;
+
+      svg {
+        fill: var(--c-primary);
+      }
+    }
   }
 
-  .sf-image--wrapper{
-    padding:10px;
-  }
 
   &__link2 {
     &:hover {
       color: var(--c-primary);
     }
+  }
+
+  &__left {
+    font-size: 1rem;
+    font-weight: 600;
   }
 }
 </style>
