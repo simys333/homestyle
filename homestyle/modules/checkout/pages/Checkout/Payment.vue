@@ -19,22 +19,27 @@
           {{ $t(tableHeader) }}
         </SfTableHeader>
       </SfTableHeading>
-      <SfTableRow class="table__row">
+      <SfTableRow  v-for="(product, index) in products"
+        :key="index" class="table__row">
         <SfTableData class="table__image">
           <SfImage
             image-tag="nuxt-img"
-            src="https://magento.homstyle.in/media/catalog/product/cache/fb1be9b35736f95f9b8328c138c4d7ab/i/m/img_2__2.png"
-            alt="Creme Gold Dinner Plate White new"
+            :src="getMagentoImage(cartGetters.getItemImage(product))"
+            :alt="cartGetters.getItemName(product)"
+            :width="imageSizes.checkout.imageWidth"
+            :height="imageSizes.checkout.imageHeight"
             :nuxt-img-config="{
               fit: 'cover',
             }"
           />
         </SfTableData>
         <SfTableData class="table__data table__description table__data">
-          <div class="product-title">Creme Gold Dinner Plate White new</div>
+          <div class="product-title">
+            {{ cartGetters.getItemName(product) }}
+          </div>
           <div class="product-sku">
             {{ cartGetters.getItemSku(product) }}
-          </div> 
+          </div>
          <template v-if="getAttributes(product).length > 0">
             <p
               v-for="attr in getAttributes(product)"
@@ -55,9 +60,15 @@
             </p>
           </template>
         </SfTableData>
-        <SfTableData class="table__data"> 2 </SfTableData>
+        <SfTableData class="table__data">
+          {{ cartGetters.getItemQty(product) }}
+        </SfTableData>
         <SfTableData class="table__data price">
-          <SfPrice :regular="1600" :special="1200" class="product-price" />
+          <SfPrice
+            :regular="$fc(cartGetters.getItemPrice(product).regular)"
+            :special=" cartGetters.getItemPrice(product).special && $fc(getRowTotal(product)) "
+            class="product-price"
+          />
         </SfTableData>
       </SfTableRow>
     </SfTable>
@@ -65,22 +76,27 @@
       <div class="summary__group">
         <div class="summary__total">
           <SfProperty
-            name="Subtotal"
-            value="1200"
+          :name="$t('Subtotal')"
+            :value="$fc(totals.subtotal)"
             class="sf-property--full-width property"
           />
           <SfProperty
-            v-if="hasDiscounts"
+          v-if="hasDiscounts"
             :name="$t('Discount')"
-            :value="450"
+            :value="$fc(discountsAmount)"
             class="sf-property--full-width sf-property--small property"
           />
         </div>
         <div class="summary__total">
-          <SfProperty value="$100" class="sf-property--full-width property">
+          <SfProperty
+            :value="$fc(getShippingMethodPrice(selectedShippingMethod))"
+            class="sf-property--full-width property"
+          >
             <template #name>
               <span class="sf-property__name">
-                test (<small>dgdg</small>)
+                {{ selectedShippingMethod.carrier_title }} (<small>{{
+                  selectedShippingMethod.method_title
+                }}</small>)
               </span>
             </template>
           </SfProperty>
@@ -89,13 +105,27 @@
         <SfDivider />
 
         <SfProperty
-          :name="$t('Total price')"
-          :value="4500"
+        :name="$t('Total price')"
+          :value="$fc(totals.total)"
           class="sf-property--full-width sf-property--large summary__property-total"
         />
 
         <VsfPaymentProvider @status="isPaymentReady = true" />
-
+        <SfCheckbox
+          v-model="terms"
+          v-e2e="'terms'"
+          name="terms"
+          class="summary__terms"
+        >
+          <template #label>
+            <div class="sf-checkbox__label">
+              {{ $t('I agree to') }}
+              <SfLink link="#">
+                {{ $t('Terms and conditions') }}
+              </SfLink>
+            </div>
+          </template>
+        </SfCheckbox>
         <div class="summary__action">
           <SfButton
             type="button"
