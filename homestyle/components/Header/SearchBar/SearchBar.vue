@@ -1,33 +1,15 @@
 <template>
-  <SfSearchBar
-    v-click-outside="closeSearch"
-    :placeholder="$t('Search for items')"
-    aria-label="Search"
-    :value="term"
-    @input="debouncedHandleSearch($event)"
-    @keyup.enter="handleKeydownEnter($event.target.value) /* https://github.com/vuestorefront/storefront-ui/issues/2453#issuecomment-1160231619 */"
-    @keydown.tab="hideSearch"
-    @focus="showSearch"
-    @click="showSearch"
-    @keydown.esc="closeSearch"
-  >
+  <SfSearchBar v-click-outside="closeSearch" :placeholder="$t('Search')" aria-label="Search" :value="term"
+    @input="debouncedHandleSearch($event)" @keyup.enter="handleKeydownEnter($event.target.value)"
+    @keydown.tab="hideSearch" @focus="showSearch" @click="showSearch" @keydown.esc="closeSearch">
     <template #icon>
-      <SfButton
-        v-if="!!term"
-        class="sf-search-bar__button sf-button--pure"
-        aria-label="Close search"
-        @click="closeSearch"
-      >
+      <SfButton v-if="!!term" class="sf-search-bar__button sf-button--pure" aria-label="Close search"
+        @click="closeSearch">
         <span class="sf-search-bar__icon">
-          <SvgImage
-            icon="cross"
-            :label="$t('Cancel')"
-            width="18"
-            height="18"
-          />
+          <SvgImage icon="cross" :label="$t('Cancel')" width="18" height="18" />
         </span>
       </SfButton>
-      
+
     </template>
   </SfSearchBar>
 </template>
@@ -119,7 +101,7 @@ export default defineComponent({
       if (term.value.length < props.minTermLen) return;
 
       // M2-579
-      const productList : Products = await getProductList({
+      const productList: Products = await getProductList({
         pageSize: props.itemsPerPage,
         search: term.value,
       }) as unknown as Products;
@@ -166,5 +148,5 @@ export default defineComponent({
   position: relative;
   right: 20px;
   bottom: 0;
-}  
+}
 </style>

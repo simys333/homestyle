@@ -6,17 +6,15 @@
       </h4>
       <SfLink :link="localePath(link)" target="_blank">
         {{ buttonText }}
+        <RightArrowIcon />
       </SfLink>
     </div>
-    <SfCarousel
-      class="carousel"
-      :settings="{
-        perView: 6,
-        gap: 20,
-        peek: 16,
-        breakpoints: { 1023: { peek: 0, perView: 2 } },
-      }"
-    >
+    <SfCarousel class="carousel" :settings="{
+      perView: 6,
+      gap: 20,
+      peek: 16,
+      breakpoints: { 1023: { peek: 0, perView: 2 } },
+    }">
       <template #prev="prevArrow">
         <CarouselLeftArrow @click="prevArrow.go('prev')" />
       </template>
@@ -98,6 +96,7 @@ import { useAddToCart } from "~/helpers/cart/addToCart";
 import { SortEnum } from "~/modules/GraphQL/types";
 import CarouselLeftArrow from "./CarouselLeftArrow.vue";
 import CarouselRightArrow from "./CarouselRightArrow.vue";
+import RightArrowIcon from "./Icons/RightArrowIcon.vue";
 
 export default defineComponent({
   name: "Brands",
@@ -109,6 +108,7 @@ export default defineComponent({
     SfCarousel,
     CarouselLeftArrow,
     CarouselRightArrow,
+    RightArrowIcon
   },
   props: {
     buttonText: {
@@ -201,9 +201,11 @@ export default defineComponent({
 
   .carousel {
     margin: 0 calc(-1 * var(--spacer-sm)) 0 0;
+
     @include for-desktop {
       margin: 0;
     }
+
     &__item {
       margin: 1.9375rem 0 2.4375rem 0;
     }
@@ -223,10 +225,12 @@ export default defineComponent({
         font-size: 18px;
       }
     }
+
     .sf-carousel__controls {
       button {
         background-color: transparent;
       }
+
       span {
         color: #190701;
       }

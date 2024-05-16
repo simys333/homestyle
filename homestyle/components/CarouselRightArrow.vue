@@ -19,6 +19,11 @@ export default {
   button {
     background-color: transparent;
   }
+
+  button::before {
+    box-shadow: none;
+  }
+
   span {
     color: #190701;
   }

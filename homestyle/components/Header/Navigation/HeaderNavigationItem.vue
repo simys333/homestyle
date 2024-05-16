@@ -1,18 +1,7 @@
-<template> 
-  <SfLink
-    class="sf-header-navigation-item__link"
-    :link="link"
-  >  
-   <SaleIcon class="sale-icon" v-if="label === 'Sale'" />   
+<template>
+  <SfLink class="sf-header-navigation-item__link" :link="link">
+    <SaleIcon class="sale-icon" v-if="label === 'Sale'" />
     {{ label }}
-    <SfIcon
-      v-if="hasChildren"
-      icon="chevron_down"
-      size="xxs"
-      color="green-primary"
-      viewBox="0 0 24 24"
-      :coverage="1"
-    />
   </SfLink>
 </template>
 <script lang="ts">
@@ -46,17 +35,20 @@ export default defineComponent({
 <style lang="scss">
 .sf-header-navigation-item__link {
   display: flex;
+
   .sf-icon {
     display: inline-flex;
     margin: 0 var(--spacer-xs);
   }
+
   .sale-icon svg {
-    fill:var(--c-primary);
-  }  
+    fill: var(--c-primary);
+  }
 }
+
 .sf-header-navigation-item__link:hover {
   .sale-icon svg {
-    fill:#FFF;
+    fill: #FFF;
   }
 }
 </style>

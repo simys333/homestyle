@@ -45,10 +45,10 @@
       </div>
     </div>
     <LoadWhenVisible>
-      <Category :button-text="$t('View All ➡')" :title="$t('Shop By Category')" link="/kitchenware.html" />
+      <Category :button-text="$t('View All')" :title="$t('Shop By Category')" link="/kitchenware.html" />
     </LoadWhenVisible>
     <LoadWhenVisible>
-      <NewProducts class="products" :button-text="$t('View All ➡')" :title="$t('Best Sellers')"
+      <NewProducts class="products" :button-text="$t('View All')" :title="$t('Best Sellers')"
         link="/kitchenware.html" />
     </LoadWhenVisible>
     <LazyHydrate when-visible>
@@ -61,12 +61,12 @@
       </CustomBannerGrid>
     </LazyHydrate>
     <LoadWhenVisible>
-      <Brands :button-text="$t('View All ➡')" :title="$t('Shop By Brands')" link="/kitchenware.html" />
+      <Brands :button-text="$t('View All')" :title="$t('Shop By Brands')" link="/kitchenware.html" />
     </LoadWhenVisible>
 
     <LoadWhenVisible>
-      <NewProducts class="products" :button-text="$t('View All ➡')"
-        :title="$t('Fresh Arrivals That Capture Our Hearts')" link="/dinnerware.html" />
+      <NewProducts class="products" :button-text="$t('View All')" :title="$t('Fresh Arrivals That Capture Our Hearts')"
+        link="/dinnerware.html" />
     </LoadWhenVisible>
     <LoadWhenVisible>
       <SaleSection :title="sale.title" :subtitle="sale.subtitle" :description="sale.description"
@@ -74,7 +74,7 @@
         :image-height="sale.imageHeight" :nuxt-img-config="sale.imageConfig" image-tag="nuxt-img" />
     </LoadWhenVisible>
     <LoadWhenVisible>
-      <NewProducts class="products" :button-text="$t('View All ➡')"
+      <NewProducts class="products" :button-text="$t('View All')"
         :title="$t('Thoughtful Gifts for Every Kitchen Enthusiast !')" link="/what-is-new.html" />
     </LoadWhenVisible>
     <LoadWhenVisible>
