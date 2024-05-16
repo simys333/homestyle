@@ -214,8 +214,13 @@ export default defineComponent({
     @include for-desktop {
       margin: 0;
     }
+    ::v-deep .sf-carousel__slides {
+      align-items: center;
+    }
     &__item {
       margin: 2rem 0 2rem 0;
+      text-align: center;
+
       img {
         width: 120px;
         height: auto;
