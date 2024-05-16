@@ -1,18 +1,8 @@
 <template>
   <div id="home">
-    <HeroSection
-      class="hero-section"
-      :title="hero.title"
-      :subtitle="hero.subtitle"
-      :description="hero.description"
-      :button-text="hero.buttonText"
-      :link="hero.link"
-      :image-src="hero.imageSrc"
-      :image-width="hero.imageWidth"
-      :image-height="hero.imageHeight"
-      :nuxt-img-config="hero.imageConfig"
-      image-tag="nuxt-img"
-    />
+    <HeroSection class="hero-section" :title="hero.title" :subtitle="hero.subtitle" :description="hero.description"
+      :button-text="hero.buttonText" :link="hero.link" :image-src="hero.imageSrc" :image-width="hero.imageWidth"
+      :image-height="hero.imageHeight" :nuxt-img-config="hero.imageConfig" image-tag="nuxt-img" />
     <!-- New section with four boxes -->
     <div class="icon-text-row">
       <div class="icon-text-box">
@@ -55,93 +45,45 @@
       </div>
     </div>
     <LoadWhenVisible>
-      <Category
-        :button-text="$t('View All ➡')"
-        :title="$t('Shop By Category')"
-        link="/kitchenware.html"
-      />
+      <Category :button-text="$t('View All ➡')" :title="$t('Shop By Category')" link="/kitchenware.html" />
     </LoadWhenVisible>
     <LoadWhenVisible>
-      <NewProducts
-        class="products"
-        :button-text="$t('View All ➡')"
-        :title="$t('Best Sellers')"
-        link="/kitchenware.html"
-      />
+      <NewProducts class="products" :button-text="$t('View All ➡')" :title="$t('Best Sellers')"
+        link="/kitchenware.html" />
     </LoadWhenVisible>
     <LazyHydrate when-visible>
-      <SfBannerGrid :banner-grid="1" class="banner-grid">
+      <CustomBannerGrid class="banner-grid">
         <template v-for="item in banners" #[item.slot]>
-          <SfBanner
-            :key="item.slot"
-            :title="item.title"
-            :subtitle="item.subtitle"
-            :description="item.description"
-            :button-text="item.buttonText"
-            image-tag="nuxt-img"
-            :image="item.image"
-            :nuxt-img-config="item.imageConfig"
-            :class="item.class"
-          />
+          <SfBanner :key="item.slot" :title="item.title" :subtitle="item.subtitle" :description="item.description"
+            :button-text="item.buttonText" image-tag="nuxt-img" :image="item.image" :nuxt-img-config="item.imageConfig"
+            :class="item.class" />
         </template>
-      </SfBannerGrid>
+      </CustomBannerGrid>
     </LazyHydrate>
     <LoadWhenVisible>
-      <Brands
-        :button-text="$t('View All ➡')"
-        :title="$t('Shop By Brands')"
-        link="/kitchenware.html"
-      />
+      <Brands :button-text="$t('View All ➡')" :title="$t('Shop By Brands')" link="/kitchenware.html" />
     </LoadWhenVisible>
 
     <LoadWhenVisible>
-      <NewProducts
-        class="products"
-        :button-text="$t('View All ➡')"
-        :title="$t('Fresh Arrivals That Capture Our Hearts')"
-        link="/dinnerware.html"
-      />
+      <NewProducts class="products" :button-text="$t('View All ➡')"
+        :title="$t('Fresh Arrivals That Capture Our Hearts')" link="/dinnerware.html" />
     </LoadWhenVisible>
     <LoadWhenVisible>
-      <SaleSection
-        :title="sale.title"
-        :subtitle="sale.subtitle"
-        :description="sale.description"
-        :button-text="sale.buttonText"
-        :link="sale.link"
-        :image-src="sale.imageSrc"
-        :image-width="sale.imageWidth"
-        :image-height="sale.imageHeight"
-        :nuxt-img-config="sale.imageConfig"
-        image-tag="nuxt-img"
-      />
+      <SaleSection :title="sale.title" :subtitle="sale.subtitle" :description="sale.description"
+        :button-text="sale.buttonText" :link="sale.link" :image-src="sale.imageSrc" :image-width="sale.imageWidth"
+        :image-height="sale.imageHeight" :nuxt-img-config="sale.imageConfig" image-tag="nuxt-img" />
     </LoadWhenVisible>
     <LoadWhenVisible>
-      <NewProducts
-        class="products"
-        :button-text="$t('View All ➡')"
-        :title="$t('Thoughtful Gifts for Every Kitchen Enthusiast !')"
-        link="/what-is-new.html"
-      />
+      <NewProducts class="products" :button-text="$t('View All ➡')"
+        :title="$t('Thoughtful Gifts for Every Kitchen Enthusiast !')" link="/what-is-new.html" />
     </LoadWhenVisible>
     <LoadWhenVisible>
-      <SfCallToAction
-        :title="callToAction.title"
-        :button-text="callToAction.buttonText"
-        :description="callToAction.description"
-        :background="callToAction.background"
-        class="call-to-action"
-      />
+      <SfCallToAction :title="callToAction.title" :button-text="callToAction.buttonText"
+        :description="callToAction.description" :background="callToAction.background" class="call-to-action" />
     </LoadWhenVisible>
-    <SfBanner
-      class="luxury-banner"
-      title="Fine Dining, Finer Choices"
-      subtitle=""
-      description="Explore Our Exclusive Luxury Dinnerware!"
-      buttonText="Shop Now →"
-      background=""
-      image="/homepage/luxury.png"
-    />
+    <SfBanner class="luxury-banner" title="Fine Dining, Finer Choices" subtitle=""
+      description="Explore Our Exclusive Luxury Dinnerware!" buttonText="Shop Now →" background=""
+      image="/homepage/luxury.png" />
 
     <div>
       <h3 style="color: #f8470a">We Design & Curate the Best.</h3>
@@ -155,11 +97,7 @@
         <div class="icon-text-box">
           <div class="icon">
             <!-- Replace 'icon1.png' with your actual icon image path -->
-            <img
-              else-if
-              src="/homepage/diamond (2) 2.png"
-              alt="Icon Description"
-            />
+            <img else-if src="/homepage/diamond (2) 2.png" alt="Icon Description" />
           </div>
           <div class="text">
             <p>Crafted for a <br />Lifetime.</p>
@@ -167,11 +105,7 @@
         </div>
         <div class="icon-text-box">
           <div class="icon">
-            <img
-              else-if
-              src="/homepage/romantic-dinner 4.png"
-              alt="Icon Description"
-            />
+            <img else-if src="/homepage/romantic-dinner 4.png" alt="Icon Description" />
           </div>
           <div class="text">
             <p>
@@ -212,10 +146,11 @@ import {
 } from "@nuxtjs/composition-api";
 import LazyHydrate from "vue-lazy-hydration";
 import { useCache, CacheTagPrefix } from "@vue-storefront/cache";
-import { SfBanner, SfBannerGrid,SfCallToAction } from "@storefront-ui/vue";
+import { SfBanner, SfCallToAction } from "@storefront-ui/vue";
 import { CmsPage } from "~/modules/GraphQL/types";
 import HeroSection from "~/components/HeroSection.vue";
 import SaleSection from "~/components/SaleSection.vue";
+import CustomBannerGrid from "~/components/CustomBannerGrid.vue";
 import { getMetaInfo } from "~/helpers/getMetaInfo";
 import { useContent } from "~/composables";
 import LoadWhenVisible from "~/components/utils/LoadWhenVisible.vue";
@@ -228,7 +163,7 @@ export default defineComponent({
     LazyHydrate,
     LoadWhenVisible,
     SfBanner,
-    SfBannerGrid,
+    CustomBannerGrid,
     SfCallToAction,
     MobileStoreBanner: () =>
       import(/* webpackPrefetch: true */ "~/components/MobileStoreBanner.vue"),
@@ -238,7 +173,7 @@ export default defineComponent({
       import(/* webpackPrefetch: true */ "~/components/Brands.vue"),
     Category: () =>
       import("~/components/Category.vue"),
-      Newsletter: () =>
+    Newsletter: () =>
       import("~/components/Newsletter.vue"),
   },
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
@@ -249,7 +184,7 @@ export default defineComponent({
     const year = new Date().getFullYear();
     const { isDesktop } = app.$device;
 
-    const page = ref <CmsPage|null>;
+    const page = ref<CmsPage | null>;
     const hero = ref({
       title: app.i18n.t("30-80% OFF"),
       subtitle: app.i18n.t("Sale is Live"),
@@ -281,61 +216,65 @@ export default defineComponent({
     const banners = ref([
       {
         slot: "banner-A",
-        /* subtitle: app.i18n.t('Dresses'),
-        title: app.i18n.t('Cocktail & Party'),
-        description: app.i18n.t(
-          'Find stunning women\'s cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses from all your favorite brands.',
-        ),
-        buttonText: app.i18n.t('Shop now'),*/
-        image: {
-          mobile: "/homepage/bannerB.webp",
-          desktop: "/homepage/bannerleft.png",
-        },
-        imageConfig: {
-          fit: "cover",
-          width: isDesktop ? 312 : 328,
-          height: isDesktop ? 644 : 343,
-          format: "webp",
-        },
-        class: "sf-banner--slim desktop-only",
-        link: "/women/women-clothing-skirts",
-      },
-      {
-        slot: "banner-B",
-        image: "/homepage/banner-middle.png",
-        imageConfig: {
-          fit: "contain",
-          width: isDesktop ? 648 : 328,
-          height: isDesktop ? 644 : 343,
-          format: "webp",
-        },
-        class: "sf-banner--slim banner-central desktop-only",
-        link: "/women/women-clothing-dresses",
-      },
-      {
-        slot: "banner-C",
-        /*  subtitle: app.i18n.t('T-Shirts'),
-        title: app.i18n.t('The Office Life'),*/
-        image: "/homepage/bannerrighttop.png",
+        subtitle: app.i18n.t('Plate Specials'),
+        title: app.i18n.t('30% OFF'),
+        image: "/homepage/banner-left-top.png",
         imageConfig: {
           fit: "contain",
           width: isDesktop ? 312 : 328,
           height: isDesktop ? 310 : 343,
-          format: "webp",
         },
         class: "sf-banner--slim banner__tshirt",
         link: "/women/women-clothing-shirts",
       },
       {
-        slot: "banner-D",
-        /* subtitle: app.i18n.t('Summer Sandals'),
-        title: app.i18n.t('Eco Sandals'),*/
-        image: "/homepage/bannerrightbottom.png",
+        slot: "banner-B",
+        subtitle: app.i18n.t('Plate Specials'),
+        title: app.i18n.t('30% OFF'),
+        image: "/homepage/banner-left-bottom.png",
         imageConfig: {
           fit: "contain",
           width: isDesktop ? 312 : 328,
           height: isDesktop ? 310 : 343,
-          format: 'webp',
+        },
+        class: "sf-banner--slim banner__tshirt",
+        link: "/women/women-shoes-sandals",
+      },
+      {
+        slot: "banner-C",
+        subtitle: app.i18n.t('Bundle Up & Save'),
+        title: app.i18n.t('50% OFF'),
+        image: "/homepage/banner-middle.png",
+        imageConfig: {
+          fit: "contain",
+          width: isDesktop ? 648 : 328,
+          height: isDesktop ? 644 : 343,
+        },
+        class: "sf-banner--slim banner-central desktop-only",
+        link: "/women/women-clothing-dresses",
+      },
+      {
+        slot: "banner-D",
+        subtitle: app.i18n.t('Plate Specials'),
+        title: app.i18n.t('30% OFF'),
+        image: "/homepage/banner-right-top.png",
+        imageConfig: {
+          fit: "contain",
+          width: isDesktop ? 312 : 328,
+          height: isDesktop ? 310 : 343,
+        },
+        class: "sf-banner--slim banner__tshirt",
+        link: "/women/women-clothing-shirts",
+      },
+      {
+        slot: "banner-E",
+        subtitle: app.i18n.t('Plate Specials'),
+        title: app.i18n.t('30% OFF'),
+        image: "/homepage/banner-right-bottom.png",
+        imageConfig: {
+          fit: "contain",
+          width: isDesktop ? 312 : 328,
+          height: isDesktop ? 310 : 343,
         },
         class: "sf-banner--slim banner__tshirt",
         link: "/women/women-shoes-sandals",
@@ -345,7 +284,7 @@ export default defineComponent({
       title: app.i18n.t('Stuck on what to choose for that special occasion ? Weve got you covered !  Explore our tailored suggestions guaranteed to delight your loved ones !'),
       description: '',
       buttonText: app.i18n.t('SHOP NOW →'),
-      background:'#F96C3B'
+      background: '#F96C3B'
     });
 
     /*useFetch(async () => {
@@ -395,6 +334,7 @@ export default defineComponent({
 #home {
   box-sizing: border-box;
   padding: 0 var(--spacer-sm);
+
   @include for-desktop {
     max-width: 1240px;
     padding: 0;
@@ -413,12 +353,14 @@ export default defineComponent({
     /*margin: var(--spacer-xl) auto var(--spacer-2xl);*/
   }
 }
+
 .hero-section {
   position: relative;
   width: 100vw;
   left: 50%;
   transform: translateX(-50%);
 }
+
 .banner-grid {
   --banner-container-width: 50%;
   margin-bottom: var(--spacer-xl);
@@ -453,6 +395,7 @@ export default defineComponent({
   padding-bottom: var(--spacer-2xs);
   --heading-padding: 0;
   border-bottom: 1px var(--c-light) solid;
+
   @include for-desktop {
     border-bottom: 0;
     justify-content: center;
@@ -463,21 +406,26 @@ export default defineComponent({
 .call-to-action {
   background-position: right;
   margin: var(--spacer-xs) 0;
+
   @include for-desktop {
     margin: var(--spacer-xl) 0 var(--spacer-2xl) 0;
   }
+
   ::v-deep .sf-call-to-action__title {
     font-family: "Recoleta";
     font-size: 32px;
+
     @include for-mobile {
       font-size: 12px;
     }
   }
+
   ::v-deep .sf-call-to-action__button {
     color: #f8470a;
     background-color: #ffffff;
     font-size: 14px;
     font-weight: 600;
+
     @include for-mobile {
       font-size: 11px;
     }
@@ -490,12 +438,14 @@ export default defineComponent({
 
 .carousel {
   margin: 0 calc(-1 * var(--spacer-sm)) 0 0;
+
   @include for-desktop {
     margin: 0;
   }
 
   &__item {
     margin: 1.375rem 0 2.5rem 0;
+
     @include for-desktop {
       margin: var(--spacer-xl) 0 var(--spacer-xl) 0;
     }
@@ -505,9 +455,43 @@ export default defineComponent({
     }
   }
 }
+
 section.sf-banner.sf-banner--slim {
-  background-size: contain;
-  min-height: 14rem;
+  background-size: cover;
+  min-height: 20rem;
+
+  ::v-deep .sf-banner__wrapper-desktop {
+    background-color: rgba(255, 255, 255, 0.5);
+    margin: 20px 0px 0px 20px;
+    padding: 15px;
+
+    .sf-banner__title {
+      font-size: 38px;
+      font-weight: 600;
+    }
+
+    .sf-banner__subtitle {
+      font-size: 29px;
+      color: #190701;
+      text-transform: capitalize;
+    }
+  }
+}
+
+section.sf-banner.banner-central {
+  background-size: cover;
+  background-position: top left;
+
+  ::v-deep .sf-banner__wrapper-desktop {
+
+    .sf-banner__title {
+      font-size: 48px;
+    }
+
+    .sf-banner__subtitle {
+      font-size: 32px;
+    }
+  }
 }
 
 .sale-section {
@@ -516,12 +500,15 @@ section.sf-banner.sf-banner--slim {
 
 .luxury-banner {
   margin: var(--spacer-lg) 0 var(--spacer-lg) 0;
+
   @include for-desktop {
     margin: var(--spacer-2xl) 0 var(--spacer-2xl) 0;
   }
+
   ::v-deep .sf-banner__wrapper.sf-button {
     display: none;
   }
+
   ::v-deep .sf-banner__wrapper-desktop {
     display: block;
   }
@@ -530,18 +517,22 @@ section.sf-banner.sf-banner--slim {
     color: #fca385;
     max-width: 18rem;
     text-transform: capitalize;
+
     @include for-desktop {
       font-size: 48px;
     }
   }
+
   ::v-deep .sf-banner__description {
     display: block;
     color: #fca385;
     text-transform: capitalize;
+
     @include for-desktop {
       font-size: 24px;
     }
   }
+
   ::v-deep .sf-banner__call-to-action {
     display: block;
     color: #ffffff;
