@@ -18,7 +18,6 @@
       <SfCarouselItem class="carousel__item">
        
         
-      <div class="products">
         <SfProductCard
           v-for="(product, i) in mappedProducts"
           :key="i"
@@ -48,7 +47,7 @@
           :is-in-wishlist-icon="isAuthenticated ? 'heart_fill' : ''"
           @click:wishlist="addItemToWishlist(product)"
           @click:add-to-cart="addItemToCart({ product, quantity: 1 })"
-        /></div></SfCarouselItem>
+        /></SfCarouselItem>
      
     
  
@@ -163,7 +162,7 @@ export default defineComponent({
 
     onMounted(async () => {
       const newestProducts = await getProductList({
-        pageSize: 8,
+        pageSize: 4,
         currentPage: 1,
         sort: {
           position: SortEnum.Asc,
