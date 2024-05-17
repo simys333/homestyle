@@ -6,6 +6,8 @@
       </h4>
       <SfLink :link="localePath(link)" target="_blank">
         {{ buttonText }}
+        <RightArrowIcon />
+
       </SfLink>
     </div>
     <SfCarousel
@@ -108,6 +110,8 @@ import { useAddToCart } from "~/helpers/cart/addToCart";
 import { SortEnum } from "~/modules/GraphQL/types";
 import CarouselLeftArrow from "./CarouselLeftArrow.vue";
 import CarouselRightArrow from "./CarouselRightArrow.vue";
+import RightArrowIcon from "./Icons/RightArrowIcon.vue";
+
 
 export default defineComponent({
   name: "Brands",
@@ -119,6 +123,7 @@ export default defineComponent({
     SfCarousel,
     CarouselLeftArrow,
     CarouselRightArrow,
+    RightArrowIcon
   },
   props: {
     buttonText: {

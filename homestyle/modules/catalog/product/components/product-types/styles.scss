@@ -185,10 +185,8 @@
   }
 
   &__gallery {
-    flex-direction: column;
-    --gallery-thumbs-order: 0;
+    flex:1;
     padding: var(--spacer-3xl) auto;
-    height: 700px;
 
     @include for-desktop {
       padding-bottom: 3.75rem;
@@ -199,14 +197,13 @@
 
 .sf-gallery {
   ::v-deep .sf-image {
-    outline: none;
-  }
+      outline: none;
+    }
 }
 
 ::v-deep .sf-gallery__thumbs {
   .sf-image {
     position: relative;
-    outline: none;
   }
 
   .sf-image-loaded {
