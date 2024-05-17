@@ -412,7 +412,7 @@ export default defineComponent({
   }
 
   ::v-deep .sf-call-to-action__title {
-    font-family: "Recoleta";
+    font-family: var(--font-family--secondary);
     font-size: 32px;
 
     @include for-mobile {
@@ -464,6 +464,7 @@ section.sf-banner.sf-banner--slim {
     background-color: rgba(255, 255, 255, 0.5);
     margin: 20px 0px 0px 20px;
     padding: 15px;
+    flex: 0 0 auto;
 
     .sf-banner__title {
       font-size: 38px;

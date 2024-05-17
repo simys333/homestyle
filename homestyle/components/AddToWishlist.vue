@@ -1,19 +1,6 @@
 <template>
-  <component
-    :is="component"
-    v-if="isShow"
-    class="add-to-wishlist"
-    @click="$emit('addToWishlist')"
-  >
-    <SvgImage
-      :icon="isInWishlist ? isInWishlistIcon : wishlistIcon"
-      :label="$t('Wishlist')"
-      width="32"
-      height="32"
-    />
-    <SfButton class="sf-button--text">
-      {{ $t(actionText) }}
-    </SfButton>
+  <component :is="component" v-if="isShow" class="add-to-wishlist" @click="$emit('addToWishlist')">
+    <SvgImage :icon="isInWishlist ? isInWishlistIcon : wishlistIcon" :label="$t('Wishlist')" width="32" height="32" />
   </component>
 </template>
 
@@ -68,6 +55,7 @@ export default defineComponent({
   cursor: pointer;
   margin-top: 1rem;
   margin-bottom: 1rem;
+
   &__content {
     margin-left: 5px;
     display: flex;

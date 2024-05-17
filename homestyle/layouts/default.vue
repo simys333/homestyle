@@ -80,17 +80,20 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Sans");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Lora:wght@400;700&display=swap");
+
 :root {
   --c-primary: #f8470a;
   --_c-green-primary: #f8470a;
-  --font-family--primary: "IBM Plex Sans";
-  --font-family--secondary: "Recoleta";
+  --font-family--primary: 'IBM Plex Sans', sans-serif;
+  --font-family--secondary: 'Lora', serif;
 }
+
 @import "~@storefront-ui/vue/styles";
 
 #layout {
   box-sizing: border-box;
+
   @include for-desktop {
     max-width: 1270px;
     margin: auto;
@@ -105,6 +108,7 @@ export default defineComponent({
 // Reset CSS
 html {
   width: auto;
+
   @include for-mobile {
     overflow-x: hidden;
   }
@@ -155,6 +159,7 @@ h4 {
   line-height: 1.6;
   margin: 0;
 }
+
 .sf-input.sf-search-bar .sf-input__wrapper {
   max-width: 480px;
   min-width: 150px;
@@ -164,8 +169,9 @@ h4 {
   border-bottom-width: 0px;
   padding: 9px;
 }
+
 .sf-input.sf-search-bar .sf-input__wrapper input {
-  font-family: "IBM Plex Sans";
+  font-family: var(--font-family--primary);
   font-size: 16px;
 }
 </style>

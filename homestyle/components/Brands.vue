@@ -198,7 +198,7 @@ export default defineComponent({
   }
 
   .title {
-    font-family: "Recoleta";
+    font-family: var(--font-family--secondary);
     font-size: 24px;
     font-weight: var(--font-weight--semibold);
   }
@@ -206,7 +206,7 @@ export default defineComponent({
   .sf-link {
     text-decoration: none;
     font-size: 16px;
-    font-family: "IBM Plex Sans";
+    font-family: var(--font-family--primary);
   }
 
   .carousel {

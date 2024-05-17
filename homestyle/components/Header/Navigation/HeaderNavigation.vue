@@ -1,34 +1,15 @@
 <template>
   <div class="header-navigation" @mouseleave="setCurrentCategory(null)">
-    <div
-      class="sf-header-navigation-item__item sf-header-navigation-item__item--desktop"
-    >
-      <HeaderNavigationItem
-        v-for="(category, index) in categoryTree"
-        :key="index"
-        ref="lvl0CatRefs"
-        :data-testid="category.uid"
-        :label="category.name"
-        :link="localePath(getCatLink(category))"
-        tabindex="1"
-        aria-haspopup="true"
-        class="nav-item"
-        :data-index="index"
-        :has-children="hasChildren(category)"
-        @mouseenter.native.prevent="onMouseEnter(category)"
-        @keydown.down.native.prevent="setCurrentCategory(category)"
-        @keydown.up.native.prevent="setCurrentCategory(null)"
-        @keyup.tab.native.prevent="setFocus($event)"
-        @keydown.right.native.prevent="navRight()"
-        @keydown.left.native.prevent="navLeft()"
-      />
+    <div class="sf-header-navigation-item__item sf-header-navigation-item__item--desktop">
+      <HeaderNavigationItem v-for="(category, index) in categoryTree" :key="index" ref="lvl0CatRefs"
+        :data-testid="category.uid" :label="category.name" :link="localePath(getCatLink(category))" tabindex="1"
+        aria-haspopup="true" class="nav-item" :data-index="index" :has-children="hasChildren(category)"
+        @mouseenter.native.prevent="onMouseEnter(category)" @keydown.down.native.prevent="setCurrentCategory(category)"
+        @keydown.up.native.prevent="setCurrentCategory(null)" @keyup.tab.native.prevent="setFocus($event)"
+        @keydown.right.native.prevent="navRight()" @keydown.left.native.prevent="navLeft()" />
     </div>
-    <HeaderNavigationSubcategories
-      v-if="hasChildren(currentCategory)"
-      :current-category="currentCategory"
-      :has-focus="hasFocus"
-      @hideSubcategories="focusRootElementAndHideSubcategories"
-    />
+    <HeaderNavigationSubcategories v-if="hasChildren(currentCategory)" :current-category="currentCategory"
+      :has-focus="hasFocus" @hideSubcategories="focusRootElementAndHideSubcategories" />
   </div>
 </template>
 <script lang="ts">
@@ -125,13 +106,17 @@ export default defineComponent({
 </script>
 <style lang="scss" scoped>
 .header-navigation {
-  border-top: 1px solid #cccc;
+  border-width: 1px 0;
+  border-style: solid;
+  border-color: #BAB5B3;
+
   &__main {
     display: flex;
   }
 }
+
 .nav-item {
-  font-family: "IBM Plex Sans";
+  font-family: var(--font-family--primary);
   --header-navigation-item-margin: 0 var(--spacer-sm);
   text-transform: none;
   padding: 16px 6px;

@@ -3,43 +3,26 @@
     <div class="container">
       <div key="my-cart" class="my-cart">
         <div class="content">
-          <SfHeading
-            title="In your bag(2)"
-            :level="4"
-            class="sf-heading--no-underline sf-heading--left"
-          />
+          <SfHeading title="In your bag (2)" :level="4" class="sf-heading--no-underline sf-heading--left" />
           <SfLoader :loading="loading">
             <transition name="sf-fade" mode="out-in">
               <div class="collected-product-list">
                 <transition-group name="sf-fade" tag="div">
-                  <SfCollectedProduct
-                    key="1"
-                    :has-more-actions="false"
-                    data-testid="cart-sidebar-collected-product"
+                  <SfCollectedProduct key="1" :has-more-actions="false" data-testid="cart-sidebar-collected-product"
                     image="https://magento.homstyle.in/media/catalog/product/cache/fb1be9b35736f95f9b8328c138c4d7ab/i/m/img_3__1.png"
-                    title="Creme Gold Dinner Plate White new"
-                    :regular-price="1600"
-                    :special-price="1200"
-                    class="collected-product"
-                  >
+                    title="Creme Gold Dinner Plate White new" :regular-price="1600" :special-price="1200"
+                    class="collected-product">
                     <template #image>
-                      <SfImage
-                        image-tag="nuxt-img"
+                      <SfImage image-tag="nuxt-img"
                         src="https://magento.homstyle.in/media/catalog/product/cache/fb1be9b35736f95f9b8328c138c4d7ab/i/m/img_3__1.png"
-                        alt="Creme Gold Dinner Plate White new"
-                        class="sf-collected-product__image"
-                        :nuxt-img-config="{
+                        alt="Creme Gold Dinner Plate White new" class="sf-collected-product__image" :nuxt-img-config="{
                           fit: 'cover',
-                        }"
-                      />
+                        }" />
                     </template>
                     <template #input>
                       <div class="sf-collected-product__quantity-wrapper">
-                        <SfQuantitySelector
-                          :disabled="loading"
-                          qty="1"
-                          class="sf-collected-product__quantity-selector"
-                        />
+                        <SfQuantitySelector :disabled="loading" qty="1"
+                          class="sf-collected-product__quantity-selector" />
                       </div>
                       <SfBadge class="color-danger sf-badge__absolute">
                         <template #default>
@@ -54,9 +37,7 @@
                     </template>
                     <template #actions>
                       <div class="desktop-only collected-product__actions">
-                        <SfButton
-                          class="sf-button--text collected-product__fav"
-                        >
+                        <SfButton class="sf-button--text collected-product__fav">
                           Add to favorites
                         </SfButton>
                       </div>
@@ -66,28 +47,14 @@
               </div>
               <div key="empty-cart" class="empty-cart">
                 <div class="empty-cart__banner">
-                  <SvgImage
-                    icon="empty_cart_image"
-                    :label="$t('Empty bag')"
-                    width="211"
-                    height="143"
-                    class="empty-cart__image"
-                  />
-                  <SfHeading
-                    :title="$t('Your cart is empty')"
-                    :level="2"
-                    class="empty-cart__heading"
-                    :description="
-                      $t(
-                        'Looks like you haven’t added any items to the bag yet. Start shopping to fill it in.'
-                      )
-                    "
-                  />
-                  <SfButton
-                    class="sf-button--full-width color-primary"
-                    data-testid="cart-sidebar-back"
-                    @click="handleHomeClick"
-                  >
+                  <SvgImage icon="empty_cart_image" :label="$t('Empty bag')" width="211" height="143"
+                    class="empty-cart__image" />
+                  <SfHeading :title="$t('Your cart is empty')" :level="2" class="empty-cart__heading" :description="$t(
+                    'Looks like you haven’t added any items to the bag yet. Start shopping to fill it in.'
+                  )
+                    " />
+                  <SfButton class="sf-button--full-width color-primary" data-testid="cart-sidebar-back"
+                    @click="handleHomeClick">
                     {{ $t("Go back shopping") }}
                   </SfButton>
                 </div>
@@ -97,44 +64,25 @@
         </div>
         <div class="sidebar">
           <div class="sidebar-summary">
-            <SfHeading
-              title="Order Summary"
-              :level="4"
-              class="sf-heading--no-underline sf-heading--left"
-            />
+            <SfHeading title="Order Summary" :level="4" class="sf-heading--no-underline sf-heading--left" />
             <transition name="sf-fade">
               <div>
-                <SfProperty
-                  name="Item Subtotal"
-                  class="sf-property--full-width sf-property--small"
-                >
+                <SfProperty name="Item Subtotal" class="sf-property--full-width sf-property--small">
                   <template #value>
                     <SfPrice regular="2560" class="my-cart__subtotal-price" />
                   </template>
                 </SfProperty>
-                <SfProperty
-                  :name="$t('Discount')"
-                  class="sf-property--full-width sf-property--small"
-                >
+                <SfProperty :name="$t('Discount')" class="sf-property--full-width sf-property--small">
                   <template #value>
-                    <SfPrice
-                      :regular="$fc(discount)"
-                      class="my-cart__discount"
-                    />
+                    <SfPrice :regular="$fc(discount)" class="my-cart__discount" />
                   </template>
                 </SfProperty>
-                <SfProperty
-                  name="Shipping"
-                  class="sf-property--full-width sf-property--small"
-                >
+                <SfProperty name="Shipping" class="sf-property--full-width sf-property--small">
                   <template #value>
                     <SfPrice regular="2560" class="my-cart__subtotal-price" />
                   </template>
                 </SfProperty>
-                <SfProperty
-                  name="Total"
-                  class="sf-property--full-width sf-property--large my-cart__total-price"
-                >
+                <SfProperty name="Total" class="sf-property--full-width sf-property--large my-cart__total-price">
                   <template #value>
                     <SfPrice data-testid="cart-sidebar-total" regular="2048" />
                   </template>
@@ -143,11 +91,8 @@
             </transition>
           </div>
           <a @click="goToCheckout">
-            <SfButton
-              v-e2e="'go-to-checkout-btn'"
-              data-testid="category-sidebar-go-to-checkout"
-              class="sf-button--full-width"
-            >
+            <SfButton v-e2e="'go-to-checkout-btn'" data-testid="category-sidebar-go-to-checkout"
+              class="sf-button--full-width">
               {{ $t("Checkout") }}
             </SfButton>
           </a>
@@ -155,24 +100,14 @@
       </div>
       <transition name="sf-collapse-top" mode="out-in">
         <div class="notifications">
-          <SfNotification
-            v-if="!loading"
-            :visible="isRemoveModalVisible"
-            :title="$t('Are you sure?')"
-            :message="
-              $t(
-                'Are you sure you would like to remove this item from the shopping cart?'
-              )
-            "
-            type="secondary"
-          >
+          <SfNotification v-if="!loading" :visible="isRemoveModalVisible" :title="$t('Are you sure?')" :message="$t(
+            'Are you sure you would like to remove this item from the shopping cart?'
+          )
+            " type="secondary">
             <template #action>
               <div class="button-wrap">
-                <SfButton
-                  class="sf-button_remove_item"
-                  data-testid="cart-sidebar-remove-item-yes"
-                  @click="removeItemAndSendNotification(itemToRemove)"
-                >
+                <SfButton class="sf-button_remove_item" data-testid="cart-sidebar-remove-item-yes"
+                  @click="removeItemAndSendNotification(itemToRemove)">
                   {{ $t("Yes") }}
                 </SfButton>
                 <SfButton @click="isRemoveModalVisible = false">
@@ -301,10 +236,13 @@ export default defineComponent({
     width: 100%;
     margin-top: 3.5rem;
   }
+
   a .sf-button {
     text-transform: capitalize;
-    font-family: "IBM Plex Sans";
+    font-family: var(--font-family--primary);
+    font-weight: var(--font-weight--normal);
   }
+
   .sidebar-summary {
     background-color: #f2f1f1;
     padding: var(--spacer-base);
@@ -315,22 +253,28 @@ export default defineComponent({
     }
 
     .sf-heading__title.h4 {
-      font-family: "IBM Plex Sans";
+      font-family: var(--font-family--primary);
       font-weight: 600;
     }
   }
+
   .sf-property--small {
     border-bottom: 1px solid #bab5b3;
+
     .sf-property__name,
     .sf-price__regular {
-      font-family: "IBM Plex Sans";
+      font-family: var(--font-family--primary);
       padding: 5px 0;
       color: #190701;
+      font-weight: var(--font-weight--normal);
+      font-size: 16px;
     }
+
     .sf-property__name::after {
       content: none;
     }
   }
+
   .my-cart__total-price {
     margin-top: var(--spacer-sm);
   }
@@ -392,12 +336,13 @@ export default defineComponent({
   }
 
   &__total-price {
+
     .sf-property__name,
     .sf-price__regular {
-      font-family: "IBM Plex Sans";
+      font-family: var(--font-family--primary);
       font-size: 18px;
-      font-weight: 600;
     }
+
     .sf-property__name::after {
       content: none;
     }
@@ -449,14 +394,20 @@ export default defineComponent({
 
   ::v-deep .sf-collected-product__title {
     font-family: var(--font-family--primary);
-    font-weight: var(--font-weight--bold);
+    font-weight: var(--font-weight--medium);
   }
+
   ::v-deep .sf-price {
+
     .sf-price__old,
     .sf-price__special {
       font-family: var(--font-family--primary);
-      font-weight: 600;
+      font-weight: var(--font-weight--medium);
       font-size: 16px;
+    }
+
+    .sf-price__old {
+      color: #756A67
     }
 
     .sf-price__old::before,
@@ -464,6 +415,7 @@ export default defineComponent({
       content: "\20B9";
     }
   }
+
   ::v-deep .sf-property span {
     font-family: var(--font-family--primary);
   }
@@ -495,13 +447,16 @@ export default defineComponent({
       }
     }
   }
+
   .sf-collected-product__quantity-wrapper {
     left: 0;
     margin-left: 1rem;
     padding: 0;
+
     .sf-collected-product__quantity-selector {
       background-color: white;
       border: 1px solid #756a67;
+
       .sf-quantity-selector__input {
         border-width: 0 1px 0px 1px;
         border-color: #756a67;
@@ -509,6 +464,7 @@ export default defineComponent({
       }
     }
   }
+
   .sf-badge__absolute {
     position: absolute;
     left: 0;

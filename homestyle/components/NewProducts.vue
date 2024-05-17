@@ -82,10 +82,10 @@
           :title="productGetters.getName(product)" :image-width="imageSizes.productCard.width"
           :image-height="imageSizes.productCard.height" :image="getMagentoImage(productGetters.getProductThumbnailImage(product))
             " :nuxt-img-config="{
-            fit: 'cover',
-          }" :regular-price="$fc(productGetters.getPrice(product).regular)" :special-price="productGetters.getPrice(product).special &&
-            $fc(productGetters.getPrice(product).special)
-            " :link="localePath(getProductPath(product))" :max-rating="5"
+              fit: 'cover',
+            }" :regular-price="$fc(productGetters.getPrice(product).regular)" :special-price="productGetters.getPrice(product).special &&
+              $fc(productGetters.getPrice(product).special)
+              " :link="localePath(getProductPath(product))" :max-rating="5"
           :score-rating="productGetters.getAverageRating(product)"
           :reviews-count="productGetters.getTotalReviews(product)" :is-in-wishlist="isInWishlist({ product })"
           :is-added-to-cart="isInCart(product)" :wishlist-icon="isAuthenticated ? 'heart' : ''"
@@ -211,12 +211,13 @@ export default defineComponent({
   }
 
   ::v-deep .sf-product-card__badge {
-    font-family: "IBM Plex Sans";
+    font-family: var(--font-family--primary);
     top: 0;
+    font-size: 1rem;
   }
 
   .title {
-    font-family: "Recoleta";
+    font-family: var(--font-family--secondary);
     font-size: 24px;
     font-weight: var(--font-weight--semibold);
   }
@@ -224,7 +225,7 @@ export default defineComponent({
   .sf-link {
     text-decoration: none;
     font-size: 16px;
-    font-family: "IBM Plex Sans";
+    font-family: var(--font-family--primary);
   }
 
   .carousel {
@@ -254,14 +255,19 @@ export default defineComponent({
 
     ::v-deep .sf-product-card__title {
       font-size: 18px;
-      font-family: "IBM Plex Sans";
+      font-family: var(--font-family--primary);
+      color: #190701;
     }
 
     ::v-deep .sf-price__special,
     ::v-deep .sf-price__old {
       font-size: 20px;
-      font-family: "IBM Plex Sans";
-      font-weight: var(--font-weight--semibold);
+      font-family: var(--font-family--primary);
+      font-weight: var(--font-weight--medium);
+    }
+
+    ::v-deep .sf-price__old {
+      color: #756A67;
     }
   }
 

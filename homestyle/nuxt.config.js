@@ -1,8 +1,7 @@
 import middleware from './middleware.config';
 import { getRoutes } from './routes';
-import { probeGoogleFontsApi, GOOGLE_FONT_API_URL } from './modules/core/GoogleFontsAPI/probeGoogleFontsApi.ts';
+// import { probeGoogleFontsApi, GOOGLE_FONT_API_URL } from './modules/core/GoogleFontsAPI/probeGoogleFontsApi.ts';
 
-const GoogleFontsPlugin = require('@beyonk/google-fonts-webpack-plugin');
 
 const {
   integrations: {
@@ -279,21 +278,21 @@ export default async () => {
     };
   }
 
-  if (await probeGoogleFontsApi()) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-    baseConfig.build.plugins.push(new GoogleFontsPlugin({
-      fonts: [
-        { family: 'Raleway', variants: ['300', '400', '500', '600', '700', '400italic'], display: 'swap' },
-        { family: 'Roboto', variants: ['300', '400', '500', '700', '300italic', '400italic'], display: 'swap' },
-      ],
-      name: 'fonts',
-      filename: 'fonts.css',
-      path: 'assets/fonts/',
-      local: true,
-      formats: ['eot', 'woff', 'woff2', 'ttf', 'svg'],
-      apiUrl: GOOGLE_FONT_API_URL,
-    }));
-  }
+  // if (await probeGoogleFontsApi()) {
+  //   // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+  //   baseConfig.build.plugins.push(new GoogleFontsPlugin({
+  //     fonts: [
+  //       { family: 'Raleway', variants: ['300', '400', '500', '600', '700', '400italic'], display: 'swap' },
+  //       { family: 'Roboto', variants: ['300', '400', '500', '700', '300italic', '400italic'], display: 'swap' },
+  //     ],
+  //     name: 'fonts',
+  //     filename: 'fonts.css',
+  //     path: 'assets/fonts/',
+  //     local: true,
+  //     formats: ['eot', 'woff', 'woff2', 'ttf', 'svg'],
+  //     apiUrl: GOOGLE_FONT_API_URL,
+  //   }));
+  // }
 
   return baseConfig;
 };

@@ -103,31 +103,37 @@ export default defineComponent({
   @include for-desktop {
     margin-bottom: 0;
   }
+
   &__socials {
     display: flex;
     justify-content: space-between;
     margin: 0 auto var(--spacer-lg);
     padding: var(--spacer-base) var(--spacer-xl);
+
     @include for-desktop {
       justify-content: flex-start;
       padding: var(--spacer-xs) 0;
       margin: 0 auto;
     }
   }
+
   &__social-image {
     margin: 0 var(--spacer-2xs) 0 0;
     background-color: #fff;
     border-radius: 100%;
   }
 }
+
 .sf-footer {
   background-color: #190701;
   display: flex;
   margin-top: var(--spacer-lg);
+
   @include for-desktop {
     padding-bottom: 0;
     margin-top: var(--spacer-2xl);
   }
+
   &__container {
     @include for-desktop {
       margin: var(--spacer-sm);
@@ -135,64 +141,77 @@ export default defineComponent({
       margin: 0 auto;
     }
   }
+
   .sf-footer-column,
   .sf-footer-column__title {
     background-color: transparent;
-    h5{
+
+    h5 {
       text-transform: capitalize;
       font-size: 18px;
     }
   }
 
   @include for-mobile {
-  .sf-footer-column,
-  .sf-footer-column__content .sf-list
-  {
-    margin-left: 1rem;
+
+    .sf-footer-column,
+    .sf-footer-column__content .sf-list {
+      margin-left: 1rem;
+    }
   }
-}
+
   .sf-menu-item span {
     font-size: 14px;
   }
+
   .sf-menu-item:hover {
     --menu-item-label-color: #f8470a;
   }
+
   .footer-left {
     display: flex;
     flex-direction: column;
     color: #ffffff;
-    font-family: "IBM Plex Sans";
+    font-family: var(--font-family--primary);
     min-width: 300px;
     margin: var(--spacer-base);
     margin-left: 0;
+
     @include for-mobile {
       align-items: center;
     }
+
     h4 {
       font-size: 18px;
-      font-family: "Recoleta";
+      font-family: var(--font-family--secondary);
     }
+
     span {
       font-size: 14px;
       line-height: 1.6;
     }
+
     .footer-text {
       font-size: 15px;
+
       @include for-mobile {
         text-align: center;
       }
     }
   }
 }
+
 .footer-2 {
   margin-top: 0;
   padding-top: 0;
+
   @include for-mobile {
     .footer-left {
       display: none;
     }
   }
 }
+
 .copyright {
   color: #ffffff;
   border-top: 1px solid rgba(255, 255, 255, 0.4);
@@ -202,6 +221,7 @@ export default defineComponent({
   flex: 1;
   justify-content: space-between;
   margin-bottom: var(--spacer-xl);
+
   @include for-mobile {
     flex-direction: column-reverse;
     margin-bottom: 4rem;
@@ -211,6 +231,7 @@ export default defineComponent({
   .payment-right {
     align-items: center;
     display: inline-flex;
+
     @include for-mobile {
       justify-content: center;
       margin-bottom: 10px;

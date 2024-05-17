@@ -1,48 +1,19 @@
 <template>
   <SfAccordion open="Description" :multiple="false" transition="" showChevron>
     <SfAccordionItem header="Description">
-      <HTMLContent
-        v-if="productDescription"
-        :content="productDescription"
-        tag="div"
-        class="product__description"
-      />
+      <HTMLContent v-if="productDescription" :content="productDescription" tag="div" class="product__description" />
     </SfAccordionItem>
-    <hr class="sf-divider" />
-    <SfAccordionItem header="Size Details">
-      <HTMLContent
-        v-if="productDescription"
-        :content="productDescription"
-        tag="div"
-        class="product__description"
-      />
+    <SfAccordionItem header="Size & Details">
+      <HTMLContent v-if="productDescription" :content="productDescription" tag="div" class="product__description" />
     </SfAccordionItem>
-    <hr class="sf-divider" />
     <SfAccordionItem header="Features">
-      <HTMLContent
-        v-if="productDescription"
-        :content="productDescription"
-        tag="div"
-        class="product__description"
-      />
+      <HTMLContent v-if="productDescription" :content="productDescription" tag="div" class="product__description" />
     </SfAccordionItem>
-    <hr class="sf-divider" />
     <SfAccordionItem header="Products Included">
-      <HTMLContent
-        v-if="productDescription"
-        :content="productDescription"
-        tag="div"
-        class="product__description"
-      />
+      <HTMLContent v-if="productDescription" :content="productDescription" tag="div" class="product__description" />
     </SfAccordionItem>
-    <hr class="sf-divider" />
     <SfAccordionItem header="More Info">
-      <HTMLContent
-        v-if="productDescription"
-        :content="productDescription"
-        tag="div"
-        class="product__description"
-      />
+      <HTMLContent v-if="productDescription" :content="productDescription" tag="div" class="product__description" />
     </SfAccordionItem>
   </SfAccordion>
 </template>
