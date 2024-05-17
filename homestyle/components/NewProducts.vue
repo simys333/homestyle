@@ -6,6 +6,7 @@
       </h4>
       <SfLink :link="localePath(link)" target="_blank">
         {{ buttonText }}
+        <RightArrowIcon />
       </SfLink>
     </div>
     <SfCarousel class="carousel" :settings="{ gap: 30, rewind: false }">
@@ -54,40 +55,26 @@
       
       
     </SfCarousel>
-    <!--<SfLoader :class="{ loading }" :loading="loading">
+    <SfLoader :class="{ loading }" :loading="loading">
       <div class="products">
-        <SfProductCard
-          v-for="(product, i) in mappedProducts"
-          :key="i"
-          class="product"
-          image-tag="nuxt-img"
-          :title="productGetters.getName(product)"
-          :image-width="imageSizes.productCard.width"
-          :image-height="imageSizes.productCard.height"
-          :image="
-            getMagentoImage(productGetters.getProductThumbnailImage(product))
-          "
-          :nuxt-img-config="{
+        <SfProductCard v-for="(product, i) in mappedProducts" :key="i" class="product" image-tag="nuxt-img"
+          :title="productGetters.getName(product)" :image-width="imageSizes.productCard.width"
+          :image-height="imageSizes.productCard.height" :image="getMagentoImage(productGetters.getProductThumbnailImage(product))
+            " :nuxt-img-config="{
             fit: 'cover',
           }"
-          :regular-price="$fc(productGetters.getPrice(product).regular)"
-          :special-price="
-            productGetters.getPrice(product).special &&
+          :regular-price="$fc(productGetters.getPrice(product).regular)" :special-price="productGetters.getPrice(product).special &&
             $fc(productGetters.getPrice(product).special)
           "
-          :link="localePath(getProductPath(product))"
-          :max-rating="5"
+          :link="localePath(getProductPath(product))" :max-rating="5"
+
           :score-rating="productGetters.getAverageRating(product)"
-          :reviews-count="productGetters.getTotalReviews(product)"
-          :is-in-wishlist="isInWishlist({ product })"
-          :is-added-to-cart="isInCart(product)"
-          :wishlist-icon="isAuthenticated ? 'heart' : ''"
-          :is-in-wishlist-icon="isAuthenticated ? 'heart_fill' : ''"
-          @click:wishlist="addItemToWishlist(product)"
-          @click:add-to-cart="addItemToCart({ product, quantity: 1 })"
-        />
+          :reviews-count="productGetters.getTotalReviews(product)" :is-in-wishlist="isInWishlist({ product })"
+          :is-added-to-cart="isInCart(product)" :wishlist-icon="isAuthenticated ? 'heart' : ''"
+          :is-in-wishlist-icon="isAuthenticated ? 'heart_fill' : ''" @click:wishlist="addItemToWishlist(product)"
+          @click:add-to-cart="addItemToCart({ product, quantity: 1 })" />
       </div>
-    </SfLoader>-->
+    </SfLoader>
   </div>
 </template>
 
@@ -114,6 +101,7 @@ import { useAddToCart } from "~/helpers/cart/addToCart";
 import { SortEnum } from "~/modules/GraphQL/types";
 import CarouselLeftArrow from "./CarouselLeftArrow.vue";
 import CarouselRightArrow from "./CarouselRightArrow.vue";
+import RightArrowIcon from "./Icons/RightArrowIcon.vue";
 
 export default defineComponent({
   name: "NewProducts",
@@ -125,6 +113,8 @@ export default defineComponent({
     SfCarousel,
     CarouselLeftArrow,
     CarouselRightArrow,
+    RightArrowIcon
+
   },
   props: {
     buttonText: {
