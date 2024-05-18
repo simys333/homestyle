@@ -1,22 +1,12 @@
 <template>
   <div id="e-mail">
     <div class="section">
-      <SfHeading
-        title="Sign Up For Our Email List And Receive 10% Off On Your First Order"
-        class="heading sf-heading--left"
-        :level="4"
-      />
+      <SfHeading title="Sign Up For Our Email List And Receive 10% Off On Your First Order"
+        class="heading sf-heading--left" :level="4" />
       <div class="input-wrapper">
-        <SfInput
-          class="sf-input--filled"
-          label=""
-          name="email"
-          type="text"
-          valid
-          errorMessage="Error message value of form input. It appears if `valid` is `false`."
-          :required="false"
-          placeholder="Your Email Address"
-        />
+        <SfInput class="sf-input--filled" label="" name="email" type="text" valid
+          errorMessage="Error message value of form input. It appears if `valid` is `false`." :required="false"
+          placeholder="Your Email Address" />
         <SfButton>Submit</SfButton>
       </div>
     </div>
@@ -49,6 +39,7 @@ export default {
 <style lang="scss" scoped>
 #e-mail {
   box-sizing: border-box;
+
   @include for-desktop {
     max-width: 1272px;
     margin: 0 auto;
@@ -65,12 +56,15 @@ export default {
     margin: 0 auto;
     padding: 1rem;
     background: var(--c-light);
+
     @include for-desktop {
       flex-direction: row;
       padding: 1.5rem;
     }
+
     @include for-mobile {
       flex-direction: column;
+
       h4 {
         font-size: 15px;
       }
@@ -84,9 +78,10 @@ export default {
   }
 
   .sf-heading__title.h4 {
-    font-family: "Recoleta";
+    font-family: var(--font-family--secondary);
     padding-left: 15px;
     line-height: 1.2;
+
     @include for-desktop {
       font-size: 30px;
     }
@@ -96,6 +91,7 @@ export default {
     @include for-desktop {
       width: 55%;
     }
+
     display: flex;
     align-items: center;
   }

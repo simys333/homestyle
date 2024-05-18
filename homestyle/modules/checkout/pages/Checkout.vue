@@ -2,19 +2,9 @@
   <div id="checkout">
     <div class="checkout">
       <div class="checkout__main">
-        <SfSteps
-          v-if="!isThankYou"
-          :active="currentStepIndex"
-          :class="{ checkout__steps: true }"
-          @change="handleStepClick"
-        >
-          <SfStep
-            v-for="(step, key) in STEPS"
-            :key="key"
-            :name="$t(step.title)"
-            :active="1"
-            can-go-back
-          >
+        <SfSteps v-if="!isThankYou" :active="currentStepIndex" :class="{ checkout__steps: true }"
+          @change="handleStepClick">
+          <SfStep v-for="(step, key) in STEPS" :key="key" :name="$t(step.title)" :active="1" can-go-back>
             <nuxt-child />
           </SfStep>
         </SfSteps>
@@ -90,10 +80,10 @@ export default defineComponent({
     };
 
     onMounted(async () => {
-      await load();
+      /*await load();
       if (products.value.length === 0 && currentStep.value !== 'thank-you') {
         await router.push(app.localePath('/'));
-      }
+      }*/
     });
 
     return {
@@ -113,13 +103,16 @@ export default defineComponent({
   --input-label-font-size: 1rem;
   --input-label-color: rgb(95, 99, 104);
 }
+
 #checkout {
   box-sizing: border-box;
+
   @include for-desktop {
     max-width: 1240px;
     margin: 0 auto;
     padding: 0 1.5rem;
   }
+
   ::v-deep .sf-button {
     text-transform: capitalize;
   }
@@ -146,6 +139,7 @@ export default defineComponent({
 
   &__steps {
     --steps-content-padding: 0 var(--spacer-base);
+
     @include for-desktop {
       --steps-content-padding: 0;
     }
@@ -154,29 +148,30 @@ export default defineComponent({
       --steps-step-color: #e8e4e4;
     }
   }
+
   ::v-deep .sf-heading__title {
     font-size: var(--h4-font-size);
     font-weight: normal;
     color: #5f6368;
   }
+
   ::v-deep .sf-input__wrapper input {
     border: 1px solid #989898;
   }
+
   ::v-deep .sf-input__label {
-    padding: 0 0 5px 6px;
+    padding: 0 0 10px 6px;
   }
+
   ::v-deep .sf-select {
     padding-top: 0;
+
     select {
       border: 1px solid #989898;
-      min-height: var(
-        --input-height,
-        calc(
-          var(--spacer-base) + var(--spacer-2xs) +
-            var(--input-label-font-size, var(--font-size--lg))
-        )
-      );
+      min-height: var(--input-height,
+          calc(var(--spacer-base) + var(--spacer-2xs) + var(--input-label-font-size, var(--font-size--lg))));
     }
+
     .sf-select__label {
       display: flex;
       align-items: center;

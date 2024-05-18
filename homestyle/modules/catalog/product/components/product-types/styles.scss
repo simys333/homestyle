@@ -9,7 +9,7 @@
 
     @include for-desktop {
       margin: 0;
-      max-width: 32.625rem;
+      max-width: 35rem;
       padding-left: var(--spacer-lg);
       width: 100%;
     }
@@ -28,14 +28,14 @@
 
     .sf-heading__title.h3 {
       font-size: 32px;
-      font-family: "Recoleta";
       font-weight: var(--font-weight--normal);
     }
 
     .sf-heading__description {
-      font-family: "IBM Plex Sans";
+      font-family: var(--font-family--primary); 
       font-size: 20px;
       margin: 0;
+      color: #756A67;
     }
   }
 
@@ -61,7 +61,7 @@
     ins,
     span {
       font-size: 24px;
-      font-family: "IBM Plex Sans";
+      font-family: var(--font-family--primary); 
     }
 
     del::before,
@@ -215,10 +215,12 @@
   display: flex;
   align-items: center;
   margin: var(--spacer-base) 0 var(--spacer-base);
+  border-top: 1px solid #756A67;
+  padding-top: 15px;
 
   .shipping-text {
     color: #756A67;
-    font-family: "IBM Plex Sans";
+    font-family: var(--font-family--primary); 
     font-size: 16px;
     margin-left: 10px;
   }
@@ -244,12 +246,13 @@
 }
 
 .want-to-buy {
-  font-family: "IBM Plex Sans";
   font-size: 16px;
   margin: var(--spacer-sm) 0 var(--spacer-base);
+  color: #190701;
 
   a {
     text-decoration: underline;
+    color: #190701;
   }
 }
 
@@ -261,7 +264,7 @@
   button {
     width: 100%;
     text-transform: capitalize;
-    font-family: "IBM Plex Sans";
+    font-family: var(--font-family--primary); 
     font-size: 16px;
     font-weight: var(--font-weight--normal);
   }
@@ -273,10 +276,17 @@
   border: 1px solid var(--c-primary);
 }
 
-::v-deep .sf-accordion-item__header,
-::v-deep .sf-accordion-item__content {
-  font-family: "IBM Plex Sans";
-  font-size: 16px;
+.sf-accordion-item {
+  --accordion-item-header-padding: var(--spacer-sm) 0;
+
+  &:not(:first-child) {
+    border-top: 1px solid #756A67;
+  }
+  .sf-accordion-item__header{
+    font-family: var(--font-family--primary);
+    font-size: 16px;
+    font-weight: var(--font-weight--medium);
+  }
 }
 
 @keyframes moveicon {
@@ -302,3 +312,4 @@
     }
   }
 }
+

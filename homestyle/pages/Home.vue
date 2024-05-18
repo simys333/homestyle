@@ -412,7 +412,7 @@ export default defineComponent({
   }
 
   ::v-deep .sf-call-to-action__title {
-    font-family: "Recoleta";
+    font-family: var(--font-family--secondary);
     font-size: 32px;
 
     @include for-mobile {

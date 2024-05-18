@@ -194,12 +194,12 @@ export default defineComponent({
   }
 
   ::v-deep .sf-product-card__badge {
-    font-family: "IBM Plex Sans";
+    font-family: var(--font-family--primary);
     top: 0;
   }
 
   .title {
-    font-family: "Recoleta";
+    font-family: var(--font-family--secondary);
     font-size: 24px;
     font-weight: var(--font-weight--semibold);
   }
@@ -207,7 +207,7 @@ export default defineComponent({
   .sf-link {
     text-decoration: none;
     font-size: 16px;
-    font-family: "IBM Plex Sans";
+    font-family: var(--font-family--primary);
   }
 
   .carousel {
@@ -231,12 +231,12 @@ export default defineComponent({
     }
     ::v-deep .sf-product-card__title {
       font-size: 18px;
-      font-family: "IBM Plex Sans";
+      font-family: var(--font-family--primary);
     }
     ::v-deep .sf-price__special,
     ::v-deep .sf-price__old {
       font-size: 20px;
-      font-family: "IBM Plex Sans";
+      font-family: var(--font-family--primary);
       font-weight: var(--font-weight--semibold);
     }
   }

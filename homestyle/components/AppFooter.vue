@@ -2,7 +2,7 @@
   <div>
     <SfFooter :column="5" multiple class="footer">
       <div class="footer-left">
-        <SfImage src="/homepage/logo.png" alt="homstyle" />
+        <SfImage src="/logo.png" alt="homstyle" />
         <p class="footer-text">
           When you choose Homstyle, you're choosing homeware that not only adds
           functionality to your daily life but also brings a touch of enduring
@@ -55,11 +55,11 @@
       <div class="copyright">
         <span> Copyright © 2024. Homstyle. All Rights Reserved. </span>
         <span class="payment-right">
-          <img src="/homepage/master_icon.png" alt="" />
-          <img src="/homepage/visa_icon.png" alt="" />
-          <img src="/homepage/rupay_icon.png" alt="" />
-          <img src="/homepage/paytm_icon.png" alt="" />
-          <img src="/homepage/gpay_icon.png" alt="" />
+          <img src="/master_icon.png" alt="" />
+          <img src="/visa_icon.png" alt="" />
+          <img src="/rupay_icon.png" alt="" />
+          <img src="/paytm_icon.png" alt="" />
+          <img src="/gpay_icon.png" alt="" />
           <span>&amp; more</span>
         </span>
       </div>
@@ -103,81 +103,115 @@ export default defineComponent({
   @include for-desktop {
     margin-bottom: 0;
   }
+
   &__socials {
     display: flex;
     justify-content: space-between;
     margin: 0 auto var(--spacer-lg);
     padding: var(--spacer-base) var(--spacer-xl);
+
     @include for-desktop {
       justify-content: flex-start;
       padding: var(--spacer-xs) 0;
       margin: 0 auto;
     }
   }
+
   &__social-image {
     margin: 0 var(--spacer-2xs) 0 0;
     background-color: #fff;
     border-radius: 100%;
   }
 }
+
 .sf-footer {
   background-color: #190701;
   display: flex;
   margin-top: var(--spacer-lg);
+
   @include for-desktop {
     padding-bottom: 0;
     margin-top: var(--spacer-2xl);
   }
+
   &__container {
-    margin: var(--spacer-sm);
     @include for-desktop {
+      margin: var(--spacer-sm);
       max-width: 69rem;
       margin: 0 auto;
     }
   }
+
   .sf-footer-column,
   .sf-footer-column__title {
     background-color: transparent;
+
+    h5 {
+      text-transform: capitalize;
+      font-size: 18px;
+    }
   }
+
+  @include for-mobile {
+
+    .sf-footer-column,
+    .sf-footer-column__content .sf-list {
+      margin-left: 1rem;
+    }
+  }
+
+  .sf-menu-item span {
+    font-size: 14px;
+  }
+
   .sf-menu-item:hover {
     --menu-item-label-color: #f8470a;
   }
+
   .footer-left {
     display: flex;
     flex-direction: column;
     color: #ffffff;
-    font-family: "IBM Plex Sans";
+    font-family: var(--font-family--primary);
     min-width: 300px;
     margin: var(--spacer-base);
     margin-left: 0;
+
     @include for-mobile {
       align-items: center;
     }
+
     h4 {
       font-size: 18px;
-      font-family: "Recoleta";
+      font-family: var(--font-family--secondary);
     }
+
     span {
       font-size: 14px;
       line-height: 1.6;
     }
+
     .footer-text {
       font-size: 15px;
+
       @include for-mobile {
         text-align: center;
       }
     }
   }
 }
+
 .footer-2 {
   margin-top: 0;
   padding-top: 0;
+
   @include for-mobile {
     .footer-left {
       display: none;
     }
   }
 }
+
 .copyright {
   color: #ffffff;
   border-top: 1px solid rgba(255, 255, 255, 0.4);
@@ -187,6 +221,7 @@ export default defineComponent({
   flex: 1;
   justify-content: space-between;
   margin-bottom: var(--spacer-xl);
+
   @include for-mobile {
     flex-direction: column-reverse;
     margin-bottom: 4rem;
@@ -196,6 +231,7 @@ export default defineComponent({
   .payment-right {
     align-items: center;
     display: inline-flex;
+
     @include for-mobile {
       justify-content: center;
       margin-bottom: 10px;
