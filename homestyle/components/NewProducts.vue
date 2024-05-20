@@ -21,7 +21,6 @@
 
         
         <SfProductCard
-          class="product"
           image-tag="nuxt-img"
           :title="productGetters.getName(product)"
           :image-width="imageSizes.productCard.width"
