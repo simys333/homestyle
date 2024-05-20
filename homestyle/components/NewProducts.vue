@@ -16,65 +16,27 @@
       <template #next="nextArrow">
         <CarouselRightArrow @click="nextArrow.go('next')" />
       </template>
-      <SfCarouselItem class="carousel__item">
-       
-        
-        <SfProductCard
-          v-for="(product, i) in mappedProducts"
-          :key="i"
-          class="product"
-          image-tag="nuxt-img"
-          :title="productGetters.getName(product)"
-          :image-width="imageSizes.productCard.width"
-          :image-height="imageSizes.productCard.height"
-          :image="
-            getMagentoImage(productGetters.getProductThumbnailImage(product))
-          "
-          :nuxt-img-config="{
-            fit: 'cover',
-          }"
-          :regular-price="$fc(productGetters.getPrice(product).regular)"
-          :special-price="
-            productGetters.getPrice(product).special &&
-              $fc(productGetters.getPrice(product).special)
-          "
-          :link="localePath(getProductPath(product))"
-          :max-rating="5"
-          :score-rating="productGetters.getAverageRating(product)"
-          :reviews-count="productGetters.getTotalReviews(product)"
-          :is-in-wishlist="isInWishlist({ product })"
-          :is-added-to-cart="isInCart(product)"
-          :wishlist-icon="isAuthenticated ? 'heart' : ''"
-          :is-in-wishlist-icon="isAuthenticated ? 'heart_fill' : ''"
-          @click:wishlist="addItemToWishlist(product)"
-          @click:add-to-cart="addItemToCart({ product, quantity: 1 })"
-        /></SfCarouselItem>
-     
-    
- 
-      
-      
-    </SfCarousel>
-    <SfLoader :class="{ loading }" :loading="loading">
-      <div class="products">
-        <SfProductCard v-for="(product, i) in mappedProducts" :key="i" class="product" image-tag="nuxt-img"
-          :title="productGetters.getName(product)" :image-width="imageSizes.productCard.width"
-          :image-height="imageSizes.productCard.height" :image="getMagentoImage(productGetters.getProductThumbnailImage(product))
+      <SfCarouselItem v-for="(product, i) in mappedProducts" :key="i" class="carousel__item">
+        <SfProductCard class="product" image-tag="nuxt-img" :title="productGetters.getName(product)"
+          :image-width="imageSizes.productCard.width" :image-height="imageSizes.productCard.height" :image="getMagentoImage(productGetters.getProductThumbnailImage(product))
             " :nuxt-img-config="{
-            fit: 'cover',
-          }"
-          :regular-price="$fc(productGetters.getPrice(product).regular)" :special-price="productGetters.getPrice(product).special &&
-            $fc(productGetters.getPrice(product).special)
-          "
-          :link="localePath(getProductPath(product))" :max-rating="5"
-
+              fit: 'cover',
+            }" :regular-price="$fc(productGetters.getPrice(product).regular)" :special-price="productGetters.getPrice(product).special &&
+              $fc(productGetters.getPrice(product).special)
+              " :link="localePath(getProductPath(product))" :max-rating="5"
           :score-rating="productGetters.getAverageRating(product)"
           :reviews-count="productGetters.getTotalReviews(product)" :is-in-wishlist="isInWishlist({ product })"
           :is-added-to-cart="isInCart(product)" :wishlist-icon="isAuthenticated ? 'heart' : ''"
           :is-in-wishlist-icon="isAuthenticated ? 'heart_fill' : ''" @click:wishlist="addItemToWishlist(product)"
           @click:add-to-cart="addItemToCart({ product, quantity: 1 })" />
-      </div>
-    </SfLoader>
+      </SfCarouselItem>
+
+
+
+
+
+    </SfCarousel>
+
   </div>
 </template>
 
@@ -212,27 +174,34 @@ export default defineComponent({
 
   .carousel {
     margin: 0 calc(-1 * var(--spacer-sm)) 0 0;
+
     @include for-desktop {
       margin: 0;
     }
+
     &__item {
       margin: 1.9375rem 0 2.4375rem 0;
     }
+
     ::v-deep .sf-image--placeholder {
       display: none;
     }
+
     @include for-desktop {
       ::v-deep .sf-carousel__wrapper {
         max-width: calc(100% - 8rem);
       }
     }
+
     ::v-deep .sf-carousel__slides {
       max-height: 430px;
     }
+
     ::v-deep .sf-product-card__title {
       font-size: 18px;
       font-family: var(--font-family--primary);
     }
+
     ::v-deep .sf-price__special,
     ::v-deep .sf-price__old {
       font-size: 20px;
