@@ -21,7 +21,6 @@
 
         
         <SfProductCard
-          :key="i"
           class="product"
           image-tag="nuxt-img"
           :title="productGetters.getName(product)"
@@ -55,7 +54,78 @@
       
       
     </SfCarousel>
-    <SfLoader :class="{ loading }" :loading="loading">
+
+
+
+    <SfCarousel class="carousel" :settings="{ gap: 30, rewind: false }">
+      <template #prev="prevArrow">
+        <CarouselLeftArrow @click="prevArrow.go('prev')" />
+      </template>
+      <template #next="nextArrow">
+        <CarouselRightArrow @click="nextArrow.go('next')" />
+      </template>
+      <SfCarouselItem class="carousel__item">
+        <SfProductCard
+          image="https://magento.homstyle.in/media/catalog/product/cache/fb1be9b35736f95f9b8328c138c4d7ab/i/m/img_2__2.png"
+          :imageWidth="312" :imageHeight="360" badgeLabel="20%" badgeColor="" title="Creme Gold Dinner Plate White new"
+          linkTag="" regularPrice="₹1600" specialPrice="₹1280" wishlistIcon="heart" isInWishlistIcon="heart_fill"
+          :isInWishlist="false" showAddToCartButton :is-in-wishlist="isInWishlist({ product })"
+          :is-added-to-cart="isInCart(product)" :wishlist-icon="isAuthenticated ? 'heart' : ''"
+          :is-in-wishlist-icon="isAuthenticated ? 'heart_fill' : ''" @click:wishlist="addItemToWishlist(product)"
+          @click:add-to-cart="addItemToCart({ product, quantity: 1 })" />
+      </SfCarouselItem>
+      <SfCarouselItem class="carousel__item">
+        <SfProductCard
+          image="https://magento.homstyle.in/media/catalog/product/cache/fb1be9b35736f95f9b8328c138c4d7ab/i/m/img_3_.png"
+          :imageWidth="312" :imageHeight="360" badgeLabel="" badgeColor="" title="Creme Gold Dinner bowl Black"
+          linkTag="" regularPrice="1600" specialPrice="1280" wishlistIcon="heart" isInWishlistIcon="heart_fill"
+          :isInWishlist="false" showAddToCartButton :isAddedToCart="false" :addToCartDisabled="false" />
+      </SfCarouselItem>
+      <SfCarouselItem class="carousel__item">
+        <SfProductCard
+          image="https://magento.homstyle.in/media/catalog/product/cache/fb1be9b35736f95f9b8328c138c4d7ab/i/m/img_1_.png"
+          :imageWidth="312" :imageHeight="360" badgeLabel="" badgeColor="" title="Creme Gold Dinner Plate White new"
+          linkTag="" regularPrice="1600" specialPrice="1280" wishlistIcon="heart" isInWishlistIcon="heart_fill"
+          :isInWishlist="false" showAddToCartButton :isAddedToCart="false" :addToCartDisabled="false" />
+      </SfCarouselItem>
+      <SfCarouselItem class="carousel__item">
+        <SfProductCard
+          image="https://magento.homstyle.in/media/catalog/product/cache/fb1be9b35736f95f9b8328c138c4d7ab/i/m/img_1.png"
+          :imageWidth="312" :imageHeight="360" badgeLabel="" badgeColor="" title="Creme Gold Dinner Plate White new"
+          linkTag="" regularPrice="1600" specialPrice="1280" wishlistIcon="heart" isInWishlistIcon="heart_fill"
+          :isInWishlist="false" showAddToCartButton :isAddedToCart="false" :addToCartDisabled="false" />
+      </SfCarouselItem>
+      <SfCarouselItem class="carousel__item">
+        <SfProductCard
+          image="https://magento.homstyle.in/media/catalog/product/cache/fb1be9b35736f95f9b8328c138c4d7ab/i/m/img_2__2.png"
+          :imageWidth="312" :imageHeight="360" badgeLabel="" badgeColor="" title="Creme Gold Dinner Plate White new"
+          linkTag="" regularPrice="1600" specialPrice="1280" wishlistIcon="heart" isInWishlistIcon="heart_fill"
+          :isInWishlist="false" showAddToCartButton :isAddedToCart="false" :addToCartDisabled="false" />
+      </SfCarouselItem>
+      <SfCarouselItem class="carousel__item">
+        <SfProductCard
+          image="https://magento.homstyle.in/media/catalog/product/cache/fb1be9b35736f95f9b8328c138c4d7ab/i/m/img_3_.png"
+          :imageWidth="312" :imageHeight="360" badgeLabel="" badgeColor="" title="Creme Gold Dinner bowl Black"
+          linkTag="" regularPrice="1600" specialPrice="1280" wishlistIcon="heart" isInWishlistIcon="heart_fill"
+          :isInWishlist="false" showAddToCartButton :isAddedToCart="false" :addToCartDisabled="false" />
+      </SfCarouselItem>
+      <SfCarouselItem class="carousel__item">
+        <SfProductCard
+          image="https://magento.homstyle.in/media/catalog/product/cache/fb1be9b35736f95f9b8328c138c4d7ab/i/m/img_1_.png"
+          :imageWidth="312" :imageHeight="360" badgeLabel="" badgeColor="" title="Creme Gold Dinner Plate White new"
+          linkTag="" regularPrice="1600" specialPrice="1280" wishlistIcon="heart" isInWishlistIcon="heart_fill"
+          :isInWishlist="false" showAddToCartButton :isAddedToCart="false" :addToCartDisabled="false" />
+      </SfCarouselItem>
+      <SfCarouselItem class="carousel__item">
+        <SfProductCard
+          image="https://magento.homstyle.in/media/catalog/product/cache/fb1be9b35736f95f9b8328c138c4d7ab/i/m/img_1.png"
+          :imageWidth="312" :imageHeight="360" badgeLabel="" badgeColor="" title="Creme Gold Dinner Plate White new"
+          linkTag="" regularPrice="1600" specialPrice="1280" wishlistIcon="heart" isInWishlistIcon="heart_fill"
+          :isInWishlist="false" showAddToCartButton :isAddedToCart="false" :addToCartDisabled="false" />
+      </SfCarouselItem>
+    </SfCarousel>
+
+   <!--- <SfLoader :class="{ loading }" :loading="loading">
       <div class="products">
         <SfProductCard v-for="(product, i) in mappedProducts" :key="i" class="product" image-tag="nuxt-img"
           :title="productGetters.getName(product)" :image-width="imageSizes.productCard.width"
@@ -74,7 +144,7 @@
           :is-in-wishlist-icon="isAuthenticated ? 'heart_fill' : ''" @click:wishlist="addItemToWishlist(product)"
           @click:add-to-cart="addItemToCart({ product, quantity: 1 })" />
       </div>
-    </SfLoader>
+    </SfLoader>-->
   </div>
 </template>
 
