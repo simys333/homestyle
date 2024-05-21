@@ -259,10 +259,7 @@ export default defineComponent({
   .sf-link {
     text-decoration: none;
     font-family: var(--font-family--primary);
-
-    &:hover {
-      text-decoration: underline;
-    }
+    font-weight: normal;
 
     ::v-deep .sale-icon {
       display: inline-flex;

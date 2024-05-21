@@ -207,7 +207,7 @@ export default defineComponent({
     }
 
     &__item {
-      margin: 1.9375rem 0 2.4375rem 0;
+      margin: 3rem 0;
     }
 
     @include for-desktop {
@@ -223,6 +223,8 @@ export default defineComponent({
 
       span {
         font-size: 18px;
+        margin-top: 10px;
+        color: #190701;
       }
     }
 

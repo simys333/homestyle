@@ -1,9 +1,7 @@
 <template>
-    <nuxt-link :to="localePath('/')" class="sf-header__logo">
-        <SfImage v-if="logoSrc" image-tag="nuxt-img" :src="logoSrc" :alt="logoAlt" :title="logoAlt" :width="logoWidth" :height="logoHeight"/>        
-        <img else-if src="~/assets/logo.png" />
-</v-img>
-    </nuxt-link>
+  <nuxt-link :to="localePath('/')" class="sf-header__logo">
+    <SfImage src="/logo.svg" alt="Homstyle" title="Homstyle" width="133" height="32" />
+  </nuxt-link>
 </template>
 <script lang="ts">
 import { SfImage } from '@storefront-ui/vue';
