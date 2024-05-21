@@ -2,7 +2,7 @@
   <div>
     <SfFooter :column="5" multiple class="footer">
       <div class="footer-left">
-        <SfImage src="/_nuxt/assets/logo.png" alt="homstyle" />
+        <SfImage src="/logo.svg" alt="homstyle" title="homstyle" width="133" height="32" />
         <p class="footer-text">
           When you choose Homstyle, you're choosing homeware that not only adds
           functionality to your daily life but also brings a touch of enduring

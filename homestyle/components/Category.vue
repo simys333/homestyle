@@ -201,11 +201,13 @@ export default defineComponent({
 
   .carousel {
     margin: 0 calc(-1 * var(--spacer-sm)) 0 0;
+
     @include for-desktop {
       margin: 0;
     }
+
     &__item {
-      margin: 1.9375rem 0 2.4375rem 0;
+      margin: 3rem 0;
     }
 
     @include for-desktop {
@@ -221,12 +223,16 @@ export default defineComponent({
 
       span {
         font-size: 18px;
+        margin-top: 10px;
+        color: #190701;
       }
     }
+
     .sf-carousel__controls {
       button {
         background-color: transparent;
       }
+
       span {
         color: #190701;
       }

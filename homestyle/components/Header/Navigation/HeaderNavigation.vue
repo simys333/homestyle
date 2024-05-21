@@ -120,6 +120,7 @@ export default defineComponent({
   --header-navigation-item-margin: 0 var(--spacer-sm);
   text-transform: none;
   padding: 16px 6px;
+  margin: 0;
 
   &:hover,
   &:focus {
