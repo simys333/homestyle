@@ -9,54 +9,71 @@
         <RightArrowIcon />
       </SfLink>
     </div>
-    <SfCarousel class="carousel" :settings="{ gap: 30, rewind: false }">
-      <template #prev="prevArrow">
+    <SfLoader :class="{ loading }" :loading="loading">
+
+      <SfCarousel
+        :settings="{ peek: 16, breakpoints: { 1023: { peek: 0, perView: 2 } } }"
+        class="carousel"
+      >
+      <!---<template #prev="prevArrow">
         <CarouselLeftArrow @click="prevArrow.go('prev')" />
       </template>
       <template #next="nextArrow">
         <CarouselRightArrow @click="nextArrow.go('next')" />
-      </template>
-      
-        <SfCarouselItem v-for="(product, i) in mappedProducts" :key="i" class="carousel__item">
-
-        
-        <SfProductCard
-          image-tag="nuxt-img"
-          :title="productGetters.getName(product)"
-          :image-width="imageSizes.productCard.width"
-          :image-height="imageSizes.productCard.height"
-          :image="
-            getMagentoImage(productGetters.getProductThumbnailImage(product))
-          "
-          :nuxt-img-config="{
-            fit: 'cover',
-          }"
-          :regular-price="$fc(productGetters.getPrice(product).regular)"
-          :special-price="
-            productGetters.getPrice(product).special &&
+      </template>-->
+        <SfCarouselItem
+          v-for="(product, i) in mappedProducts"
+          :key="i"
+          class="carousel__item"
+        >
+          <SfProductCard
+            image-tag="nuxt-img"
+            :title="productGetters.getName(product)"
+            :image-width="imageSizes.productCard.width"
+            :image-height="imageSizes.productCard.height"
+            :image="
+              getMagentoImage(productGetters.getProductThumbnailImage(product))
+            "
+            :nuxt-img-config="{
+              fit: 'cover',
+            }"
+            :regular-price="$fc(productGetters.getPrice(product).regular)"
+            :special-price="
+              productGetters.getPrice(product).special &&
               $fc(productGetters.getPrice(product).special)
-          "
-          :link="localePath(getProductPath(product))"
-          :max-rating="5"
-          :score-rating="productGetters.getAverageRating(product)"
-          :reviews-count="productGetters.getTotalReviews(product)"
-          :is-in-wishlist="isInWishlist({ product })"
-          :is-added-to-cart="isInCart(product)"
-          :wishlist-icon="isAuthenticated ? 'heart' : ''"
-          :is-in-wishlist-icon="isAuthenticated ? 'heart_fill' : ''"
-          @click:wishlist="addItemToWishlist(product)"
-          @click:add-to-cart="addItemToCart({ product, quantity: 1 })"
-        /></SfCarouselItem>
-     
-    
- 
-      
-      
-    </SfCarousel>
+            "
+            :link="localePath(getProductPath(product))"
+            :is-in-wishlist="isInWishlist({ product })"
+            :is-added-to-cart="isInCart(product)"
+            :wishlist-icon="isAuthenticated ? 'heart' : ''"
+            :is-in-wishlist-icon="isAuthenticated ? 'heart_fill' : ''"
+            @click:wishlist="addItemToWishlist(product)"
+            @click:add-to-cart="addItemToCart({ product, quantity: 1 })"
+          />
+        </SfCarouselItem>
+        <template #prev="prevArrow">
+          <SfButton
+            aria-label="previous"
+            class="sf-arrow"
+            @click="prevArrow.go('prev')"
+          >
+            <SvgImage icon="arrow_left" width="24" height="24" />
+          </SfButton>
+        </template>
+        <template #next="nextArrow">
+          <SfButton
+            aria-label="next"
+            class="sf-arrow"
+            @click="nextArrow.go('next')"
+          >
+            <SvgImage icon="arrow_right" width="24" height="24" />
+          </SfButton>
+        </template>
+      </SfCarousel>
 
+  </SfLoader>
 
-
-    <SfCarousel class="carousel" :settings="{ gap: 30, rewind: false }">
+   <!---<SfCarousel class="carousel" :settings="{ gap: 30, rewind: false }">
       <template #prev="prevArrow">
         <CarouselLeftArrow @click="prevArrow.go('prev')" />
       </template>
@@ -123,7 +140,7 @@
           :isInWishlist="false" showAddToCartButton :isAddedToCart="false" :addToCartDisabled="false" />
       </SfCarouselItem>
     </SfCarousel>
-
+  -->
    
   </div>
 </template>
@@ -135,6 +152,7 @@ import {
   SfProductCard,
   SfSection,
   SfCarousel,
+  SfButton
 } from "@storefront-ui/vue";
 
 import {
@@ -152,6 +170,8 @@ import { SortEnum } from "~/modules/GraphQL/types";
 import CarouselLeftArrow from "./CarouselLeftArrow.vue";
 import CarouselRightArrow from "./CarouselRightArrow.vue";
 import RightArrowIcon from "./Icons/RightArrowIcon.vue";
+import SvgImage from "~/components/General/SvgImage.vue";
+
 
 export default defineComponent({
   name: "NewProducts",
@@ -163,7 +183,9 @@ export default defineComponent({
     SfCarousel,
     CarouselLeftArrow,
     CarouselRightArrow,
-    RightArrowIcon
+    RightArrowIcon,
+    SfButton,
+    SvgImage,
 
   },
   props: {
@@ -202,7 +224,7 @@ export default defineComponent({
 
     onMounted(async () => {
       const newestProducts = await getProductList({
-        pageSize: 4,
+        pageSize: 10,
         currentPage: 1,
         sort: {
           position: SortEnum.Asc,
