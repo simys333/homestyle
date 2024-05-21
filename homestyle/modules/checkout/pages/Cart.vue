@@ -13,55 +13,85 @@
               <div class="collected-product-list">
                 <transition-group name="sf-fade" tag="div">
                   <SfCollectedProduct
-                    key="1"
-                    :has-more-actions="false"
-                    data-testid="cart-sidebar-collected-product"
-                    image="https://magento.homstyle.in/media/catalog/product/cache/fb1be9b35736f95f9b8328c138c4d7ab/i/m/img_3__1.png"
-                    title="Creme Gold Dinner Plate White new"
-                    :regular-price="1600"
-                    :special-price="1200"
-                    class="collected-product"
-                  >
-                    <template #image>
-                      <SfImage
-                        image-tag="nuxt-img"
-                        src="https://magento.homstyle.in/media/catalog/product/cache/fb1be9b35736f95f9b8328c138c4d7ab/i/m/img_3__1.png"
-                        alt="Creme Gold Dinner Plate White new"
-                        class="sf-collected-product__image"
-                        :nuxt-img-config="{
-                          fit: 'cover',
-                        }"
-                      />
-                    </template>
-                    <template #input>
-                      <div class="sf-collected-product__quantity-wrapper">
-                        <SfQuantitySelector
-                          :disabled="loading"
-                          qty="1"
-                          class="sf-collected-product__quantity-selector"
+                      v-for="(product, productIndex) in products"
+                      :key="product.product.original_sku + productIndex"
+                      :has-more-actions="false"
+                      data-testid="cart-sidebar-collected-product"
+                      :image="cartGetters.getItemImage(product)"
+                      :title="cartGetters.getItemName(product)"
+                      :regular-price="
+                        $fc(cartGetters.getItemPrice(product).regular)
+                      "
+                      :special-price="
+                        cartGetters.productHasSpecialPrice(product)
+                          ? cartGetters.getItemPrice(product).special &&
+                            $fc(cartGetters.getItemPrice(product).special)
+                          : ''
+                      "
+                      :link="localePath(getProductPath(product.product))"
+                      class="collected-product"
+                      @input="delayedUpdateItemQty({ product, quantity: $event })"
+                      @click:remove="showRemoveItemModal({ product })"
+                    >
+                      <template #image>
+                        <SfImage
+                          image-tag="nuxt-img"
+                          :src="getMagentoImage(cartGetters.getItemImage(product))"
+                          :alt="cartGetters.getItemName(product)"
+                          :width="imageSizes.cart.imageWidth"
+                          :height="imageSizes.cart.imageHeight"
+                          class="sf-collected-product__image"
+                          :nuxt-img-config="{
+                            fit: 'cover',
+                          }"
                         />
-                      </div>
-                      <SfBadge class="color-danger sf-badge__absolute">
-                        <template #default>
-                          <span>{{ $t("Out of stock") }}</span>
-                        </template>
-                      </SfBadge>
-                    </template>
-                    <template #configuration>
-                      <div data-testid="cart-sidebar-attribute-container">
-                        <SfProperty name="Color" value="Black" />
-                      </div>
-                    </template>
-                    <template #actions>
-                      <div class="desktop-only collected-product__actions">
-                        <SfButton
-                          class="sf-button--text collected-product__fav"
+                      </template>
+                      <template #input>
+                        <div
+                          v-if="isInStock(product)"
+                          class="sf-collected-product__quantity-wrapper"
                         >
-                          Add to favorites
-                        </SfButton>
-                      </div>
-                    </template>
-                  </SfCollectedProduct>
+                          <SfQuantitySelector
+                            :disabled="loading"
+                            :qty="cartGetters.getItemQty(product)"
+                            class="sf-collected-product__quantity-selector"
+                            @input="delayedUpdateItemQty({ product, quantity: $event })"
+                          />
+                        </div>
+                        <SfBadge
+                          v-else
+                          class="color-danger sf-badge__absolute"
+                        >
+                          <template #default>
+                            <span>{{ $t('Out of stock') }}</span>
+                          </template>
+                        </SfBadge>
+                      </template>
+                      <template #configuration>
+                        <div
+                          v-if="getAttributes(product).length > 0"
+                          data-testid="cart-sidebar-attribute-container"
+                        >
+                          <SfProperty
+                            v-for="(attr, index) in getAttributes(product)"
+                            :key="index"
+                            :name="attr.option_label"
+                            :value="attr.value_label"
+                          />
+                        </div>
+                        <div
+                          v-if="getBundles(product).length > 0"
+                          data-testid="cart-sidebar-bundle-container"
+                        >
+                          <SfProperty
+                            v-for="(bundle, i) in getBundles(product)"
+                            :key="i"
+                            :name="`${bundle.quantity}x`"
+                            :value="bundle.label"
+                          />
+                        </div>
+                      </template>
+                    </SfCollectedProduct>
                 </transition-group>
               </div>
               <div key="empty-cart" class="empty-cart">
