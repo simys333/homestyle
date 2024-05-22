@@ -15,16 +15,7 @@
         :settings="{ peek: 16, breakpoints: { 1023: { peek: 0, perView: 2 } } }"
         class="carousel"
       >
-      <template #prev="prevArrow">
-        <SfButton aria-label="previous" class="sf-arrow" @click="$emit('click')">
-          <SvgImage icon="chevron_left" width="20" height="20" />
-        </SfButton>
-      </template>
-      <template #next="nextArrow">
-        <SfButton aria-label="next" class="sf-arrow" @click="$emit('click')">
-          <SvgImage icon="chevron_right" width="20" height="20" />
-        </SfButton>
-      </template>
+     
         <SfCarouselItem
           v-for="(product, i) in mappedProducts"
           :key="i"
@@ -55,7 +46,8 @@
             @click:add-to-cart="addItemToCart({ product, quantity: 1 })"
           />
         </SfCarouselItem>
-       <!---<template #prev="prevArrow">
+       
+      <template #prev="prevArrow">
           <SfButton
             aria-label="previous"
             class="sf-arrow"
@@ -72,7 +64,7 @@
           >
             <SvgImage icon="arrow_right" width="24" height="24" />
           </SfButton>
-        </template>--> 
+        </template>
       </SfCarousel>
 
   </SfLoader>
