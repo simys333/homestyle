@@ -53,7 +53,7 @@
             class="sf-arrow"
             @click="prevArrow.go('prev')"
           >
-            <SvgImage icon="arrow_left" width="24" height="24" />
+            <SvgImage icon="chevron_left" width="24" height="24" />
           </SfButton>
         </template>
         <template #next="nextArrow">
@@ -62,7 +62,7 @@
             class="sf-arrow"
             @click="nextArrow.go('next')"
           >
-            <SvgImage icon="arrow_right" width="24" height="24" />
+            <SvgImage icon="chevron_right" width="24" height="24" />
           </SfButton>
         </template>
       </SfCarousel>
@@ -277,6 +277,12 @@ export default defineComponent({
     font-size: 16px;
     font-family: var(--font-family--primary);
   }
+  .sf-product-card {
+    padding: 0;
+  }
+  ::v-deep .sf-product-card__add-button {
+    bottom: -1rem;
+  }
 
   .carousel {
     margin: 0 calc(-1 * var(--spacer-sm)) 0 0;
@@ -285,6 +291,9 @@ export default defineComponent({
     }
     &__item {
       margin: 1.9375rem 0 2.4375rem 0;
+    }
+    ::v-deep .sf-product-card:hover {
+      --product-card-box-shadow: none;
     }
     ::v-deep .sf-image--placeholder {
       display: none;
