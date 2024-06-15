@@ -15,7 +15,7 @@
       <SfFooterColumn :title="$t('Categories')">
         <SfList>
           <SfListItem v-for="item in aboutUs" :key="item">
-            <SfMenuItem :label="$t(item)" />
+            <SfMenuItem :label="$t(item)" :link="localeRoute(item.link)" />
           </SfListItem>
         </SfList>
       </SfFooterColumn>
