@@ -553,6 +553,11 @@ section.sf-banner.banner-central {
     diaplay: flex;
     flex-direction: column;
   }
+  h6 {
+    @include for-mobile {
+      font-size: 1em;
+    }
+  }
 }
 
 .icon-text-box {
