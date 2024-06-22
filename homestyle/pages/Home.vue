@@ -556,6 +556,8 @@ section.sf-banner.banner-central {
   h6 {
     @include for-mobile {
       font-size: 1em;
+      margin-bottom: 5px;
+      margin-top: 15px;
     }
   }
 }
@@ -567,6 +569,9 @@ section.sf-banner.banner-central {
 
   .icon {
     margin-right: var(--spacer-sm);
+  }
+  @include for-mobile {
+    margin-top: 20px;
   }
 
   @include for-desktop {
