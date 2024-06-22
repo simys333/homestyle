@@ -26,7 +26,7 @@
             :title="productGetters.getName(product)"
             :image-width="imageSizes.productCard.width"
             :image-height="imageSizes.productCard.height"
-            :badgeLabel= "100 - round(((float)productGetters.getPrice(product).regular/ (float)productGetters.getPrice(product).special)) * 100"
+            :badgeLabel="calculatePercentage(product)"
             :image="
               getMagentoImage(productGetters.getProductThumbnailImage(product))
             "
@@ -216,7 +216,16 @@ export default defineComponent({
     const addItemToWishlist = async (product) => {
       await addOrRemoveItem({ product });
     };
-
+    const calculatePercentage=(product) =>{
+      console.log(product)
+    const regularPrice = this.productGetters.getPrice(product).regular;
+    const specialPrice = this.productGetters.getPrice(product).special;
+    if (specialPrice !== 0) {
+      return Math.round(((regularPrice - specialPrice) / specialPrice) * 100);
+    } else {
+      return 0; // Handle division by zero case or specialPrice being 0
+    }
+  }
     const { getMagentoImage, imageSizes } = useImage();
 
     onMounted(async () => {
