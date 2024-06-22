@@ -4,7 +4,7 @@ import { UseImageInterface } from './useImage';
 const imageSizes = {
   productCard: {
     width: 216,
-    height: 268,
+    height: 216,
   },
   productCardHorizontal: {
     width: 140,
