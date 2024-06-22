@@ -309,6 +309,9 @@ export default defineComponent({
     ::v-deep .sf-product-card__title {
       font-size: 18px;
       font-family: var(--font-family--primary);
+      overflow: auto;
+      text-overflow: initial;
+      white-space: normal;
     }
     ::v-deep .sf-price__special,
     ::v-deep .sf-price__old {
