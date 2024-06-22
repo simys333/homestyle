@@ -254,6 +254,7 @@ export default defineComponent({
       getMagentoImage,
       imageSizes,
       getProductPath,
+      calculatePercentage
     };
   },
 });
