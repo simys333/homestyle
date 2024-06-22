@@ -217,13 +217,12 @@ export default defineComponent({
       await addOrRemoveItem({ product });
     };
     const calculatePercentage=(product) =>{
-      console.log(product)
-    const regularPrice = this.productGetters.getPrice(product).regular;
-    const specialPrice = this.productGetters.getPrice(product).special;
-    if (specialPrice !== 0) {
-      return Math.round(((regularPrice - specialPrice) / specialPrice) * 100);
+    const regularPrice = productGetters.getPrice(product).regular;
+    const specialPrice =productGetters.getPrice(product).special;
+    if (specialPrice && specialPrice !== 0) {
+      return Math.round(((regularPrice - specialPrice) / specialPrice) * 100).toString();
     } else {
-      return 0; // Handle division by zero case or specialPrice being 0
+      return ""; // Handle division by zero case or specialPrice being 0
     }
   }
     const { getMagentoImage, imageSizes } = useImage();
