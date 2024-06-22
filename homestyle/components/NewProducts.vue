@@ -26,6 +26,7 @@
             :title="productGetters.getName(product)"
             :image-width="imageSizes.productCard.width"
             :image-height="imageSizes.productCard.height"
+            :badgeLabel= "100 - round(((float)productGetters.getPrice(product).regular/ (float)productGetters.getPrice(product).special)) * 100"
             :image="
               getMagentoImage(productGetters.getProductThumbnailImage(product))
             "
