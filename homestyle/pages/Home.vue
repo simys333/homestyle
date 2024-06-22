@@ -549,6 +549,10 @@ section.sf-banner.banner-central {
   @include for-desktop {
     margin: var(--spacer-lg) 0;
   }
+  @include for-mobile {
+    diaplay: flex;
+    flex-direction: column;
+  }
 }
 
 .icon-text-box {
