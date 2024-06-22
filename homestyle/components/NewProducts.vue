@@ -220,7 +220,7 @@ export default defineComponent({
     const regularPrice = productGetters.getPrice(product).regular;
     const specialPrice =productGetters.getPrice(product).special;
     if (specialPrice && specialPrice !== 0) {
-      return Math.round(((regularPrice - specialPrice) / specialPrice) * 100).toString();
+      return Math.round(((regularPrice - specialPrice) / specialPrice) * 100).toString()+ '%';
     } else {
       return ""; // Handle division by zero case or specialPrice being 0
     }
