@@ -209,7 +209,15 @@ export default defineComponent({
     const totalReviews = computed(() => getTotalReviews(props.product));
     const averageRating = computed(() => getAverageRating(props.product));
     const addToCartError = computed(() => cartError.value?.addItem?.message);
-
+    const calculatePercentage=(product) =>{
+    const regularPrice = productPrice;
+    const specialPrice =productSpecialPrice;
+    if (specialPrice && specialPrice !== 0) {
+      return Math.round(((regularPrice - specialPrice) / specialPrice) * 100).toString()+ '%';
+    } else {
+      return ""; // Handle division by zero case or specialPrice being 0
+    }
+  }
     return {
       addItem,
       addItemToWishlist: addOrRemoveItem,
@@ -231,6 +239,7 @@ export default defineComponent({
       activeTab,
       TabsConfig,
       addToCartError,
+      calculatePercentage
     };
   },
 });
