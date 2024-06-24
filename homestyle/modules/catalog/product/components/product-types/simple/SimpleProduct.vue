@@ -210,8 +210,8 @@ export default defineComponent({
     const averageRating = computed(() => getAverageRating(props.product));
     const addToCartError = computed(() => cartError.value?.addItem?.message);
     const calculatePercentage=(product) =>{
-    const regularPrice = computed(() => getProductPrice(props.product).regular);
-    const specialPrice =computed(() => getProductPrice(props.product).special);
+    const regularPrice = productPrice.value;
+    const specialPrice =productSpecialPrice.value;
     console.log((regularPrice - specialPrice)/ specialPrice);
     if (specialPrice && specialPrice !== 0) {
       return Math.round(((regularPrice - specialPrice) / specialPrice) * 100).toString()+ '%';

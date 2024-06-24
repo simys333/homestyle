@@ -91,7 +91,7 @@ export default defineComponent({
   data() {
     return {
       aboutUs: [
-        { label: 'Who we are', url: '/about-us' },
+        { label: 'Who we are', url: '/default/about-us' },
         { label: 'Quality in the details', url: '#' },
         { label: 'Customer Review', url: '#' },
         // Add more items as needed
