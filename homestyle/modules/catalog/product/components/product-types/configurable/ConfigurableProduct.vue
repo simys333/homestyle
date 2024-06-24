@@ -39,7 +39,7 @@
           :regular="$fc(productPrice)"
           :special="productSpecialPrice && $fc(productSpecialPrice)"
         />
-        <SfPrice class="discount-percentage" regular="calculatePercentage(product)"  />
+        <SfPrice class="discount-percentage" :regular="calculatePercentage(product)"  />
         <!-- <div>
           <div class="product__rating">
             <SfRating :score="averageRating" :max="5" />
@@ -317,8 +317,8 @@ export default defineComponent({
       emit("fetchProduct", { query: getBaseSearchQuery() });
     };
     const calculatePercentage=(product) =>{
-    const regularPrice = productPrice;
-    const specialPrice =productSpecialPrice;
+    const regularPrice = productPrice.value;
+    const specialPrice =productSpecialPrice.value;
     if (specialPrice && specialPrice !== 0) {
       return Math.round(((regularPrice - specialPrice) / specialPrice) * 100).toString()+ '%';
     } else {
