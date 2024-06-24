@@ -12,7 +12,7 @@
         <span>info@homstyle.com</span>
         <span>+91 944 679 4741</span>
       </div>
-      <SfFooterColumn :title="$t('Categories')">
+      <SfFooterColumn :title="$t('About us')">
         <SfList>
           <SfListItem v-for="item in aboutUs" :key="item">
             <SfMenuItem
@@ -22,9 +22,9 @@
           </SfListItem>
         </SfList>
       </SfFooterColumn>
-      <SfFooterColumn :title="$t('About us')">
+      <SfFooterColumn :title="$t('Quick Links')">
         <SfList>
-          <SfListItem v-for="item in aboutUs" :key="item">
+          <SfListItem v-for="item in quickLinks" :key="item">
             <SfMenuItem :label="$t(item).label"
             :link="item.url" />
           </SfListItem>
@@ -94,8 +94,14 @@ export default defineComponent({
     return {
       aboutUs: [
         { label: 'Who we are', url: '/default/about-us' },
+        { label: 'Why homestyle', url: '/default/why-homestyle' },
         { label: 'Contact us', url: '/default/contact-us' },
-        { label: 'Customer Review', url: '#' },
+        // Add more items as needed
+      ],
+      quickLinks: [
+        { label: 'FAQ', url: '/default/faq' },
+        { label: 'Feedback', url: '/default/feedback' },
+        { label: 'Contact us', url: '/default/contact-us' },
         // Add more items as needed
       ],
       departments: [
