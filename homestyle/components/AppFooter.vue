@@ -15,7 +15,10 @@
       <SfFooterColumn :title="$t('Categories')">
         <SfList>
           <SfListItem v-for="item in aboutUs" :key="item">
-            <SfMenuItem :label="$t(item)"  />
+            <SfMenuItem
+            :label="$t(item).label"
+            :link="item.url"
+          />
           </SfListItem>
         </SfList>
       </SfFooterColumn>
@@ -93,6 +96,7 @@ export default defineComponent({
         { label: 'Customer Review', url: '#' },
         // Add more items as needed
       ],
+      
       departments: ["Women fashion", "Men fashion", "Kidswear", "Home"],
       help: ["Customer service", "Size guide", "Contact us"],
       paymentsDelivery: ["Purchase terms", "Guarantee"],
