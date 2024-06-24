@@ -39,7 +39,7 @@
           :regular="$fc(productPrice)"
           :special="productSpecialPrice && $fc(productSpecialPrice)"
         />
-        <SfPrice class="discount-percentage" regular="20%" :badgeLabel="calculatePercentage(product)" />
+        <SfPrice class="discount-percentage" regular="calculatePercentage(product)"  />
         <!-- <div>
           <div class="product__rating">
             <SfRating :score="averageRating" :max="5" />
