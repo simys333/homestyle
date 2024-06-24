@@ -317,8 +317,8 @@ export default defineComponent({
       emit("fetchProduct", { query: getBaseSearchQuery() });
     };
     const calculatePercentage=(product) =>{
-    const regularPrice = productGetters.getPrice(product).regular;
-    const specialPrice =productGetters.getPrice(product).special;
+    const regularPrice = productPrice;
+    const specialPrice =productSpecialPrice;
     if (specialPrice && specialPrice !== 0) {
       return Math.round(((regularPrice - specialPrice) / specialPrice) * 100).toString()+ '%';
     } else {
