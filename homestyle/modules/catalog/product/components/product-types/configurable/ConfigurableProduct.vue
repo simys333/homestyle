@@ -22,7 +22,7 @@
     <div class="product__info">
       <div class="product__header">
         <SfHeading
-          title="Creme Gold Dinner Plate White new"
+          :title="getProductName(product)"
           description="Cello"
           :level="3"
           class="sf-heading--no-underline sf-heading--left"
@@ -39,7 +39,7 @@
           :regular="$fc(productPrice)"
           :special="productSpecialPrice && $fc(productSpecialPrice)"
         />
-        <SfPrice class="discount-percentage" regular="20%" />
+        <SfPrice class="discount-percentage" regular="20%" :badgeLabel="calculatePercentage(product)" />
         <!-- <div>
           <div class="product__rating">
             <SfRating :score="averageRating" :max="5" />
@@ -316,7 +316,15 @@ export default defineComponent({
 
       emit("fetchProduct", { query: getBaseSearchQuery() });
     };
-
+    const calculatePercentage=(product) =>{
+    const regularPrice = productGetters.getPrice(product).regular;
+    const specialPrice =productGetters.getPrice(product).special;
+    if (specialPrice && specialPrice !== 0) {
+      return Math.round(((regularPrice - specialPrice) / specialPrice) * 100).toString()+ '%';
+    } else {
+      return ""; // Handle division by zero case or specialPrice being 0
+    }
+  }
     return {
       addItem,
       addItemToWishlist: addOrRemoveItem,
@@ -342,6 +350,7 @@ export default defineComponent({
       activeTab,
       TabsConfig,
       addToCartError,
+      calculatePercentage
     };
   },
 });
