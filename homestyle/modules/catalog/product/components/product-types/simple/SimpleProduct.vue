@@ -212,6 +212,7 @@ export default defineComponent({
     const calculatePercentage=(product) =>{
     const regularPrice = productPrice;
     const specialPrice =productSpecialPrice;
+    console.log((regularPrice - specialPrice)/ specialPrice);
     if (specialPrice && specialPrice !== 0) {
       return Math.round(((regularPrice - specialPrice) / specialPrice) * 100).toString()+ '%';
     } else {
