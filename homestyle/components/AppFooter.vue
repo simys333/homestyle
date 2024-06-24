@@ -92,12 +92,22 @@ export default defineComponent({
     return {
       aboutUs: [
         { label: 'Who we are', url: '/default/about-us' },
-        { label: 'Quality in the details', url: '#' },
+        { label: 'Contact us', url: '/default/contact-us' },
         { label: 'Customer Review', url: '#' },
         // Add more items as needed
       ],
-      
-      departments: ["Women fashion", "Men fashion", "Kidswear", "Home"],
+      departments: [
+        { label: 'Terms & Conditions', url: '/default/terms-and-conditions' },
+        { label: 'Privacy Policy', url: '/default/privacy-policy-cookie-restriction-mode' },
+        { label: 'Shipping Policy', url: '/default/shipping-and-delivery' },
+        // Add more items as needed
+      ],
+      departments: [
+        { label: 'Returns & Refund', url: '/default/terms-and-conditions' },
+        { label: 'Exchange Policy', url: '/default/exchange-policy' },
+        { label: 'Cancellation Policy', url: '/default/cancellation' },
+        // Add more items as needed
+      ],
       help: ["Customer service", "Size guide", "Contact us"],
       paymentsDelivery: ["Purchase terms", "Guarantee"],
       social: ["facebook", "pinterest", "google", "twitter", "youtube"],
