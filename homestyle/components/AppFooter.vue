@@ -33,14 +33,16 @@
       <SfFooterColumn :title="$t('Quick Links')">
         <SfList>
           <SfListItem v-for="item in departments" :key="item">
-            <SfMenuItem :label="$t(item)" />
+            <SfMenuItem :label="$t(item).label"
+            :link="item.url" />
           </SfListItem>
         </SfList>
       </SfFooterColumn>
       <SfFooterColumn :title="$t('Help')">
         <SfList>
           <SfListItem v-for="item in help" :key="item">
-            <SfMenuItem :label="$t(item)" />
+            <SfMenuItem :label="$t(item).label"
+            :link="item.url" />
           </SfListItem>
         </SfList>
       </SfFooterColumn>
@@ -102,13 +104,13 @@ export default defineComponent({
         { label: 'Shipping Policy', url: '/default/shipping-and-delivery' },
         // Add more items as needed
       ],
-      departments: [
+      help: [
         { label: 'Returns & Refund', url: '/default/terms-and-conditions' },
         { label: 'Exchange Policy', url: '/default/exchange-policy' },
         { label: 'Cancellation Policy', url: '/default/cancellation' },
         // Add more items as needed
       ],
-      help: ["Customer service", "Size guide", "Contact us"],
+    
       paymentsDelivery: ["Purchase terms", "Guarantee"],
       social: ["facebook", "pinterest", "google", "twitter", "youtube"],
       isMobile: false,
