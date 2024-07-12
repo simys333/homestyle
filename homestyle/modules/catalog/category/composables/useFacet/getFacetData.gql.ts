@@ -8,6 +8,7 @@ export default `
       items {
         __typename
         uid
+        feature
         sku
         name
         stock_status
