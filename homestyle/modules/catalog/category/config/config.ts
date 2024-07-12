@@ -36,6 +36,9 @@ export default function config(): FilterConfigInterface[] {
       attrCode: 'style_bottom',
     },
     {
+      attrCode: 'feature',
+    },
+    {
       attrCode: 'color',
       type: FilterTypeEnum.SWATCH_COLOR,
       component: RendererTypesEnum.SWATCH_COLOR,
@@ -50,5 +53,6 @@ export default function config(): FilterConfigInterface[] {
       type: FilterTypeEnum.YES_NO,
       component: RendererTypesEnum.YES_NO,
     },
+    
   ];
 }
