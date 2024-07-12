@@ -1,15 +1,19 @@
 import { readonly, ref, useContext } from '@nuxtjs/composition-api';
 import { Logger } from '~/helpers/logger';
+import useApi from '~/composables/useApi';
 import { getProductListCommand } from '~/modules/catalog/product/composables/useProduct/commands/getProductListCommand';
 import { getProductDetailsCommand } from '~/modules/catalog/product/composables/useProduct/commands/getProductDetailsCommand';
 import type { GetProductSearchParams } from '~/modules/catalog/product/types';
 import type { ProductInterface } from '~/modules/GraphQL/types';
+import { Products } from '~/modules/GraphQL/types';
+import getProductDataQuery from './getProductData.gql';
 import type {
   ProductDetails,
   ProductList,
   UseProductErrors,
   UseProductInterface,
 } from './useProduct';
+
 
 /**
  * Allows loading product details or list with
@@ -18,6 +22,7 @@ import type {
  * See the {@link UseProductInterface} for a list of methods and values available in this composable.
  */
 export function useProduct(id?: string): UseProductInterface {
+    const { query } = useApi();
   const loading = ref(false);
   const error = ref<UseProductErrors>({
     getProductList: null,
@@ -50,7 +55,9 @@ export function useProduct(id?: string): UseProductInterface {
 
     try {
       loading.value = true;
-      products = await getProductDetailsCommand.execute(context, searchParams);
+      const { data } = await query<{ products: Products }>(getProductDataQuery, searchParams);
+      debugger
+      products = data?.products ?? null;//await getProductDetailsCommand.execute(context, searchParams);
       error.value.getProductDetails = null;
     } catch (err) {
       error.value.getProductDetails = err;
