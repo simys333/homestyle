@@ -99,3 +99,4 @@ version
 ## SSL
 # Untrack all keys
 *.pem
+homestyle/nohup.out

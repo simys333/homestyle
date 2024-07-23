@@ -6,12 +6,12 @@ export default {
       __typename: 'ProductPrice',
       final_price: {
         __typename: 'Money',
-        currency: 'USD',
+        currency: 'INR',
         value: 14,
       },
       regular_price: {
         __typename: 'Money',
-        currency: 'USD',
+        currency: 'INR',
         value: 14,
       },
     },
@@ -19,12 +19,12 @@ export default {
       __typename: 'ProductPrice',
       final_price: {
         __typename: 'Money',
-        currency: 'USD',
+        currency: 'INR',
         value: 14,
       },
       regular_price: {
         __typename: 'Money',
-        currency: 'USD',
+        currency: 'INR',
         value: 14,
       },
     },
@@ -41,12 +41,12 @@ export default {
             __typename: 'ProductPrice',
             final_price: {
               __typename: 'Money',
-              currency: 'USD',
+              currency: 'INR',
               value: 14,
             },
             regular_price: {
               __typename: 'Money',
-              currency: 'USD',
+              currency: 'INR',
               value: 14,
             },
           },
@@ -54,12 +54,12 @@ export default {
             __typename: 'ProductPrice',
             final_price: {
               __typename: 'Money',
-              currency: 'USD',
+              currency: 'INR',
               value: 14,
             },
             regular_price: {
               __typename: 'Money',
-              currency: 'USD',
+              currency: 'INR',
               value: 14,
             },
           },
@@ -77,12 +77,12 @@ export default {
             __typename: 'ProductPrice',
             final_price: {
               __typename: 'Money',
-              currency: 'USD',
+              currency: 'INR',
               value: 17,
             },
             regular_price: {
               __typename: 'Money',
-              currency: 'USD',
+              currency: 'INR',
               value: 17,
             },
           },
@@ -90,12 +90,12 @@ export default {
             __typename: 'ProductPrice',
             final_price: {
               __typename: 'Money',
-              currency: 'USD',
+              currency: 'INR',
               value: 17,
             },
             regular_price: {
               __typename: 'Money',
-              currency: 'USD',
+              currency: 'INR',
               value: 17,
             },
           },
@@ -113,12 +113,12 @@ export default {
             __typename: 'ProductPrice',
             final_price: {
               __typename: 'Money',
-              currency: 'USD',
+              currency: 'INR',
               value: 21,
             },
             regular_price: {
               __typename: 'Money',
-              currency: 'USD',
+              currency: 'INR',
               value: 21,
             },
           },
@@ -126,12 +126,12 @@ export default {
             __typename: 'ProductPrice',
             final_price: {
               __typename: 'Money',
-              currency: 'USD',
+              currency: 'INR',
               value: 21,
             },
             regular_price: {
               __typename: 'Money',
-              currency: 'USD',
+              currency: 'INR',
               value: 21,
             },
           },

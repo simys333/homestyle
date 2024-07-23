@@ -73,6 +73,7 @@
   </div>
 </template>
 
+
 <script lang="ts">
 import { SfFooter, SfList, SfImage, SfMenuItem } from "@storefront-ui/vue";
 import { defineComponent } from "@nuxtjs/composition-api";
