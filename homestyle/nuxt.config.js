@@ -148,7 +148,7 @@ export default async () => {
           code: 'default',
           file: 'en.js',
           iso: 'en_US',
-          defaultCurrency: 'USD',
+          defaultCurrency: 'INR',
         },
         {
           code: 'german',

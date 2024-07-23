@@ -82,12 +82,12 @@ export const useCartMock = (cartData = {}) => ({
                 __typename: 'ProductPrice',
                 final_price: {
                   __typename: 'Money',
-                  currency: 'USD',
+                  currency: 'INR',
                   value: 27,
                 },
                 regular_price: {
                   __typename: 'Money',
-                  currency: 'USD',
+                  currency: 'INR',
                   value: 27,
                 },
               },
@@ -95,12 +95,12 @@ export const useCartMock = (cartData = {}) => ({
                 __typename: 'ProductPrice',
                 final_price: {
                   __typename: 'Money',
-                  currency: 'USD',
+                  currency: 'INR',
                   value: 27,
                 },
                 regular_price: {
                   __typename: 'Money',
-                  currency: 'USD',
+                  currency: 'INR',
                   value: 27,
                 },
               },
@@ -219,12 +219,12 @@ export const useCartMock = (cartData = {}) => ({
                 __typename: 'ProductPrice',
                 final_price: {
                   __typename: 'Money',
-                  currency: 'USD',
+                  currency: 'INR',
                   value: 10,
                 },
                 regular_price: {
                   __typename: 'Money',
-                  currency: 'USD',
+                  currency: 'INR',
                   value: 10,
                 },
               },
@@ -232,12 +232,12 @@ export const useCartMock = (cartData = {}) => ({
                 __typename: 'ProductPrice',
                 final_price: {
                   __typename: 'Money',
-                  currency: 'USD',
+                  currency: 'INR',
                   value: 10,
                 },
                 regular_price: {
                   __typename: 'Money',
-                  currency: 'USD',
+                  currency: 'INR',
                   value: 10,
                 },
               },
@@ -340,7 +340,7 @@ export const useCartMock = (cartData = {}) => ({
             },
             url_key: 'sprite-yoga-companion-kit',
             url_rewrites: [{ url: 'sprite-yoga-companion-kit.html', __typename: 'UrlRewrite' }, { url: 'gear/sprite-yoga-companion-kit.html', __typename: 'UrlRewrite' }, { url: 'gear/fitness-equipment/sprite-yoga-companion-kit.html', __typename: 'UrlRewrite' }],
-            price_range: { maximum_price: { final_price: { currency: 'USD', value: 77, __typename: 'Money' }, regular_price: { currency: 'USD', value: 77, __typename: 'Money' }, __typename: 'ProductPrice' }, minimum_price: { final_price: { currency: 'USD', value: 61, __typename: 'Money' }, regular_price: { currency: 'USD', value: 61, __typename: 'Money' }, __typename: 'ProductPrice' }, __typename: 'PriceRange' },
+            price_range: { maximum_price: { final_price: { currency: 'INR', value: 77, __typename: 'Money' }, regular_price: { currency: 'INR', value: 77, __typename: 'Money' }, __typename: 'ProductPrice' }, minimum_price: { final_price: { currency: 'INR', value: 61, __typename: 'Money' }, regular_price: { currency: 'INR', value: 61, __typename: 'Money' }, __typename: 'ProductPrice' }, __typename: 'PriceRange' },
             categories: [{
               uid: 'Mw==', name: 'Gear', url_suffix: '.html', url_path: 'gear', breadcrumbs: null, __typename: 'CategoryTree',
             }, {

@@ -4,13 +4,14 @@ export const currencyDataMock = {
     'EUR',
     'PLN',
     'USD',
+    'INR',
   ],
-  base_currency_code: 'USD',
-  base_currency_symbol: '$',
+  base_currency_code: 'INR',
+  base_currency_symbol: '₹',
   default_display_currecy_code: null,
   default_display_currecy_symbol: null,
-  default_display_currency_code: 'USD',
-  default_display_currency_symbol: '$',
+  default_display_currency_code: 'INR',
+  default_display_currency_symbol: '₹',
   exchange_rates: [
     {
       __typename: 'ExchangeRate',
