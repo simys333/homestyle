@@ -20,8 +20,8 @@
     <hr class="sf-divider" />
     <SfAccordionItem header="Features">
       <HTMLContent
-        v-if="productDescription"
-        :content="productDescription"
+        v-if="productFeatures"
+        :content="productFeatures"
         tag="div"
         class="product__description"
       />
@@ -145,7 +145,9 @@ export default defineComponent({
     computed(
       () => props.product?.description?.html || ""
     );
-
+    const productFeatures = computed(
+      () => props.product?.feature || '',
+    );
     const successAddReview = async (reviewData: UseReviewAddReviewParams) => {
       await addReview(reviewData);
       document.querySelector("#tabs").scrollIntoView({
@@ -166,6 +168,7 @@ export default defineComponent({
       getReviewRating,
       productDescription,
       successAddReview,
+      productFeatures,
     };
   },
 });
