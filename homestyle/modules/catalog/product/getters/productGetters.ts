@@ -32,6 +32,7 @@ export interface ProductGetters {
   getProductThumbnailImage(product: ProductInterface): string;
   getProductUpsellProduct(product: ProductInterface): ProductInterface[];
   getShortDescription(product: ProductInterface): string;
+  getFeature(product: ProductInterface): string;
   getTypeId(product: ProductInterface): string;
   getSwatchData(swatchData: Product['configurable_options'][0]['values'][0]['swatch_data']): string | undefined;
   getGroupedProducts(product: GroupedProduct): GroupedProduct['items'] | undefined;
@@ -168,7 +169,12 @@ export const getShortDescription = (product: Product): string => {
   }
   return product.short_description.html;
 };
-
+export const getFeature = (product: Product): string => {
+  if (!product || !product.feature) {
+    return '';
+  }
+  return product.feature.html;
+};
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const getCategoryIds = (product: Product): string[] => {
   const categoryIds = [];
@@ -252,7 +258,7 @@ export const getBreadcrumbs = (product: ProductInterface, category?: CategoryInt
 
   return breadcrumbs;
 };
-
+console.log("fff"+getFeature);
 export { getTotalReviews, getAverageRating } from '~/modules/review/getters/reviewGetters';
 
 export const getProductRelatedProduct = (product: any): Product[] => product?.related_products || [];
@@ -292,6 +298,7 @@ const productGetters: ProductGetters = {
   getSwatchData,
   getGroupedProducts,
   getBundleProducts,
+  getFeature
 };
 
 export default productGetters;

@@ -16,7 +16,9 @@ export interface ProductAttribute {
 /**
  * There is no __typename in GraphQL definitions but type_id is marked as a deprecated
  */
-export interface Product extends ProductInterface, ConfigurableProduct, Omit<BundleProduct, 'items'>, Omit<GroupedProduct, 'items'>, Omit<DownloadableProduct, 'items'>, Omit<VirtualProduct, 'items'> { __typename: string }
+export interface Product extends ProductInterface, ConfigurableProduct, Omit<BundleProduct, 'items'>, Omit<GroupedProduct, 'items'>, Omit<DownloadableProduct, 'items'>, Omit<VirtualProduct, 'items'> {
+  feature: any; __typename: string 
+}
 
 /**
  * GraphQL's definitions lacks __typename field so we introduce WithTypename to extend any product type if required
