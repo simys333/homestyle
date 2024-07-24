@@ -97,7 +97,7 @@ export default gql `
         short_description {
           html
         }
-        feature {
+        features {
           html
         }
         options_container

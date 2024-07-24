@@ -170,10 +170,10 @@ export const getShortDescription = (product: Product): string => {
   return product.short_description.html;
 };
 export const getFeature = (product: Product): string => {
-  if (!product || !product.feature) {
+  if (!product || !product.features) {
     return '';
   }
-  return product.feature.html;
+  return product.features.html;
 };
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const getCategoryIds = (product: Product): string[] => {
@@ -258,7 +258,7 @@ export const getBreadcrumbs = (product: ProductInterface, category?: CategoryInt
 
   return breadcrumbs;
 };
-console.log("fff"+getFeature);
+//console.log("fff"+getFeature);
 export { getTotalReviews, getAverageRating } from '~/modules/review/getters/reviewGetters';
 
 export const getProductRelatedProduct = (product: any): Product[] => product?.related_products || [];

@@ -287,7 +287,7 @@ export default defineComponent({
       () => props.product?.short_description?.html || '',
     );
     const productFeature= computed(
-      () => props.product?.feature?.html || '',
+      () => props.product?.features?.html || '',
     );
     const configurableOptions = computed(
       () => props.product?.configurable_options ?? [],

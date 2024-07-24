@@ -146,7 +146,7 @@ export default defineComponent({
       () => props.product?.description?.html || ""
     );
     const productFeatures = computed(
-      () => props.product?.feature || '',
+      () => props.product?.features || '',
     );
     const successAddReview = async (reviewData: UseReviewAddReviewParams) => {
       await addReview(reviewData);

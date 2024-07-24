@@ -36,7 +36,7 @@ export default function config(): FilterConfigInterface[] {
       attrCode: 'style_bottom',
     },
     {
-      attrCode: 'feature',
+      attrCode: 'features',
     },
     {
       attrCode: 'color',

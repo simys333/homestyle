@@ -6,7 +6,7 @@ export default `
   query getProductData($search: String = "", $filter: ProductAttributeFilterInput, $pageSize: Int = 10, $currentPage: Int = 1, $sort: ProductAttributeSortInput) {
     products(search: $search, filter: $filter, pageSize: $pageSize, currentPage: $currentPage, sort: $sort) {
       items {
-        feature
+        features
         uid
         sku
         name

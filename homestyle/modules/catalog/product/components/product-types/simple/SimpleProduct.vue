@@ -204,7 +204,7 @@ export default defineComponent({
       () => props.product?.short_description?.html || '',
     );
     const productFeature= computed(
-      () => props.product?.feature || '',
+      () => props.product?.features || '',
     );
     const productPrice = computed(() => getProductPrice(props.product).regular);
     const productSpecialPrice = computed(() => getProductPrice(props.product).special);
