@@ -289,6 +289,12 @@ export default defineComponent({
     const productFeature= computed(
       () => props.product?.features?.html || '',
     );
+    const productMoreinfo= computed(
+      () => props.product?.more_info?.html || '',
+    );
+    const productIncluded= computed(
+      () => props.product?.products_included?.html || '',
+    );
     const configurableOptions = computed(
       () => props.product?.configurable_options ?? [],
     );
@@ -344,6 +350,8 @@ console.log(productConfiguration);
       productPrice,
       productShortDescription,
       productFeature,
+      productMoreinfo,
+      productIncluded,
       productSpecialPrice,
       qty,
       totalReviews,

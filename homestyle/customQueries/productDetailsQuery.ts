@@ -100,6 +100,12 @@ export default gql `
         features {
           html
         }
+        more_info {
+          html
+        }
+        products_included {
+          html
+        }
         options_container
         special_to_date
         ... on ConfigurableProduct {

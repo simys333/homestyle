@@ -499,6 +499,8 @@ export interface BundleProduct extends CustomizableProductInterface, PhysicalPro
   /** A short description of the product. Its use depends on the theme. */
   short_description?: Maybe<ComplexTextValue>;
   features?: Maybe<ComplexTextValue>;
+  more_info?: Maybe<ComplexTextValue>;
+  products_included?: Maybe<ComplexTextValue>;
   size?: Maybe<Scalars['Int']>;
   /** A number or code assigned to a product to identify the product, options, price, and manufacturer. */
   sku?: Maybe<Scalars['String']>;
@@ -1120,6 +1122,8 @@ export interface ConfigurableProduct extends CustomizableProductInterface, Physi
   eco_collection?: Maybe<Scalars['Int']>;
   erin_recommends?: Maybe<Scalars['Int']>;
   features_bags?: Maybe<Scalars['String']>;
+  more_info?: Maybe<ComplexTextValue>;
+  products_included?: Maybe<ComplexTextValue>;
   format?: Maybe<Scalars['Int']>;
   gender?: Maybe<Scalars['String']>;
   /** Indicates whether a gift message is available. */
@@ -1195,6 +1199,8 @@ export interface ConfigurableProduct extends CustomizableProductInterface, Physi
   /** A short description of the product. Its use depends on the theme. */
   short_description?: Maybe<ComplexTextValue>;
   features?: Maybe<ComplexTextValue>;
+  more_info?: Maybe<ComplexTextValue>;
+  products_included?: Maybe<ComplexTextValue>;
   size?: Maybe<Scalars['Int']>;
   /** A number or code assigned to a product to identify the product, options, price, and manufacturer. */
   sku?: Maybe<Scalars['String']>;
@@ -3077,6 +3083,8 @@ export interface DownloadableProduct extends CustomizableProductInterface, Produ
   /** A short description of the product. Its use depends on the theme. */
   short_description?: Maybe<ComplexTextValue>;
   features?: Maybe<ComplexTextValue>;
+  more_info?: Maybe<ComplexTextValue>;
+  products_included?: Maybe<ComplexTextValue>;
   size?: Maybe<Scalars['Int']>;
   /** A number or code assigned to a product to identify the product, options, price, and manufacturer. */
   sku?: Maybe<Scalars['String']>;
@@ -3456,6 +3464,8 @@ export interface GroupedProduct extends PhysicalProductInterface, ProductInterfa
   /** A short description of the product. Its use depends on the theme. */
   short_description?: Maybe<ComplexTextValue>;
   features?: Maybe<ComplexTextValue>;
+  more_info?: Maybe<ComplexTextValue>;
+  products_included?: Maybe<ComplexTextValue>;
   size?: Maybe<Scalars['Int']>;
   /** A number or code assigned to a product to identify the product, options, price, and manufacturer. */
   sku?: Maybe<Scalars['String']>;
@@ -4595,6 +4605,8 @@ export interface ProductAttributeFilterInput {
   /** Attribute label: Short Description */
   short_description?: InputMaybe<FilterMatchTypeInput>;
   features?: Maybe<ComplexTextValue>;
+  more_info?: Maybe<ComplexTextValue>;
+  products_included?: Maybe<ComplexTextValue>;
   /** Attribute label: Size */
   size?: InputMaybe<FilterEqualTypeInput>;
   /** Attribute label: SKU */
@@ -4681,6 +4693,8 @@ export interface ProductFilterInput {
   /** A short description of the product. Its use depends on the theme. */
   short_description?: InputMaybe<FilterTypeInput>;
   features?: Maybe<ComplexTextValue>;
+  more_info?: Maybe<ComplexTextValue>;
+  products_included?: Maybe<ComplexTextValue>;
   /** A number or code assigned to a product to identify the product, options, price, and manufacturer. */
   sku?: InputMaybe<FilterTypeInput>;
   /** The relative path to the small image, which is used on catalog pages. */
@@ -4824,6 +4838,8 @@ export interface ProductInterface {
   /** A short description of the product. Its use depends on the theme. */
   short_description?: Maybe<ComplexTextValue>;
   features?: Maybe<ComplexTextValue>;
+  more_info?: Maybe<ComplexTextValue>;
+  products_included?: Maybe<ComplexTextValue>;
   size?: Maybe<Scalars['Int']>;
   /** A number or code assigned to a product to identify the product, options, price, and manufacturer. */
   sku?: Maybe<Scalars['String']>;
@@ -5067,6 +5083,8 @@ export interface ProductSortInput {
   /** A short description of the product. Its use depends on the theme. */
   short_description?: InputMaybe<SortEnum>;
   features?: Maybe<ComplexTextValue>;
+  more_info?: Maybe<ComplexTextValue>;
+  products_included?: Maybe<ComplexTextValue>;
   /** A number or code assigned to a product to identify the product, options, price, and manufacturer. */
   sku?: InputMaybe<SortEnum>;
   /** The relative path to the small image, which is used on catalog pages. */
@@ -5725,6 +5743,8 @@ export interface SimpleProduct extends CustomizableProductInterface, PhysicalPro
   /** A short description of the product. Its use depends on the theme. */
   short_description?: Maybe<ComplexTextValue>;
   features?: Maybe<ComplexTextValue>;
+  more_info?: Maybe<ComplexTextValue>;
+  products_included?: Maybe<ComplexTextValue>;
   size?: Maybe<Scalars['Int']>;
   /** A number or code assigned to a product to identify the product, options, price, and manufacturer. */
   sku?: Maybe<Scalars['String']>;
@@ -6234,6 +6254,8 @@ export interface VirtualProduct extends CustomizableProductInterface, ProductInt
   /** A short description of the product. Its use depends on the theme. */
   short_description?: Maybe<ComplexTextValue>;
   features?: Maybe<ComplexTextValue>;
+  more_info?: Maybe<ComplexTextValue>;
+  products_included?: Maybe<ComplexTextValue>;
   size?: Maybe<Scalars['Int']>;
   /** A number or code assigned to a product to identify the product, options, price, and manufacturer. */
   sku?: Maybe<Scalars['String']>;
@@ -30946,6 +30968,12 @@ export declare type ProductDetailsQuery = {
       features?: {
         html: string;
       } | null | undefined;
+      more_info?: {
+        html: string;
+      } | null | undefined;
+      products_included?: {
+        html: string;
+      } | null | undefined;
     } | {
       uid: string;
       sku?: string | null | undefined;
@@ -31050,6 +31078,12 @@ export declare type ProductDetailsQuery = {
         html: string;
       } | null | undefined;
       features?: {
+        html: string;
+      } | null | undefined;
+      more_info?: {
+        html: string;
+      } | null | undefined;
+      products_included?: {
         html: string;
       } | null | undefined;
     } | {
@@ -31357,6 +31391,12 @@ export declare type ProductDetailsQuery = {
       features?: {
         html: string;
       } | null | undefined;
+      more_info?: {
+        html: string;
+      } | null | undefined;
+      products_included?: {
+        html: string;
+      } | null | undefined;
     } | {
       uid: string;
       sku?: string | null | undefined;
@@ -31451,6 +31491,12 @@ export declare type ProductDetailsQuery = {
         html: string;
       } | null | undefined;
       features?: {
+        html: string;
+      } | null | undefined;
+      more_info?: {
+        html: string;
+      } | null | undefined;
+      products_included?: {
         html: string;
       } | null | undefined;
     } | {
@@ -31555,6 +31601,12 @@ export declare type ProductDetailsQuery = {
         html: string;
       } | null | undefined;
       features?: {
+        html: string;
+      } | null | undefined;
+      more_info?: {
+        html: string;
+      } | null | undefined;
+      products_included?: {
         html: string;
       } | null | undefined;
     } | null | undefined> | null | undefined;

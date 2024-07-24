@@ -9,6 +9,8 @@ export default `
         __typename
         uid
         features
+        more_info
+        products_included
         sku
         name
         stock_status
