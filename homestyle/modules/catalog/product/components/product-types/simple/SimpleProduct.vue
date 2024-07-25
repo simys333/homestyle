@@ -206,6 +206,12 @@ export default defineComponent({
     const productFeature= computed(
       () => props.product?.features || '',
     );
+    const productMoreinfo= computed(
+      () => props.product?.more_info?.html || '',
+    );
+    const productIncluded= computed(
+      () => props.product?.products_included?.html || '',
+    );
     const productPrice = computed(() => getProductPrice(props.product).regular);
     const productSpecialPrice = computed(() => getProductPrice(props.product).special);
     const totalReviews = computed(() => getTotalReviews(props.product));
@@ -234,6 +240,8 @@ export default defineComponent({
       productGallery,
       getProductName,
       productFeature,
+      productMoreinfo,
+      productIncluded,
       productPrice,
       productSpecialPrice,
       qty,

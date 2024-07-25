@@ -7,6 +7,8 @@ export default `
     products(search: $search, filter: $filter, pageSize: $pageSize, currentPage: $currentPage, sort: $sort) {
       items {
         features
+        more_info
+        products_included
         uid
         sku
         name

@@ -29,8 +29,8 @@
     <hr class="sf-divider" />
     <SfAccordionItem header="Products Included">
       <HTMLContent
-        v-if="productDescription"
-        :content="productDescription"
+        v-if="productIncluded"
+        :content="productIncluded"
         tag="div"
         class="product__description"
       />
@@ -38,8 +38,8 @@
     <hr class="sf-divider" />
     <SfAccordionItem header="More Info">
       <HTMLContent
-        v-if="productDescription"
-        :content="productDescription"
+        v-if="productMoreinfo"
+        :content="productMoreinfo"
         tag="div"
         class="product__description"
       />
@@ -148,6 +148,12 @@ export default defineComponent({
     const productFeatures = computed(
       () => props.product?.features || '',
     );
+    const productMoreinfo= computed(
+      () => props.product?.more_info?.html || '',
+    );
+    const productIncluded= computed(
+      () => props.product?.products_included?.html || '',
+    );
     const successAddReview = async (reviewData: UseReviewAddReviewParams) => {
       await addReview(reviewData);
       document.querySelector("#tabs").scrollIntoView({
@@ -169,6 +175,8 @@ export default defineComponent({
       productDescription,
       successAddReview,
       productFeatures,
+      productIncluded,
+      productMoreinfo,
     };
   },
 });

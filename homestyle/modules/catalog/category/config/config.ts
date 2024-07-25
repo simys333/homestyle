@@ -39,6 +39,12 @@ export default function config(): FilterConfigInterface[] {
       attrCode: 'features',
     },
     {
+      attrCode: 'more_info',
+    },
+    {
+      attrCode: 'products_included',
+    },
+    {
       attrCode: 'color',
       type: FilterTypeEnum.SWATCH_COLOR,
       component: RendererTypesEnum.SWATCH_COLOR,
