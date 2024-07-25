@@ -287,13 +287,13 @@ export default defineComponent({
       () => props.product?.short_description?.html || '',
     );
     const productFeature= computed(
-      () => props.product?.features?.html || '',
+      () => props.product?.features|| '',
     );
     const productMoreinfo= computed(
-      () => props.product?.more_info?.html || '',
+      () => props.product?.more_info || '',
     );
     const productIncluded= computed(
-      () => props.product?.products_included?.html || '',
+      () => props.product?.products_included|| '',
     );
     const configurableOptions = computed(
       () => props.product?.configurable_options ?? [],
