@@ -1122,8 +1122,6 @@ export interface ConfigurableProduct extends CustomizableProductInterface, Physi
   eco_collection?: Maybe<Scalars['Int']>;
   erin_recommends?: Maybe<Scalars['Int']>;
   features_bags?: Maybe<Scalars['String']>;
-  more_info?: Maybe<ComplexTextValue>;
-  products_included?: Maybe<ComplexTextValue>;
   format?: Maybe<Scalars['Int']>;
   gender?: Maybe<Scalars['String']>;
   /** Indicates whether a gift message is available. */
