@@ -207,10 +207,10 @@ export default defineComponent({
       () => props.product?.features || '',
     );
     const productMoreinfo= computed(
-      () => props.product?.more_info?.html || '',
+      () => props.product?.more_info? || '',
     );
     const productIncluded= computed(
-      () => props.product?.products_included?.html || '',
+      () => props.product?.products_included? || '',
     );
     const productPrice = computed(() => getProductPrice(props.product).regular);
     const productSpecialPrice = computed(() => getProductPrice(props.product).special);

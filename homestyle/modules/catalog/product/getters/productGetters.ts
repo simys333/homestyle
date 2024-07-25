@@ -175,6 +175,18 @@ export const getFeature = (product: Product): string => {
   }
   return product.features.html;
 };
+export const getMoreinfo = (product: Product): string => {
+  if (!product || !product.more_info) {
+    return '';
+  }
+  return product.more_info.html;
+};
+export const getProductincluded = (product: Product): string => {
+  if (!product || !product.products_included) {
+    return '';
+  }
+  return product.products_included.html;
+};
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const getCategoryIds = (product: Product): string[] => {
   const categoryIds = [];
