@@ -207,10 +207,10 @@ export default defineComponent({
       () => props.product?.features || '',
     );
     const productMoreinfo= computed(
-      () => props.product?.more_info? || '',
+      () => props.product?.more_info?.html || '',
     );
     const productIncluded= computed(
-      () => props.product?.products_included? || '',
+      () => props.product?.products_included?.html || '',
     );
     const productPrice = computed(() => getProductPrice(props.product).regular);
     const productSpecialPrice = computed(() => getProductPrice(props.product).special);
@@ -240,8 +240,6 @@ export default defineComponent({
       productGallery,
       getProductName,
       productFeature,
-      productMoreinfo,
-      productIncluded,
       productPrice,
       productSpecialPrice,
       qty,
@@ -251,7 +249,9 @@ export default defineComponent({
       activeTab,
       TabsConfig,
       addToCartError,
-      calculatePercentage
+      calculatePercentage,
+      productMoreinfo,
+      productIncluded
     };
   },
 });
