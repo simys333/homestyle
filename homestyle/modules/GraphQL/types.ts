@@ -487,7 +487,7 @@ export interface BundleProduct extends CustomizableProductInterface, PhysicalPro
   redirect_code: Scalars['Int'];
   /** Related Products */
   related_products?: Maybe<Array<Maybe<ProductInterface>>>;
-  /** The internal relative URL. If the specified URL is a redirect, the query returns the redirected URL, not the original */
+  /** The internal r¯elative URL. If the specified URL is a redirect, the query returns the redirected URL, not the original */
   relative_url?: Maybe<Scalars['String']>;
   /** The total count of all the reviews given to the product. */
   review_count: Scalars['Int'];
