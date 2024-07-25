@@ -226,6 +226,8 @@ export default defineComponent({
         },
         class: "sf-banner--slim banner__tshirt",
         link: "/women/women-clothing-shirts",
+        description:"",
+        buttonText:""
       },
       {
         slot: "banner-B",
@@ -239,6 +241,8 @@ export default defineComponent({
         },
         class: "sf-banner--slim banner__tshirt",
         link: "/women/women-shoes-sandals",
+        description:"",
+        buttonText:""
       },
       {
         slot: "banner-C",
@@ -252,6 +256,8 @@ export default defineComponent({
         },
         class: "sf-banner--slim banner-central desktop-only",
         link: "/women/women-clothing-dresses",
+        description:"",
+        buttonText:""
       },
       {
         slot: "banner-D",
@@ -265,6 +271,8 @@ export default defineComponent({
         },
         class: "sf-banner--slim banner__tshirt",
         link: "/women/women-clothing-shirts",
+        description:"",
+        buttonText:""
       },
       {
         slot: "banner-E",
@@ -278,6 +286,8 @@ export default defineComponent({
         },
         class: "sf-banner--slim banner__tshirt",
         link: "/women/women-shoes-sandals",
+        description:"",
+        buttonText:""
       },
     ]);
     const callToAction = ref({
