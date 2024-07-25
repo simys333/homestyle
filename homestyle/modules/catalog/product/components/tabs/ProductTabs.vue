@@ -175,6 +175,8 @@ export default defineComponent({
       productDescription,
       successAddReview,
       productFeatures,
+      productIncluded,
+      productMoreinfo,
     };
   },
 });
