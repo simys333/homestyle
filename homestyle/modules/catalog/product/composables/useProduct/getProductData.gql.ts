@@ -7,6 +7,10 @@ export default `
     products(search: $search, filter: $filter, pageSize: $pageSize, currentPage: $currentPage, sort: $sort) {
       items {
         features
+        weight_litre
+        height
+        width
+        length
         more_info
         products_included
         uid

@@ -100,6 +100,7 @@ export default gql `
         features {
           html
         }
+        weight_litre
         more_info {
           html
         }

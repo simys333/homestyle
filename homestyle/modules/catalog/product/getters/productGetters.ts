@@ -175,6 +175,7 @@ export const getFeature = (product: Product): string => {
   }
   return product.features.html;
 };
+
 export const getMoreinfo = (product: Product): string => {
   if (!product || !product.more_info) {
     return '';

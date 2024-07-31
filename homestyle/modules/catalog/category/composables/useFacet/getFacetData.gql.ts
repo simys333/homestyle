@@ -9,6 +9,10 @@ export default `
         __typename
         uid
         features
+        weight_litre
+        height
+        width
+        length
         more_info
         products_included
         sku

@@ -39,6 +39,18 @@ export default function config(): FilterConfigInterface[] {
       attrCode: 'features',
     },
     {
+      attrCode: 'weight_litre',
+    },
+    {
+      attrCode: 'height',
+    },
+    {
+      attrCode: 'width',
+    },
+    {
+      attrCode: 'length',
+    },
+    {
       attrCode: 'more_info',
     },
     {
