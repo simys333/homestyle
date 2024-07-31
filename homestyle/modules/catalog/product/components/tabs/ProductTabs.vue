@@ -148,6 +148,18 @@ console.log(props.product);
     const productFeatures = computed(
       () => props.product?.features || '',
     );
+    const productWeightlitre = computed(
+      () => props.product?.weight_litre+' L' || '',
+    );
+    const productHeight = computed(
+      () => props.product?.height || '',
+    );
+    const productLength = computed(
+      () => props.product?.length || '',
+    );
+    const productWidth= computed(
+      () => props.product?.width || '',
+    );
     const productMoreinfo= computed(
       () => props.product?.more_info || '',
     );
@@ -177,6 +189,10 @@ console.log(props.product);
       productFeatures,
       productIncluded,
       productMoreinfo,
+      productHeight,
+      productLength,
+      productWidth,
+      productWeightlitre,
     };
   },
 });
