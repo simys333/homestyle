@@ -175,7 +175,12 @@ export const getFeature = (product: Product): string => {
   }
   return product.features.html;
 };
-
+export const getWeightlitre = (product: Product): string => {
+  if (!product || !product.weight_litre) {
+    return '';
+  }
+  return product.weight_litre;
+};
 export const getMoreinfo = (product: Product): string => {
   if (!product || !product.more_info) {
     return '';
