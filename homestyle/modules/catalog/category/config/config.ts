@@ -48,9 +48,6 @@ export default function config(): FilterConfigInterface[] {
       attrCode: 'width',
     },
     {
-      attrCode: 'length',
-    },
-    {
       attrCode: 'more_info',
     },
     {

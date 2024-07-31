@@ -10,7 +10,6 @@ export default `
         weight_litre
         height
         width
-        length
         more_info
         products_included
         uid

@@ -502,7 +502,6 @@ export interface BundleProduct extends CustomizableProductInterface, PhysicalPro
   weight_litre?: Maybe<Scalars['String']>;
   height?: Maybe<Scalars['String']>;
   width?: Maybe<Scalars['String']>;
-  length?: Maybe<Scalars['String']>;
   more_info?: Maybe<ComplexTextValue>;
   products_included?: Maybe<ComplexTextValue>;
   size?: Maybe<Scalars['Int']>;
@@ -1204,7 +1203,6 @@ export interface ConfigurableProduct extends CustomizableProductInterface, Physi
   weight_litre?: Maybe<Scalars['String']>;
   height?: Maybe<Scalars['String']>;
   width?: Maybe<Scalars['String']>;
-  length?: Maybe<Scalars['String']>;
   more_info?: Maybe<ComplexTextValue>;
   products_included?: Maybe<ComplexTextValue>;
   size?: Maybe<Scalars['Int']>;
@@ -3092,7 +3090,6 @@ export interface DownloadableProduct extends CustomizableProductInterface, Produ
   weight_litre?: Maybe<Scalars['String']>;
   height?: Maybe<Scalars['String']>;
   width?: Maybe<Scalars['String']>;
-  length?: Maybe<Scalars['String']>;
   more_info?: Maybe<ComplexTextValue>;
   products_included?: Maybe<ComplexTextValue>;
   size?: Maybe<Scalars['Int']>;
@@ -3477,7 +3474,6 @@ export interface GroupedProduct extends PhysicalProductInterface, ProductInterfa
   weight_litre?: Maybe<Scalars['String']>;
   height?: Maybe<Scalars['String']>;
   width?: Maybe<Scalars['String']>;
-  length?: Maybe<Scalars['String']>;
   more_info?: Maybe<ComplexTextValue>;
   products_included?: Maybe<ComplexTextValue>;
   size?: Maybe<Scalars['Int']>;
@@ -4622,7 +4618,6 @@ export interface ProductAttributeFilterInput {
   weight_litre?: Maybe<Scalars['String']>;
   height?: Maybe<Scalars['String']>;
   width?: Maybe<Scalars['String']>;
-  length?: Maybe<Scalars['String']>;
   more_info?: Maybe<ComplexTextValue>;
   products_included?: Maybe<ComplexTextValue>;
   /** Attribute label: Size */
@@ -4714,7 +4709,6 @@ export interface ProductFilterInput {
   weight_litre?: Maybe<Scalars['String']>;
   height?: Maybe<Scalars['String']>;
   width?: Maybe<Scalars['String']>;
-  length?: Maybe<Scalars['String']>;
   more_info?: Maybe<ComplexTextValue>;
   products_included?: Maybe<ComplexTextValue>;
   /** A number or code assigned to a product to identify the product, options, price, and manufacturer. */
@@ -4863,7 +4857,6 @@ export interface ProductInterface {
   weight_litre?: Maybe<Scalars['String']>;
   height?: Maybe<Scalars['String']>;
   width?: Maybe<Scalars['String']>;
-  length?: Maybe<Scalars['String']>;
   more_info?: Maybe<ComplexTextValue>;
   products_included?: Maybe<ComplexTextValue>;
   size?: Maybe<Scalars['Int']>;
@@ -5112,7 +5105,6 @@ export interface ProductSortInput {
   weight_litre?: Maybe<Scalars['String']>;
   height?: Maybe<Scalars['String']>;
   width?: Maybe<Scalars['String']>;
-  length?: Maybe<Scalars['String']>;
   more_info?: Maybe<ComplexTextValue>;
   products_included?: Maybe<ComplexTextValue>;
   /** A number or code assigned to a product to identify the product, options, price, and manufacturer. */
@@ -5776,7 +5768,6 @@ export interface SimpleProduct extends CustomizableProductInterface, PhysicalPro
   weight_litre?: Maybe<Scalars['String']>;
   height?: Maybe<Scalars['String']>;
   width?: Maybe<Scalars['String']>;
-  length?: Maybe<Scalars['String']>;
   more_info?: Maybe<ComplexTextValue>;
   products_included?: Maybe<ComplexTextValue>;
   size?: Maybe<Scalars['Int']>;
@@ -6291,7 +6282,6 @@ export interface VirtualProduct extends CustomizableProductInterface, ProductInt
   weight_litre?: Maybe<Scalars['String']>;
   height?: Maybe<Scalars['String']>;
   width?: Maybe<Scalars['String']>;
-  length?: Maybe<Scalars['String']>;
   more_info?: Maybe<ComplexTextValue>;
   products_included?: Maybe<ComplexTextValue>;
   size?: Maybe<Scalars['Int']>;

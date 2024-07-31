@@ -11,8 +11,21 @@
     <hr class="sf-divider" />
     <SfAccordionItem header="Size Details">
       <HTMLContent
-        v-if="productDescription"
-        :content="productDescription"
+        v-if="productWeightlitre"
+       :content="`Weight: ${productWeightlitre}`"
+        tag="div"
+        class="product__description"
+      />
+      <HTMLContent
+        v-if="productHeight"
+       :content="`Height: ${productHeight}`"
+        tag="div"
+        class="product__description"
+      />
+      
+      <HTMLContent
+        v-if="productWidth"
+       :content="`Width: ${productWidth}`"
         tag="div"
         class="product__description"
       />
@@ -154,9 +167,7 @@ console.log(props.product);
     const productHeight = computed(
       () => props.product?.height || '',
     );
-    const productLength = computed(
-      () => props.product?.length || '',
-    );
+   
     const productWidth= computed(
       () => props.product?.width || '',
     );
@@ -190,7 +201,6 @@ console.log(props.product);
       productIncluded,
       productMoreinfo,
       productHeight,
-      productLength,
       productWidth,
       productWeightlitre,
     };
