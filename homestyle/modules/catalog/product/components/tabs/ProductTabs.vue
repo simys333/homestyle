@@ -162,7 +162,7 @@ console.log(props.product);
       () => props.product?.features || '',
     );
     const productWeightlitre = computed(
-      () => props.product?.weight_litre+' L' || '',
+      () => props.product?.weight_litre || '',
     );
     const productHeight = computed(
       () => props.product?.height || '',
