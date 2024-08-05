@@ -181,6 +181,12 @@ export const getWeightlitre = (product: Product): string => {
   }
   return product.weight_litre;
 };
+export const getProductlength= (product: Product): string => {
+  if (!product || !product.product_length) {
+    return '';
+  }
+  return product.product_length;
+};
 export const getMoreinfo = (product: Product): string => {
   if (!product || !product.more_info) {
     return '';

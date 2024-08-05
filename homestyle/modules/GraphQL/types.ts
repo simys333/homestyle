@@ -502,6 +502,7 @@ export interface BundleProduct extends CustomizableProductInterface, PhysicalPro
   weight_litre?: Maybe<Scalars['String']>;
   height?: Maybe<Scalars['String']>;
   width?: Maybe<Scalars['String']>;
+  product_length?:Maybe<Scalars['String']>;
   more_info?: Maybe<ComplexTextValue>;
   products_included?: Maybe<ComplexTextValue>;
   size?: Maybe<Scalars['Int']>;
@@ -1201,6 +1202,7 @@ export interface ConfigurableProduct extends CustomizableProductInterface, Physi
   short_description?: Maybe<ComplexTextValue>;
   features?: Maybe<ComplexTextValue>;
   weight_litre?: Maybe<Scalars['String']>;
+  product_length?:Maybe<Scalars['String']>;
   height?: Maybe<Scalars['String']>;
   width?: Maybe<Scalars['String']>;
   more_info?: Maybe<ComplexTextValue>;
@@ -3088,6 +3090,7 @@ export interface DownloadableProduct extends CustomizableProductInterface, Produ
   short_description?: Maybe<ComplexTextValue>;
   features?: Maybe<ComplexTextValue>;
   weight_litre?: Maybe<Scalars['String']>;
+  product_length?:Maybe<Scalars['String']>;
   height?: Maybe<Scalars['String']>;
   width?: Maybe<Scalars['String']>;
   more_info?: Maybe<ComplexTextValue>;
@@ -3472,6 +3475,7 @@ export interface GroupedProduct extends PhysicalProductInterface, ProductInterfa
   short_description?: Maybe<ComplexTextValue>;
   features?: Maybe<ComplexTextValue>;
   weight_litre?: Maybe<Scalars['String']>;
+  product_length?:Maybe<Scalars['String']>;
   height?: Maybe<Scalars['String']>;
   width?: Maybe<Scalars['String']>;
   more_info?: Maybe<ComplexTextValue>;
@@ -4616,6 +4620,7 @@ export interface ProductAttributeFilterInput {
   short_description?: InputMaybe<FilterMatchTypeInput>;
   features?: Maybe<ComplexTextValue>;
   weight_litre?: Maybe<Scalars['String']>;
+  product_length?:Maybe<Scalars['String']>;
   height?: Maybe<Scalars['String']>;
   width?: Maybe<Scalars['String']>;
   more_info?: Maybe<ComplexTextValue>;
@@ -4707,6 +4712,7 @@ export interface ProductFilterInput {
   short_description?: InputMaybe<FilterTypeInput>;
   features?: Maybe<ComplexTextValue>;
   weight_litre?: Maybe<Scalars['String']>;
+  product_length?:Maybe<Scalars['String']>;
   height?: Maybe<Scalars['String']>;
   width?: Maybe<Scalars['String']>;
   more_info?: Maybe<ComplexTextValue>;
@@ -4855,6 +4861,7 @@ export interface ProductInterface {
   short_description?: Maybe<ComplexTextValue>;
   features?: Maybe<ComplexTextValue>;
   weight_litre?: Maybe<Scalars['String']>;
+  product_length?:Maybe<Scalars['String']>;
   height?: Maybe<Scalars['String']>;
   width?: Maybe<Scalars['String']>;
   more_info?: Maybe<ComplexTextValue>;
@@ -5103,6 +5110,7 @@ export interface ProductSortInput {
   short_description?: InputMaybe<SortEnum>;
   features?: Maybe<ComplexTextValue>;
   weight_litre?: Maybe<Scalars['String']>;
+  product_length?:Maybe<Scalars['String']>;
   height?: Maybe<Scalars['String']>;
   width?: Maybe<Scalars['String']>;
   more_info?: Maybe<ComplexTextValue>;
@@ -5766,6 +5774,7 @@ export interface SimpleProduct extends CustomizableProductInterface, PhysicalPro
   short_description?: Maybe<ComplexTextValue>;
   features?: Maybe<ComplexTextValue>;
   weight_litre?: Maybe<Scalars['String']>;
+  product_length?:Maybe<Scalars['String']>;
   height?: Maybe<Scalars['String']>;
   width?: Maybe<Scalars['String']>;
   more_info?: Maybe<ComplexTextValue>;
@@ -6280,6 +6289,7 @@ export interface VirtualProduct extends CustomizableProductInterface, ProductInt
   short_description?: Maybe<ComplexTextValue>;
   features?: Maybe<ComplexTextValue>;
   weight_litre?: Maybe<Scalars['String']>;
+  product_length?:Maybe<Scalars['String']>;
   height?: Maybe<Scalars['String']>;
   width?: Maybe<Scalars['String']>;
   more_info?: Maybe<ComplexTextValue>;
@@ -30999,6 +31009,9 @@ export declare type ProductDetailsQuery = {
       weight_litre?: {
         html: string;
       } | null | undefined;
+      product_length?: {
+        html: string;
+      } | null | undefined;
       more_info?: {
         html: string;
       } | null | undefined;
@@ -31112,6 +31125,9 @@ export declare type ProductDetailsQuery = {
         html: string;
       } | null | undefined;
       weight_litre?: {
+        html: string;
+      } | null | undefined;
+      product_length?: {
         html: string;
       } | null | undefined;
       more_info?: {
@@ -31428,6 +31444,9 @@ export declare type ProductDetailsQuery = {
       weight_litre?: {
         html: string;
       } | null | undefined;
+      product_length?: {
+        html: string;
+      } | null | undefined;
       more_info?: {
         html: string;
       } | null | undefined;
@@ -31531,6 +31550,9 @@ export declare type ProductDetailsQuery = {
         html: string;
       } | null | undefined;
       weight_litre?: {
+        html: string;
+      } | null | undefined;
+      product_length?: {
         html: string;
       } | null | undefined;
       more_info?: {
@@ -31644,6 +31666,9 @@ export declare type ProductDetailsQuery = {
         html: string;
       } | null | undefined;
       weight_litre?: {
+        html: string;
+      } | null | undefined;
+      product_length?: {
         html: string;
       } | null | undefined;
       more_info?: {

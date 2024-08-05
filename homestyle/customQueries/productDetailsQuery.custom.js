@@ -92,6 +92,7 @@ module.exports = gql`
           html
         }
          weight_litre
+         product_length
          height
          width
         more_info {

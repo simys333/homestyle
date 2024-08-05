@@ -12,6 +12,7 @@ export default `
         weight_litre
         height
         width
+        product_length
         more_info
         products_included
         sku

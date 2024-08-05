@@ -35,24 +35,10 @@ export default function config(): FilterConfigInterface[] {
     {
       attrCode: 'style_bottom',
     },
-    {
-      attrCode: 'features',
-    },
-    {
-      attrCode: 'weight_litre',
-    },
-    {
-      attrCode: 'height',
-    },
-    {
-      attrCode: 'width',
-    },
-    {
-      attrCode: 'more_info',
-    },
-    {
-      attrCode: 'products_included',
-    },
+    
+   
+   
+    
     {
       attrCode: 'color',
       type: FilterTypeEnum.SWATCH_COLOR,
