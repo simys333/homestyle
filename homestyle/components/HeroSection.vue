@@ -125,7 +125,7 @@ export default defineComponent({
    // border: 1px solid #000000;
     max-width: 20rem;
     top: 20%;
-    left: 10%;
+    left: 14%;
   /*  box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.85),
       0 0 0 30px rgba(255, 255, 255, 0.3);*/
       padding: 30px;

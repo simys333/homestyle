@@ -260,13 +260,23 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+
 .new-products {
   .heading {
     align-items: center;
     display: flex;
     justify-content: space-between;
   }
-
+  .carousel .sf-carousel__controls button.sf-button
+  {
+    background:transparent;
+  }
+  .sf-carousel__controls span {
+    color: #000000;
+}
+.carousel .sf-carousel__controls button.sf-button:hover {
+    --button-box-shadow-opacity: 0;
+}
   .sf-section__content {
     margin: 0;
   }
@@ -330,7 +340,7 @@ export default defineComponent({
       font-weight: var(--font-weight--semibold);
     }
   }
-
+  
   .products {
     display: flex;
     justify-content: space-between;
