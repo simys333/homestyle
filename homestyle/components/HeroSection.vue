@@ -122,12 +122,13 @@ export default defineComponent({
     width: 100%;
     text-decoration: none;
     background-color: #ffffff;
-    border: 1px solid #000000;
+   // border: 1px solid #000000;
     max-width: 20rem;
     top: 20%;
     left: 10%;
-    box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.85),
-      0 0 0 30px rgba(255, 255, 255, 0.3);
+  /*  box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.85),
+      0 0 0 30px rgba(255, 255, 255, 0.3);*/
+      padding: 30px;
   }
   &__wrapper::before {
     content: "";
@@ -135,9 +136,9 @@ export default defineComponent({
     position: absolute;
     width: 100%;
     height: 100%;
-    left: -10%;
+    left: -3%;
     border: 1px solid white;
-    padding: 30px;
+   padding: 10px;
   }
 
   &__title {
