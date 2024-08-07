@@ -132,4 +132,18 @@ export default defineComponent({
     display: none;
   }
 }
+.sf-header-navigation-item
+{
+  position: var(--header-navigation-item-position, relative);
+  display: flex;
+
+&__item {
+  display: flex;
+    display: var(--header-navigation-item-display, flex);
+    max-width: 77.5rem;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+}
 </style>
