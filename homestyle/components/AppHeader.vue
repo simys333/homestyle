@@ -237,4 +237,12 @@ export default defineComponent({
     display: none;
   }
 }
+.sf-header-navigation-item__item {
+    display: flex;
+    display: var(--header-navigation-item-display, flex);
+    max-width: 83.5rem;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
 </style>
