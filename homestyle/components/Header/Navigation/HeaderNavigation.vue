@@ -140,7 +140,7 @@ export default defineComponent({
 &__item {
   display: flex;
     display: var(--header-navigation-item-display, flex);
-    max-width: 77.5rem;
+    max-width: 83.5rem;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
