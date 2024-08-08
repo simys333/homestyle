@@ -12,6 +12,14 @@
         <span>info@homstyle.com</span>
         <span>+91 944 679 4741</span>
       </div>
+      <SfFooterColumn :title="$t('Categories')">
+        <SfList>
+          <SfListItem v-for="item in categoriesmenu" :key="item">
+            <SfMenuItem :label="$t(item).label"
+            :link="item.url" />
+          </SfListItem>
+        </SfList>
+      </SfFooterColumn>
       <SfFooterColumn :title="$t('About us')">
         <SfList>
           <SfListItem v-for="item in aboutUs" :key="item">
@@ -30,14 +38,7 @@
           </SfListItem>
         </SfList>
       </SfFooterColumn>
-      <SfFooterColumn :title="$t('Quick Links')">
-        <SfList>
-          <SfListItem v-for="item in departments" :key="item">
-            <SfMenuItem :label="$t(item).label"
-            :link="item.url" />
-          </SfListItem>
-        </SfList>
-      </SfFooterColumn>
+      
       <SfFooterColumn :title="$t('Help')">
         <SfList>
           <SfListItem v-for="item in help" :key="item">
@@ -93,32 +94,42 @@ export default defineComponent({
   },
   data() {
     return {
+      categoriesmenu: [
+        { label: 'Dining', url:'#' },
+        { label: 'Kitchen', url:'#' },
+        { label: 'Glassware', url:'#' },
+        { label: 'Hot ans serve', url:'#' },
+        { label: 'Bakeware', url:'#' },
+        { label: 'Shop All', url:'#' },
+        // Add more items as needed
+      ],
       aboutUs: [
-        { label: 'Who we are', url: '/default/about-us' },
+        { label: 'Our Story', url: '/default/about-us' },
         { label: 'Why homestyle', url: '/default/why-homestyle' },
-        { label: 'Contact us', url: '/default/contact-us' },
-        // Add more items as needed
-      ],
-      quickLinks: [
+        { label: 'Blog', url: '/default/blog' },
+        { label: 'Careers', url: '#' },
         { label: 'FAQ', url: '/default/faq' },
-        { label: 'Feedback', url: '/default/feedback' },
         { label: 'Contact us', url: '/default/contact-us' },
         // Add more items as needed
       ],
-      departments: [
+     
+      quickLinks: [
+        { label: 'Gifts', url: '#' },
+        { label: 'Gifting Ideas', url: '#' },
+        { label: 'Wishlist', url: '#' },
+        { label: 'Whats New?', url: '#' },
+        { label: 'Offers', url: '#' },
+        // Add more items as needed
+      ],
+      paymentsDelivery: [
+        { label: 'Returns & Refund Policy', url: '/default/terms-and-conditions' },
+        { label: 'Cancellation Policy', url: '/default/cancellation' },
+        { label: 'Shipping Policy', url: '/default/shipping-and-delivery' },
         { label: 'Terms & Conditions', url: '/default/terms-and-conditions' },
         { label: 'Privacy Policy', url: '/default/privacy-policy-cookie-restriction-mode' },
-        { label: 'Shipping Policy', url: '/default/shipping-and-delivery' },
-        // Add more items as needed
-      ],
-      help: [
-        { label: 'Returns & Refund', url: '/default/terms-and-conditions' },
         { label: 'Exchange Policy', url: '/default/exchange-policy' },
-        { label: 'Cancellation Policy', url: '/default/cancellation' },
         // Add more items as needed
       ],
-    
-      paymentsDelivery: ["Purchase terms", "Guarantee"],
       social: ["facebook", "pinterest", "google", "twitter", "youtube"],
       isMobile: false,
       desktopMin: 1024,
