@@ -53,7 +53,7 @@
       <SfFooterColumn :title="$t('Useful Links')">
         <SfList>
           <SfListItem v-for="item in paymentsDelivery" :key="item">
-            <SfMenuItem :label="$t(item)" />
+            <SfMenuItem :label="$t(item).label" :link="item.url" />
           </SfListItem>
         </SfList>
       </SfFooterColumn>
@@ -119,6 +119,14 @@ export default defineComponent({
         { label: 'Wishlist', url: '#' },
         { label: 'Whats New?', url: '#' },
         { label: 'Offers', url: '#' },
+        // Add more items as needed
+      ],
+      help: [
+        { label: 'Shipping', url: '#' },
+        { label: 'Returns', url: '#' },
+        { label: 'My account', url: '#' },
+        { label: 'Order Tracking', url: '#' },
+        { label: 'Support', url: '#' },
         // Add more items as needed
       ],
       paymentsDelivery: [
