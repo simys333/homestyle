@@ -17,7 +17,7 @@
         :key="`${filter.attribute_code}-${option.value}`"
         class="radio-filter"
         :label="`${option.label}`"
-        :selected="selected(filter.attribute_code, option.value)"
+       :selected="selected(filter.attribute_code, option.value)" 
         :value="option.value"
         name="filter__price"
         data-testid="category-filter"
@@ -38,12 +38,10 @@
 <script lang="ts">
 import {
   computed,
-  defineComponent,
-  inject,
-  PropType,
-} from "@nuxtjs/composition-api";
-import { SfRadio, SfScrollable, SfHeading } from "@storefront-ui/vue";
-import type { Aggregation } from "~/modules/GraphQL/types";
+  defineComponent, inject, PropType,
+} from '@nuxtjs/composition-api';
+import { SfRadio, SfScrollable, SfHeading } from '@storefront-ui/vue';
+import type { Aggregation } from '~/modules/GraphQL/types';
 
 export default defineComponent({
   components: {
@@ -57,18 +55,24 @@ export default defineComponent({
       required: true,
     },
   },
-  setup() {},
+  setup() {
+    const { isFilterSelected } = inject('UseFiltersProvider');
+    const selected = computed(() => ((id: string, optVal: string) => isFilterSelected(id, optVal)));
+
+    return { selected };
+  },
 });
 </script>
 <style lang="scss">
 .radio-filter {
   .sf-radio__content {
     display: flex;
-    align-items: center;
+    align-items: center
   }
   margin: 0 0 var(--spacer-2xs) 0;
   .sf-radio__container {
     padding: 0;
   }
 }
+
 </style>

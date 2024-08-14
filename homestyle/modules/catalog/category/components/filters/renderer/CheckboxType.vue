@@ -16,7 +16,7 @@
         v-for="option in filter.options"
         :key="`${filter.attribute_code}-${option.value}`"
         :label="option.label"
-        :selected="Boolean(selected(filter.attribute_code, option.value))"
+        :selected="Boolean(selected(filter.attribute_code, option.value))" 
         class="filters__item"
         data-testid="category-filter"
         @change="$emit('selectFilter', option)"
@@ -33,15 +33,13 @@
     </component>
   </div>
 </template>
+
 <script lang="ts">
 import {
-  computed,
-  defineComponent,
-  inject,
-  PropType,
-} from "@nuxtjs/composition-api";
-import { SfCheckbox, SfScrollable, SfHeading } from "@storefront-ui/vue";
-import type { Aggregation } from "~/modules/GraphQL/types";
+  computed, defineComponent, inject, PropType,
+} from '@nuxtjs/composition-api';
+import { SfCheckbox, SfScrollable, SfHeading } from '@storefront-ui/vue';
+import type { Aggregation } from '~/modules/GraphQL/types';
 
 export default defineComponent({
   components: {
@@ -55,6 +53,10 @@ export default defineComponent({
       required: true,
     },
   },
-  setup() {},
+  setup() {
+    const { isFilterSelected } = inject('UseFiltersProvider');
+    const selected = computed(() => ((id: string, optVal: string) => isFilterSelected(id, optVal)));
+    return { selected };
+  },
 });
 </script>
