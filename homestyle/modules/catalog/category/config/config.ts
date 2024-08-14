@@ -24,6 +24,9 @@ export default function config(): FilterConfigInterface[] {
       component: RendererTypesEnum.RADIO,
     },
     {
+      attrCode: 'brand',
+    },
+    {
       attrCode: 'size',
     },
     {
