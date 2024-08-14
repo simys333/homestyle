@@ -190,6 +190,8 @@ export default defineComponent({
   .sf-image {
     width: auto;
     height: auto;
+    max-width: 320px;
+
   }
 }
 
