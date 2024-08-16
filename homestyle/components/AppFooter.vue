@@ -259,7 +259,17 @@ export default defineComponent({
     }
   }
 }
-
+.sf-footer-column__title {
+        padding-bottom: 3px;
+    }
+    .footer-2 .sf-footer-column {
+    padding-top: 2px;
+    padding-bottom:10px;
+}
+.sf-footer-column {
+    padding-bottom: 1px;
+    margin-bottom: 1px;
+}
 .copyright {
   color: #ffffff;
   border-top: 1px solid rgba(255, 255, 255, 0.4);
