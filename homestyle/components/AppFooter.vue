@@ -98,18 +98,18 @@ export default defineComponent({
         { label: 'Dining', url:'#' },
         { label: 'Kitchen', url:'#' },
         { label: 'Glassware', url:'#' },
-        { label: 'Hot ans serve', url:'#' },
+        { label: 'Hot and serve', url:'#' },
         { label: 'Bakeware', url:'#' },
         { label: 'Shop All', url:'#' },
         // Add more items as needed
       ],
       aboutUs: [
         { label: 'Our Story', url: '/default/about-us' },
-        { label: 'Why homestyle', url: '/default/why-homestyle' },
+        { label: 'Why Homestyle', url: '/default/why-homestyle' },
         { label: 'Blog', url: '/default/blog' },
         { label: 'Careers', url: '#' },
         { label: 'FAQ', url: '/default/faq' },
-        { label: 'Contact us', url: '/default/contact-us' },
+        { label: 'Contact Us', url: '/default/contact-us' },
         // Add more items as needed
       ],
      
@@ -117,7 +117,7 @@ export default defineComponent({
         { label: 'Gifts', url: '#' },
         { label: 'Gifting Ideas', url: '#' },
         { label: 'Wishlist', url: '#' },
-        { label: 'Whats New?', url: '#' },
+        { label: "What's New?", url: '#' },
         { label: 'Offers', url: '#' },
         // Add more items as needed
       ],
