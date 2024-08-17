@@ -12,7 +12,7 @@
         </div>
         <div class="text">
           <h6>Free Shipping</h6>
-          <span>Free shipping on all your order</span>
+          <span>Free shipping on all your orders</span>
         </div>
       </div>
       <div class="icon-text-box">
@@ -31,7 +31,7 @@
         </div>
         <div class="text">
           <h6>100% Secure Payment</h6>
-          <span>We ensure your money is save</span>
+          <span>We ensure your money is safe</span>
         </div>
       </div>
       <div class="icon-text-box">
@@ -65,7 +65,7 @@
     </LoadWhenVisible>
 
     <LoadWhenVisible>
-      <NewProducts class="products" :button-text="$t('View All')" :title="$t('Fresh Arrivals That Capture Our Hearts')"
+      <NewProducts class="products" :button-text="$t('View All')" :title="$t('Fresh Arrivals That Capture Hearts')"
         link="/dinnerware.html" />
     </LoadWhenVisible>
     <LoadWhenVisible>
@@ -291,7 +291,7 @@ export default defineComponent({
       },
     ]);
     const callToAction = ref({
-      title: app.i18n.t('Stuck on what to choose for that special occasion ? Weve got you covered !  Explore our tailored suggestions guaranteed to delight your loved ones !'),
+      title: app.i18n.t("Stuck on what to choose for that special occasion ? We've got you covered !  Explore our tailored suggestions guaranteed to delight your loved ones !"),
       description: '',
       buttonText: app.i18n.t('SHOP NOW →'),
       background: '#F96C3B'
