@@ -331,9 +331,9 @@ export default defineComponent({
   ::v-deep .my-cart__subtotal-price span,.my-cart__discount span{
     font-size: 1rem;
   }
-  ::v-deep .my-cart__subtotal-price span::before,.my-cart__discount span::before,.my-cart__total-price .sf-price__regular::before{
+ /* ::v-deep .my-cart__subtotal-price span::before,.my-cart__discount span::before,.my-cart__total-price .sf-price__regular::before{
     content: "\20B9";
-  }
+  }*/
   ::v-deep .my-cart__total-price span{
     font-weight: 600
   }
