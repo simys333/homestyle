@@ -60,7 +60,7 @@
           class="sf-property--large cart-summary desktop-only"
           data-testid="cart-summary"
           :name="$t('Total items')"
-          :value="10"
+          :value="totalItems"
         />
       </template>
       <SfLoader :loading="loading">
@@ -179,22 +179,24 @@
         <transition name="sf-fade">
           <div>
             <SfProperty
+              v-if="totals.subtotal !== totals.total"
               :name="$t('Subtotal')"
               class="sf-property--full-width sf-property--small"
             >
               <template #value>
                 <SfPrice
-                   regular="2560"
+                  :regular="$fc(totals.subtotal)"
                   class="my-cart__subtotal-price"
                 />
               </template>
             </SfProperty>
             <SfProperty
+              v-if="discount"
               :name="$t('Discount')"
               class="sf-property--full-width sf-property--small"
             >
               <template #value>
-                <SfPrice regular="250" class="my-cart__discount" />
+                <SfPrice :regular="$fc(discount)" class="my-cart__discount" />
               </template>
             </SfProperty>
             <hr class="sf-divider" />
@@ -205,7 +207,7 @@
               <template #value>
                 <SfPrice
                   data-testid="cart-sidebar-total"
-                :regular="3000"
+                :regular="$fc(totals.total)"
                 />
               </template>
             </SfProperty>
