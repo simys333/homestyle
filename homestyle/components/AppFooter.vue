@@ -199,7 +199,11 @@ export default defineComponent({
       font-size: 18px;
     }
   }
-
+  @media (min-width: 1024px) {
+    .sf-footer-column .sf-list__item {
+        margin: var(--spacer-xs) 0 !important;
+    }
+}
   @include for-mobile {
 
     .sf-footer-column,
