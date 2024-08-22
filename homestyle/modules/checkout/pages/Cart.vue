@@ -1,18 +1,33 @@
 <template>
   <div id="cart">
     <div class="container">
-      <div key="my-cart" class="my-cart">
+     
+      <div
+        key="my-cart"
+        class="my-cart"
+      >
+      
         <div class="content">
-          <SfHeading
-            title="In your bag(2)"
+         <SfProperty
+            v-if="totalItems"
             :level="4"
-            class="sf-heading--no-underline sf-heading--left"
+          class="sf-heading--no-underline sf-heading--lef carttitle"
+            data-testid="cart-summary"
+            :name="$t('In your bag')"
+            :value="totalItems"
           />
           <SfLoader :loading="loading">
-            <transition name="sf-fade" mode="out-in">
-              <div class="collected-product-list">
-                <transition-group name="sf-fade" tag="div">
-                  <SfCollectedProduct
+            <transition
+              name="sf-fade"
+              mode="out-in"
+            >
+              <div v-if="totalItems">
+                <div class="collected-product-list">
+                  <transition-group
+                    name="sf-fade"
+                    tag="div"
+                  >
+                    <SfCollectedProduct
                       v-for="(product, productIndex) in products"
                       :key="product.product.original_sku + productIndex"
                       :has-more-actions="false"
@@ -92,9 +107,14 @@
                         </div>
                       </template>
                     </SfCollectedProduct>
-                </transition-group>
+                  </transition-group>
+                </div>
               </div>
-              <div key="empty-cart" class="empty-cart">
+              <div
+                v-else
+                key="empty-cart"
+                class="empty-cart"
+              >
                 <div class="empty-cart__banner">
                   <SvgImage
                     icon="empty_cart_image"
@@ -118,82 +138,87 @@
                     data-testid="cart-sidebar-back"
                     @click="handleHomeClick"
                   >
-                    {{ $t("Go back shopping") }}
+                    {{ $t('Go back shopping') }}
                   </SfButton>
                 </div>
               </div>
             </transition>
           </SfLoader>
         </div>
-        <div class="sidebar">
-          <div class="sidebar-summary">
-            <SfHeading
+        <div
+          v-if="totalItems"
+          class="sidebar"
+        >
+        <div class="sidebar-summary">
+          <SfHeading
               title="Order Summary"
               :level="4"
               class="sf-heading--no-underline sf-heading--left"
             />
-            <transition name="sf-fade">
-              <div>
-                <SfProperty
-                  name="Item Subtotal"
-                  class="sf-property--full-width sf-property--small"
+         
+          <transition name="sf-fade">
+            <div>
+              <SfProperty
+                v-if="totals.subtotal !== totals.total"
+                :name="$t('Subtotal')"
+                class="sf-property--full-width sf-property--small"
+              >
+                <template #value>
+                  <SfPrice
+                    :regular="$fc(totals.subtotal)"
+                    class="my-cart__subtotal-price"
+                  />
+                </template>
+              </SfProperty>
+              <SfProperty
+                v-if="discount"
+                :name="$t('Discount')"
+                class="sf-property--full-width sf-property--small"
+              >
+                <template #value>
+                  <SfPrice
+                    :regular="$fc(discount)"
+                    class="my-cart__discount"
+                  />
+                </template>
+              </SfProperty>
+              <hr class="sf-divider">
+              <SfProperty
+                :name="$t('Order Total')"
+                class="sf-property--full-width sf-property--large my-cart__total-price"
+              >
+                <template #value>
+                  <SfPrice
+                    data-testid="cart-sidebar-total"
+                    :regular="$fc(totals.total)"
+                  />
+                </template>
+              </SfProperty>
+              <CouponCode />
+              <a @click="goToCheckout">
+                <SfButton
+                  v-e2e="'go-to-checkout-btn'"
+                  data-testid="category-sidebar-go-to-checkout"
+                  class="sf-button--full-width"
                 >
-                  <template #value>
-                    <SfPrice regular="2560" class="my-cart__subtotal-price" />
-                  </template>
-                </SfProperty>
-                <SfProperty
-                  :name="$t('Discount')"
-                  class="sf-property--full-width sf-property--small"
-                >
-                  <template #value>
-                    <SfPrice
-                      :regular="$fc(discount)"
-                      class="my-cart__discount"
-                    />
-                  </template>
-                </SfProperty>
-                <SfProperty
-                  name="Shipping"
-                  class="sf-property--full-width sf-property--small"
-                >
-                  <template #value>
-                    <SfPrice regular="2560" class="my-cart__subtotal-price" />
-                  </template>
-                </SfProperty>
-                <SfProperty
-                  name="Total"
-                  class="sf-property--full-width sf-property--large my-cart__total-price"
-                >
-                  <template #value>
-                    <SfPrice data-testid="cart-sidebar-total" regular="2048" />
-                  </template>
-                </SfProperty>
-              </div>
-            </transition>
-          </div>
-          <a @click="goToCheckout">
-            <SfButton
-              v-e2e="'go-to-checkout-btn'"
-              data-testid="category-sidebar-go-to-checkout"
-              class="sf-button--full-width"
-            >
-              {{ $t("Checkout") }}
-            </SfButton>
-          </a>
+                  {{ $t('Go to checkout') }}
+                </SfButton>
+              </a>
+            </div>
+          </transition>
         </div>
       </div>
-      <transition name="sf-collapse-top" mode="out-in">
+      </div>
+      <transition
+        name="sf-collapse-top"
+        mode="out-in"
+      >
         <div class="notifications">
           <SfNotification
             v-if="!loading"
             :visible="isRemoveModalVisible"
             :title="$t('Are you sure?')"
-            :message="
-              $t(
-                'Are you sure you would like to remove this item from the shopping cart?'
-              )
-            "
+            :message="$t('Are you sure you would like to remove this item from the shopping cart?')"
             type="secondary"
           >
             <template #action>
@@ -203,10 +228,10 @@
                   data-testid="cart-sidebar-remove-item-yes"
                   @click="removeItemAndSendNotification(itemToRemove)"
                 >
-                  {{ $t("Yes") }}
+                  {{ $t('Yes') }}
                 </SfButton>
                 <SfButton @click="isRemoveModalVisible = false">
-                  {{ $t("Cancel") }}
+                  {{ $t('Cancel') }}
                 </SfButton>
               </div>
             </template>
@@ -216,9 +241,6 @@
           </SfNotification>
         </div>
       </transition>
-      <LoadWhenVisible>
-        <RelatedProducts />
-      </LoadWhenVisible>
     </div>
   </div>
 </template>
@@ -236,21 +258,20 @@ import {
   SfPrice,
   SfProperty,
   SfQuantitySelector,
-  SfIcon,
-} from "@storefront-ui/vue";
+} from '@storefront-ui/vue';
 import {
   defineComponent,
   ref,
   useRouter,
   useContext,
-} from "@nuxtjs/composition-api";
-import SvgImage from "~/components/General/SvgImage.vue";
-import { Breadcrumb } from "~/modules/catalog/types";
-import { useCartView } from "~/modules/checkout/composables/useCartView";
-import CouponCode from "../../../components/CouponCode.vue";
+} from '@nuxtjs/composition-api';
+import SvgImage from '~/components/General/SvgImage.vue';
+import { Breadcrumb } from '~/modules/catalog/types';
+import { useCartView } from '~/modules/checkout/composables/useCartView';
+import CouponCode from '../../../components/CouponCode.vue';
 
 export default defineComponent({
-  name: "CartPage",
+  name: 'CartPage',
   components: {
     SfBreadcrumbs,
     SfLoader,
@@ -265,31 +286,25 @@ export default defineComponent({
     CouponCode,
     SvgImage,
     SfImage,
-    SfIcon,
-    RelatedProducts: () =>
-      import("~/modules/catalog/product/components/RelatedProducts.vue"),
   },
   setup() {
     const cartView = useCartView();
-    const {
-      localePath,
-      app: { i18n },
-    } = useContext();
+    const { localePath, app: { i18n } } = useContext();
     const router = useRouter();
 
     const breadcrumbs = ref<Breadcrumb[]>([
       {
-        text: i18n.t("Home") as string,
-        link: localePath("/"),
+        text: i18n.t('Home') as string,
+        link: localePath('/'),
       },
       {
-        text: i18n.t("My Cart") as string,
-        link: localePath("/cart"),
+        text: i18n.t('My Cart') as string,
+        link: localePath('/cart'),
       },
     ]);
 
     const handleHomeClick = async () => {
-      await router.push(localePath("/"));
+      await router.push(localePath('/'));
     };
 
     return {
@@ -544,5 +559,9 @@ export default defineComponent({
     left: 0;
     padding: 1rem;
   }
+}
+.carttitle span {
+    font-size: 24px;
+    font-weight: bold;
 }
 </style>
