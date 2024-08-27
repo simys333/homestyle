@@ -93,7 +93,7 @@ export default defineComponent({
   --c-primary: #f8470a;
   --_c-green-primary: #f8470a;
   --font-family--primary: "Libre Baskerville", serif;
-  --font-family--secondary: 'Lora', serif;
+  --font-family--secondary: "Libre Baskerville", serif;
 }
 
 @import "~@storefront-ui/vue/styles";
