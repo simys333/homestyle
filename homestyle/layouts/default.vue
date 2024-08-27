@@ -92,7 +92,7 @@ export default defineComponent({
 :root {
   --c-primary: #f8470a;
   --_c-green-primary: #f8470a;
-  --font-family--primary: "Libre Baskerville", serif;
+  --font-family--primary: 'IBM Plex Sans', sans-serif;
   --font-family--secondary: "Libre Baskerville", serif;
 }
 
