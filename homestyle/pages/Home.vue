@@ -477,12 +477,13 @@ section.sf-banner.sf-banner--slim {
     padding: 15px;
 
     .sf-banner__title {
-      font-size: 38px;
+      font-size: 30px;
       font-weight: 600;
+      margin-top:0px;
     }
 
     .sf-banner__subtitle {
-      font-size: 29px;
+      font-size: 25px;
       color: #190701;
       text-transform: capitalize;
     }
@@ -496,11 +497,11 @@ section.sf-banner.banner-central {
   ::v-deep .sf-banner__wrapper-desktop {
 
     .sf-banner__title {
-      font-size: 48px;
+      font-size: 38px;
     }
 
     .sf-banner__subtitle {
-      font-size: 32px;
+      font-size: 26px;
     }
   }
 }
