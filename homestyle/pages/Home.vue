@@ -83,7 +83,7 @@
         :description="callToAction.description" :background="callToAction.background" class="call-to-action" />
     </LoadWhenVisible>
     <SfBanner class="luxury-banner" title="Fine Dining, Finer Choices" subtitle=""
-      description="Explore Our Exclusive Luxury Dinnerware!" buttonText="Shop Now →" background=""
+      description="Explore Our Exclusive Luxury Dinnerware!" buttonText="Shop Now" background=""
       image="/homepage/luxury.png" />
 
     <div>
@@ -190,7 +190,7 @@ export default defineComponent({
       title: app.i18n.t("30-80% OFF"),
       subtitle: app.i18n.t("Sale is Live"),
       description: app.i18n.t("+ EXTRA 5% OFF"),
-      buttonText: app.i18n.t("SHOP NOW →"),
+      buttonText: app.i18n.t("SHOP NOW"),
       imageSrc: "/homepage/banner.png",
       imageWidth: isDesktop ? 1600 : 328,
       imageHeight: isDesktop ? 578 : 224,
@@ -204,7 +204,7 @@ export default defineComponent({
       title: app.i18n.t("30-80% OFF"),
       subtitle: app.i18n.t("Clearance Sale"),
       description: app.i18n.t("On Premium Collection of Glassware"),
-      buttonText: app.i18n.t("SHOP NOW →"),
+      buttonText: app.i18n.t("SHOP NOW"),
       imageSrc: "/homepage/sale.png",
       imageWidth: isDesktop ? 1600 : 328,
       imageHeight: isDesktop ? 578 : 224,
@@ -294,7 +294,7 @@ export default defineComponent({
     const callToAction = ref({
       title: app.i18n.t("Stuck on what to choose for that special occasion ? We've got you covered !  Explore our tailored suggestions guaranteed to delight your loved ones !"),
       description: '',
-      buttonText: app.i18n.t('SHOP NOW →'),
+      buttonText: app.i18n.t('SHOP NOW'),
       background: '#F96C3B'
     });
 
