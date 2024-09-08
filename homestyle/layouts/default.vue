@@ -81,20 +81,14 @@ export default defineComponent({
 
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Lora:wght@400;700&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
-/*:root {
-  --c-primary: #f8470a;
-  --_c-green-primary: #f8470a;
-  --font-family--primary: 'IBM Plex Sans', sans-serif;
-  --font-family--secondary: 'Lora', serif;
-}*/
 :root {
   --c-primary: #f8470a;
   --_c-green-primary: #f8470a;
   --font-family--primary: 'IBM Plex Sans', sans-serif;
-  --font-family--secondary: "Playfair Display", serif;
+  --font-family--secondary: 'Lora', serif;
 }
+
 
 @import "~@storefront-ui/vue/styles";
 
