@@ -340,6 +340,10 @@ export default defineComponent({
       font-family: var(--font-family--primary);
       font-weight: var(--font-weight--semibold);
     }
+    ::v-deep .sf-price__regular
+    {
+      font-family: var(--font-family--primary);
+    }
   }
   
   .products {

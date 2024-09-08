@@ -92,6 +92,10 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
+.hero__title {
+    margin-top: 0px !important;
+    margin-bottom: 15px !important;
+}
 .hero {
   display: flex;
   justify-content: flex-start;

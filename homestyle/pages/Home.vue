@@ -592,7 +592,7 @@ section.sf-banner.banner-central {
 
     .text {
       h6 {
-        font-family: var(--font-family--secondary);
+        font-family: var(--font-family--primary);
         font-size: 16px;
         font-weight: 600;
         margin: 0;

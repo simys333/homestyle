@@ -56,6 +56,7 @@ export default defineComponent({
 
 ::v-deep {
   .sf-top-bar__container {
+    font-family: var(--font-family--primary);
     justify-content: space-between;
     & > * {
       width: calc(100% / 3);
