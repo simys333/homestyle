@@ -271,6 +271,8 @@ export default defineComponent({
 
       svg {
         fill: var(--c-primary);
+        width:18px;
+        height: 18px;
       }
     }
   }
