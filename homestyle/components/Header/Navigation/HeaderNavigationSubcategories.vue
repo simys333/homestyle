@@ -7,15 +7,15 @@
           :height="326" />
         <SfList>
           <SfListItem>
-            <SfLink class="header-navigation__link2 header-navigation__left" :link="link" 
+            <SfLink class="header-navigation__link2 header-navigation__left" link="localePath(getCatLink(catLvl1))"
               @click.native="$emit('hideSubcategories')" @focus.native="setupNav()"
               @keydown.right.native.prevent="navRight()" @keydown.left.native.prevent="navLeft()"
               @keydown.down.native.prevent="navDown()" @keydown.up.native.prevent="navUp()">
-              Alll {{ currentCategory.name }}
+              All {{ currentCategory.name }}
             </SfLink>
           </SfListItem>
           <SfListItem>
-            <SfLink class="header-navigation__link2 header-navigation__left" :link="link" 
+            <SfLink class="header-navigation__link2 header-navigation__left" link="localePath(getCatLink(catLvl1))"
               @click.native="$emit('hideSubcategories')" @focus.native="setupNav()"
               @keydown.right.native.prevent="navRight()" @keydown.left.native.prevent="navLeft()"
               @keydown.down.native.prevent="navDown()" @keydown.up.native.prevent="navUp()">
@@ -39,7 +39,7 @@
             @keydown.left.native.prevent="navLeft()" @keydown.down.native.prevent="navDown()"
             @keydown.up.native.prevent="navUp()">
             <h2 class="sf-heading sf-heading--left sf-heading sf-heading--left h5">
-              {{ catLvl1.name }}dd 
+              {{ catLvl1.name }}
             </h2>
           </SfLink>
           <SfList v-if="hasChildren(catLvl1)">
@@ -48,7 +48,7 @@
                 tabindex="-1" @click.native="$emit('hideSubcategories')" @keydown.down.native.prevent="navDown()"
                 @keydown.up.native.prevent="navUp()" @keydown.right.native.prevent="navRight()"
                 @keydown.left.native.prevent="navLeft()">
-                {{ catLvl2.name }}ss
+                {{ catLvl2.name }}
               </SfLink>
             </SfListItem>
           </SfList>
@@ -86,8 +86,6 @@ export default defineComponent({
   },
   setup(props, { emit }) {
     const { getCatLink } = useUiHelpers();
-   //const er= getCatLink(catLvl1)
-   // console.log("lllll"+er);
     const lvl1CatRefs = ref<ComponentTemplateRef[]>();
     const lvl2CatRefs = ref<ComponentTemplateRef[]>();
     const lvl2GroupedCatRefs = ref<ComponentTemplateRef[][]>();
@@ -209,7 +207,7 @@ export default defineComponent({
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       display: flex;
       justify-content: flex-start;
-      width: var(--header-width, 79.5rem);
+      width: var(--header-width, 77.5rem);
     }
   }
 
@@ -273,8 +271,6 @@ export default defineComponent({
 
       svg {
         fill: var(--c-primary);
-        width:18px;
-        height: 18px;
       }
     }
   }

@@ -39,13 +39,10 @@ export default defineComponent({
   .sf-icon {
     display: inline-flex;
     margin: 0 var(--spacer-xs);
-    width: 18px;
-    height: 18px;
   }
 
   .sale-icon svg {
     fill: var(--c-primary);
-    width:18px;
   }
 }
 
