@@ -325,7 +325,7 @@ export default defineComponent({
       }
     }
     ::v-deep .sf-carousel__slides {
-      max-height: 430px;
+      max-height: auto;
     }
     ::v-deep .sf-product-card__title {
       font-size: 18px;
