@@ -1,9 +1,7 @@
 <template>
   <SfTopBar class="topbar">
     <template #left>
-      <SfButton class="sf-button--text">
-        {{ $t("Help & FAQs") }}
-      </SfButton>
+      
     </template>
     <template #center>
       <p class="font-white">

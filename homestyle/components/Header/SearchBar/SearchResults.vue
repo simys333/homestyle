@@ -1,6 +1,7 @@
 <template>
   <div>
     <SfMegaMenu
+     v-if="searchResults && searchResults.length > 0"
       :visible="visible"
       :title="$t('Search results')"
       class="search"
