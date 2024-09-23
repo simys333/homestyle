@@ -175,4 +175,7 @@ h4 {
   font-family: var(--font-family--primary);
   font-size: 16px;
 }
+.sf-gallery__stage .sf-image {
+    object-fit: contain;
+   }
 </style>
