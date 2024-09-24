@@ -178,4 +178,11 @@ h4 {
 .sf-gallery__stage .sf-image {
     object-fit: contain;
    }
+   .sf-gallery__stage
+   {
+    max-width: none;
+   }
+   .sf-gallery {
+    --gallery-image-width: 100%;
+  }
 </style>
