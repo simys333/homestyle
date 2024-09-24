@@ -1,5 +1,5 @@
 <template #prev="prevArrow">
-  <SfButton aria-label="previous" class="sf-arrow" @click="$emit('click')">
+  <SfButton aria-label="previous" class="sf-arrow">
     <SvgImage icon="chevron_left" width="20" height="20" />
   </SfButton>
 </template>
@@ -16,17 +16,16 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.sf-carousel__controls {
-  button {
-    background-color: transparent;
-  }
+.slick-prev:before {
+  opacity: 0;
+}
 
-  button::before {
-    box-shadow: none;
-  }
+.slick-prev {
+  color: black;
+}
 
-  span {
-    color: #190701;
-  }
+.slick-disabled {
+  color: lightgray;
+  cursor: auto;
 }
 </style>

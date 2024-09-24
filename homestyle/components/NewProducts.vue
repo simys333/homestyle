@@ -9,78 +9,65 @@
         <RightArrowIcon />
       </SfLink>
     </div>
-    <SfCarousel class="carousel" :settings="{ rewind: false }">
-      <template #prev="prevArrow">
-        <CarouselLeftArrow @click="prevArrow.go('prev')" />
+    <VueSlickCarousel v-bind="carouselSettings">
+      <SfProductCard
+        image="https://magento.homstyle.in/media/catalog/product/cache/fb1be9b35736f95f9b8328c138c4d7ab/i/m/img_2__2.png"
+        :imageWidth="312" :imageHeight="360" badgeLabel="20%" badgeColor="" title="Creme Gold Dinner Plate White new"
+        linkTag="" regularPrice="₹1600" specialPrice="₹1280" wishlistIcon="heart" isInWishlistIcon="heart_fill"
+        :isInWishlist="false" showAddToCartButton :is-in-wishlist="isInWishlist({ product })"
+        :is-added-to-cart="isInCart(product)" :wishlist-icon="isAuthenticated ? 'heart' : ''"
+        :is-in-wishlist-icon="isAuthenticated ? 'heart_fill' : ''" @click:wishlist="addItemToWishlist(product)"
+        @click:add-to-cart="addItemToCart({ product, quantity: 1 })" />
+
+      <SfProductCard
+        image="https://magento.homstyle.in/media/catalog/product/cache/fb1be9b35736f95f9b8328c138c4d7ab/i/m/img_3_.png"
+        :imageWidth="312" :imageHeight="360" badgeLabel="" badgeColor="" title="Creme Gold Dinner bowl Black" linkTag=""
+        regularPrice="1600" specialPrice="1280" wishlistIcon="heart" isInWishlistIcon="heart_fill" :isInWishlist="false"
+        showAddToCartButton :isAddedToCart="false" :addToCartDisabled="false" />
+
+      <SfProductCard
+        image="https://magento.homstyle.in/media/catalog/product/cache/fb1be9b35736f95f9b8328c138c4d7ab/i/m/img_1_.png"
+        :imageWidth="312" :imageHeight="360" badgeLabel="" badgeColor="" title="Creme Gold Dinner Plate White new"
+        linkTag="" regularPrice="1600" specialPrice="1280" wishlistIcon="heart" isInWishlistIcon="heart_fill"
+        :isInWishlist="false" showAddToCartButton :isAddedToCart="false" :addToCartDisabled="false" />
+
+      <SfProductCard
+        image="https://magento.homstyle.in/media/catalog/product/cache/fb1be9b35736f95f9b8328c138c4d7ab/i/m/img_1.png"
+        :imageWidth="312" :imageHeight="360" badgeLabel="" badgeColor="" title="Creme Gold Dinner Plate White new"
+        linkTag="" regularPrice="1600" specialPrice="1280" wishlistIcon="heart" isInWishlistIcon="heart_fill"
+        :isInWishlist="false" showAddToCartButton :isAddedToCart="false" :addToCartDisabled="false" />
+
+      <SfProductCard
+        image="https://magento.homstyle.in/media/catalog/product/cache/fb1be9b35736f95f9b8328c138c4d7ab/i/m/img_2__2.png"
+        :imageWidth="312" :imageHeight="360" badgeLabel="" badgeColor="" title="Creme Gold Dinner Plate White new"
+        linkTag="" regularPrice="1600" specialPrice="1280" wishlistIcon="heart" isInWishlistIcon="heart_fill"
+        :isInWishlist="false" showAddToCartButton :isAddedToCart="false" :addToCartDisabled="false" />
+
+      <SfProductCard
+        image="https://magento.homstyle.in/media/catalog/product/cache/fb1be9b35736f95f9b8328c138c4d7ab/i/m/img_3_.png"
+        :imageWidth="312" :imageHeight="360" badgeLabel="" badgeColor="" title="Creme Gold Dinner bowl Black" linkTag=""
+        regularPrice="1600" specialPrice="1280" wishlistIcon="heart" isInWishlistIcon="heart_fill" :isInWishlist="false"
+        showAddToCartButton :isAddedToCart="false" :addToCartDisabled="false" />
+
+      <SfProductCard
+        image="https://magento.homstyle.in/media/catalog/product/cache/fb1be9b35736f95f9b8328c138c4d7ab/i/m/img_1_.png"
+        :imageWidth="312" :imageHeight="360" badgeLabel="" badgeColor="" title="Creme Gold Dinner Plate White new"
+        linkTag="" regularPrice="1600" specialPrice="1280" wishlistIcon="heart" isInWishlistIcon="heart_fill"
+        :isInWishlist="false" showAddToCartButton :isAddedToCart="false" :addToCartDisabled="false" />
+
+      <SfProductCard
+        image="https://magento.homstyle.in/media/catalog/product/cache/fb1be9b35736f95f9b8328c138c4d7ab/i/m/img_1.png"
+        :imageWidth="312" :imageHeight="360" badgeLabel="" badgeColor="" title="Creme Gold Dinner Plate White new"
+        linkTag="" regularPrice="1600" specialPrice="1280" wishlistIcon="heart" isInWishlistIcon="heart_fill"
+        :isInWishlist="false" showAddToCartButton :isAddedToCart="false" :addToCartDisabled="false" />
+
+      <template #prevArrow>
+        <CarouselLeftArrow />
       </template>
-      <template #next="nextArrow">
-        <CarouselRightArrow @click="nextArrow.go('next')" />
+      <template #nextArrow>
+        <CarouselRightArrow />
       </template>
-      <SfCarouselItem class="carousel__item">
-        <SfProductCard
-          image="https://magento.homstyle.in/media/catalog/product/cache/fb1be9b35736f95f9b8328c138c4d7ab/i/m/img_2__2.png"
-          :imageWidth="312" :imageHeight="360" badgeLabel="20%" badgeColor="" title="Creme Gold Dinner Plate White new"
-          linkTag="" regularPrice="₹1600" specialPrice="₹1280" wishlistIcon="heart" isInWishlistIcon="heart_fill"
-          :isInWishlist="false" showAddToCartButton :is-in-wishlist="isInWishlist({ product })"
-          :is-added-to-cart="isInCart(product)" :wishlist-icon="isAuthenticated ? 'heart' : ''"
-          :is-in-wishlist-icon="isAuthenticated ? 'heart_fill' : ''" @click:wishlist="addItemToWishlist(product)"
-          @click:add-to-cart="addItemToCart({ product, quantity: 1 })" />
-      </SfCarouselItem>
-      <SfCarouselItem class="carousel__item">
-        <SfProductCard
-          image="https://magento.homstyle.in/media/catalog/product/cache/fb1be9b35736f95f9b8328c138c4d7ab/i/m/img_3_.png"
-          :imageWidth="312" :imageHeight="360" badgeLabel="" badgeColor="" title="Creme Gold Dinner bowl Black"
-          linkTag="" regularPrice="1600" specialPrice="1280" wishlistIcon="heart" isInWishlistIcon="heart_fill"
-          :isInWishlist="false" showAddToCartButton :isAddedToCart="false" :addToCartDisabled="false" />
-      </SfCarouselItem>
-      <SfCarouselItem class="carousel__item">
-        <SfProductCard
-          image="https://magento.homstyle.in/media/catalog/product/cache/fb1be9b35736f95f9b8328c138c4d7ab/i/m/img_1_.png"
-          :imageWidth="312" :imageHeight="360" badgeLabel="" badgeColor="" title="Creme Gold Dinner Plate White new"
-          linkTag="" regularPrice="1600" specialPrice="1280" wishlistIcon="heart" isInWishlistIcon="heart_fill"
-          :isInWishlist="false" showAddToCartButton :isAddedToCart="false" :addToCartDisabled="false" />
-      </SfCarouselItem>
-      <SfCarouselItem class="carousel__item">
-        <SfProductCard
-          image="https://magento.homstyle.in/media/catalog/product/cache/fb1be9b35736f95f9b8328c138c4d7ab/i/m/img_1.png"
-          :imageWidth="312" :imageHeight="360" badgeLabel="" badgeColor="" title="Creme Gold Dinner Plate White new"
-          linkTag="" regularPrice="1600" specialPrice="1280" wishlistIcon="heart" isInWishlistIcon="heart_fill"
-          :isInWishlist="false" showAddToCartButton :isAddedToCart="false" :addToCartDisabled="false" />
-      </SfCarouselItem>
-      <SfCarouselItem class="carousel__item">
-        <SfProductCard
-          image="https://magento.homstyle.in/media/catalog/product/cache/fb1be9b35736f95f9b8328c138c4d7ab/i/m/img_2__2.png"
-          :imageWidth="312" :imageHeight="360" badgeLabel="" badgeColor="" title="Creme Gold Dinner Plate White new"
-          linkTag="" regularPrice="1600" specialPrice="1280" wishlistIcon="heart" isInWishlistIcon="heart_fill"
-          :isInWishlist="false" showAddToCartButton :isAddedToCart="false" :addToCartDisabled="false" />
-      </SfCarouselItem>
-      <SfCarouselItem class="carousel__item">
-        <SfProductCard
-          image="https://magento.homstyle.in/media/catalog/product/cache/fb1be9b35736f95f9b8328c138c4d7ab/i/m/img_3_.png"
-          :imageWidth="312" :imageHeight="360" badgeLabel="" badgeColor="" title="Creme Gold Dinner bowl Black"
-          linkTag="" regularPrice="1600" specialPrice="1280" wishlistIcon="heart" isInWishlistIcon="heart_fill"
-          :isInWishlist="false" showAddToCartButton :isAddedToCart="false" :addToCartDisabled="false" />
-      </SfCarouselItem>
-      <SfCarouselItem class="carousel__item">
-        <SfProductCard
-          image="https://magento.homstyle.in/media/catalog/product/cache/fb1be9b35736f95f9b8328c138c4d7ab/i/m/img_1_.png"
-          :imageWidth="312" :imageHeight="360" badgeLabel="" badgeColor="" title="Creme Gold Dinner Plate White new"
-          linkTag="" regularPrice="1600" specialPrice="1280" wishlistIcon="heart" isInWishlistIcon="heart_fill"
-          :isInWishlist="false" showAddToCartButton :isAddedToCart="false" :addToCartDisabled="false" />
-      </SfCarouselItem>
-      <SfCarouselItem class="carousel__item">
-        <SfProductCard
-          image="https://magento.homstyle.in/media/catalog/product/cache/fb1be9b35736f95f9b8328c138c4d7ab/i/m/img_1.png"
-          :imageWidth="312" :imageHeight="360" badgeLabel="" badgeColor="" title="Creme Gold Dinner Plate White new"
-          linkTag="" regularPrice="1600" specialPrice="1280" wishlistIcon="heart" isInWishlistIcon="heart_fill"
-          :isInWishlist="false" showAddToCartButton :isAddedToCart="false" :addToCartDisabled="false" />
-      </SfCarouselItem>
-
-
-
-
-
-    </SfCarousel>
+    </VueSlickCarousel>
   </div>
 </template>
 
@@ -90,7 +77,6 @@ import {
   SfLoader,
   SfProductCard,
   SfSection,
-  SfCarousel,
 } from "@storefront-ui/vue";
 
 import {
@@ -104,10 +90,12 @@ import useWishlist from "~/modules/wishlist/composables/useWishlist";
 import productGetters from "~/modules/catalog/product/getters/productGetters";
 import { useUser } from "~/modules/customer/composables/useUser";
 import { useAddToCart } from "~/helpers/cart/addToCart";
-import { SortEnum } from "~/modules/GraphQL/types";
 import CarouselLeftArrow from "./CarouselLeftArrow.vue";
 import CarouselRightArrow from "./CarouselRightArrow.vue";
 import RightArrowIcon from "./Icons/RightArrowIcon.vue";
+import VueSlickCarousel from 'vue-slick-carousel'
+import 'vue-slick-carousel/dist/vue-slick-carousel.css'
+import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 
 export default defineComponent({
   name: "NewProducts",
@@ -116,10 +104,10 @@ export default defineComponent({
     SfSection,
     SfLoader,
     SfLink,
-    SfCarousel,
     CarouselLeftArrow,
     CarouselRightArrow,
-    RightArrowIcon
+    RightArrowIcon,
+    VueSlickCarousel
   },
   props: {
     buttonText: {
@@ -141,7 +129,26 @@ export default defineComponent({
     const { isInWishlist, addOrRemoveItem } = useWishlist();
     const { addItemToCart, isInCart } = useAddToCart();
     const products = ref([]);
-
+    const carouselSettings = {
+      "arrows": true, "dots": false, "infinite": false, "slidesToShow": 4, "responsive": [
+        {
+          "breakpoint": 600,
+          "settings": {
+            "slidesToShow": 3,
+            "slidesToScroll": 3,
+            "arrows": false,
+          }
+        },
+        {
+          "breakpoint": 480,
+          "settings": {
+            "slidesToShow": 2,
+            "slidesToScroll": 2,
+            "arrows": false,
+          }
+        }
+      ]
+    };
     const mappedProducts = computed(() =>
       products.value.map((product) => ({
         ...product,
@@ -181,6 +188,7 @@ export default defineComponent({
       getMagentoImage,
       imageSizes,
       getProductPath,
+      carouselSettings
     };
   },
 });
@@ -225,32 +233,19 @@ export default defineComponent({
   }
 
 
-  .carousel {
-    margin: 0 calc(-1 * var(--spacer-sm)) 0 0;
+  .slick-slider {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    margin-left: -35px;
+    margin-right: -35px;
 
-    @include for-desktop {
-      margin: 0;
+    .slick-prev {
+      left: 0;
     }
 
-    &__item {
-      margin: 1.9375rem 0 2.4375rem 0;
+    .slick-next {
+      right: 0;
     }
-
-    ::v-deep .sf-product-card:hover {
-      --product-card-box-shadow: none;
-
-    }
-
-    ::v-deep .sf-image--placeholder {
-      display: none;
-    }
-
-    @include for-desktop {
-      ::v-deep .sf-carousel__wrapper {
-        max-width: calc(100% - 8rem);
-      }
-    }
-
 
     ::v-deep .sf-product-card__title {
       font-size: 18px;
@@ -267,6 +262,11 @@ export default defineComponent({
 
     ::v-deep .sf-price__old {
       color: #756A67;
+    }
+
+    ::v-deep .slick-slide {
+      display: flex !important;
+      justify-content: center;
     }
   }
 

@@ -281,7 +281,7 @@ export default defineComponent({
       },
     ]);
     const callToAction = ref({
-      title: app.i18n.t('Stuck on what to choose for that special occasion ? Weve got you covered !  Explore our tailored suggestions guaranteed to delight your loved ones !'),
+      title: app.i18n.t('Stuck on what to choose for that special occasion? Weve got you covered!  Explore our tailored suggestions guaranteed to delight your loved ones!'),
       description: '',
       buttonText: app.i18n.t('SHOP NOW →'),
       background: '#F96C3B'

@@ -9,77 +9,75 @@
         <RightArrowIcon />
       </SfLink>
     </div>
-    <SfCarousel class="carousel" :settings="{
-      perView: 6,
-      breakpoints: { 1023: { peek: 0, perView: 2 } },
-    }">
-      <template #prev="prevArrow">
-        <CarouselLeftArrow @click="prevArrow.go('prev')" />
+    <VueSlickCarousel v-bind="carouselSettings">
+
+
+      <div>
+        <img src="/homepage/cello.png" alt="" />
+      </div>
+
+
+      <div>
+        <img src="/homepage/cello.png" alt="" />
+      </div>
+
+
+      <div>
+        <img src="/homepage/cello.png" alt="" />
+      </div>
+
+
+      <div>
+        <img src="/homepage/cello.png" alt="" />
+      </div>
+
+
+      <div>
+        <img src="/homepage/cello.png" alt="" />
+      </div>
+
+
+      <div>
+        <img src="/homepage/cello.png" alt="" />
+      </div>
+
+
+      <div>
+        <img src="/homepage/cello.png" alt="" />
+      </div>
+
+
+      <div>
+        <img src="/homepage/cello.png" alt="" />
+      </div>
+
+
+      <div>
+        <img src="/homepage/cello.png" alt="" />
+      </div>
+
+
+      <div>
+        <img src="/homepage/cello.png" alt="" />
+      </div>
+
+
+      <div>
+        <img src="/homepage/cello.png" alt="" />
+      </div>
+
+
+      <div>
+        <img src="/homepage/cello.png" alt="" />
+      </div>
+
+      <template #prevArrow>
+        <CarouselLeftArrow />
       </template>
-      <template #next="nextArrow">
-        <CarouselRightArrow @click="nextArrow.go('next')" />
+      <template #nextArrow>
+        <CarouselRightArrow />
       </template>
-      <SfCarouselItem class="carousel__item">
-        <div>
-          <img src="/homepage/cello.png" alt="" />
-        </div>
-      </SfCarouselItem>
-      <SfCarouselItem class="carousel__item">
-        <div>
-          <img src="/homepage/cello.png" alt="" />
-        </div>
-      </SfCarouselItem>
-      <SfCarouselItem class="carousel__item">
-        <div>
-          <img src="/homepage/cello.png" alt="" />
-        </div>
-      </SfCarouselItem>
-      <SfCarouselItem class="carousel__item">
-        <div>
-          <img src="/homepage/cello.png" alt="" />
-        </div>
-      </SfCarouselItem>
-      <SfCarouselItem class="carousel__item">
-        <div>
-          <img src="/homepage/cello.png" alt="" />
-        </div>
-      </SfCarouselItem>
-      <SfCarouselItem class="carousel__item">
-        <div>
-          <img src="/homepage/cello.png" alt="" />
-        </div>
-      </SfCarouselItem>
-      <SfCarouselItem class="carousel__item">
-        <div>
-          <img src="/homepage/cello.png" alt="" />
-        </div>
-      </SfCarouselItem>
-      <SfCarouselItem class="carousel__item">
-        <div>
-          <img src="/homepage/cello.png" alt="" />
-        </div>
-      </SfCarouselItem>
-      <SfCarouselItem class="carousel__item">
-        <div>
-          <img src="/homepage/cello.png" alt="" />
-        </div>
-      </SfCarouselItem>
-      <SfCarouselItem class="carousel__item">
-        <div>
-          <img src="/homepage/cello.png" alt="" />
-        </div>
-      </SfCarouselItem>
-      <SfCarouselItem class="carousel__item">
-        <div>
-          <img src="/homepage/cello.png" alt="" />
-        </div>
-      </SfCarouselItem>
-      <SfCarouselItem class="carousel__item">
-        <div>
-          <img src="/homepage/cello.png" alt="" />
-        </div>
-      </SfCarouselItem>
-    </SfCarousel>
+    </VueSlickCarousel>
   </div>
 </template>
 
@@ -107,6 +105,9 @@ import { SortEnum } from "~/modules/GraphQL/types";
 import CarouselLeftArrow from "./CarouselLeftArrow.vue";
 import CarouselRightArrow from "./CarouselRightArrow.vue";
 import RightArrowIcon from "./Icons/RightArrowIcon.vue";
+import VueSlickCarousel from 'vue-slick-carousel'
+import 'vue-slick-carousel/dist/vue-slick-carousel.css'
+import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 
 export default defineComponent({
   name: "Brands",
@@ -115,7 +116,7 @@ export default defineComponent({
     SfSection,
     SfLoader,
     SfLink,
-    SfCarousel,
+    VueSlickCarousel,
     CarouselLeftArrow,
     CarouselRightArrow,
     RightArrowIcon
@@ -139,6 +140,34 @@ export default defineComponent({
     const { getProductList, loading, getProductPath } = useProduct();
     const { isInWishlist, addOrRemoveItem } = useWishlist();
     const { addItemToCart, isInCart } = useAddToCart();
+    const carouselSettings = {
+      "arrows": true, "dots": false, "infinite": false, "slidesToShow": 7, "responsive": [
+        {
+          "breakpoint": 1366,
+          "settings": {
+            "slidesToShow": 7,
+            "slidesToScroll": 7,
+            "arrows": false,
+          }
+        },
+        {
+          "breakpoint": 600,
+          "settings": {
+            "slidesToShow": 4,
+            "slidesToScroll": 4,
+            "arrows": false,
+          }
+        },
+        {
+          "breakpoint": 480,
+          "settings": {
+            "slidesToShow": 2,
+            "slidesToScroll": 2,
+            "arrows": false,
+          }
+        }
+      ]
+    };
     const products = ref([]);
 
     const mappedProducts = computed(() =>
@@ -180,6 +209,7 @@ export default defineComponent({
       getMagentoImage,
       imageSizes,
       getProductPath,
+      carouselSettings
     };
   },
 });
@@ -209,15 +239,18 @@ export default defineComponent({
     font-family: var(--font-family--primary);
   }
 
-  .carousel {
-    margin: 0 calc(-1 * var(--spacer-sm)) 0 0;
+  .slick-slider {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    margin-left: -30px;
+    margin-right: -30px;
 
-    @include for-desktop {
-      margin: 0;
+    .slick-prev {
+      left: 0;
     }
 
-    ::v-deep .sf-carousel__slides {
-      align-items: center;
+    .slick-next {
+      right: 0;
     }
 
     &__item {
@@ -230,11 +263,11 @@ export default defineComponent({
       }
     }
 
-    @include for-desktop {
-      ::v-deep .sf-carousel__wrapper {
-        max-width: calc(100% - 8rem);
-      }
+    ::v-deep .slick-slide {
+      display: flex !important;
+      justify-content: center;
     }
+
   }
 
   .products {
