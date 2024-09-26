@@ -34,7 +34,7 @@ export default async () => {
       host: process.env.VSF_NUXT_APP_HOST || '0.0.0.0',
     },
     head: {
-      title: process.env.npm_package_name || '',
+      title: 'Homstyle',
       meta: [
         { charset: 'utf8' },
         {
