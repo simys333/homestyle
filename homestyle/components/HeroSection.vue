@@ -189,7 +189,7 @@ export default defineComponent({
   }
 
   &__button {
-    display: none;
+    /*display: none;*/
     font-size: 0.875rem;
   }
 

@@ -46,6 +46,8 @@ export default {
     display: var(--banner-grid-row-display, block);
     flex: var(--banner-grid-row-flex);
     margin: var(--banner-grid-row-margin, 0);
+    --banner-grid-col-margin: var(--spacer-sm) 0 0 0;
+
   }
   &__col {
     display: var(--banner-grid-col-display, block);
