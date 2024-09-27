@@ -11,80 +11,59 @@
 
       </SfLink>
     </div>
-    <SfCarousel
-      class="carousel"
-      :settings="{
-        perView: 6,
-        breakpoints: { 1023: { peek: 0, perView: 2 } },
-      }"
-    >
-      <template #prev="prevArrow">
-        <CarouselLeftArrow @click="prevArrow.go('prev')" />
-      </template>
-      <template #next="nextArrow">
-        <CarouselRightArrow @click="nextArrow.go('next')" />
-      </template>
-      <SfCarouselItem class="carousel__item">
+   
+      
+      <VueSlickCarousel v-bind="carouselSettings">
+     
         <div>
           <img src="/homepage/cello.png" alt="" />
         </div>
-      </SfCarouselItem>
-      <SfCarouselItem class="carousel__item">
+    
+   
         <div>
           <img src="/homepage/yera.png" alt="" />
         </div>
-      </SfCarouselItem>
-      <SfCarouselItem class="carousel__item">
+    
         <div>
           <img src="/homepage/union.png" alt="" />
         </div>
-      </SfCarouselItem>
-      <SfCarouselItem class="carousel__item">
         <div>
           <img src="/homepage/fackelmann.png" alt="" />
         </div>
-      </SfCarouselItem>
-      <SfCarouselItem class="carousel__item">
         <div>
           <img src="/homepage/pearlpet.png" alt="" />
         </div>
-      </SfCarouselItem>
-      <SfCarouselItem class="carousel__item">
         <div>
           <img src="/homepage/cello.png" alt="" />
         </div>
-      </SfCarouselItem>
-      <SfCarouselItem class="carousel__item">
         <div>
           <img src="/homepage/cello.png" alt="" />
         </div>
-      </SfCarouselItem>
-      <SfCarouselItem class="carousel__item">
         <div>
           <img src="/homepage/cello.png" alt="" />
         </div>
-      </SfCarouselItem>
-      <SfCarouselItem class="carousel__item">
         <div>
           <img src="/homepage/cello.png" alt="" />
         </div>
-      </SfCarouselItem>
-      <SfCarouselItem class="carousel__item">
         <div>
           <img src="/homepage/cello.png" alt="" />
         </div>
-      </SfCarouselItem>
-      <SfCarouselItem class="carousel__item">
         <div>
           <img src="/homepage/cello.png" alt="" />
         </div>
-      </SfCarouselItem>
-      <SfCarouselItem class="carousel__item">
         <div>
           <img src="/homepage/cello.png" alt="" />
         </div>
-      </SfCarouselItem>
-    </SfCarousel>
+        <template #prevArrow>
+        <CarouselLeftArrow />
+
+
+      </template>
+      
+        <template #nextArrow>
+          <CarouselRightArrow />
+      </template>
+      </VueSlickCarousel>
   </div>
 </template>
 
@@ -112,7 +91,9 @@ import { SortEnum } from "~/modules/GraphQL/types";
 import CarouselLeftArrow from "./CarouselLeftArrow.vue";
 import CarouselRightArrow from "./CarouselRightArrow.vue";
 import RightArrowIcon from "./Icons/RightArrowIcon.vue";
-
+import VueSlickCarousel from 'vue-slick-carousel'
+import 'vue-slick-carousel/dist/vue-slick-carousel.css'
+import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 
 export default defineComponent({
   name: "Brands",
@@ -124,7 +105,8 @@ export default defineComponent({
     SfCarousel,
     CarouselLeftArrow,
     CarouselRightArrow,
-    RightArrowIcon
+    RightArrowIcon,
+    VueSlickCarousel,
   },
   props: {
     buttonText: {
@@ -145,6 +127,35 @@ export default defineComponent({
     const { getProductList, loading, getProductPath } = useProduct();
     const { isInWishlist, addOrRemoveItem } = useWishlist();
     const { addItemToCart, isInCart } = useAddToCart();
+    const carouselSettings = {
+      "arrows": true, "dots": false, "infinite": false, "slidesToShow": 7, "responsive": [
+        {
+          "breakpoint": 1366,
+          "settings": {
+            "slidesToShow": 7,
+            "slidesToScroll": 7,
+            "arrows": false,
+          }
+        },
+        {
+          "breakpoint": 600,
+          "settings": {
+            "slidesToShow": 4,
+            "slidesToScroll": 4,
+            "arrows": false,
+          }
+        },
+        {
+          "breakpoint": 480,
+          "settings": {
+            "slidesToShow": 2,
+            "slidesToScroll": 2,
+            "arrows": false,
+          }
+        }
+      ]
+    };
+
     const products = ref([]);
 
     const mappedProducts = computed(() =>
@@ -186,6 +197,8 @@ export default defineComponent({
       getMagentoImage,
       imageSizes,
       getProductPath,
+      carouselSettings
+
     };
   },
 });
@@ -215,13 +228,20 @@ export default defineComponent({
     font-family: var(--font-family--primary);
   }
 
-  .carousel {
-    margin: 0 calc(-1 * var(--spacer-sm)) 0 0;
-    @include for-desktop {
-      margin: 0;
+  .slick-slider {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    margin-left: -30px;
+    margin-right: -30px;
+    .slick-prev {
+      left: 0;
     }
-    ::v-deep .sf-carousel__slides {
-      align-items: center;
+    .slick-next {
+      right: 0;
+    }
+    ::v-deep .slick-slide {
+      display: flex !important;
+      justify-content: center;
     }
     &__item {
       margin: 2rem 0 2rem 0;
@@ -232,12 +252,8 @@ export default defineComponent({
         height: auto;
       }
     }
-    @include for-desktop {
-      ::v-deep .sf-carousel__wrapper {
-        max-width: calc(100% - 8rem);
-      }
-    }
   }
+   
 
   .products {
     display: flex;
