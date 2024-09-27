@@ -95,6 +95,13 @@ export default defineComponent({
 #layout {
   box-sizing: border-box;
 
+  .sf-button:active,
+  .sf-button:hover {
+    --button-transition: none;
+    text-decoration: none;
+    background-image: none;
+  }
+
   @include for-desktop {
     max-width: 1270px;
     margin: auto;
