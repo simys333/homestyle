@@ -15,17 +15,17 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.sf-carousel__controls {
-  button {
-    background-color: transparent;
-  }
 
-  button::before {
-    box-shadow: none;
-  }
-
-  span {
-    color: #190701;
-  }
+  .slick-next:before {
+  opacity: 0;
+}
+.slick-next {
+  color: black;
+}
+ 
+.slick-disabled {
+  color: lightgray;
+  cursor: auto;
+  
 }
 </style>
