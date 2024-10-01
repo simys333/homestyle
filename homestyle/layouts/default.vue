@@ -186,4 +186,7 @@ h4 {
    .sf-gallery {
     --gallery-image-width: 100%;
   }
+  .new-products .slick-slider .slick-prev {
+    z-index: 9999999;
+}
 </style>
