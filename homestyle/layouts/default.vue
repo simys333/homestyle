@@ -176,7 +176,7 @@ h4 {
   font-family: var(--font-family--primary);
   font-size: 16px;
 }
-.sf-gallery__stage .sf-image {
+/*.sf-gallery__stage .sf-image {
     object-fit: contain;
    }
    .sf-gallery__stage
@@ -185,8 +185,17 @@ h4 {
    }
    .sf-gallery {
     --gallery-image-width: 100%;
-  }
-  .new-products .slick-slider .slick-prev {
+  }*/
+  .sf-price__regular
+   {
+    font-family: var(--font-family--primary);
+
+   }
+   [data-v-e9ff7c5c] .sf-product-card__image-wrapper
+   {
+    height: auto !important;
+   }
+   .new-products .slick-slider .slick-prev {
     z-index: 9999999;
 }
 </style>
