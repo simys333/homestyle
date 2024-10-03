@@ -157,7 +157,7 @@ import {
 } from "@nuxtjs/composition-api";
 import LazyHydrate from "vue-lazy-hydration";
 import { useCache, CacheTagPrefix } from "@vue-storefront/cache";
-import { SfBanner, SfCallToAction } from "@storefront-ui/vue";
+import { SfBanner, SfCallToAction,SfButton } from "@storefront-ui/vue";
 import { CmsPage } from "~/modules/GraphQL/types";
 import HeroSection from "~/components/HeroSection.vue";
 import SaleSection from "~/components/SaleSection.vue";
