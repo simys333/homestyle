@@ -357,9 +357,9 @@ export default defineComponent({
     font-family: var(--font-family--primary);
   }
 
-  .sf-product-card {
+  /*.sf-product-card {
     padding: 0;
-  }
+  }*/
 
   ::v-deep .sf-product-card__add-button {
     bottom: -1rem;

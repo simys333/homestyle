@@ -79,9 +79,19 @@
         :title="$t('Thoughtful Gifts for Every Kitchen Enthusiast !')" link="/what-is-new.html" />
     </LoadWhenVisible>
     <LoadWhenVisible>
-      <SfCallToAction :title="callToAction.title" :button-text="callToAction.buttonText"
+     <!-- <SfCallToAction :title="callToAction.title" :button-text="callToAction.buttonText"
         :description="callToAction.description" :background="callToAction.background" class="call-to-action" />
-    </LoadWhenVisible>
+    -->
+    <SfCallToAction class="call-to-action" :title="callToAction.title" :description="callToAction.description"
+        :background="callToAction.background">
+        <template #button>
+          <SfButton class="sf-call-to-action__button">
+            Shop Now  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="13" viewBox="0 0 24 20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-right"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
+
+          </SfButton>
+        </template>
+      </SfCallToAction>
+      </LoadWhenVisible>
     <SfBanner class="luxury-banner" title="Fine Dining, Finer Choices" subtitle=""
       description="Explore Our Exclusive Luxury Dinnerware!" buttonText="Shop Now" background=""
       image="/homepage/luxury.png" />
@@ -315,9 +325,9 @@ export default defineComponent({
       page,
     };
   },
-  head() {
+  /*head() {
     return getMetaInfo(this.page);
-  },
+  },*/
 });
 </script>
 <style lang="scss" scoped>
