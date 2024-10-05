@@ -122,17 +122,17 @@ export default defineComponent({
         // Add more items as needed
       ],
       help: [
-        { label: 'Shipping', url: '#' },
-        { label: 'Returns', url: '#' },
+        { label: 'Shipping', url: '/default/shipping-policy' },
+        { label: 'Returns', url: '/default/returns-refunds-policy' },
         { label: 'My account', url: '#' },
         { label: 'Order Tracking', url: '#' },
         { label: 'Support', url: '#' },
         // Add more items as needed
       ],
       paymentsDelivery: [
-        { label: 'Returns & Refund Policy', url: '/default/terms-and-conditions' },
-        { label: 'Cancellation Policy', url: '/default/cancellation' },
-        { label: 'Shipping Policy', url: '/default/shipping-and-delivery' },
+        { label: 'Returns & Refund Policy', url: '/default/returns-refunds-policy' },
+        { label: 'Cancellation Policy', url: '/default/cancellation-policy' },
+        { label: 'Shipping Policy', url: '/default/shipping-policy' },
         { label: 'Terms & Conditions', url: '/default/terms-and-conditions' },
         { label: 'Privacy Policy', url: '/default/privacy-policy-cookie-restriction-mode' },
         { label: 'Exchange Policy', url: '/default/exchange-policy' },
