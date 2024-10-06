@@ -349,12 +349,20 @@ export default defineComponent({
     font-family: var(--font-family--secondary);
     font-size: 24px;
     font-weight: var(--font-weight--semibold);
+    @include for-mobile {
+    width:80%;
+
+  }
   }
 
   .sf-link {
     text-decoration: none;
     font-size: 16px;
     font-family: var(--font-family--primary);
+    @include for-mobile {
+    width:24%;
+
+  }
   }
 
   /*.sf-product-card {
