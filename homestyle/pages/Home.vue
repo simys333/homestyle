@@ -176,6 +176,7 @@ export default defineComponent({
     SfBanner,
     CustomBannerGrid,
     SfCallToAction,
+    SfButton,
     MobileStoreBanner: () =>
       import(/* webpackPrefetch: true */ "~/components/MobileStoreBanner.vue"),
     NewProducts: () =>
