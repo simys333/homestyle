@@ -1,5 +1,5 @@
 <template>
-  <SfAccordion open="Description" :multiple="false" transition="" showChevron>
+  <SfAccordion open="" :multiple="false" transition="" showChevron>
     <SfAccordionItem header="Description">
       <HTMLContent
         v-if="productDescription"
