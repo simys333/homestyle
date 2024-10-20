@@ -28,7 +28,7 @@
           :title="getProductName(product)"
           :level="3"
           class="sf-heading--no-underline sf-heading--left"
-        />        <p>Custom Attribute: {{ productn.test }}</p>
+        />       
 
         <SvgImage
           icon="drag"
@@ -42,34 +42,7 @@
           :regular="$fc(productPrice)"
           :special="productSpecialPrice && $fc(productSpecialPrice)"
         />
-        <div>
-          <div class="product__rating">
-            <SfRating
-              :score="averageRating"
-              :max="5"
-            />
-            <a
-              v-if="!!totalReviews"
-              href="#"
-              class="product__count"
-            >
-              ({{ totalReviews }})
-            </a>
-          </div>
-          <SfButton
-            class="sf-button--text"
-            @click="setActiveTab(TabsConfig.reviews.ID)"
-          >
-            {{ $t('Read all reviews') }}
-          </SfButton>
-          |
-          <SfButton
-            class="sf-button--text"
-            @click="openNewReviewTab"
-          >
-            {{ $t('Add a review') }}
-          </SfButton>
-        </div>
+        
       </div>
       <div v-if="product !== null ">
         <HTMLContent

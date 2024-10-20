@@ -43,7 +43,7 @@
         />
         <SfPrice class="discount-percentage" :regular="calculatePercentage(product)"  />
 
-        <div>
+       <!--<div>
           <div class="product__rating">
             <SfRating
               :score="averageRating"
@@ -70,7 +70,7 @@
           >
             {{ $t('Add a review') }}
           </SfButton>
-        </div>
+        </div>--> 
       </div>
       <div v-if="product !== null ">
         <HTMLContent

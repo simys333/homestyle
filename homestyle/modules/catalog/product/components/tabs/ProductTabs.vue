@@ -10,9 +10,16 @@
     </SfAccordionItem>
     <hr class="sf-divider" />
     <SfAccordionItem header="Size Details">
+      
       <HTMLContent
         v-if="productWeightlitre"
        :content="`Weight: ${productWeightlitre}`"
+        tag="div"
+        class="product__description"
+      />
+      <HTMLContent
+        v-if="productWeight"
+       :content="`Weight: ${productWeight}`"
         tag="div"
         class="product__description"
       />
@@ -22,22 +29,22 @@
         tag="div"
         class="product__description"
       />
-      
-      <HTMLContent
-        v-if="productWidth"
-       :content="`Width: ${productWidth}`"
-        tag="div"
-        class="product__description"
-      />
       <HTMLContent
         v-if="productLength"
        :content="`Length: ${productLength}`"
         tag="div"
         class="product__description"
       />
+      <HTMLContent
+        v-if="productWidth"
+       :content="`Width: ${productWidth}`"
+        tag="div"
+        class="product__description"
+      />
+      
     </SfAccordionItem>
-    <hr class="sf-divider" />
-    <SfAccordionItem header="Features">
+    <hr class="sf-divider" v-if="productFeatures"/>
+    <SfAccordionItem header="Features" v-if="productFeatures">
       <HTMLContent
         v-if="productFeatures"
         :content="productFeatures"
@@ -45,8 +52,8 @@
         class="product__description"
       />
     </SfAccordionItem>
-    <hr class="sf-divider" />
-    <SfAccordionItem header="Products Included">
+    <hr class="sf-divider" v-if="productIncluded"/>
+    <SfAccordionItem  v-if="productIncluded" header="Products Included">
       <HTMLContent
         v-if="productIncluded"
         :content="productIncluded"
@@ -54,8 +61,8 @@
         class="product__description"
       />
     </SfAccordionItem>
-    <hr class="sf-divider" />
-    <SfAccordionItem header="More Info">
+    <hr class="sf-divider" v-if="productMoreinfo" />
+    <SfAccordionItem header="More Info" v-if="productMoreinfo">
       <HTMLContent
         v-if="productMoreinfo"
         :content="productMoreinfo"
@@ -170,13 +177,16 @@ console.log(props.product);
     const productWeightlitre = computed(
       () => props.product?.weight_litre || '',
     );
-    const productLength= computed(
-      () => props.product?.product_length || '',
-    );
+    /*const productWeight= computed(
+      () => props.product?.weight || '',
+    );*/
+    const productWeight= "";
     const productHeight = computed(
       () => props.product?.height || '',
     );
-   
+    const productLength = computed(
+      () => props.product?.product_length || '',
+    );
     const productWidth= computed(
       () => props.product?.width || '',
     );
@@ -207,12 +217,13 @@ console.log(props.product);
       productDescription,
       successAddReview,
       productFeatures,
+      productWeightlitre,
+      productWeight,
       productIncluded,
       productMoreinfo,
       productHeight,
-      productWidth,
-      productWeightlitre,
       productLength,
+      productWidth,
     };
   },
 });

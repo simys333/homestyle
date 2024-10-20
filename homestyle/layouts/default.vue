@@ -198,4 +198,19 @@ h4 {
    .new-products .slick-slider .slick-prev {
     z-index: 9999999;
 }
+.sf-product-card
+{
+  --product-card-max-width: 20.5rem;
+}
+.sf-product-card:hover
+{
+--product-card-box-shadow: none;
+}
+.sf-gallery__big-image .sf-image
+{
+  object-fit: contain;
+}
+.sf-radio.is-active {
+    background: transparent;
+}
 </style>
