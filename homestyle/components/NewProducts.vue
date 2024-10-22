@@ -380,13 +380,13 @@ export default defineComponent({
     margin-left: -35px;
     margin-right: -35px;
 
-    .slick-prev {
+    /*.slick-prev {
       left: 0;
     }
 
     .slick-next {
       right: 0;
-    }
+    }*/
 
     ::v-deep .sf-product-card__title {
       font-size: 18px;

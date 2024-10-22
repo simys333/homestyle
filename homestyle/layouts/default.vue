@@ -200,11 +200,11 @@ h4 {
 }
 .sf-product-card
 {
-  --product-card-max-width: 20.5rem;
+  --product-card-max-width: 20.5rem !important;
 }
 .sf-product-card:hover
 {
---product-card-box-shadow: none;
+--product-card-box-shadow: none !important;
 }
 .sf-gallery__big-image .sf-image
 {
