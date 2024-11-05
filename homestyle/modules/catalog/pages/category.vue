@@ -5,21 +5,26 @@
       :content="cmsContent"
     />
     <CategoryBreadcrumbs />
+
     <SkeletonLoader
       v-if="!activeCategoryName"
       height="57px"
       width="200px"
       margin="0"
     />
+
     <SfHeading
       v-else
-      :level="2"
-      :title="activeCategoryName"
+      :level="4"
+      :title="`Showing ${pagination.totalItems} results for ${activeCategoryName}`"
       class="category-title"
     />
+    <sf-heading level="1">Your Title Here</sf-heading>
+
     <div class="category-layout">
       <div class="sidebar column">
         <CategoryFilters
+         
           class="mobile-only"
           :is-visible="isFilterSidebarOpen"
           :cat-uid="routeData.uid"
@@ -143,6 +148,7 @@ import type { ProductInterface } from '~/modules/GraphQL/types';
 import type { SortingModel } from '~/modules/catalog/category/composables/useFacet/sortingOptions';
 import type { Pagination } from '~/composables/types';
 import type { Product } from '~/modules/catalog/product/types';
+import { debug } from 'webpack';
 
 export default defineComponent({
   name: 'CategoryPage',
@@ -169,7 +175,7 @@ export default defineComponent({
     const uiHelpers = useUiHelpers();
     const cmsContent = ref('');
     const isShowCms = ref(false);
-    const isShowProducts = ref(false);
+    const isShowProducts = ref(true);
     const products = ssrRef<ProductInterface[]>([]);
     const sortBy = ref<SortingModel>({ selected: '', options: [] });
     const pagination = ref<Pagination>({});
@@ -215,12 +221,13 @@ export default defineComponent({
         loadCategoryMeta({ category_uid: routeData.value?.uid }),
         search({ ...uiHelpers.getFacetsFromURL(), category_uid: categoryUid }),
       ]);
-
+debugger
       categoryMeta.value = categoryMetaData;
       cmsContent.value = content?.cmsBlock?.content ?? '';
       isShowCms.value = content.isShowCms;
       isShowProducts.value = content.isShowProducts;
-
+     console.log('isShowProducts:',content);
+     
       products.value = facetGetters.getProducts(result.value) ?? [];
       sortBy.value = facetGetters.getSortOptions(result.value);
       pagination.value = facetGetters.getPagination(result.value);
@@ -230,7 +237,7 @@ export default defineComponent({
         prefix: CacheTagPrefix.Product,
         value: product.uid,
       }));
-
+     
       addTags([...tags, ...productTags]);
     });
 
@@ -273,7 +280,7 @@ export default defineComponent({
       goToPage(0);
       productContainerElement.value.scrollIntoView();
     };
-
+    
     return {
       isPriceLoaded,
       ...uiHelpers,
