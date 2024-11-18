@@ -9,8 +9,8 @@
           elegance to your home.
         </p>
         <h4>Contact Us</h4>
-        <span>info@homstyle.com</span>
-        <span>+91 944 679 4741</span>
+        <span><a href="mailto:info@homstyle.com">info@homstyle.com</a></span>
+        <span><a href="tel:+919446794741">+91 944 679 4741</a></span>
       </div>
       <SfFooterColumn :title="$t('Categories')">
         <SfList>
@@ -95,12 +95,12 @@ export default defineComponent({
   data() {
     return {
       categoriesmenu: [
-        { label: 'Dining', url:'#' },
-        { label: 'Kitchen', url:'#' },
-        { label: 'Glassware', url:'#' },
-        { label: 'Hot and serve', url:'#' },
-        { label: 'Bakeware', url:'#' },
-        { label: 'Shop All', url:'#' },
+        { label: 'Dining', url:'/default/dining-ware.html' },
+        { label: 'Kitchen', url:'/default/kitchenware.html' },
+        { label: 'Glassware', url:'/default/glassware.html' },
+        { label: 'Hot and serve', url:'/default/hot-serve.html' },
+        { label: 'Bakeware', url:'/default/bakeware.html' },
+        { label: 'Shop All', url:'/default/sale.html' },
         // Add more items as needed
       ],
       aboutUs: [

@@ -50,7 +50,7 @@
     </LoadWhenVisible>
     <LoadWhenVisible>
       <NewProducts class="products" :button-text="$t('View All')" :title="$t('Best Sellers')"
-        link="/kitchenware.html" />
+        link="/best-sellers.html" />
     </LoadWhenVisible>
     <LazyHydrate when-visible>
       <CustomBannerGrid class="banner-grid">

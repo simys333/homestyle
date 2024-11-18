@@ -246,4 +246,12 @@ h4 {
     padding-bottom: 10px;
     
 }
+.footer a
+{
+color:#fff;
+}
+.footer a:hover
+{
+  color:#f8470a;
+}
 </style>
