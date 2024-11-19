@@ -85,17 +85,27 @@
     <SfCallToAction class="call-to-action" :title="callToAction.title" :description="callToAction.description"
         :background="callToAction.background">
         <template #button>
+          <a href="/default/sale.html"  rel="noopener noreferrer">
+
           <SfButton class="sf-call-to-action__button">
             Shop Now  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="13" viewBox="0 0 24 20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-right"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
 
           </SfButton>
+          </a>
         </template>
       </SfCallToAction>
       </LoadWhenVisible>
     <SfBanner class="luxury-banner" title="Fine Dining, Finer Choices" subtitle=""
       description="Explore Our Exclusive Luxury Dinnerware!" buttonText="Shop Now" background=""
-      image="/homepage/luxury.png" />
-
+      image="/homepage/luxury.png" >
+      <template #call-to-action>
+    <router-link to="/default/sale.html">
+      <SfButton>
+        Shop Now  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="13" viewBox="0 0 24 20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-right"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
+      </SfButton>
+    </router-link>
+  </template>
+</SfBanner>
     <div>
       <h3 style="color: #f8470a">We Design & Curate the Best.</h3>
       <p>
@@ -209,7 +219,7 @@ export default defineComponent({
         fit: "contain",
         format: "webp",
       },
-      link: "/women.html",
+      link: "/default/sale.html",
     });
     const sale = ref({
       title: app.i18n.t("30-80% OFF"),
@@ -223,7 +233,7 @@ export default defineComponent({
         fit: "contain",
         format: "webp",
       },
-      link: "/women.html",
+      link: "/default/sale.html",
     });
     const banners = ref([
       {

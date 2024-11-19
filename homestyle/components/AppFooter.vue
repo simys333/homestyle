@@ -124,7 +124,7 @@ export default defineComponent({
       help: [
         { label: 'Shipping', url: '/default/shipping-policy' },
         { label: 'Returns', url: '/default/returns-refunds-policy' },
-        { label: 'My account', url: '#' },
+        { label: 'My account', url: '/default/checkout/user-account' },
         { label: 'Order Tracking', url: '#' },
         { label: 'Support', url: '#' },
         // Add more items as needed
