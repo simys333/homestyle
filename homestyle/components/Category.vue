@@ -11,32 +11,46 @@
     </div>
     <VueSlickCarousel v-bind="carouselSettings">
       <div class="icon-text-box">
+        <a href="/default/dining-ware.html">
         <img src="/homepage/Dinner Ware.png" alt="" />
         <span>Dinner Ware</span>
+      </a>
       </div>
       <div class="icon-text-box">
+        <a href="/default/dining-ware/mugs.html">
         <img src="/homepage/Mugs.png" alt="" />
         <span>Mugs</span>
+      </a>
       </div>
       <div class="icon-text-box">
+        <a href="/default/kitchenware/cutleries.html">
         <img src="/homepage/Cutlery.png" alt="" />
         <span>Cutlery</span>
+        </a>
       </div>
       <div class="icon-text-box">
+        <a href="/default/glassware/bottles.html">
         <img src="/homepage/Bottles.png" alt="" />
         <span>Bottles</span>
+       </a>
       </div>
       <div class="icon-text-box">
-        <img src="/homepage/Dinner Ware.png" alt="" />
-        <span>Dinner Ware</span>
-      </div>
-      <div class="icon-text-box">
+        <a href="/default/glassware/bowls.html">
         <img src="/homepage/Bowls.png" alt="" />
         <span>Bowls</span>
+      </a>
       </div>
       <div class="icon-text-box">
+        <a href="/default/hot-serve/casserole.html">
         <img src="/homepage/Casserole.png" alt="" />
         <span>Casserole</span>
+      </a>
+      </div>
+      <div class="icon-text-box">
+        <a href="/default/glassware/bottles.html">
+        <img src="/homepage/Bottles.png" alt="" />
+        <span>Flasks</span>
+      </a>
       </div>
       <template #prevArrow>
         <CarouselLeftArrow />

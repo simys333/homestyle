@@ -76,7 +76,7 @@
     </LoadWhenVisible>
     <LoadWhenVisible>
       <NewProducts class="products" :button-text="$t('View All')"
-        :title="$t('Thoughtful Gifts for Every Kitchen Enthusiast !')" link="/what-is-new.html" />
+        :title="$t('Thoughtful Gifts<br> for Every Kitchen Enthusiast !')" link="/what-is-new.html" />
     </LoadWhenVisible>
     <LoadWhenVisible>
      <!-- <SfCallToAction :title="callToAction.title" :button-text="callToAction.buttonText"

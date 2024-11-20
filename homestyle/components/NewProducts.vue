@@ -1,7 +1,7 @@
 <template>
   <div class="new-products">
     <div class="heading">
-      <h4 class="sf-heading__title title">
+      <h4 class="sf-heading__title title"  v-html="title">
         {{ title }}
       </h4>
       <SfLink :link="localePath(link)" target="_blank">

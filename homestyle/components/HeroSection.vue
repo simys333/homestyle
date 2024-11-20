@@ -93,8 +93,8 @@ export default defineComponent({
 </script>
 <style lang="scss" scoped>
 .hero__title {
-    margin-top: 0px !important;
-    margin-bottom: 15px !important;
+    margin-top: 20px !important;
+    margin-bottom: 0px !important;
 }
 .hero {
   display: flex;

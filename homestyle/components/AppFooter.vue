@@ -185,8 +185,10 @@ export default defineComponent({
   &__container {
     @include for-desktop {
       margin: var(--spacer-sm);
-      max-width: 69rem;
+      max-width:76rem;
       margin: 0 auto;
+      grid-template-columns: 3fr 1fr 1fr 1fr 1fr !important;
+
     }
   }
 
@@ -228,6 +230,7 @@ export default defineComponent({
     min-width: 300px;
     margin: var(--spacer-base);
     margin-left: 0;
+    margin-right: var(--spacer-3xl);
 
     @include for-mobile {
       align-items: center;

@@ -66,7 +66,7 @@ export default {
     &__row {
       --banner-grid-row-margin: 0;
       & + & {
-        --banner-grid-row-margin: var(--spacer-xl) 0 0 0;
+        --banner-grid-row-margin: var(--spacer-base) 0 0 0;
       }
     }
     &__col {
@@ -74,7 +74,7 @@ export default {
       flex-wrap: wrap;
       --banner-grid-col-margin: 0;
       & + & {
-        --banner-grid-col-margin: 0 0 0 var(--spacer-xl);
+        --banner-grid-col-margin: 0 0 0 var(--spacer-base);
       }
       & > .sf-banner,
       & > a {

@@ -254,4 +254,23 @@ color:#fff;
 {
   color:#f8470a;
 }
+a.sf-link.sf-header-navigation-item__link.nav-item:nth-child(2) {
+    color: #f8470a;
+}
+.sf-call-to-action
+{
+  padding:var(--spacer-lg, var(--spacer-lg));
+}
+.sf-call-to-action__text-container
+{
+  width:68%;
+}
+.sf-header-navigation-item__item--desktop > *:not(.sf-mega-menu)
+{
+  color:#190701;
+}
+a.sf-link.sf-header-navigation-item__link.nav-item:nth-child(2):hover
+{
+  color:#ffffff;
+}
 </style>
