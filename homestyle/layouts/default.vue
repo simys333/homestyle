@@ -259,7 +259,7 @@ a.sf-link.sf-header-navigation-item__link.nav-item:nth-child(2) {
 }
 .sf-call-to-action
 {
-  padding:var(--spacer-lg, var(--spacer-lg));
+  padding:var(--spacer-lg, var(--spacer-lg)) !important;
 }
 .sf-call-to-action__text-container
 {
