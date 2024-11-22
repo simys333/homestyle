@@ -143,7 +143,7 @@ export default defineComponent({
           "settings": {
             "slidesToShow": 6,
             "slidesToScroll": 6,
-            "arrows": false,
+            "arrows": true,
           }
         },
         {
@@ -151,7 +151,7 @@ export default defineComponent({
           "settings": {
             "slidesToShow": 4,
             "slidesToScroll": 4,
-            "arrows": false,
+            "arrows": true,
           }
         },
         {
@@ -159,7 +159,7 @@ export default defineComponent({
           "settings": {
             "slidesToShow": 3,
             "slidesToScroll": 3,
-            "arrows": false,
+            "arrows": true,
           }
         },
         {
@@ -167,7 +167,7 @@ export default defineComponent({
           "settings": {
             "slidesToShow": 2,
             "slidesToScroll": 2,
-            "arrows": false,
+            "arrows": true,
           }
         }
       ]
@@ -241,6 +241,9 @@ export default defineComponent({
     margin-right: -18px;
     .slick-prev {
       left: -10px;
+      @include for-mobile {
+        left: 30px;
+      }
     }
 
   /*  @include for-desktop {
@@ -250,6 +253,9 @@ export default defineComponent({
     }*/
     .slick-next {
       right: -10px;
+      @include for-mobile {
+        right: 30px;
+      }
     }
 
     ::v-deep .icon-text-box {

@@ -234,6 +234,9 @@ export default defineComponent({
 
     @include for-mobile {
       align-items: center;
+      margin-right: var(--spacer-lg);
+        margin-top: 20px;
+        margin-left: var(--spacer-lg);
     }
 
     h4 {
