@@ -100,7 +100,7 @@
       image="/homepage/luxury.png" >
      
 </SfBanner>-->
-<SfBanner class="luxury-banner"  buttonText="Shop Now" background=""
+<SfBanner class="luxury-banner" background=""
       image="/homepage/luxury.png" >
       <template #call-to-action>
         <span class="sf-banner__title">
