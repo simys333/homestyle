@@ -66,8 +66,8 @@
     </LoadWhenVisible>
 
     <LoadWhenVisible>
-      <NewProducts class="products" :button-text="$t('View All')" :title="$t('Fresh Arrivals That Capture Hearts')"
-        link="/dinnerware.html" />
+      <FreshArrivals class="products" :button-text="$t('View All')" :title="$t('Fresh Arrivals That Capture Hearts')"
+        link="/what-is-new.html" />
     </LoadWhenVisible>
     <LoadWhenVisible>
       <SaleSection :title="sale.title" :subtitle="sale.subtitle" :description="sale.description"
@@ -75,8 +75,8 @@
         :image-height="sale.imageHeight" :nuxt-img-config="sale.imageConfig" image-tag="nuxt-img" />
     </LoadWhenVisible>
     <LoadWhenVisible>
-      <NewProducts class="products" :button-text="$t('View All')"
-        :title="$t('Thoughtful Gifts<br> for Every Kitchen Enthusiast !')" link="/what-is-new.html" />
+      <ThoughtfulGifts class="products" :button-text="$t('View All')"
+        :title="$t('Thoughtful Gifts<br> for Every Kitchen Enthusiast !')" link="/kitchenware.html" />
     </LoadWhenVisible>
     <LoadWhenVisible>
      <!-- <SfCallToAction :title="callToAction.title" :button-text="callToAction.buttonText"
@@ -170,6 +170,8 @@ import CustomBannerGrid from "~/components/CustomBannerGrid.vue";
 import { getMetaInfo } from "~/helpers/getMetaInfo";
 import { useContent } from "~/composables";
 import LoadWhenVisible from "~/components/utils/LoadWhenVisible.vue";
+import FreshArrivals from "~/components/FreshArrivals.vue";
+import ThoughtfulGifts from "~/components/ThoughtfulGifts.vue";
 
 export default defineComponent({
   name: "HomePage",
@@ -186,6 +188,10 @@ export default defineComponent({
       import(/* webpackPrefetch: true */ "~/components/MobileStoreBanner.vue"),
     NewProducts: () =>
       import(/* webpackPrefetch: true */ "~/components/NewProducts.vue"),
+      FreshArrivals: () =>
+      import(/* webpackPrefetch: true */ "~/components/FreshArrivals.vue"),
+      ThoughtfulGifts: () =>
+      import(/* webpackPrefetch: true */ "~/components/ThoughtfulGifts.vue"),
     Brands: () =>
       import(/* webpackPrefetch: true */ "~/components/Brands.vue"),
     Category: () =>
