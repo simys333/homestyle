@@ -81,8 +81,8 @@ export default defineComponent({
 
     useFetch(async () => {
       if (props.identifiers) {
-        blocks.value = await loadBlocks({ identifiers: ['banner'] });
-        console.log(blocks.value[0]['identifier']);
+       // blocks.value = await loadBlocks({ identifiers: ['banner'] });
+       // console.log(blocks.value[0]['identifier']);
       }
     });
 
