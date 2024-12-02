@@ -178,6 +178,11 @@ export default defineComponent({
         sort: {
           position: SortEnum.Asc,
         },
+        filter: {
+            category_id: {
+              eq: String(26),
+            },
+          }
       });
 
       if (newestProducts?.items?.length) {

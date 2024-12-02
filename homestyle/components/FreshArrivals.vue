@@ -180,7 +180,7 @@
           },
           filter: {
             category_id: {
-              eq: String(38),
+              eq: String(26),
             },
         
           },
