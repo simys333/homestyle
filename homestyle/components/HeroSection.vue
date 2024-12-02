@@ -1,17 +1,15 @@
 <template>
-  <div class="hero">
-    <SfImage
-      :image-tag="imageTag"
-      :src="imageSrc"
-      :alt="title"
-      :width="imageWidth"
-      :height="imageHeight"
-      :nuxt-img-config="nuxtImgConfig"
-      placeholder
-      class="hero__image"
-    />
+  <div>
+      <VueSlickCarousel v-bind="carouselSettings">
+ 
+  <div class="banner_slide">
+    <img src="/homepage/banner.png" />
     <div class="hero__wrapper">
-      <slot name="subtitle" v-bind="{ subtitle }"
+    <div v-for="block in blocks" :key="block.identifier">
+        <div v-html="block.identifier"></div>
+      </div>
+     
+<slot name="subtitle" v-bind="{ subtitle }"
         ><span v-show="subtitle" class="hero__subtitle"> {{ subtitle }} </span>
       </slot>
       <slot name="title" v-bind="{ title }"
@@ -28,6 +26,7 @@
           :link="localePath(link)"
           class="hero__button"
         >
+
           {{ buttonText }}
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="13" viewBox="0 0 24 20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-right"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
 
@@ -35,18 +34,114 @@
       </slot>
     </div>
   </div>
+  <div class="banner_slide"><img src="/homepage/sale.png" /></div>
+  <div class="banner_slide"> <img src="/homepage/luxury.png" /></div>
+  <template #prevArrow>
+        <CarouselLeftArrow />
+      </template>
+      <template #nextArrow>
+        <CarouselRightArrow />
+      </template>
+
+</VueSlickCarousel>
+</div>
 </template>
+
+
+
 <script lang="ts">
-import { defineComponent, PropType } from "@nuxtjs/composition-api";
+import { defineComponent,PropType } from "@nuxtjs/composition-api";
 import { ImageModifiers } from "@nuxt/image";
 import { SfButton, SfImage } from "@storefront-ui/vue";
+import { useFetch, ref } from '@nuxtjs/composition-api';
+import { useContent } from '~/composables';
+import CarouselLeftArrow from "./CarouselLeftArrow.vue";
+import CarouselRightArrow from "./CarouselRightArrow.vue";
+import RightArrowIcon from "./Icons/RightArrowIcon.vue";
+import VueSlickCarousel from 'vue-slick-carousel'
+import 'vue-slick-carousel/dist/vue-slick-carousel.css'
+import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
+
 
 export default defineComponent({
   name: "HeroSection",
   components: {
     SfButton,
     SfImage,
+    CarouselLeftArrow,
+    CarouselRightArrow,
+    RightArrowIcon,
+    VueSlickCarousel
   },
+
+
+  setup(props) {
+    const { loadBlocks } = useContent();
+    const blocks = ref([]);
+
+    useFetch(async () => {
+      if (props.identifiers) {
+        blocks.value = await loadBlocks({ identifiers: ['banner'] });
+        console.log(blocks.value[0]['identifier']);
+      }
+    });
+
+    const carouselSettings = {
+      "arrows": true, "dots": true, "infinite": true, "slidesToShow": 1, "autoplay": true,"speed": 1000,  "slidesToScroll": 1,"autoplaySpeed": 3500,"cssEase": "linear","pauseOnDotsHover": true,
+  "pauseOnFocus": true,
+  "pauseOnHover": true, "responsive": [
+        {
+          "breakpoint": 1366,
+          "settings": {
+              "lazyLoad": "ondemand",
+            "slidesToShow": 1,
+            "slidesToScroll": 1,
+            "arrows": true,
+            "dots": true,
+            "infinite": true,
+           
+
+          }
+          
+        },
+        {
+          "breakpoint": 850,
+          "settings": {
+            "slidesToShow": 1,
+            "slidesToScroll": 1,
+            "arrows": true,
+            "autoplay": true,
+
+          }
+        },
+        {
+          "breakpoint": 600,
+          "settings": {
+            "slidesToShow": 1,
+            "slidesToScroll": 1,
+            "arrows": true,
+            "autoplay": true,
+
+          }
+        },
+        {
+          "breakpoint": 480,
+          "settings": {
+            "slidesToShow": 1,
+            "slidesToScroll": 1,
+            "arrows": true,
+            "autoplay": true,
+
+          }
+        }
+      ]
+    };
+    return {
+      
+      carouselSettings
+    };
+  },
+
   props: {
     title: {
       type: String,
@@ -88,6 +183,10 @@ export default defineComponent({
       type: Object as PropType<ImageModifiers | {}>,
       default: () => ({}),
     },
+    identifiers: {
+      type: Array as () => string[],
+      default: () => []
+    },
   },
 });
 </script>
@@ -95,6 +194,13 @@ export default defineComponent({
 .hero__title {
     margin-top: 20px !important;
     margin-bottom: 0px !important;
+}
+.sf-button:hover {
+  background: #de2d00;
+}
+.slick-slide img
+{
+  width:100vw;
 }
 .hero {
   display: flex;
@@ -128,11 +234,11 @@ export default defineComponent({
     width: 100%;
     text-decoration: none;
     background-color: #ffffff;
-   // border: 1px solid #000000;
+    //border: 1px solid #000000;
     max-width: 20rem;
     top: 20%;
-    left: 14%;
-  /*  box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.85),
+    left: 15%;
+    /*box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.85),
       0 0 0 30px rgba(255, 255, 255, 0.3);*/
       padding: 30px;
   }
@@ -144,7 +250,7 @@ export default defineComponent({
     height: 100%;
     left: -3%;
     border: 1px solid white;
-   padding: 10px;
+    padding: 10px;
   }
 
   &__title {
