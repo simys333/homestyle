@@ -180,7 +180,7 @@ export default defineComponent({
         },
         filter: {
             category_id: {
-              eq: String(26),
+              eq: String(28),
             },
           }
       });

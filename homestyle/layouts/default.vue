@@ -273,4 +273,11 @@ a.sf-link.sf-header-navigation-item__link.nav-item:nth-child(2):hover
 {
   color:#ffffff;
 }
+#product .sf-carousel .sf-image
+{
+  width:216px !important;
+}
+#product .sf-carousel .sf-product-card {
+    --product-card-max-width: 15.5rem;
+}
 </style>
