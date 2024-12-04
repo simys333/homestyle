@@ -278,6 +278,6 @@ a.sf-link.sf-header-navigation-item__link.nav-item:nth-child(2):hover
   width:216px !important;
 }
 #product .sf-carousel .sf-product-card {
-    --product-card-max-width: 15.5rem;
+    --product-card-max-width: 15.5rem !important;
 }
 </style>
