@@ -1,7 +1,7 @@
 <template>
   <div>
     <h4 class="heading__title h4 desktop-only">
-      {{ $t('Filters') }}
+      {{ $t('Filter By') }}
     </h4>
     <div
       v-if="isLoading"
@@ -31,22 +31,84 @@
       v-else
       class="filters desktop-only"
     >
-      <SelectedFilters
+     <!-- <SelectedFilters
         :removable-filters="removableFilters"
         @removeFilter="doRemoveFilter($event)"
       />
       <hr class="sf-divider">
-      <div
+     <div
         v-for="(filter, i) in filters"
         :key="i"
         data-testid="category-filter"
+        class="filter_cat"
       >
         <component
           :is="getFilterConfig(filter.attribute_code).component"
           :filter="filter"
           @selectFilter="selectFilter(filter, $event)"
         />
-      </div>
+
+        
+      </div>-->
+
+
+
+
+
+
+
+
+
+
+
+
+     <!--- <SfAccordion class="filters">
+        <SelectedFilters
+          @removeFilter="doRemoveFilter($event)"
+        />
+        <hr class="sf-divider">
+        <div
+          v-for="(filter, i) in filters"
+          :key="i"
+        >
+          <SfAccordionItem
+            :key="`filter-title-${filter.attribute_code}`"
+            :header="filter.label"
+            class="filters__accordion-item"
+          >
+            <component
+              :is="getFilterConfig(filter.attribute_code).component"
+              :filter="filter"
+              @selectFilter="selectFilter(filter, $event)"
+            />
+          </SfAccordionItem>
+        </div>
+      </SfAccordion>
+    -->
+       <!--Accordion-->
+    <SfAccordion class="filter_desktop">
+        <SelectedFilters />
+        <hr class="sf-divider">
+        <div
+          v-for="(filter, i) in filters"
+          :key="i"
+        >
+          <SfAccordionItem
+            :key="`filter-title-${filter.attribute_code}`"
+            :header="filter.label"
+            class="filters__accordion-item"
+          >
+            <component
+              :is="getFilterConfig(filter.attribute_code).component"
+              :filter="filter"
+              @selectFilter="selectFilter(filter, $event)"
+            />
+          </SfAccordionItem>
+          <hr class="sf-divider">
+
+        </div>
+      </SfAccordion>
+<!--Accordion-->
       <div class="filters__buttons">
         <SfButton
           class="sf-button--full-width"
@@ -64,6 +126,8 @@
         </SfButton>
       </div>
     </div>
+   
+
     <SfSidebar
       :visible="isVisible"
       class="sidebar-filters smartphone-only"
@@ -91,7 +155,9 @@
               @selectFilter="selectFilter(filter, $event)"
             />
           </SfAccordionItem>
+
         </div>
+
       </SfAccordion>
       <template #content-bottom>
         <div class="filters__buttons">
@@ -241,4 +307,27 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 @import './CategoryFilters.scss';
+.filter-accordion {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.accordion-header {
+  padding: 10px;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.accordion-body {
+  padding: 10px;
+  background-color: #fafafa;
+}
+.filter_desktop .filters__accordion-item
+{
+  width: 170px;
+  margin: 0px;
+  left:0px;
+  padding: 10px 3px;
+}
 </style>

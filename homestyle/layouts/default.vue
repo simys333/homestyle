@@ -280,4 +280,22 @@ a.sf-link.sf-header-navigation-item__link.nav-item:nth-child(2):hover
 #product .sf-carousel .sf-product-card {
     --product-card-max-width: 15.5rem !important;
 }
+.sf-accordion.filter_desktop.has-chevron {
+    width: 168px;
+}
+.sf-accordion.filter_desktop .filters__title {
+    margin: var(--spacer-xs) 0 var(--spacer-xs) 0 !important;
+}
+.sf-accordion.filter_desktop h4.sf-heading__title.h4
+{
+  display: none;
+}
+.sf-accordion.filter_desktop .sf-accordion-item__content {
+    padding: 5px 2px !important;
+}
+.sf-accordion.filter_desktop .sf-accordion-item
+{
+  --accordion-item-header-font-size: var(--h5-font-size);
+
+}
 </style>
