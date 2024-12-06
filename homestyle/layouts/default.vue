@@ -209,6 +209,7 @@ h4 {
 .sf-gallery__big-image .sf-image
 {
   object-fit: contain;
+  height: auto;
 }
 .sf-radio.is-active {
     background: transparent;
@@ -297,5 +298,16 @@ a.sf-link.sf-header-navigation-item__link.nav-item:nth-child(2):hover
 {
   --accordion-item-header-font-size: var(--h5-font-size);
 
+}
+.sf-divider {
+    display: block;
+    display: var(--divider-display, block);
+    margin: var(--divider-margin);
+    max-width: var(--divider-max-width);
+    width: var(--divider-width);
+    border: solid var(--c-light);
+    border: var(--divider-border, var(--divider-border-style, solid) var(--divider-border-color, var(--c-light)));
+    border-width: 1px;
+    border-width: var(--divider-border-width, 1px);
 }
 </style>
