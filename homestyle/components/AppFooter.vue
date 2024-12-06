@@ -233,7 +233,7 @@ export default defineComponent({
     margin-right: var(--spacer-3xl);
 
     @include for-mobile {
-      align-items: center;
+      align-items: left;
       margin-right: var(--spacer-lg);
         margin-top: 20px;
         margin-left: var(--spacer-lg);
@@ -253,7 +253,7 @@ export default defineComponent({
       font-size: 15px;
 
       @include for-mobile {
-        text-align: center;
+        text-align: left;
       }
     }
   }

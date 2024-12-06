@@ -460,7 +460,7 @@ export default defineComponent({
 
   ::v-deep .sf-call-to-action__title {
     font-family: var(--font-family--secondary);
-    font-size: 32px;
+    font-size: 30px;
 
     @include for-mobile {
       font-size: 12px;
