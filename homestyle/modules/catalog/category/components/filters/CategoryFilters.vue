@@ -31,12 +31,11 @@
       v-else
       class="filters desktop-only"
     >
-     <!-- <SelectedFilters
+      <SelectedFilters
         :removable-filters="removableFilters"
         @removeFilter="doRemoveFilter($event)"
       />
-      <hr class="sf-divider">
-     <div
+     <!--<div
         v-for="(filter, i) in filters"
         :key="i"
         data-testid="category-filter"
@@ -86,6 +85,7 @@
       </SfAccordion>
     -->
        <!--Accordion-->
+      
     <SfAccordion class="filter_desktop">
         <SelectedFilters />
         <hr class="sf-divider">

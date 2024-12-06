@@ -95,21 +95,10 @@
         </template>
       </SfCallToAction>
       </LoadWhenVisible>
-      <SfBanner class="luxury-banner"  buttonText="Shop Now" background=""
+    <SfBanner class="luxury-banner" title="Fine Dining, Finer Choices" subtitle=""
+      description="Explore Our Exclusive Luxury Dinnerware!" buttonText="Shop Now" background=""
       image="/homepage/luxury.png" >
-      <template #call-to-action>
-        <span class="sf-banner__title">
-        Fine Dining,<br/> Finer Choices
-      </span>
-      <span class="sf-banner__description">
-        Explore Our Exclusive Luxury Dinnerware!
-      </span>
-    <router-link to="/luxury-dinnerware">
-      <SfButton>
-        Shop Now  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="13" viewBox="0 0 24 20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-right"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
-      </SfButton>
-    </router-link>
-  </template>
+     
 </SfBanner>
 
     <div>
