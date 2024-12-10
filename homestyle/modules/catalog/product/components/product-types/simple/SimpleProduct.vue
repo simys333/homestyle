@@ -199,7 +199,10 @@ import {
   getTotalReviews,
   getAverageRating,
 } from '~/modules/review/getters/reviewGetters';
-
+import {
+  useRouter,
+  useContext,
+} from '@nuxtjs/composition-api';
 import useWishlist from '~/modules/wishlist/composables/useWishlist';
 import SvgImage from '~/components/General/SvgImage.vue';
 import HTMLContent from '~/components/HTMLContent.vue';
@@ -210,6 +213,9 @@ import { useCart } from '~/modules/checkout/composables/useCart';
 import ProductTabs from '~/modules/catalog/product/components/tabs/ProductTabs.vue';
 import { useProductGallery } from '~/modules/catalog/product/composables/useProductGallery';
 import { TabsConfig, useProductTabs } from '~/modules/catalog/product/composables/useProductTabs';
+//import { GET_BRAND_BY_ID } from '~/modules/catalog/product/queries/getBrandById.gql';
+import { useCartView } from "~/modules/checkout/composables/useCartView";
+
 
 export default defineComponent({
   name: 'SimpleProduct',
@@ -234,12 +240,22 @@ export default defineComponent({
       type: [Object, null] as PropType<Product>,
       default: null,
     },
+   
+   
     isFetching: {
       type: Boolean,
       default: true,
     },
   },
   setup(props) {
+    const cartView = useCartView();
+    const router = useRouter();
+    const { app } = useContext();
+
+    const goToCart = async () => {
+      await router.push(app.localeRoute({ name: 'cart' }));
+    };
+
     const qty = ref(1);
     const product = toRef(props, 'product');
     const {
@@ -249,6 +265,8 @@ export default defineComponent({
     const { isAuthenticated } = useUser();
     const { addOrRemoveItem, isInWishlist } = useWishlist();
     const { activeTab, setActiveTab, openNewReviewTab } = useProductTabs();
+   // const { result, loading, error } = useQuery(GET_BRAND_BY_ID, { id: props.brandId });
+
 
     const productShortDescription = computed(
       () => props.product?.short_description?.html || '',
@@ -256,12 +274,26 @@ export default defineComponent({
     const productFeature= computed(
       () => props.product?.features || '',
     );
+    const productWeightlitre = computed(
+      () => props.product?.weight_litre || '',
+    );
+    /*const productBrand= computed(
+      () => props.product?.brand || '',
+    );
+    for (let i = 0; i < 10; i++) {
+        console.log(productBrand[i]);
+    
+}*/
+   // console.dir("brand"+productBrand);
+   // console.log(JSON.stringify(productBrand, null, 2)); 
     const productMoreinfo= computed(
       () => props.product?.more_info|| '',
     );
     const productIncluded= computed(
       () => props.product?.products_included|| '',
     );
+ //   const productBrand = computed(() => getBrand(props.product).brand);
+
     const productPrice = computed(() => getProductPrice(props.product).regular);
     const productSpecialPrice = computed(() => getProductPrice(props.product).special);
     const totalReviews = computed(() => getTotalReviews(props.product));
@@ -270,13 +302,16 @@ export default defineComponent({
     const calculatePercentage=(product) =>{
     const regularPrice = productPrice.value;
     const specialPrice =productSpecialPrice.value;
-    console.log((regularPrice - specialPrice)/ specialPrice);
+   // console.log((regularPrice - specialPrice)/ specialPrice);
     if (specialPrice && specialPrice !== 0) {
       return Math.round(((regularPrice - specialPrice) / specialPrice) * 100).toString()+ '%';
     } else {
       return ""; // Handle division by zero case or specialPrice being 0
     }
+   
+   
   }
+ 
     return {
       addItem,
       addItemToWishlist: addOrRemoveItem,
@@ -290,6 +325,7 @@ export default defineComponent({
       productGallery,
       getProductName,
       productFeature,
+      productWeightlitre,
       productPrice,
       productSpecialPrice,
       qty,
@@ -301,7 +337,10 @@ export default defineComponent({
       addToCartError,
       calculatePercentage,
       productMoreinfo,
-      productIncluded
+      productIncluded,
+      ...cartView,
+      
+
     };
   },
 });
