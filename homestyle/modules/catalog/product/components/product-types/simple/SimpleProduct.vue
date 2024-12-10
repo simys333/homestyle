@@ -29,6 +29,7 @@
           :level="3"
           class="sf-heading--no-underline sf-heading--left"
         />
+       
         <SvgImage
           icon="drag"
           width="40"
@@ -43,7 +44,7 @@
         />
         <SfPrice class="discount-percentage" :regular="calculatePercentage(product)"  />
 
-       <!--<div>
+       <!-- <div>
           <div class="product__rating">
             <SfRating
               :score="averageRating"
@@ -70,7 +71,7 @@
           >
             {{ $t('Add a review') }}
           </SfButton>
-        </div>--> 
+        </div>-->
       </div>
       <div v-if="product !== null ">
         <HTMLContent
@@ -79,6 +80,7 @@
           tag="p"
           class="product__description desktop-only"
         />
+        
         <SfAddToCart
           v-model="qty"
           v-e2e="'product_add-to-cart'"
@@ -86,29 +88,77 @@
           class="product__add-to-cart"
           @click="addItem({ product, quantity: parseInt(qty) })"
         >
+        
           <template #add-to-cart-btn>
+            <h5 class="product_bulk">Want to buy this in bulk? <a href="#">Click here</a></h5>
+            <a @click="goToCheckout" class="product_checkout">
+              <SfButton
+                v-e2e="'go-to-checkout-btn'"
+                data-testid="category-sidebar-go-to-checkout"
+                class="sf-button--full-width"
+               
+              >
+                {{ $t("BUY NOW") }}
+              </SfButton>
+            </a>
             <SfButton
-              class="sf-add-to-cart__button"
+              class="sf-add-to-cart__button borderbtn"
               :disabled="isCartLoading || !canAddToCart(product, qty) || isFetching"
               @click="addItem({ product, quantity: parseInt(qty) })"
             >
               {{ $t('Add to cart') }}
             </SfButton>
-          </template>
-        </SfAddToCart>
-        <SfAlert
-          :style="{ visibility: !!addToCartError ? 'visible' : 'hidden'}"
-          class="product__add-to-cart-error"
-          :message="$t(addToCartError)"
-          type="danger"
-        />
-        <div class="product__additional-actions">
+            <div class="product__additional-actions">
           <AddToWishlist
             :is-in-wishlist="isInWishlist"
             :is-show="isAuthenticated"
             @addToWishlist="addItemToWishlist({product})"
           />
         </div>
+          </template>
+        </SfAddToCart>
+        <template >
+        <transition name="sf-fade">
+          <div>
+       
+           
+           <!-- <a @click="goToCheckout">
+              <SfButton
+                v-e2e="'go-to-checkout-btn'"
+                data-testid="category-sidebar-go-to-checkout"
+                class="sf-button--full-width"
+               
+              >
+                {{ $t("BUY NOW") }}
+              </SfButton>
+            </a>
+            -->
+          </div>
+          <div>
+            <SfButton
+              class="sf-button--full-width color-primary"
+              data-testid="cart-sidebar-back"
+             
+            >
+              {{ $t("Go back shopping") }}
+            </SfButton>
+          </div>
+        </transition>
+      </template>
+        
+        <SfAlert
+          :style="{ visibility: !!addToCartError ? 'visible' : 'hidden'}"
+          class="product__add-to-cart-error"
+          :message="$t(addToCartError)"
+          type="danger"
+        />
+      <!-- <div class="product__additional-actions">
+          <AddToWishlist
+            :is-in-wishlist="isInWishlist"
+            :is-show="isAuthenticated"
+            @addToWishlist="addItemToWishlist({product})"
+          />
+        </div>--> 
       </div>
       <LazyHydrate when-idle>
         <ProductTabs
