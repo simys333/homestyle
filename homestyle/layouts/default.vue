@@ -375,4 +375,18 @@ a.sf-link.sf-header-navigation-item__link.nav-item:nth-child(2):hover
 padding-left:var(--spacer-xs) !important;
 max-width: 38rem !important;
 }
+.product .sf-color {
+        --color-size: 1.75rem;
+    
+}
+.product_details {
+    border-bottom: 1px solid #756A67;
+    margin-bottom: 14px;
+}
+.product_ship
+{
+  display: flex;
+    gap: 6px;
+    margin-bottom: 30px;
+}
 </style>
